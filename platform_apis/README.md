@@ -13,7 +13,7 @@ In addition, there are several APIs toward the beginning of the documentation fo
 
 ## WebSockets API
 
-[WebSockets API Documentation](https://github.com/peoplepower/peoplepower-docs/blob/master/platform_apis/websockets.md)
+[WebSockets API Documentation](websockets.md)
 
 Use WebSockets in some time-critical experiences (such as updating the UI with bot-driven [Synthetic APIs](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis) or displaying alerts on an administrative console), instead of polling with RESTful APIs.
 

@@ -60,7 +60,7 @@ Data Stream Address : `set_vayyar_room`
 }
 ```
 
-<img src="https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/img/vayyar_wall_mount.jpg" width="600">
+<img src="img/vayyar_wall_mount.jpg" width="600">
 
 **Ceiling Mount Example**
 ```
@@ -76,7 +76,7 @@ Data Stream Address : `set_vayyar_room`
 }
 ```
 
-<img src="https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/img/vayyar_ceiling_mount.png" width="400">
+<img src="img/vayyar_ceiling_mount.png" width="400">
 
 
 ### Set a Subregion

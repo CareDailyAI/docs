@@ -53,7 +53,7 @@ After selecting a behavior, the user can be prompted to add a subregion. The sub
 | title | Title to suggest to the user to add a subregion, like "Add a bed" |
 | icon | Suggested icon to show nearby the title when prompting a user to add a subregion, like "bed". |
 | icon_font | Icon font package to use, usually 'far' (fontawesome.com regular). |
-| context_id_list | List of compatible context ID's for Vayyar Home that would fulfill this subregion's objectives. See the [Vayyar Home Documentation](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/vayyar.md) `vayyar_subregion_behaviors` for more details.
+| context_id_list | List of compatible context ID's for Vayyar Home that would fulfill this subregion's objectives. See the [Vayyar Home Documentation](vayyar.md) `vayyar_subregion_behaviors` for more details.
 
 #### JSON Content
 

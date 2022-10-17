@@ -254,7 +254,7 @@ The field `call` is set to True. Therefore, the app should show a button that br
 
 We also see `ecc` is True, so we can also recommend triggering the emergency call center as one of the contacts. This will not call the emergency call center directly from your phone, so it is recommended that the app update its own dashboard or provide a confirmation about what will happen next: the emergency call center will back, in the order of the people listed on the predefined call tree in the app. The app must send a data stream message to the address `contact_ecc`. The feed content in the data stream message should contain the `user_id`.
 
-This data stream message to trigger the emergency call center only works during an active problem / conversation, so it is not documented as a general Synthetic API to trigger emergency help. (If you want to request help at any random time from an app or voice UI, check out [Request Assistance](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/request_assistance.md)).
+This data stream message to trigger the emergency call center only works during an active problem / conversation, so it is not documented as a general Synthetic API to trigger emergency help. (If you want to request help at any random time from an app or voice UI, check out [Request Assistance](request_assistance.md)).
 
 Data Stream Address: `contact_ecc`
 

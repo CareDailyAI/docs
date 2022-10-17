@@ -51,7 +51,7 @@ These are the supported WebSocket subscription types
 | ------------ | ----------- |
 | 1 | Location narrative updates (history being added by bots) |
 | 2 | Organization narrative updates (admin-visible alerts and community history added by bots) |
-| 3 | Location `state` variable updates from [Synthetic APIs](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis) |
+| 3 | Location `state` variable updates from [Synthetic APIs](../synthetic_apis) |
 
 #### Operations
 

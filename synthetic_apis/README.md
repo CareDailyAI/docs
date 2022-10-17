@@ -4,46 +4,46 @@
 
 #### User Interfaces
 
-| Synthetic API                                                                                                          | Input Addresses                        | Output Address                                                                                    | Description                                                                                                                                                      |
-|------------------------------------------------------------------------------------------------------------------------|----------------------------------------|---------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [Dashboard Header](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/dashboard_header.md)     | `update_dashboard_header`              | `dashboard_header`                                                                                | #1 thing you need to know about this location.                                                                                                                   |
-| [Dashboard Status](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/dashboard_status.md)     | `update_dashboard_content`             | `now`                                                                                             | Interesting events that are happening now, or happened recently.                                                                                                 | 
-| [Services and Alerts](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/services.md)          |                                        | `services`                                                                                        | List of available services and alerts to turn on or off.                                                                                                         |
-| [Insights](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/insights.md)                     |                                        | `insights`                                                                                        | App-friendly summary of current insights in this location (occupancy, sleep, temperature, etc.).                                                                 |
-| [Daily Report](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/dailyreport.md)              | `daily_report_entry`                   | `dailyreport`                                                                                     | Categorized list of important events that have happened at this location each day.                                                                               |
-| [Trends](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/trends.md)                         | `capture_trend_data` and `remove_trend` | `location_properties` containing static overhead information, and `trends` containing dynamic data | Monitor trends across a variety of lifestyle patterns and Activites of Daily Living and identify when those patterns may be trending abnormal.                   |
-| [Tasks](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/tasks.md)                           |                                        |                                                                                                   | Assign or update a task to another person, or mark an existing task complete.                                                                                    |
-| [Request Assistance](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/request_assistance.md) | `request_assistance`                   |                                                                                                   | Request assistance from the mobile app or smart speaker, including emergency help.                                                                               | 
-| [User Activity](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/user_activity.md)           | `user_activity`                        |                                                                                                   | Share information about what a user is doing in a mobile app with a bot, so the bot can take action and provide timely and relevant feedback and communications. |
-| [Fall History](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/falls.md)                    |                                  | `falls`                                                                                           | Time-series history of falls.                                                                                                                                    |
+| Synthetic API                               | Input Addresses                        | Output Address                                                                                    | Description                                                                                                                                                      |
+|---------------------------------------------|----------------------------------------|---------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [Dashboard Header](dashboard_header.md)     | `update_dashboard_header`              | `dashboard_header`                                                                                | #1 thing you need to know about this location.                                                                                                                   |
+| [Dashboard Status](dashboard_status.md)     | `update_dashboard_content`             | `now`                                                                                             | Interesting events that are happening now, or happened recently.                                                                                                 | 
+| [Services and Alerts](services.md)          |                                        | `services`                                                                                        | List of available services and alerts to turn on or off.                                                                                                         |
+| [Insights](insights.md)                     |                                        | `insights`                                                                                        | App-friendly summary of current insights in this location (occupancy, sleep, temperature, etc.).                                                                 |
+| [Daily Report](dailyreport.md)              | `daily_report_entry`                   | `dailyreport`                                                                                     | Categorized list of important events that have happened at this location each day.                                                                               |
+| [Trends](trends.md)                         | `capture_trend_data` and `remove_trend` | `location_properties` containing static overhead information, and `trends` containing dynamic data | Monitor trends across a variety of lifestyle patterns and Activites of Daily Living and identify when those patterns may be trending abnormal.                   |
+| [Tasks](tasks.md)                           |                                        |                                                                                                   | Assign or update a task to another person, or mark an existing task complete.                                                                                    |
+| [Request Assistance](request_assistance.md) | `request_assistance`                   |                                                                                                   | Request assistance from the mobile app or smart speaker, including emergency help.                                                                               | 
+| [User Activity](user_activity.md)           | `user_activity`                        |                                                                                                   | Share information about what a user is doing in a mobile app with a bot, so the bot can take action and provide timely and relevant feedback and communications. |
+| [Fall History](falls.md)                    |                                        | `falls`                                                                                           | Time-series history of falls.                                                                                                                                    |
 
 #### User Communications
 
 | Synthetic API | Input Addresses | Output Address | Description |
 | ------------- | --------------- | -------------- | ----------- |
-| [Multistream Messages](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/multistream.md) | `multistream` | | Deliver multiple data stream messages (Synthetic API inputs) simultaneously. |
-| [Message](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/message.md) | `message` | | Communicate with users over push notification, SMS, and email. |
-| [Action Plans](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/action_plans.md) | | `action_plans` | Assist mobile apps with communicating to users about the protocol for resolving problems that require human intervention. |
+| [Multistream Messages](multistream.md) | `multistream` | | Deliver multiple data stream messages (Synthetic API inputs) simultaneously. |
+| [Message](message.md) | `message` | | Communicate with users over push notification, SMS, and email. |
+| [Action Plans](action_plans.md) | | `action_plans` | Assist mobile apps with communicating to users about the protocol for resolving problems that require human intervention. |
 
 #### Devices and Automations
 
 | Synthetic API | Input Addresses | Output Address | Description |
 | ------------- | --------------- | -------------- | ----------- |
-| [Behaviors](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/behaviors.md) | | `behaviors` | Behaviors provide the available user-selectable context for each device. |
-| [Bot-driven Rules](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/rules.md) | | | Bot-driven rules engine. |
-| [Vayyar Home](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/vayyar.md) | `set_vayyar_room`, `set_vayyar_subregion`, `delete_vayyar_subregion`, `set_vayyar_config` | `vayyar_room`, `vayyar_subregions`, `vayyar_subregion_behaviors`| Fully manage Vayyar Home devices to detect falls and occupancy. |
+| [Behaviors](behaviors.md) | | `behaviors` | Behaviors provide the available user-selectable context for each device. |
+| [Bot-driven Rules](rules.md) | | | Bot-driven rules engine. |
+| [Vayyar Home](vayyar.md) | `set_vayyar_room`, `set_vayyar_subregion`, `delete_vayyar_subregion`, `set_vayyar_config` | `vayyar_room`, `vayyar_subregions`, `vayyar_subregion_behaviors`| Fully manage Vayyar Home devices to detect falls and occupancy. |
 
 #### Command Centers
 
 | Synthetic API                                                                                             | Input Addresses | Output Address | Description                                                    |
 |-----------------------------------------------------------------------------------------------------------|-----------------|----------------|----------------------------------------------------------------|
-| [Location Summary](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/summary.md) | `set_badge`     | `summmary`     | Summary of the score and notification badges for each location |
+| [Location Summary](summary.md) | `set_badge`     | `summmary`     | Summary of the score and notification badges for each location |
 
 
 <!---
 #### Energy Management
-+ [Demand Response](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/demandresponse.md)
-+ [Time-of-Use Pricing](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis/toupricing.md)
++ [Demand Response](demandresponse.md)
++ [Time-of-Use Pricing](toupricing.md)
 --->
 
 ## About

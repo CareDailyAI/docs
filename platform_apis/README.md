@@ -15,11 +15,11 @@ In addition, there are several APIs toward the beginning of the documentation fo
 
 [WebSockets API Documentation](websockets.md)
 
-Use WebSockets in some time-critical experiences (such as updating the UI with bot-driven [Synthetic APIs](https://github.com/peoplepower/peoplepower-docs/blob/master/synthetic_apis) or displaying alerts on an administrative console), instead of polling with RESTful APIs.
+Use WebSockets in some time-critical experiences (such as updating the UI with bot-driven [Synthetic APIs](../synthetic_apis) or displaying alerts on an administrative console), instead of polling with RESTful APIs.
 
 ## Cloud-to-Cloud Streaming 
 
-[Event Streaming Documentation](https://github.com/peoplepower/peoplepower-docs/blob/master/platform_apis/event_streaming.md)
+[Event Streaming Documentation](event_streaming.md)
 
 People Power's platform can stream events, insights, subscriptions, and more to partner platforms.
 
@@ -45,7 +45,7 @@ Today, we link bots to subscriptions manually on the backend, and there are no A
 
 ## Security Modes and Occupancy Status
 
-[Security Modes and Occupancy Status](https://github.com/peoplepower/peoplepower-docs/blob/master/platform_apis/modes.md)
+[Security Modes and Occupancy Status](modes.md)
 
 Explanation on how to configure and interpret the "Location Scene" field to be recognized by existing application layers.
 

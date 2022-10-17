@@ -15,7 +15,7 @@ In addition, there are several APIs toward the beginning of the documentation fo
 
 [WebSockets API Documentation](websockets.md)
 
-Use WebSockets in some time-critical experiences (such as updating the UI with bot-driven [Synthetic APIs](../synthetic_apis) or displaying alerts on an administrative console), instead of polling with RESTful APIs.
+Use WebSockets in some time-critical experiences (such as updating the UI with bot-driven [Synthetic APIs](../synthetic_apis/README.md) or displaying alerts on an administrative console), instead of polling with RESTful APIs.
 
 ## Cloud-to-Cloud Streaming 
 

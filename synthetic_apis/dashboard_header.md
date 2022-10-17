@@ -188,7 +188,7 @@ Anything marked "Internal Usage" is not meant to be used by the application UI's
 
 A fall is detected. The `dashboard_header` state variable is updated with the JSON content below. As the conversation plays out, this `dashboard_header` state variable will continue to get refreshed with the latest updates.
 
-The app should use [WebSocket APIs](https://github.com/peoplepower/peoplepower-docs/blob/master/platform_apis/websockets.md) to subscribe to receive updates to the `dashboard_header` state variable. A more primitive method for testing or early development would be to periodically (poll for the state variable)[https://iotapps.docs.apiary.io/reference/synthetic-apis/states/get-state].
+The app should use [WebSocket APIs](../platform_apis/websockets.md) to subscribe to receive updates to the `dashboard_header` state variable. A more primitive method for testing or early development would be to periodically (poll for the state variable)[https://iotapps.docs.apiary.io/reference/synthetic-apis/states/get-state].
 
 ```
 {

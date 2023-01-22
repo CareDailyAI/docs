@@ -1,10 +1,10 @@
 # Care Daily Documentation
 
-This repository contains documents and references to documents that will help developers create new apps, devices, and services on the People Power AI+IoT Platform.
+This repository contains documents and references to documents that will help developers create new apps, devices, and services on the Care Daily home health AI+IoT SaaS.
 
 ### [Platform APIs](platform_apis/README.md)
 
-These APIs are provided by the AI+IoT platform itself, including APIs for applications, devices, and administrators. The AI+IoT Platform is capable of responding to role-based access API calls as well as streaming events and observations to partner clouds.
+These APIs are provided by the AI+IoT SaaS platform itself, including APIs for applications, devices, and administrators. The AI+IoT SaaS is capable of responding to role-based access API calls as well as streaming events and observations to partner clouds.
 
 ### [Synthetic APIs](synthetic_apis/README.md)
 

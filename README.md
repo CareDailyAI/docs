@@ -1,4 +1,4 @@
-# People Power Documentation
+# Care Daily Documentation
 
 This repository contains documents and references to documents that will help developers create new apps, devices, and services on the People Power AI+IoT Platform.
 

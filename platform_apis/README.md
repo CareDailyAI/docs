@@ -1,4 +1,4 @@
-# People Power AI+IoT Platform Documentation
+# Care Daily AI+IoT SaaS Documentation
 
 All of the interactive *platform* documentation is updated and managed online. Please follow these links for more details.
 
@@ -21,7 +21,7 @@ Use WebSockets in some time-critical experiences (such as updating the UI with b
 
 [Event Streaming Documentation](event_streaming.md)
 
-People Power's platform can stream events, insights, subscriptions, and more to partner platforms.
+Care Daily's platform can stream events, insights, subscriptions, and more to partner platforms.
 
 ## Administrative API
 http://iotadmins.docs.apiary.io
@@ -33,7 +33,7 @@ http://iotdevices.docs.apiary.io
 
 This Device API is a set of asynchronous RESTful and WebSocket APIs that allow devices to communicate data to the server. Devices, identified by their globally unique IDs, first need to be understood through the definition of a *device type* on the server, and then need to be registered to a specific location before they can start communicating. 
 
-In addition to People Power's Device API, the server also supports MQTT connections through AWS IoT Core. 
+In addition to Care Daily's Device API, the server also supports MQTT connections through AWS IoT Core. 
 
 ## Bot API
 http://iotbots.docs.apiary.io

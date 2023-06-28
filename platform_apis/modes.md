@@ -1,9 +1,10 @@
 # Security Modes and Occupancy Status
 
-This document describes the security system modes and occupancy status as recognized by People Power's application layers, including existing bots.
+This document describes the security system modes and occupancy status as recognized by Care Daily's application layers, including existing bots.
 
 ## History
-People Power's modes has evolved a lot over the years, but consistently remained backwards compatible with previous versions. The field is essentially a single string that is associated with a location - you can find it in the [Location Scene API Documentation](https://iotapps.docs.apiary.io/#reference/locations/set-location-scene/change-the-scene-at-a-location). 
+Care Daily's modes has evolved a lot over the years, but consistently remained backwards compatible with previous versions.
+The field is essentially a single string that is associated with a location - you can find it in the [Location Scene API Documentation](https://iotapps.docs.apiary.io/#reference/locations/set-location-scene/change-the-scene-at-a-location). 
 
 It started out controlling scenes for home automation and energy savings, then evolved into the security system mode, grew an extension to handle occupancy status, and further evolved to describe what was responsible for the last updates.
 

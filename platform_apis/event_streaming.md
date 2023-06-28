@@ -1,8 +1,8 @@
 # Event Streaming
 
-People Power's platform is capable of streaming events, subscription information, and insights into a partner's platform.
+Care Daily's platform is capable of streaming events, subscription information, and insights into a partner's platform.
 There are several mechanisms available to stream data into a partner's platform including tools like AWS SQS, AWS EventBridge, Kafka, and others.
-This document will capture information about some of the data formats of information available to stream from the People Power platform.
+This document will capture information about some of the data formats of information available to stream from the Care Daily platform.
 
 | Data Type | Description |
 | :-------: | ----------- |
@@ -405,7 +405,7 @@ Streaming device parameters can cause publishing significant amount of data.
 
 ## Bot Errors Streaming
 
-People Power's platform can stream error messages produced by bots during execution.
+Care Daily's platform can stream error messages produced by bots during execution.
 
 
 #### Bot Errors JSON Formatting

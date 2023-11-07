@@ -35,7 +35,7 @@ This is the general flow for onboarding devices.
 <a id="oobe-list-models"></a>
 ### Step 1 - Get available Device Categories and Models
 
-Call [GET Device Models](https://iotapps.docs.apiary.io/#reference/creating-products/device-models/get-device-models) API with parameters:
+Call [GET Device Models](https://iotapps.docs.apiary.io/#/reference/creating-products/device-models/get-device-models) API with parameters:
 
 Params:
 - `brand` - optional, by default will return "default" brand.
@@ -63,15 +63,15 @@ If the dependency is not met, then notify the User.
 <a id="oobe-check-requirements"></a>
 ### Step 2.1 - Define how to show device connection process
 
-Call [GET Stories](https://iotapps.docs.apiary.io/#reference/creating-products/stories/get-stories) API with parameters:
+Call [GET Stories](https://iotapps.docs.apiary.io/#/reference/creating-products/stories/get-stories) API with parameters:
 
 Params:
 - `modelId` - mandatory, use model.id from Device Models API data to get story only for that model
-- `storyType` - optional, use to get specific type of story. See available [Story Types](https://iotapps.docs.apiary.io/reference/creating-products/stories).  
+- `storyType` - optional, use to get specific type of story. See available [Story Types](https://iotapps.docs.apiary.io/#/reference/creating-products/stories).  
 - `brand` - optional, by default will return "default" branded stories.
 - `lang` - optional, by default will return user's language or default Server-configured language.
 
-You'll need to show device connection process, so need to get OOBE connection story first (storyType ID is 1). If the story is not provided then notify user.
+You'll need to show device connection process, so need to get OOBE connection story first (storyType is 1). If the story is not provided then notify user.
 
 <a id="oobe-connect"></a>
 ### Step 3 - Show OOBE Connection story
@@ -98,7 +98,8 @@ For example
 <a id="oobe-device-connection"></a>
 #### Step 3.2 - Wait for device pairing
 
-During the actual pairing process you'll need to wait for new device by calling [GET devices](https://iotapps.docs.apiary.io/#reference/devices/manage-devices/get-a-list-of-devices) API. Newly registered devices will include the property `device.newDevice=true` and may be used in coordination with `device.modelId` to understand if the desired device has been added.
+During the actual pairing process you'll need to wait for new device by calling [GET devices](https://iotapps.docs.apiary.io/#/reference/devices/manage-devices/get-devices) API.
+Newly registered devices will include the property `device.newDevice=true` and may be used in coordination with `device.modelId` to understand if the desired device has been added.
 
 Two options of result:
 
@@ -121,9 +122,9 @@ Only show this step if story.storyType = 2 exist for selected model.id. Typicall
 
 This is standard for every device and pre-builded into application process. These should be presented in the following order.
 
-1. Behaviors UI - If connected device type has [Behaviors](synthetic_apis/behaviors.md) then show the list of available behaviors. To get behaviors call to [GET State](https://iotapps.docs.apiary.io/#reference/synthetic-apis/states/get-state) API with the name `behaviors`. To select a Behavior call [PUT Update a Device](https://iotapps.docs.apiary.io/#reference/devices/manage-single-device/update-a-device) API with the selected `goalId`.  Alternatively, the [GET Goals by Device Type](https://iotapps.docs.apiary.io/#reference/creating-products/device-goals/get-device-goals-by-type) API may be used to retrieve behaviors if no Bot is present at this location.
+1. Behaviors UI - If connected device type has [Behaviors](synthetic_apis/behaviors.md) then show the list of available behaviors. To get behaviors call to [GET State](https://iotapps.docs.apiary.io/#/reference/synthetic-ap-is/states/get-state) API with the name `behaviors`. To select a Behavior call [PUT Update a Device](https://iotapps.docs.apiary.io/#/reference/devices/manage-single-device/update-device) API with the selected `goalId`.  Alternatively, the [GET Goals by Device Type](https://iotapps.docs.apiary.io/#/reference/creating-products/device-goals/get-device-goals-by-type) API may be used to retrieve behaviors if no Bot is present at this location.
 2. Spaces UI - Spaces may be supported by a device.  If the device's `model.displayInfo` property provides a key `locationSpaces` with an array of space definitions `{'type': Int, 'name': String}` then show space selection. The selected Behavior may also describe preferred or suggested spaces.
-3. Device Name UI - Choose name for your new device or keep default. Call to [PUT Update a Device](https://iotapps.docs.apiary.io/#reference/devices/manage-single-device/update-a-device) API to update `device.desc` (name).
+3. Device Name UI - Choose name for your new device or keep default. Call to [PUT Update a Device](https://iotapps.docs.apiary.io/#/reference/devices/manage-single-device/update-device) API to update `device.desc` (name).
 
 When finished with all configuration screens go to the next step.
 
@@ -209,14 +210,14 @@ IMPORTANT: This feature is under development.  Fall back to `info`.
 
 #### APIs
 
-##### [GET Device Models](https://iotapps.docs.apiary.io/#reference/creating-products/device-models/get-device-models)
+##### [GET Device Models](https://iotapps.docs.apiary.io/#/reference/creating-products/device-models/get-device-models)
 
 *Gather device models*
 
 Params:
 - brand: $brand
 
-##### [GET Stories](https://iotapps.docs.apiary.io/#reference/creating-products/stories/get-stories)
+##### [GET Stories](https://iotapps.docs.apiary.io/#/reference/creating-products/stories/get-stories)
 
 *Gather device model stories*
 
@@ -224,7 +225,7 @@ Params:
 - brand: $brand
 - modelId: $modelId
 
-##### [POST Register Device](https://iotapps.docs.apiary.io/#reference/devices/manage-devices/register-a-device)
+##### [POST Register Device](https://iotapps.docs.apiary.io/#/reference/devices/manage-devices/register-a-device)
 
 *Register device*
 
@@ -232,7 +233,7 @@ Params:
 - deviceId: $deviceId
 - locationId: $locationId
 
-##### [PUT Update a Device](https://iotapps.docs.apiary.io/#reference/devices/manage-single-device/update-a-device)
+##### [PUT Update a Device](https://iotapps.docs.apiary.io/#/reference/devices/manage-single-device/update-device)
 
 *Mark device as new*
 
@@ -246,7 +247,7 @@ Params:
 Params:
 - desc: $textfield.text
 
-##### [GET devices](https://iotapps.docs.apiary.io/#reference/devices/manage-devices/get-a-list-of-devices)
+##### [GET devices](https://iotapps.docs.apiary.io/#/reference/devices/manage-devices/get-devices)
 
 Params:
 - locationId: $locationId
@@ -257,14 +258,14 @@ Params:
 
 #### APIs
 
-##### [GET Device Models](https://iotapps.docs.apiary.io/#reference/creating-products/device-models/get-device-models)
+##### [GET Device Models](https://iotapps.docs.apiary.io/#/reference/creating-products/device-models/get-device-models)
 
 *Gather device models*
 
 Params:
 - brand: $brand
 
-##### [GET Stories](https://iotapps.docs.apiary.io/#reference/creating-products/stories/get-stories)
+##### [GET Stories](https://iotapps.docs.apiary.io/#/reference/creating-products/stories/get-stories)
 
 *Gather device model stories*
 
@@ -272,7 +273,7 @@ Params:
 - brand: $brand
 - modelId: $modelId
 
-##### [PUT Send a Command](https://iotapps.docs.apiary.io/#reference/device-measurements/parameters-for-a-specific-device/send-a-command)
+##### [PUT Send a Command](https://iotapps.docs.apiary.io/#/reference/device-measurements/parameters-for-a-specific-device/send-a-command)
 
 *Put proxy into pairing mode*
 
@@ -281,14 +282,14 @@ Params:
 - deviceId: $proxy.deviceId
 - data: `{'commandType': 0, 'commandTimeout': 60, 'params': [\n{'name': 'permitJoining', 'value': '1'}, \n{'name': 'autoAdd', 'value': '1'}]}`
 
-##### [GET devices](https://iotapps.docs.apiary.io/#reference/devices/manage-devices/get-a-list-of-devices)
+##### [GET devices](https://iotapps.docs.apiary.io/#/reference/devices/manage-devices/get-devices)
 
 *Refresh devices*
 
 Params:
 - locationId: $locationId
 
-##### [GET State](https://iotapps.docs.apiary.io/#reference/synthetic-apis/states/get-state)
+##### [GET State](https://iotapps.docs.apiary.io/#/reference/synthetic-ap-is/states/get-state)
 
 *Gather device type Behaviors*
 
@@ -298,7 +299,7 @@ Params:
 - locationId: $locationId
 - name: 'behaviors'
 
-##### [PUT Update a Device](https://iotapps.docs.apiary.io/#reference/devices/manage-single-device/update-a-device)
+##### [PUT Update a Device](https://iotapps.docs.apiary.io/#/reference/devices/manage-single-device/update-device)
 
 *Update device goal (See Synthetic API [Behaviors](synthetic_apis/behaviors.md))*
 
@@ -310,7 +311,7 @@ Params:
 Params:
 - desc: $textfield.text
 
-##### [GET Files](https://iotapps.docs.apiary.io/#reference/application-files/files-management/get-files)
+##### [GET Files](https://iotapps.docs.apiary.io/#/reference/application-files/files-management/get-files)
 
 *Gather device files*
 
@@ -319,7 +320,7 @@ Params:
 - deviceId: $deviceId
 - type: 3 (device images)
 
-##### [POST Upload File Content](https://iotapps.docs.apiary.io/#reference/application-files/files-management/upload-file-content)
+##### [POST Upload File Content](https://iotapps.docs.apiary.io/#/reference/application-files/files-management/upload-file-content)
 
 *Upload device file*
 
@@ -336,14 +337,14 @@ Params:
 
 #### APIs
 
-##### [GET Device Models](https://iotapps.docs.apiary.io/#reference/creating-products/device-models/get-device-models)
+##### [GET Device Models](https://iotapps.docs.apiary.io/#/reference/creating-products/device-models/get-device-models)
 
 *Gather device models*
 
 Params:
 - brand: $brand
 
-##### [GET Stories](https://iotapps.docs.apiary.io/#reference/creating-products/stories/get-stories)
+##### [GET Stories](https://iotapps.docs.apiary.io/#/reference/creating-products/stories/get-stories)
 
 *Gather device model stories*
 
@@ -351,7 +352,7 @@ Params:
 - brand: $brand
 - modelId: $modelId
 
-##### [PUT Send a Command](https://iotapps.docs.apiary.io/#reference/device-measurements/parameters-for-a-specific-device/send-a-command)
+##### [PUT Send a Command](https://iotapps.docs.apiary.io/#/reference/device-measurements/parameters-for-a-specific-device/send-a-command)
 
 *Put proxy into pairing mode*
 
@@ -360,14 +361,14 @@ Params:
 - deviceId: $proxy.deviceId
 - data: `{'commandType': 0, 'commandTimeout': 60, 'params': [\n{'name': 'permitJoining', 'value': '1'}, \n{'name': 'autoAdd', 'value': '1'}]}`
 
-##### [GET devices](https://iotapps.docs.apiary.io/#reference/devices/manage-devices/get-a-list-of-devices)
+##### [GET devices](https://iotapps.docs.apiary.io/#/reference/devices/manage-devices/get-devices)
 
 *Refresh devices*
 
 Params:
 - locationId: $locationId
 
-##### [GET State](https://iotapps.docs.apiary.io/#reference/synthetic-apis/states/get-state)
+##### [GET State](https://iotapps.docs.apiary.io/#/reference/synthetic-ap-is/states/get-state)
 
 *Gather device type Behaviors*
 
@@ -377,14 +378,14 @@ Params:
 - locationId: $locationId
 - name: 'behaviors'
 
-##### [GET Spaces](https://iotapps.docs.apiary.io/#reference/locations/location-spaces/get-spaces)
+##### [GET Spaces](https://iotapps.docs.apiary.io/#/reference/locations/location-spaces/get-spaces)
 
 *Gather existing location spaces*
 
 Params:
 - locationId: $locationId
 
-##### [PUT Update a Device](https://iotapps.docs.apiary.io/#reference/devices/manage-single-device/update-a-device)
+##### [PUT Update a Device](https://iotapps.docs.apiary.io/#/reference/devices/manage-single-device/update-device)
 
 *Update device goal, space, and name (See Synthetic API [Behaviors](synthetic_apis/behaviors.md))*
 
@@ -401,7 +402,7 @@ Params:
 Params:
 - desc: $textfield.text
 
-##### [GET Files](https://iotapps.docs.apiary.io/#reference/application-files/files-management/get-files)
+##### [GET Files](https://iotapps.docs.apiary.io/#/reference/application-files/files-management/get-files)
 
 *Gather device files*
 
@@ -410,7 +411,7 @@ Params:
 - deviceId: $deviceId
 - type: 3 (device images)
 
-##### [POST Upload File Content](https://iotapps.docs.apiary.io/#reference/application-files/files-management/upload-file-content)
+##### [POST Upload File Content](https://iotapps.docs.apiary.io/#/reference/application-files/files-management/upload-file-content)
 
 *Upload device file*
 
@@ -438,14 +439,14 @@ Params:
 
 #### APIs
 
-##### [GET Device Models](https://iotapps.docs.apiary.io/#reference/creating-products/device-models/get-device-models)
+##### [GET Device Models](https://iotapps.docs.apiary.io/#/reference/creating-products/device-models/get-device-models)
 
 *Gather device models*
 
 Params:
 - brand: $brand
 
-##### [GET Stories](https://iotapps.docs.apiary.io/#reference/creating-products/stories/get-stories)
+##### [GET Stories](https://iotapps.docs.apiary.io/#/reference/creating-products/stories/get-stories)
 
 *Gather device model stories*
 
@@ -453,7 +454,7 @@ Params:
 - brand: $brand
 - modelId: $modelId
 
-##### [POST Register Device](https://iotapps.docs.apiary.io/#reference/devices/manage-devices/register-a-device)
+##### [POST Register Device](https://iotapps.docs.apiary.io/#/reference/devices/manage-devices/register-a-device)
 
 *Register device*
 
@@ -461,14 +462,14 @@ Params:
 - deviceId: $deviceId
 - locationId: $locationId
 
-##### [GET devices](https://iotapps.docs.apiary.io/#reference/devices/manage-devices/get-a-list-of-devices)
+##### [GET devices](https://iotapps.docs.apiary.io/#/reference/devices/manage-devices/get-devices)
 
 *Refresh devices*
 
 Params:
  -locationId: $locationId
 
-##### [PUT Update a Device](https://iotapps.docs.apiary.io/#reference/devices/manage-single-device/update-a-device)
+##### [PUT Update a Device](https://iotapps.docs.apiary.io/#/reference/devices/manage-single-device/update-device)
 
 *Update device name*
 
@@ -489,14 +490,14 @@ Params:
 
 #### APIs
 
-##### [GET Device Models](https://iotapps.docs.apiary.io/#reference/creating-products/device-models/get-device-models)
+##### [GET Device Models](https://iotapps.docs.apiary.io/#/reference/creating-products/device-models/get-device-models)
 
 *Gather device models*
 
 Params:
 - brand: $brand
 
-##### [GET Stories](https://iotapps.docs.apiary.io/#reference/creating-products/stories/get-stories)
+##### [GET Stories](https://iotapps.docs.apiary.io/#/reference/creating-products/stories/get-stories)
 
 *Gather device model stories*
 
@@ -504,7 +505,7 @@ Params:
 - brand: $brand
 - modelId: $modelId
 
-##### [POST Register Device](https://iotapps.docs.apiary.io/#reference/devices/manage-devices/register-a-device)
+##### [POST Register Device](https://iotapps.docs.apiary.io/#/reference/devices/manage-devices/register-a-device)
 
 *Register device*
 
@@ -512,14 +513,14 @@ Params:
 - deviceId: $deviceId
 - locationId: $locationId
 
-##### [GET devices](https://iotapps.docs.apiary.io/#reference/devices/manage-devices/get-a-list-of-devices)
+##### [GET devices](https://iotapps.docs.apiary.io/#/reference/devices/manage-devices/get-devices)
 
 *Refresh devices*
 
 Params:
  -locationId: $locationId
 
-##### [PUT Update a Device](https://iotapps.docs.apiary.io/#reference/devices/manage-single-device/update-a-device)
+##### [PUT Update a Device](https://iotapps.docs.apiary.io/#/reference/devices/manage-single-device/update-device)
 
 *Update device name*
 

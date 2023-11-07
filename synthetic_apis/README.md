@@ -70,7 +70,7 @@ Bots receive messages from the outside world (and between microservices running 
 * Data stream messages cannot send data or responses back instantaneously - they operate asynchronously. That's why we have a separate mechanism, `state` variables, to get data back out again.
 * JSON content is arbitrary and agreed upon by app developers.
 
-Mobile app developers can [get a list of data stream addresses](https://iotapps.docs.apiary.io/#reference/synthetic-apis/summary-of-capabilities/get-summary) to understand if the bots and services offer some set of capabilities.
+Mobile app developers can [get a list of data stream addresses](https://iotapps.docs.apiary.io/#/reference/synthetic-apis/summary-of-capabilities/get-summary) to understand if the bots and services offer some set of capabilities.
 
 #### Best practices for managing objects
 
@@ -83,7 +83,7 @@ But this kind of synchronous response isn't possible with a data stream message.
 
 Bots can create `state` variables to provide data back out to applications or voice UI's. These state variables are stored in a way that can be accessed at any time through a RESTful API call or WebSocket.
 
-[Location States API Documentation](https://iotapps.docs.apiary.io/#reference/synthetic-apis/states/get-state)
+[Location States API Documentation](https://iotapps.docs.apiary.io/#/reference/synthetic-ap-is/states/get-state)
 
 #### Properties of State Variables
 * Like data stream messages, state variables have an address and arbitrary JSON content.

@@ -12,7 +12,7 @@
 
 #### APIS
 
-##### [GET State](https://iotapps.docs.apiary.io/#reference/synthetic-apis/states/get-state)
+##### [GET State](https://iotapps.docs.apiary.io/#/reference/synthetic-ap-is/states/get-state)
 
 *Refresh services location state*
 
@@ -21,7 +21,7 @@ Params:
 - name: services
 - name: action_plans
 
-##### [GET Questions](https://iotapps.docs.apiary.io/#reference/user-communications/questions/get-questions)
+##### [GET Questions](https://iotapps.docs.apiary.io/#/reference/user-communications/questions/get-questions)
 
 *Refresh questions*
 

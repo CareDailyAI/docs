@@ -19,7 +19,7 @@ This method dynamically generates an IoT policy on each device's connection.
 
 ## AWS IoT connection settings
 
-IoT device can call a convenient [Get Connection Server API](https://iotapps.docs.apiary.io/#reference/cloud-connectivity/server-instances/get-server) to obtain all required AWS IoT connection information:
+IoT device can call a convenient [Get Connection Server API](https://iotapps.docs.apiary.io/#/reference/cloud-connectivity/server-instances/get-server) to obtain all required AWS IoT connection information:
 
 * AWS IoT enpoint including host, port, and TLS version.
 * Amazon root CA certificate.

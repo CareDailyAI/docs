@@ -26,10 +26,10 @@ Cloud API and high-level logic prototypes for Presence Evolution. Includes multi
 
 ### APIS
 
-- [GET Device Models](https://iotapps.docs.apiary.io/#reference/creating-products/device-models/get-device-models)
-- [GET Device Types](https://iotapps.docs.apiary.io/#reference/creating-products/supported-products)
-- [GET Supported Attributes](https://iotapps.docs.apiary.io/#reference/creating-products/supported-product-attributes)
-- [GET Parameters](https://iotapps.docs.apiary.io/#reference/creating-products/manage-parameters)
+- [GET Device Models](https://iotapps.docs.apiary.io/#/reference/creating-products/device-models/get-device-models)
+- [GET Device Types](https://iotapps.docs.apiary.io/#/reference/creating-products/supported-products)
+- [GET Supported Attributes](https://iotapps.docs.apiary.io/#/reference/creating-products/supported-product-attributes)
+- [GET Parameters](https://iotapps.docs.apiary.io/#/reference/creating-products/manage-parameters)
 
 Device UX Model is a universal reference for App to describe every Device Type and Device Mode supported, with all parameters and attributes App can manage and use. As well as some template reference for UIs at user-facing apps.
 
@@ -51,23 +51,23 @@ Main concepts:
 ### How it should work
 
 Call these APIs and store in cache once (e.g. when launching the App): 
-- [GET Parameters](https://iotapps.docs.apiary.io/#reference/creating-products/manage-parameters) API - all possible parameters with full reference of options.
-- [GET Device Types](https://iotapps.docs.apiary.io/#reference/creating-products/supported-products) API - all possible device types and default mapping of parameters.
-- [GET Device Models](https://iotapps.docs.apiary.io/#reference/creating-products/device-models/get-device-models) API - all supported and available models (branded) with a mapping to "deviceType" and differences from defaults.
+- [GET Parameters](https://iotapps.docs.apiary.io/#/reference/creating-products/manage-parameters) API - all possible parameters with full reference of options.
+- [GET Device Types](https://iotapps.docs.apiary.io/#/reference/creating-products/supported-products) API - all possible device types and default mapping of parameters.
+- [GET Device Models](https://iotapps.docs.apiary.io/#/reference/creating-products/device-models/get-device-models) API - all supported and available models (branded) with a mapping to "deviceType" and differences from defaults.
 
 Then just use standard:
 
-- [GET List of Devices](https://iotapps.docs.apiary.io/#reference/devices/manage-devices/get-a-list-of-devices) API - all devices on account/location and current state with part of parameters returned by "deviceListParameters" attribute.
-- [GET Device by ID](https://iotapps.docs.apiary.io/#reference/devices/manage-single-device/get-device-by-id) API - full device information including current state and all parameter values.
+- [GET List of Devices](https://iotapps.docs.apiary.io/#/reference/devices/manage-devices/get-devices) API - all devices on account/location and current state with part of parameters returned by "deviceListParameters" attribute.
+- [GET Device by ID](https://iotapps.docs.apiary.io/#/reference/devices/manage-single-device/get-device-by-id) API - full device information including current state and all parameter values.
 
 <a id="models-types"></a>
 #### Associating Device Models with Device Types
 
-Models may be linked to 1 or more device types described in [GET Device Types](https://iotapps.docs.apiary.io/#reference/creating-products/supported-products) API.  Linking is described by the [Device Model](https://iotapps.docs.apiary.io/reference/creating-products/device-models)'s `lookupParam` property.
+Models may be linked to 1 or more device types described in [GET Device Types](https://iotapps.docs.apiary.io/#/reference/creating-products/supported-products) API.  Linking is described by the [Device Model](https://iotapps.docs.apiary.io/reference/creating-products/device-models)'s `lookupParam` property.
 
 #### Device Parameters
 
-[GET Device Models](https://iotapps.docs.apiary.io/#reference/creating-products/device-models/get-device-models) API optionally may provide each Device Model with a `displayInfo` property that includes the key `parameters`, which that can be used to describe parameters that *distinguish this particular model* from other models of the same type or/and parameters are *different from the initial reference* described in [GET Parameters](https://iotapps.docs.apiary.io/#reference/creating-products/manage-parameters) API. 
+[GET Device Models](https://iotapps.docs.apiary.io/#/reference/creating-products/device-models/get-device-models) API optionally may provide each Device Model with a `displayInfo` property that includes the key `parameters`, which that can be used to describe parameters that *distinguish this particular model* from other models of the same type or/and parameters are *different from the initial reference* described in [GET Parameters](https://iotapps.docs.apiary.io/#/reference/creating-products/manage-parameters) API. 
 
 To show device parameters:
 - numeric, systemUnit, scale and systemMultiplier - which unit to show for the numeric parameter.
@@ -92,7 +92,7 @@ Describes in which position we should pin specific parameter:
 - 1 - Second part of right aligned position divided by some symbol (depends of design) at the device list item
 - 2 - Subtitle (or description) below the device list item title
 
-Icon of the specific model should be retrieved from [GET List of Devices](https://iotapps.docs.apiary.io/#reference/devices/manage-devices/get-a-list-of-devices) API `deviceListIcon` value or optionally _overwritten_ by brand-specific icon from [GET Device Models](https://iotapps.docs.apiary.io/#reference/creating-products/device-models/get-device-models) API Category icon value (category of current device model).
+Icon of the specific model should be retrieved from [GET List of Devices](https://iotapps.docs.apiary.io/#/reference/devices/manage-devices/get-devices) API `deviceListIcon` value or optionally _overwritten_ by brand-specific icon from [GET Device Models](https://iotapps.docs.apiary.io/#/reference/creating-products/device-models/get-device-models) API Category icon value (category of current device model).
 
 *IMPORTANT: modelId may be missed or wrong for the newly added devices as Server need to get calibrationParams first, so please be careful with deviceListParameters configuration at Device Models API.*
 
@@ -119,7 +119,7 @@ Display information specific to device parameters and common across all devices 
 
 `displayType`
 
-Uses the same structure as at [Questions](https://iotapps.docs.apiary.io/#reference/user-communications/questions/get-device-by-id) API (exception is a text box). It's combination of the IDs for general type of the element and it's sub-function. Example: "10" (same as "1") - on/off switch, "91" - single date picker...
+Uses the same structure as at [Questions](https://iotapps.docs.apiary.io/#/reference/user-communications/questions/get-device-by-id) API (exception is a text box). It's combination of the IDs for general type of the element and it's sub-function. Example: "10" (same as "1") - on/off switch, "91" - single date picker...
 
 `valueType`
 
@@ -184,10 +184,10 @@ String encoded JSON array of parameters to be displayed or managed. Precedes Par
 | name | String | Described mapped parameter. |
 | defaultOption | Int | _Optional_ Set the default option ID (if not set, then use first option in the array as default). |
 | availableOptions | Array | array to describe available values for specific parameter if it differs from default values. See [Device Parameter Display Information](#device-parameter). |
-| linkedParams | Array | Parameter names only if current parameter need to be passed to [PUT Send a Command](https://iotapps.docs.apiary.io/#reference/device-measurements/parameters-for-a-specific-device/send-a-command) API along with some other params. |
-| refresh | Bool | _Optional_ Declare this parameter to be included in [PUT Send a Command](https://iotapps.docs.apiary.io/#reference/device-measurements/parameters-for-a-specific-device/send-a-command) API when requesting specific parameters to be updated. Defualt `False` |
+| linkedParams | Array | Parameter names only if current parameter need to be passed to [PUT Send a Command](https://iotapps.docs.apiary.io/#/reference/device-measurements/parameters-for-a-specific-device/send-a-command) API along with some other params. |
+| refresh | Bool | _Optional_ Declare this parameter to be included in [PUT Send a Command](https://iotapps.docs.apiary.io/#/reference/device-measurements/parameters-for-a-specific-device/send-a-command) API when requesting specific parameters to be updated. Defualt `False` |
 
-- Parameter values from "availableOptions", and "defaultOption" with an option.id from full parameters notation at [GET Device Parameters](https://iotapps.docs.apiary.io/#reference/creating-products/manage-parameters/get-parameters) API
+- Parameter values from "availableOptions", and "defaultOption" with an option.id from full parameters notation at [GET Device Parameters](https://iotapps.docs.apiary.io/#/reference/creating-products/manage-parameters/get-parameters) API
 - This parameter settings notation should be used prior the Parameters API full notation.
 - Same across all brands
 - Our system allows us to manually request our cloud to refresh parameters from certain devices.  For example, sending a command with "commandType=4" and including parameter name "ccidIndex" will request that our server refresh the current ccidIndex of our develco gateway's apn.  Ref CLOUD-2004.
@@ -199,7 +199,7 @@ Describe if this model supports spaces and what spaces are supported.
 - Array of objects with space types and names
 - If the `locationSpaces` array is not included, then the device should not allow setting/editing location spaces (or have full list of spaces to choose from)
 - Also part of Device Onboarding
-- Types are defined by Stories API / Bots themselves. See the [Get Spaces API](https://iotapps.docs.apiary.io/#reference/locations/location-spaces/get-spaces) for a list of spaces to render in the App.
+- Types are defined by Stories API / Bots themselves. See the [Get Spaces API](https://iotapps.docs.apiary.io/#/reference/locations/location-spaces/get-spaces) for a list of spaces to render in the App.
 
 ##### Video Profiles
 
@@ -332,7 +332,7 @@ Describe the configurations for this setting. The app must send a command to the
 
 #### APIs
 
-##### [GET List of Devices](https://iotapps.docs.apiary.io/#reference/devices/manage-devices/get-a-list-of-devices)
+##### [GET List of Devices](https://iotapps.docs.apiary.io/#/reference/devices/manage-devices/get-devices)
 
 *Refresh devices*
 
@@ -340,7 +340,7 @@ Params:
 - locationId: $locationId
 - checkPersistent: true
 
-##### [GET Current Measurements](https://iotapps.docs.apiary.io/#reference/device-measurements/parameters-for-a-specific-device/get-current-measurements)
+##### [GET Current Measurements](https://iotapps.docs.apiary.io/#/reference/device-measurements/parameters-for-a-specific-device/get-current-measurements)
 
 *Refresh device parameters*
 
@@ -348,7 +348,7 @@ Params:
 - deviceId: $deviceId
 - locationId: $locationId
 
-##### [GET Device Properties](https://iotapps.docs.apiary.io/#reference/devices/device-properties/get-device-properties)
+##### [GET Device Properties](https://iotapps.docs.apiary.io/#/reference/devices/device-properties/get-device-properties)
 
 *Refresh device properites*
 
@@ -356,7 +356,7 @@ Params:
 - deviceId: $deviceId
 - locationId: $locationId
 
-##### [PUT Send Commands](https://iotapps.docs.apiary.io/#reference/device-measurements/parameters-for-a-specific-device/send-a-command)
+##### [PUT Send Commands](https://iotapps.docs.apiary.io/#/reference/device-measurements/parameters-for-a-specific-device/send-a-command)
 
 *Notify device to refresh parameters*
 

@@ -14,7 +14,7 @@ Configuring Wi-Fi for the Smart Home Center device types is done by using device
 
 #### APIs
 
-##### [GET List of Devices](https://iotapps.docs.apiary.io/#reference/devices/manage-devices/get-a-list-of-devices)
+##### [GET List of Devices](https://iotapps.docs.apiary.io/#/reference/devices/manage-devices/get-devices)
 
 *Refreshing devices at the current location*
 
@@ -22,7 +22,7 @@ Params:
 - locationId: $locationId _Current Location ID_
 - checkPersistent: true _Determine if the device is connected_
 
-##### [PUT Send A Command](https://iotapps.docs.apiary.io/#reference/device-measurements/parameters-for-a-specific-device/send-a-command)
+##### [PUT Send A Command](https://iotapps.docs.apiary.io/#/reference/device-measurements/parameters-for-a-specific-device/send-a-command)
 
 *Notify device to refresh discover SSIDs*
 
@@ -38,7 +38,7 @@ Params:
 - data: `{'commandType': 0, 'commandTimeout': 60, 'params': [\n{'name': 'wifiSsid', 'value': 'SSID'}, \n{'name': 'wifiPassword', 'value': 'Password'}, \n{'name': 'wifiSecurity', 'value': 'SSID Security'}]}`
 
 
-##### [GET Current Measurements](https://iotapps.docs.apiary.io/#reference/device-measurements/parameters-for-a-specific-device/get-current-measurements)
+##### [GET Current Measurements](https://iotapps.docs.apiary.io/#/reference/device-measurements/parameters-for-a-specific-device/get-current-measurements)
 
 *Refresh device parameters to retrieve discovered SSIDs and to validate Wi-Fi connection state*
 

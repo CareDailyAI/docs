@@ -2,7 +2,7 @@
 
 ## Get the WebSocket URL
 
-Each time the client starts a new WebSocket session, it must obtain its WebSocket API server connection settings and URL by calling the [Get Server Instance API](https://iotapps.docs.apiary.io/#reference/cloud-connectivity/server-instances/get-server) with `type=wsapi`.
+Each time the client starts a new WebSocket session, it must obtain its WebSocket API server connection settings and URL by calling the [Get Server Instance API](https://iotapps.docs.apiary.io/#/reference/cloud-connectivity/server-instances/get-server) with `type=wsapi`.
 
 ## Ping / Pong
 
@@ -85,7 +85,7 @@ The client can subscribe on specific actions being performed to the data object.
 
 ## Authenticate
 
-The initial authentication request must include the `"key"` field, which contains the `API_KEY` of the user. The client must already be authenticated and retrieve the API key using the [Login API](https://iotapps.docs.apiary.io/#reference/login-and-logout/login).
+The initial authentication request must include the `"key"` field, which contains the `API_KEY` of the user. The client must already be authenticated and retrieve the API key using the [Login API](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login).
 
 When the server authenticates the user, it will define the scope of the session based on the API key type and return success or an error response.
 
@@ -178,7 +178,7 @@ See the 'Types' and 'Operations' tables at the top of this document for more inf
 
 #### Example: Subscribe to Narratives
 
-Read about the subscription parameters in the [GET Narratives API](https://iotapps.docs.apiary.io/#reference/locations/narratives/get-narratives) documentation.
+Read about the subscription parameters in the [GET Narratives API](https://iotapps.docs.apiary.io/#/reference/locations/narratives/get-narratives) documentation.
 
 ```
 {

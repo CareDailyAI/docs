@@ -19,7 +19,7 @@
 
 #### APIS
 
-##### [GET Login by username](https://iotapps.docs.apiary.io/#reference/login-and-logout/login/login-by-username)
+##### [GET Login by username](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login/login-by-username)
 
 *Login existing userLogin user*
 
@@ -35,14 +35,14 @@ Params:
 
 #### APIS
 
-##### [GET Operation Token](https://iotapps.docs.apiary.io/#reference/login-and-logout/operation-token/get-operation-token)
+##### [GET Operation Token](https://iotapps.docs.apiary.io/#/reference/login-and-logout/operation-token/get-operation-token)
 
 *Retrieve an operation token*
 
 Params:
 - type: 1
 
-##### [POST user](https://iotapps.docs.apiary.io/#reference/user-accounts/manage-a-user/create-user-and-location)
+##### [POST user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/create-user-and-location)
 
 *Create a new user*
 
@@ -60,14 +60,14 @@ Params:
 
 #### APIS
 
-##### [GET Operation Token](https://iotapps.docs.apiary.io/#reference/login-and-logout/operation-token/get-operation-token)
+##### [GET Operation Token](https://iotapps.docs.apiary.io/#/reference/login-and-logout/operation-token/get-operation-token)
 
 *Retrieve an operation token*
 
 Params:
 - type: 1
 
-##### [POST user](https://iotapps.docs.apiary.io/#reference/user-accounts/manage-a-user/create-user-and-location)
+##### [POST user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/create-user-and-location)
 
 *Create a new user*
 
@@ -79,7 +79,7 @@ Params:
 - appName: $appName
 - location: `{'name': 'Home', 'country': {'id': $country.id}}`
 
-##### [GET passcode](https://iotapps.docs.apiary.io/#reference/login-and-logout/passcode/send-passcode)
+##### [GET passcode](https://iotapps.docs.apiary.io/#/reference/login-and-logout/passcode/send-passcode)
 
 *Trigger a new passcode to be sent over sms*
 
@@ -89,7 +89,7 @@ Params:
 - brand: $brand
 - appName: $appName
 
-##### [GET Login by username](https://iotapps.docs.apiary.io/#reference/login-and-logout/login/login-by-username)
+##### [GET Login by username](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login/login-by-username)
 
 *Login existing user*
 
@@ -105,14 +105,14 @@ Params:
 
 #### APIS
 
-##### [GET Operation Token](https://iotapps.docs.apiary.io/#reference/login-and-logout/operation-token/get-operation-token)
+##### [GET Operation Token](https://iotapps.docs.apiary.io/#/reference/login-and-logout/operation-token/get-operation-token)
 
 *Retrieve an operation token*
 
 Params:
 - type: 1
 
-##### [POST user](https://iotapps.docs.apiary.io/#reference/user-accounts/manage-a-user/create-user-and-location)
+##### [POST user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/create-user-and-location)
 
 *Create a new user*
 
@@ -124,7 +124,7 @@ Params:
 - appName: $appName
 - location: `{'name': 'Home', 'country': {'id': $country.id}}`
 
-##### [GET passcode](https://iotapps.docs.apiary.io/#reference/login-and-logout/passcode/send-passcode)
+##### [GET passcode](https://iotapps.docs.apiary.io/#/reference/login-and-logout/passcode/send-passcode)
 
 *Trigger a new passcode to be sent over sms*
 
@@ -134,7 +134,7 @@ Params:
 - brand: $brand
 - appName: $appName
 
-##### [GET Login by username](https://iotapps.docs.apiary.io/#reference/login-and-logout/login/login-by-username)
+##### [GET Login by username](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login/login-by-username)
 
 *Login existing user*
 
@@ -150,14 +150,14 @@ Params:
 
 #### APIS
 
-##### [GET Operation Token](https://iotapps.docs.apiary.io/#reference/login-and-logout/operation-token/get-operation-token)
+##### [GET Operation Token](https://iotapps.docs.apiary.io/#/reference/login-and-logout/operation-token/get-operation-token)
 
 *Retrieve an operation token*
 
 Params:
 - type: 1
 
-##### [POST user](https://iotapps.docs.apiary.io/#reference/user-accounts/manage-a-user/create-user-and-location)
+##### [POST user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/create-user-and-location)
 
 *Create a new user*
 
@@ -166,7 +166,7 @@ Params:
 - username: $username
 - appName: $appName
 
-##### [GET Login by username](https://iotapps.docs.apiary.io/#reference/login-and-logout/login/login-by-username)
+##### [GET Login by username](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login/login-by-username)
 
 *Login existing user*
 
@@ -182,14 +182,14 @@ Params:
 
 #### APIS
 
-##### [GET Operation Token](https://iotapps.docs.apiary.io/#reference/login-and-logout/operation-token/get-operation-token)
+##### [GET Operation Token](https://iotapps.docs.apiary.io/#/reference/login-and-logout/operation-token/get-operation-token)
 
 *Retrieve an operation token*
 
 Params:
 - type: 1
 
-##### [POST user](https://iotapps.docs.apiary.io/#reference/user-accounts/manage-a-user/create-user-and-location)
+##### [POST user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/create-user-and-location)
 
 *Create a new user*
 
@@ -198,14 +198,14 @@ Params:
 - username: $username
 - appName: $appName
 
-##### [PUT user](https://iotapps.docs.apiary.io/#reference/user-accounts/manage-a-user/update-user)
+##### [PUT user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/update-user)
 
 *Update users email*
 
 Params:
 - email: $email
 
-##### [GET emailVerificationMessage](https://iotapps.docs.apiary.io/#reference/user-accounts/verify-email-address-or-phone-number/send-a-verification-message)
+##### [GET emailVerificationMessage](https://iotapps.docs.apiary.io/#/reference/user-accounts/verify-email-address-or-phone-number/send-a-verification-message)
 
 *Trigger a verification message be sent*
 
@@ -214,7 +214,7 @@ Params:
 - brand: $brand
 - appName: $appName
 
-##### [PUT emailVerificationMessage](https://iotapps.docs.apiary.io/#reference/user-accounts/verify-email-address-or-phone-number/provide-verification-code)
+##### [PUT emailVerificationMessage](https://iotapps.docs.apiary.io/#/reference/user-accounts/verify-email-address-or-phone-number/provide-verification-code)
 
 *Apple email verification code*
 
@@ -222,14 +222,14 @@ Params:
 - code: $code
 - type: 0
 
-##### [PUT newPassword](https://iotapps.docs.apiary.io/#reference/user-accounts/password/put-new-password)
+##### [PUT newPassword](https://iotapps.docs.apiary.io/#/reference/user-accounts/password/put-new-password)
 
 *Update new password*
 
 Params:
 - password
 
-##### [GET Login by username](https://iotapps.docs.apiary.io/#reference/login-and-logout/login/login-by-username)
+##### [GET Login by username](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login/login-by-username)
 
 *Login existing user*
 
@@ -245,14 +245,14 @@ Params:
 
 #### APIS
 
-##### [GET Operation Token](https://iotapps.docs.apiary.io/#reference/login-and-logout/operation-token/get-operation-token)
+##### [GET Operation Token](https://iotapps.docs.apiary.io/#/reference/login-and-logout/operation-token/get-operation-token)
 
 *Retrieve an operation token*
 
 Params:
 - type: 1
 
-##### [POST user](https://iotapps.docs.apiary.io/#reference/user-accounts/manage-a-user/create-user-and-location)
+##### [POST user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/create-user-and-location)
 
 *Create a new user*
 
@@ -261,7 +261,7 @@ Params:
 - username: $username
 - appName: $appName
 
-##### [GET passcode](https://iotapps.docs.apiary.io/#reference/login-and-logout/passcode/send-passcode)
+##### [GET passcode](https://iotapps.docs.apiary.io/#/reference/login-and-logout/passcode/send-passcode)
 
 *Trigger a new passcode to be sent over sms*
 
@@ -271,7 +271,7 @@ Params:
 - brand: $brand
 - appName: $appName
 
-##### [GET Login by username](https://iotapps.docs.apiary.io/#reference/login-and-logout/login/login-by-username)
+##### [GET Login by username](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login/login-by-username)
 
 *Login existing user*
 
@@ -287,14 +287,14 @@ Params:
 
 #### APIS
 
-##### [GET Operation Token](https://iotapps.docs.apiary.io/#reference/login-and-logout/operation-token/get-operation-token)
+##### [GET Operation Token](https://iotapps.docs.apiary.io/#/reference/login-and-logout/operation-token/get-operation-token)
 
 *Retrieve an operation token*
 
 Params:
 - type: 1
 
-##### [POST user](https://iotapps.docs.apiary.io/#reference/user-accounts/manage-a-user/create-user-and-location)
+##### [POST user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/create-user-and-location)
 
 *Create a new user*
 
@@ -303,7 +303,7 @@ Params:
 - username: $username
 - appName: $appName
 
-##### [PUT user](https://iotapps.docs.apiary.io/#reference/user-accounts/manage-a-user/update-user)
+##### [PUT user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/update-user)
 
 *Update users phone and phone type*
 
@@ -311,7 +311,7 @@ Params:
 - phone: $phone
 - phoneType: 1
 
-##### [GET passcode](https://iotapps.docs.apiary.io/#reference/login-and-logout/passcode/send-passcode)
+##### [GET passcode](https://iotapps.docs.apiary.io/#/reference/login-and-logout/passcode/send-passcode)
 
 *Trigger a new passcode to be sent over sms*
 
@@ -321,7 +321,7 @@ Params:
 - brand: $brand
 - appName: $appName
 
-##### [GET Login by username](https://iotapps.docs.apiary.io/#reference/login-and-logout/login/login-by-username)
+##### [GET Login by username](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login/login-by-username)
 
 *Login existing user*
 

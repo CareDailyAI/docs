@@ -34,8 +34,8 @@ JSON is used for all requests and responses.
 #### Goals
 Setting a `goal` for each WebSocket JSON message tells the server or client what to do.
 
-| `goal` value | Name | Description |
-| ------------ | ---- | ----------- |
+| `goal` | Name | Description |
+| ------ | ---- | ----------- |
 | 1 | auth | WebSocket session authentication |
 | 2 | presence | Check the availability of WebSocket data subscriptions |
 | 3 | subscribe | Subscribe to specific WebSocket data |
@@ -47,21 +47,22 @@ Setting a `goal` for each WebSocket JSON message tells the server or client what
 
 These are the supported WebSocket subscription types
 
-| `type` value | Description |
-| ------------ | ----------- |
+| `type` | Description |
+| ------ | ----------- |
 | 1 | Location narrative updates (history being added by bots) |
 | 2 | Organization narrative updates (admin-visible alerts and community history added by bots) |
 | 3 | Location `state` variable updates from [Synthetic APIs](../synthetic_apis/README.md) |
+| 6 | Updated device parameters |
 
 #### Operations
 
 The client can subscribe on specific actions being performed to the data object. The operation field is a *bitmask* of possible actions between 1 to 7.
 
-| `operation` int value | `operation` hex value | Description |
-| --------------------- | --------------------- | ----------- |
-| 1 | 0x1 | Create |
-| 2 | 0x2 | Update |
-| 4 | 0x4 | Delete |
+| `operation` | Name |
+| ----------- | ---- |
+| 1 | Create |
+| 2 | Update |
+| 4 | Delete |
 
 ### Request example:
 ```
@@ -169,9 +170,13 @@ The server will return information about the current session.
 
 The client can subscribe to events and data changes (create, update, delete) happening on the server.
 
-The client can have only one subscription with similar parameters. A new subscription request can logically absorb the previously created subscriptions if it subscribes to a wider range of data of the same kind. In this case, the old subscription will be replaced.
+The client can have only one subscription with similar parameters.
+A new subscription request can logically absorb the previously created subscriptions, if it subscribes to a wider range of data of the same kind.
+In this case, the old subscription will be replaced.
 
-To subscribe to a data model, the client sends a request with the goal "subscribe" and the subscription options. After approval, the server starts sending messages to the client containing data objects matching the subscription options. Both the `type` and `operation` are sent to the client in the data object when an event occurs.
+To subscribe to a data model, the client sends a request with the goal "subscribe" and the subscription options.
+After approval, the server starts sending messages to the client containing data objects matching the subscription options.
+Both the `type` and `operation` are sent to the client in the data object when an event occurs.
 
 See the 'Types' and 'Operations' tables at the top of this document for more information about specific values. 
 
@@ -213,6 +218,21 @@ Request:
 }
 ```
 
+#### Example: Subscribe to Device Parameters
+
+Request:
+```
+{
+  "goal": 3,
+  "id": "3",
+  "subscription": {
+    "type": 3,
+    "operation": 6,
+    "locationId": 123,
+    "deviceId": "Optional device ID"
+  }
+}
+```
 Successful Response:
 ```
 {
@@ -253,8 +273,8 @@ The received message will contain the same "id" as at initial subscription reque
   "id": "subscription request ID",
   "goal": 6,
   "data": {
-    "type": 1,
-    "operation": 1,
+    "type": byte,               // 1 - location narrative, 2 - organization narrative
+    "operation": byte,          // 1 – create, 2 – update, 4 – delete
     "narrative": {
       "id": 123,
       "locationId": 1,
@@ -284,7 +304,7 @@ The received message will contain the same "id" as at initial subscription reque
   "goal": 6,
   "data": {
     "type": 3,
-    "operation": 1,
+    "operation": byte,          // 1 – create, 2 – update, 4 – delete
     "locationState": {
       "locationId": 123,
       "name": "dashboard_header",
@@ -302,3 +322,28 @@ The received message will contain the same "id" as at initial subscription reque
 }
 ```
 
+#### Example: Device parameters updated
+
+```
+{
+  "resultCode": 0,
+  "id": "subscription request ID",
+  "goal": 6,
+  "data": {
+    "type": 6,
+    "operation": 1,             // always 1 - create
+    "locationId": int,
+    "params": [
+      {
+        "deviceId": string,     // device ID
+        "name": string,         // parameter's name
+        "index": string,        // optional index
+        "group": string,        // optional parameter's group
+        "value": string,        // measured or processed value
+        "time": long int,       // measuring timestamp
+        "updated": boolean      // flag if the value has been updated
+      }
+    ]
+  }
+}
+```

@@ -379,6 +379,7 @@ The received message will contain the same "id" as at initial subscription reque
     "simCard": {
       "id": "8901260021105854428",
       "status": 4,
+      "deviceId": "ABC234",
       "serialNumber": "cmp-k1-subscription-47076309",
       "carrierName": "KATTCC",
       "lifecycleStatus": "Suspended",

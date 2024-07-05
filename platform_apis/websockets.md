@@ -53,6 +53,7 @@ These are the supported WebSocket subscription types
 | 2 | Organization narrative updates (admin-visible alerts and community history added by bots) |
 | 3 | Location `state` variable updates from [Synthetic APIs](../synthetic_apis/README.md) |
 | 6 | Updated device parameters |
+| 8 | Updated SIM card attributes |
 
 #### Operations
 
@@ -226,14 +227,31 @@ Request:
   "goal": 3,
   "id": "3",
   "subscription": {
-    "type": 3,
-    "operation": 6,
+    "type": 6,
+    "operation": 1,     // Only create is supported
     "locationId": 123,
     "deviceId": "Optional device ID"
   }
 }
 ```
-Successful Response:
+
+#### Example: Subscribe to SIM card attribute changes
+
+Request:
+```
+{
+  "goal": 3,
+  "id": "3",
+  "subscription": {
+    "type": 8,
+    "operation": 2,     // Only update is supported
+    "locationId": 123,
+    "deviceId": "Required device ID"
+  }
+}
+```
+
+#### Example: Successful Response
 ```
 {
   "resultCode": 0,
@@ -344,6 +362,29 @@ The received message will contain the same "id" as at initial subscription reque
         "updated": boolean      // flag if the value has been updated
       }
     ]
+  }
+}
+```
+
+#### Example: SIM card attributes updated
+
+```
+{
+  "resultCode": 0,
+  "id": "subscription request ID",
+  "goal": 6,
+  "data": {
+    "type": 8,
+    "operation": 2,             // always 2 - update
+    "simCard": {
+      "id": "8901260021105854428",
+      "status": 4,
+      "serialNumber": "cmp-k1-subscription-47076309",
+      "carrierName": "KATTCC",
+      "lifecycleStatus": "Suspended",
+      "activationDateMs": 1423428106000,
+      "inactivationDateMs": 1423429306000
+    }
   }
 }
 ```

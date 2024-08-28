@@ -13,51 +13,48 @@ Fall history will maintain a time-series record of each fall incident from a Vay
 
 ## Output
 
-State Variable : `falls`
+State Variable Name : `falls`
 
 #### Example
 
 ```
-"1644866155487": {
-    "falls": {
-      "device_desc": "Office",
-      "device_id": "id_MzA6QUUQTQ6RTM6OY6RUMF",
-      "device_type": 2000,
-      "duration_ms": 163909,
-      "end_time_ms": 1644866319396,
-      "locationId": 271383,
-      "organizationId": null,
-      "targets": [
-        {
-          "1": {
-            "x": 104,
-            "y": 37,
-            "z": 40
-          }
-        },
-        {
-          "1": {
-            "x": 107,
-            "y": 38,
-            "z": 32
-          }
-        },
-        {
-          "1": {
-            "x": 110,
-            "y": 38,
-            "z": 38
-          }
-        },
-        {
-          "1": {
-            "x": 108,
-            "y": 36,
-            "z": 43
-          }
-        }
-      ]
+{
+  "device_id": "id_MzA6QUUQTQ6RTM6OY6RUMF",
+  "device_type": 2000,
+  "device_desc": "Office",
+  "duration_ms": 163909,
+  "end_time_ms": 1644866319396,
+  "locationId": 271383,
+  "organizationId": 100,
+  "targets": [
+    {
+      "0": {
+        "x": 104,
+        "y": 37,
+        "z": 40
+      }
+    },
+    {
+      "1": {
+        "x": 107,
+        "y": 38,
+        "z": 32
+      }
+    },
+    {
+      "2": {
+        "x": 110,
+        "y": 38,
+        "z": 38
+      }
+    },
+    {
+      "3": {
+        "x": 108,
+        "y": 36,
+        "z": 43
+      }
     }
-  }
+  ]
 }
 ```

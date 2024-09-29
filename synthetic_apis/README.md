@@ -57,7 +57,7 @@ The Synthetic APIs we document here are for our most popular bot microservice pa
 
 Bots receive messages from the outside world (and between microservices running inside the bot) via `data stream messages`. These messages have an address and arbitrary JSON content.
 
-[Data Stream Message API Documentation](https://iotapps.docs.apiary.io/reference/synthetic-apis/data-stream-messages/send-message)
+[Data Stream Message API Documentation](https://iotapps.docs.apiary.io/reference/synthetic-apis/data-stream-messages/send-message#/reference/synthetic-ap-is/data-stream-messages)
 
 #### Properties of Data Stream Messages
 
@@ -70,7 +70,7 @@ Bots receive messages from the outside world (and between microservices running 
 * Data stream messages cannot send data or responses back instantaneously - they operate asynchronously. That's why we have a separate mechanism, `state` variables, to get data back out again.
 * JSON content is arbitrary and agreed upon by app developers.
 
-Mobile app developers can [get a list of data stream addresses](https://iotapps.docs.apiary.io/#/reference/synthetic-apis/summary-of-capabilities/get-summary) to understand if the bots and services offer some set of capabilities.
+Mobile app developers can [get a list of data stream addresses](https://iotapps.docs.apiary.io/reference/synthetic-apis/data-stream-messages/send-message#/reference/synthetic-ap-is/summary-of-capabilities/get-summary/200?mc=reference%2Fsynthetic-ap-is%2Fsummary-of-capabilities%2Fget-summary%2F200) to understand if the bots and services offer some set of capabilities.
 
 #### Best practices for managing objects
 

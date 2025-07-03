@@ -30,6 +30,14 @@ This document will capture information about some of the data formats of informa
   "organizationId": int,        // Organization ID
   "parentOrganizationId": int,  // Parent Organization ID
   "locationExternalId": string, // Location external ID
+  "externalUsers": [            // all external user IDs assosiated with the location
+    {
+      "userId": int,                // Care Daily internal user ID
+      "applicationId": int,         // External cloud application ID
+      "externalUserId": string,     // External cloud user ID (e.g. patient ID or resident ID)
+      "externalLocationId": string  // External cloud location ID (e.g. room ID)
+    }
+  ],
   "data" : { 
     "type": byte,               // data type
     "operation": byte,          // 1 – create, 2 – update, 4 – delete

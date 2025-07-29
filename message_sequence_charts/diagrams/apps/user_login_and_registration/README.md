@@ -19,7 +19,7 @@
 
 #### APIS
 
-##### [GET Login by username](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login/login-by-username)
+##### [GET Login by username](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Login%20by%20Username)
 
 *Login existing userLogin user*
 
@@ -35,14 +35,14 @@ Params:
 
 #### APIS
 
-##### [GET Operation Token](https://iotapps.docs.apiary.io/#/reference/login-and-logout/operation-token/get-operation-token)
+##### [GET Operation Token](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Get%20Operation%20Token)
 
 *Retrieve an operation token*
 
 Params:
 - type: 1
 
-##### [POST user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/create-user-and-location)
+##### [POST user](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/User-Accounts/operation/Create%20User%20and%20Location)
 
 *Create a new user*
 
@@ -60,14 +60,14 @@ Params:
 
 #### APIS
 
-##### [GET Operation Token](https://iotapps.docs.apiary.io/#/reference/login-and-logout/operation-token/get-operation-token)
+##### [GET Operation Token](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Get%20Operation%20Token)
 
 *Retrieve an operation token*
 
 Params:
 - type: 1
 
-##### [POST user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/create-user-and-location)
+##### [POST user](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/User-Accounts/operation/Create%20User%20and%20Location)
 
 *Create a new user*
 
@@ -79,7 +79,7 @@ Params:
 - appName: $appName
 - location: `{'name': 'Home', 'country': {'id': $country.id}}`
 
-##### [GET passcode](https://iotapps.docs.apiary.io/#/reference/login-and-logout/passcode/send-passcode)
+##### [GET passcode](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Send%20Passcode)
 
 *Trigger a new passcode to be sent over sms*
 
@@ -89,7 +89,7 @@ Params:
 - brand: $brand
 - appName: $appName
 
-##### [GET Login by username](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login/login-by-username)
+##### [GET Login by username](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Login%20by%20Username)
 
 *Login existing user*
 
@@ -105,14 +105,14 @@ Params:
 
 #### APIS
 
-##### [GET Operation Token](https://iotapps.docs.apiary.io/#/reference/login-and-logout/operation-token/get-operation-token)
+##### [GET Operation Token](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Get%20Operation%20Token)
 
 *Retrieve an operation token*
 
 Params:
 - type: 1
 
-##### [POST user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/create-user-and-location)
+##### [POST user](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/User-Accounts/operation/Create%20User%20and%20Location)
 
 *Create a new user*
 
@@ -124,7 +124,7 @@ Params:
 - appName: $appName
 - location: `{'name': 'Home', 'country': {'id': $country.id}}`
 
-##### [GET passcode](https://iotapps.docs.apiary.io/#/reference/login-and-logout/passcode/send-passcode)
+##### [GET passcode](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Send%20Passcode)
 
 *Trigger a new passcode to be sent over sms*
 
@@ -134,7 +134,7 @@ Params:
 - brand: $brand
 - appName: $appName
 
-##### [GET Login by username](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login/login-by-username)
+##### [GET Login by username](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Login%20by%20Username)
 
 *Login existing user*
 
@@ -150,14 +150,14 @@ Params:
 
 #### APIS
 
-##### [GET Operation Token](https://iotapps.docs.apiary.io/#/reference/login-and-logout/operation-token/get-operation-token)
+##### [GET Operation Token](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Get%20Operation%20Token)
 
 *Retrieve an operation token*
 
 Params:
 - type: 1
 
-##### [POST user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/create-user-and-location)
+##### [POST user](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/User-Accounts/operation/Create%20User%20and%20Location)
 
 *Create a new user*
 
@@ -166,7 +166,7 @@ Params:
 - username: $username
 - appName: $appName
 
-##### [GET Login by username](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login/login-by-username)
+##### [GET Login by username](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Login%20by%20Username)
 
 *Login existing user*
 
@@ -182,14 +182,14 @@ Params:
 
 #### APIS
 
-##### [GET Operation Token](https://iotapps.docs.apiary.io/#/reference/login-and-logout/operation-token/get-operation-token)
+##### [GET Operation Token](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Get%20Operation%20Token)
 
 *Retrieve an operation token*
 
 Params:
 - type: 1
 
-##### [POST user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/create-user-and-location)
+##### [POST user](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/User-Accounts/operation/Create%20User%20and%20Location)
 
 *Create a new user*
 
@@ -198,14 +198,14 @@ Params:
 - username: $username
 - appName: $appName
 
-##### [PUT user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/update-user)
+##### [PUT user](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/User-Accounts/operation/Update%20User)
 
 *Update users email*
 
 Params:
 - email: $email
 
-##### [GET emailVerificationMessage](https://iotapps.docs.apiary.io/#/reference/user-accounts/verify-email-address-or-phone-number/send-a-verification-message)
+##### [GET emailVerificationMessage](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/User-Accounts/operation/Send%20Verification%20Message)
 
 *Trigger a verification message be sent*
 
@@ -214,7 +214,7 @@ Params:
 - brand: $brand
 - appName: $appName
 
-##### [PUT emailVerificationMessage](https://iotapps.docs.apiary.io/#/reference/user-accounts/verify-email-address-or-phone-number/provide-verification-code)
+##### [PUT emailVerificationMessage](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/User-Accounts/operation/Provide%20Verification%20Code)
 
 *Apple email verification code*
 
@@ -222,14 +222,14 @@ Params:
 - code: $code
 - type: 0
 
-##### [PUT newPassword](https://iotapps.docs.apiary.io/#/reference/user-accounts/password/put-new-password)
+##### [PUT newPassword](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/User-Accounts/operation/Update%20Password)
 
 *Update new password*
 
 Params:
 - password
 
-##### [GET Login by username](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login/login-by-username)
+##### [GET Login by username](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Login%20by%20Username)
 
 *Login existing user*
 
@@ -245,14 +245,14 @@ Params:
 
 #### APIS
 
-##### [GET Operation Token](https://iotapps.docs.apiary.io/#/reference/login-and-logout/operation-token/get-operation-token)
+##### [GET Operation Token](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Get%20Operation%20Token)
 
 *Retrieve an operation token*
 
 Params:
 - type: 1
 
-##### [POST user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/create-user-and-location)
+##### [POST user](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/User-Accounts/operation/Create%20User%20and%20Location)
 
 *Create a new user*
 
@@ -261,7 +261,7 @@ Params:
 - username: $username
 - appName: $appName
 
-##### [GET passcode](https://iotapps.docs.apiary.io/#/reference/login-and-logout/passcode/send-passcode)
+##### [GET passcode](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Send%20Passcode)
 
 *Trigger a new passcode to be sent over sms*
 
@@ -271,7 +271,7 @@ Params:
 - brand: $brand
 - appName: $appName
 
-##### [GET Login by username](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login/login-by-username)
+##### [GET Login by username](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Login%20by%20Username)
 
 *Login existing user*
 
@@ -287,14 +287,14 @@ Params:
 
 #### APIS
 
-##### [GET Operation Token](https://iotapps.docs.apiary.io/#/reference/login-and-logout/operation-token/get-operation-token)
+##### [GET Operation Token](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Get%20Operation%20Token)
 
 *Retrieve an operation token*
 
 Params:
 - type: 1
 
-##### [POST user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/create-user-and-location)
+##### [POST user](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/User-Accounts/operation/Create%20User%20and%20Location)
 
 *Create a new user*
 
@@ -303,7 +303,7 @@ Params:
 - username: $username
 - appName: $appName
 
-##### [PUT user](https://iotapps.docs.apiary.io/#/reference/user-accounts/manage-a-user/update-user)
+##### [PUT user](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/User-Accounts/operation/Update%20User)
 
 *Update users phone and phone type*
 
@@ -311,7 +311,7 @@ Params:
 - phone: $phone
 - phoneType: 1
 
-##### [GET passcode](https://iotapps.docs.apiary.io/#/reference/login-and-logout/passcode/send-passcode)
+##### [GET passcode](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Send%20Passcode)
 
 *Trigger a new passcode to be sent over sms*
 
@@ -321,7 +321,7 @@ Params:
 - brand: $brand
 - appName: $appName
 
-##### [GET Login by username](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login/login-by-username)
+##### [GET Login by username](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Login%20by%20Username)
 
 *Login existing user*
 

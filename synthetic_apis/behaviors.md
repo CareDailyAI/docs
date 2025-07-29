@@ -2,11 +2,16 @@
 
 Behaviors provide **context** in each device to assist with automations and intelligence.
 
-For example, a `Temperature and Humidity Sensor` may be used to detect a mold or mildew, or identify someone is taking a shower, or help ensure your refrigerator is operating properly. An `Entry Sensor` may be installed on an exit door on the perimeter of the home, or attached to a medicine cabinet. Each of these options are defined by the behaviors offered by bot microservices that add intelligence to the everyday operation of each device.
+For example, a `Temperature and Humidity Sensor` may be used to detect a mold or mildew, or identify someone is taking a shower, or help ensure your refrigerator is operating properly.
+An `Entry Sensor` may be installed on an exit door on the perimeter of the home, or attached to a medicine cabinet.
+Each of these options are defined by the behaviors offered by bot microservices that add intelligence to the everyday operation of each device.
 
-Historically, the server originally had a concept of "goals" and objectives for each device, allowing the mobile app to specify a `goalId` which would dictate the set of if-then rules that were automatically created for a device. You can see this [Legacy Goals API Documentation Here](https://iotapps.docs.apiary.io/#/reference/creating-products/device-goals/get-device-goals-by-type) if you're interested.
+Historically, the server originally had a concept of "goals" and objectives for each device, allowing the mobile app to specify a `goalId`
+which would dictate the set of if-then rules that were automatically created for a device.
+You can see this [Legacy Goals API Documentation Here](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Products-Management/operation/Get%20Device%20Goals%20by%20Type) if you're interested.
 
-As we moved beyond the server-driven rules engine and into the world of bots for automation, we maintained the same `goalId` value for device instances but mapped them to behaviors offered by bots. This allows the context of the device to remain with the device instance itself, and not be lost if a bot disappears.
+As we moved beyond the server-driven rules engine and into the world of bots for automation, we maintained the same `goalId` value for device instances but mapped them to behaviors offered by bots.
+This allows the context of the device to remain with the device instance itself, and not be lost if a bot disappears.
 
 It is possible for bot developers to add their own behaviors to a device type, which will in turn make those behaviors available through the mobile app through the `behaviors` state variable.
 
@@ -19,7 +24,7 @@ Advantages of Behaviors:
 
 ## **Input** : Update Device API
 
-[Update a Device](https://iotapps.docs.apiary.io/#/reference/devices/manage-single-device/update-device) and specify its `goalId` to declare the behavior ID you wish for this device to take on. 
+[Update a Device](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Devices/operation/Update%20Device) and specify its `goalId` to declare the behavior ID you wish for this device to take on. 
 
 Bots will be notified with a `device_metadata_updated(...)` event that cause the bot to treat this device differently when its behavior or context changes. It is up to the bots running inside this location to apply the behavior at runtime.
 
@@ -38,7 +43,7 @@ State Variable : `behaviors`
 | name        | The title of this behavior |
 | suggestions | Prioritized list of suggested names for each new device that selects this behavior. For example, when installing an Entry Sensor on an exit door, it is suggested that the first one be called 'Front Door', while the second Entry Sensor on an exit door be called 'Back/Side Door'. |
 | weight      | Lower weights float to the top of the list. |
-| spaces      | Prioritized list of multi-choice multi-select spaces to auto-select for each new sensor. For example, the first motion sensor should be installed in the Kitchen, so it is recommended that the app auto-select the 'Kitchen' space for this motion sensor. Note that a motion sensor can sometimes see multiple spaces, which is why that one is multi-choice multi-select. See the [Get Spaces API](https://iotapps.docs.apiary.io/#/reference/locations/location-spaces/get-spaces) for a list of spaces to render in the app. |
+| spaces      | Prioritized list of multi-choice multi-select spaces to auto-select for each new sensor. For example, the first motion sensor should be installed in the Kitchen, so it is recommended that the app auto-select the 'Kitchen' space for this motion sensor. Note that a motion sensor can sometimes see multiple spaces, which is why that one is multi-choice multi-select. See the [Get Spaces API](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Locations/operation/Get%20Location%20Spaces) for a list of spaces to render in the app. |
 | force_nickname | Optional. Default is False. If True, this tells the app to skip allowing the user to nickname the device and just force the next nickname in the list of suggestions. |
 | subregions | List of compatible and recommended subregions for Vayyar Home behaviors. Defines a list of recommended subregions to create when a person selects this room for Vayyar Home. |
 
@@ -46,7 +51,8 @@ State Variable : `behaviors`
 
 The subregion object is added to the behaviors for Vayyar Home. As the behaviors for Vayyar Home specify the room to install in, the subregions recommend what subregions should be created if the user selects that room. 
 
-After selecting a behavior, the user can be prompted to add a subregion. The subregion object describes the title and icon to show the user on the list of subregions to define, and links to a list of compatible subregion contexts to fulfill that subregion's objective.
+After selecting a behavior, the user can be prompted to add a subregion.
+The subregion object describes the title and icon to show the user on the list of subregions to define, and links to a list of compatible subregion contexts to fulfill that subregion's objective.
 
 | Property | Description |
 | -------- | ----------- |

@@ -12,7 +12,7 @@
 
 #### APIS
 
-##### [GET State](https://iotapps.docs.apiary.io/#/reference/synthetic-ap-is/states/get-state)
+##### [GET State](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Synthetic-APIs/operation/Get%20Location%20State)
 
 *Refresh services location state*
 
@@ -21,7 +21,7 @@ Params:
 - name: services
 - name: action_plans
 
-##### [GET Questions](https://iotapps.docs.apiary.io/#/reference/user-communications/questions/get-questions)
+##### [GET Questions](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/User-Communications/operation/Get%20Questions)
 
 *Refresh questions*
 

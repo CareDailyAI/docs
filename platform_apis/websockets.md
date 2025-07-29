@@ -2,7 +2,7 @@
 
 ## Get the WebSocket URL
 
-Each time the client starts a new WebSocket session, it must obtain its WebSocket API server connection settings and URL by calling the [Get Server Instance API](https://iotapps.docs.apiary.io/#/reference/cloud-connectivity/server-instances/get-server) with `type=wsapi`.
+Each time the client starts a new WebSocket session, it must obtain its WebSocket API server connection settings and URL by calling the [Get Server Instance API](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Cloud-Connectivity/operation/Get%20Server) with `type=wsapi`.
 
 ## Ping / Pong
 
@@ -28,7 +28,7 @@ JSON is used for all requests and responses.
 | id       | String | Mandatory. Every request or subscription has a unique 'id' field. The server will return the same `id` value in each response related to this subscription so the client will be able to identify what to do with the data. |
 | goal     | int | Mandatory. The type of request or response. See the Goals table. |
 | key      | String | API key used during authentication. |
-| resultCode | int | Response from the server. See the Application API [Result Codes](https://iotapps.docs.apiary.io/introduction/result-codes-and-error-messages/result-codes). |
+| resultCode | int | Response from the server. See the Application API [Result Codes](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#section/Result-Codes-and-Error-Messages). |
 | resultCodeMessage | String | Describes any error that occurred. |
 
 #### Goals
@@ -87,7 +87,8 @@ The client can subscribe on specific actions being performed to the data object.
 
 ## Authenticate
 
-The initial authentication request must include the `"key"` field, which contains the `API_KEY` of the user. The client must already be authenticated and retrieve the API key using the [Login API](https://iotapps.docs.apiary.io/#/reference/login-and-logout/login).
+The initial authentication request must include the `"key"` field, which contains the `API_KEY` of the user.
+The client must already be authenticated and retrieve the API key using the [Login API](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Authentication/operation/Login%20by%20Username).
 
 When the server authenticates the user, it will define the scope of the session based on the API key type and return success or an error response.
 
@@ -184,7 +185,7 @@ See the 'Types' and 'Operations' tables at the top of this document for more inf
 
 #### Example: Subscribe to Narratives
 
-Read about the subscription parameters in the [GET Narratives API](https://iotapps.docs.apiary.io/#/reference/locations/narratives/get-narratives) documentation.
+Read about the subscription parameters in the [GET Narratives API](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Locations/operation/Create%20or%20Update%20a%20Narrative/get-narratives) documentation.
 
 ```
 {
@@ -279,9 +280,12 @@ Request:
 
 ## Receiving Data
 
-When the server receives any changes in data that a client is subscribed to, the server will send a WebSocket message to the client. A message always contains a single type of data that was created, updated, or deleted.
+When the server receives any changes in data that a client is subscribed to, the server will send a WebSocket message to the client.
+A message always contains a single type of data that was created, updated, or deleted.
 
-The received message will contain the same "id" as at initial subscription request. The data field contains a data structure corresponding to the data type. Internal JSON data fields are flexible and include sub-objects and arrays.
+The received message will contain the same "id" as at initial subscription request.
+The data field contains a data structure corresponding to the data type.
+Internal JSON data fields are flexible and include sub-objects and arrays.
 
 #### Example: Narrative (history) updated
 

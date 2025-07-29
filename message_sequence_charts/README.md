@@ -38,7 +38,7 @@ Use it to:
 * Understand communication sequences and processes
 * Explore examples of client scenarios
 
-For a complete definition of People Power's models and APIs, please refer to [IOT Apps](https://iotapps.docs.apiary.io/) on Apiary.
+For a complete definition of People Power's models and APIs, please refer to [IOT Apps](https://app.peoplepowerco.com/cloud/apidocs/cloud.html).
 
 ### Installation
 

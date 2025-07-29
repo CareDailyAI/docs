@@ -4,7 +4,8 @@ The "Services and Alerts" menu provides a list of available services to render f
 
 In our app design, we show the user a menu of services, and the ability to tap into a single service to learn more.
 
-Services turn on and off through the [Questions API](https://iotapps.docs.apiary.io/reference/user-communications/questions), and not through a data stream message. Each service element references one or more Question objects that the mobile app can answer to configure the service.
+Services turn on and off through the [Questions API](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/User-Communications/operation/Get%20Questions), and not through a data stream message.
+Each service element references one or more Question objects that the mobile app can answer to configure the service.
 
 ### Properties
 | Property | Type | Description |

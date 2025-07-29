@@ -58,7 +58,7 @@ Narratives are time-series information produced by bots. They can be machine-rea
 
 Note that Narratives can be updated (see the `data.operation` field). The narrative title is typically human-readable, except in the case of analytic narratives (priority=-1) where the title is intended to be machine-readable.
 
-See additional Narrative documentation here: https://iotapps.docs.apiary.io/#/reference/locations/narratives
+See additional [Narrative documentation](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Locations/operation/Create%20or%20Update%20a%20Narrative).
 
 | Priority | Description |
 | :------: | ----------- |

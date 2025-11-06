@@ -13,6 +13,7 @@ This document will capture information about some of the data formats of informa
 | 5 | [Location Time-Series State](#location-state-streaming) |
 | 6 | [Device Parameters](#device-parameters-streaming) |
 | 7 | [Bot Error](#bot-errors-streaming) |
+| 9 | [Location Event](#location-event-streaming) |
 
 | Operation | Description |
 | :-------: | ----------- |
@@ -41,12 +42,13 @@ This document will capture information about some of the data formats of informa
   "data" : { 
     "type": byte,               // data type
     "operation": byte,          // 1 – create, 2 – update, 4 – delete
-    "locationId": int,          // Optional location ID if not included to specific object data field
+    "locationId": int,          // Location ID if evailable
     "narrative": {},            // Narrative data
     "locationState": {},        // Location state data
     "paidEvent": {},            // Paid services event data
     "params": [],               // Device parameters
-    "botError": {}              // Bot error
+    "botError": {},             // Bot error
+    "locationEvent": {}         // Location event
   }
 }
 ```
@@ -81,7 +83,8 @@ See additional [Narrative documentation](https://app.peoplepowerco.com/cloud/api
   "data" : { 
     "type": byte,               // 1 - location narrative, 2 - organization narrative
     "operation": byte,          // 1 – create, 2 – update, 4 – delete
-    "narrative": { 
+    "locationId": int,          // Location ID
+    "narrative": {
       // narrative fields, many are optional 
       "narrativeId": int,       // auto generated ID, PK 
       "narrativeDate": long int, // part of a PK, can be different from creationDate, e.g. in the future
@@ -127,6 +130,7 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
   "data" : { 
     "type": byte,               // 3 - Location State, 5 - Location Time-Series State
     "operation": byte,          // 1 – create, 2 – update, 4 – delete
+    "locationId": int,          // Location ID
     "locationState": { 
       "locationId": int,        // location ID 
       "name": string,           // variable's name
@@ -162,6 +166,7 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
   "data": { 
     "type": byte,               // 4 = paid event
     "operation": byte,          // 1 = create
+    "locationId": int,          // Location ID
     "paidEvent": {
         "eventType": byte,      // 1 = subscription created, 2 = billing attempt success, 3 = billing attempt failure, 4 = subscription canceled, 5 = subscription update, 6 = subscription expired
         "eventTime": long int,  // when the event created in the store in milliseconds
@@ -201,6 +206,7 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
   "data": { 
     "type": 4,
     "operation": 1,
+    "locationId": 123,
     "paidEvent": {
         "eventType": 1,
         "eventTime": 1619644463123,
@@ -238,6 +244,7 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
   "data": { 
     "type": 4,
     "operation": 1,
+    "locationId": 123,
     "paidEvent": {
         "eventType": 2,
         "eventTime": 1619644463123,
@@ -270,6 +277,7 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
   "data": { 
     "type": 4,
     "operation": 1,
+    "locationId": 123,
     "paidEvent": {
         "eventType": 3,
         "eventTime": 1619644463123,
@@ -299,6 +307,7 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
   "data": { 
     "type": 4,
     "operation": 1,
+    "locationId": 123,
     "paidEvent": {
         "eventType": 4,
         "eventTime": 1619644463123,
@@ -326,6 +335,7 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
   "data": { 
     "type": 5,
     "operation": 1,
+    "locationId": 123,
     "paidEvent": {
         "eventType": 5,
         "eventTime": 1619644463123,
@@ -357,6 +367,7 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
   "data": { 
     "type": 6,
     "operation": 1,
+    "locationId": 123,
     "paidEvent": {
         "eventType": 6,
         "eventTime": 1619644463123,
@@ -427,6 +438,7 @@ Care Daily's platform can stream error messages produced by bots during executio
   "data" : { 
     "type": byte,               // 7 - bot error
     "operation": byte,          // 1 – create
+    "locationId": int,          // Location ID
     "botError": {
       "bundle": string,         // bot bundle name
       "version": string,        // bot version
@@ -435,6 +447,35 @@ Care Daily's platform can stream error messages produced by bots during executio
       "organizationId": int,    // organization ID for organization bots
       "error": string,          // error message
       "log": string             // bot execution log
+    }
+  }
+}
+```
+
+
+## Location Event Streaming
+
+Location event includes location's new Security and Occupancy states and previous state values.
+
+
+#### Location Event JSON Formatting
+
+```
+{ 
+  "timestamp": long int,        // current time in milliseconds
+  "cloudname": string,          // 'SBOX', 'Prod'
+  "organizationId": int,        // Organization ID
+  "parentOrganizationId": int,  // Parent Organization ID
+  "data" : { 
+    "type": byte,               // 9 - bot error
+    "operation": byte,          // 2 – update
+    "locationId": int,          // Location ID
+    "locationEvent": {
+      "securityState": string,      // new security state value
+      "occupancyState": string,     // new occupancy state value
+      "prevSecurityState": string,  // previous security state value
+      "prevOccupancyState": string, // previous occupancy state value
+      "comment": string             // bot execution log
     }
   }
 }

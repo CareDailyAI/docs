@@ -467,7 +467,7 @@ Location event includes location's new Security and Occupancy states and previou
   "organizationId": int,        // Organization ID
   "parentOrganizationId": int,  // Parent Organization ID
   "data" : { 
-    "type": byte,               // 9 - bot error
+    "type": byte,               // 9 - location event
     "operation": byte,          // 2 – update
     "locationId": int,          // Location ID
     "locationEvent": {

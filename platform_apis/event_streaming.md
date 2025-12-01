@@ -31,7 +31,7 @@ This document will capture information about some of the data formats of informa
   "organizationId": int,        // Organization ID
   "parentOrganizationId": int,  // Parent Organization ID
   "locationExternalId": string, // Location external ID
-  "externalUsers": [            // all external user IDs assosiated with the location
+  "externalUsers": [            // all external user IDs associated with the location
     {
       "userId": int,                // Care Daily internal user ID
       "applicationId": int,         // External cloud application ID

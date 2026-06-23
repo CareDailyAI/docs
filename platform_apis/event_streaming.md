@@ -11,7 +11,6 @@ This document will capture information about some of the data formats of informa
 | 3 | [Location State](#location-state-streaming) |
 | 4 | [Paid Services Event](#paid-events-streaming) |
 | 5 | [Location Time-Series State](#location-state-streaming) |
-| 6 | [Device Parameters](#device-parameters-streaming) |
 | 7 | [Bot Error](#bot-errors-streaming) |
 | 9 | [Location Event](#location-event-streaming) |
 
@@ -385,39 +384,6 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
         "paymentType": 5,
         "subscriptionType": 3
     }
-}
-```
-
-
-## Device Parameters Streaming
-
-Streaming device parameters can cause publishing significant amount of data.
-
-
-#### Device Parameters JSON Formatting
-
-```
-{ 
-  "timestamp": long int,        // current time in milliseconds
-  "cloudname": string,          // 'SBOX', 'Prod'
-  "organizationId": int,        // Organization ID
-  "parentOrganizationId": int,  // Parent Organization ID
-  "data" : { 
-    "type": byte,               // 6 - device parameters
-    "operation": byte,          // 1 – create
-    "locationId": int,          // location ID 
-    "params": [
-      {
-        "deviceId": string,     // device ID
-        "name": string,         // parameter's name
-        "index": string,        // optional index
-        "group": string,        // optional parameter's group
-        "value": string,        // measured or processed value
-        "time": long int,       // measuring timestamp
-        "updated": boolean      // flag if the value has been updated
-      }
-    ]
-  }
 }
 ```
 

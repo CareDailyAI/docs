@@ -38,6 +38,13 @@ This document will capture information about some of the data formats of informa
       "externalLocationId": string  // External cloud location ID (e.g. room ID)
     }
   ],
+  "externalLocations": [        // references to external locations, rooms, units linked to the related location
+    {
+      "applicationId": int,         // External cloud application ID
+      "locationType": int,          // External location type
+      "externalLocationId": string  // External cloud location ID (e.g. room ID or unit ID)
+    }
+  ],
   "data" : { 
     "type": byte,               // data type
     "operation": byte,          // 1 – create, 2 – update, 4 – delete

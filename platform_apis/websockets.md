@@ -42,6 +42,7 @@ Setting a `goal` for each WebSocket JSON message tells the server or client what
 | 4 | unsubscribe | Unsubscribe from a single WebSocket data subscription |
 | 5 | status | Get the status of the session, including the current WebSocket data subscriptions |
 | 6 | data | New data from the server related to one of your current WebSocket data subscriptions |
+| 7 | chat | AI request/response chat |
 
 #### Types
 
@@ -390,6 +391,39 @@ Internal JSON data fields are flexible and include sub-objects and arrays.
       "activationDateMs": 1423428106000,
       "inactivationDateMs": 1423429306000
     }
+  }
+}
+```
+
+
+## Chat
+
+The user can send questions or messages to AI agents using this interface.
+
+#### Chat request example
+
+```
+{
+  "goal": 7,
+  "id": "10",
+  "chat": {
+    "locationId": 123,
+    "conversationId": "Current chat session ID provided in the previous chat response",
+    "message": "Question or message"
+  }
+}
+```
+
+#### Chat response example
+
+```
+{
+  "goal": 7,
+  "id": "10",
+  "chat": {
+    "locationId": 123,
+    "conversationId": "Current chat session ID",
+    "answer": "AI agents answer"
   }
 }
 ```

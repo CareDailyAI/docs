@@ -54,6 +54,10 @@ a bot is answering, not the platform.
 
 ## Start here
 
+**Just getting started?**
+Read [Authentication](platform_apis/authentication.md). Everything else needs an API key, and the
+choice between a user key and an administrator key shapes what you build next.
+
 **Building a mobile or web app?**
 Read [Synthetic APIs](synthetic_apis/README.md) first. Most of what a modern Care Daily app renders
 on screen (the dashboard, insights, trends, daily report, services) comes from a bot, not from a raw

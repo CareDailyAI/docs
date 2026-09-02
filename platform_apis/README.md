@@ -33,6 +33,7 @@ flowchart LR
 
 | API | Reference | Use it for |
 | --- | --- | --- |
+| **Authentication** | [authentication.md](authentication.md) | Getting an API key, and the traps in it. Start here |
 | **Application** | [cloud.html](https://app.caredaily.ai/cloud/apidocs/cloud.html) | Everything an end-user app or web console does |
 | **Admin** | [admin.html](https://app.caredaily.ai/cloud/apidocs/admin.html) | Managing people, places, and things across an organization |
 | **Device** | [devices.html](https://app.caredaily.ai/cloud/apidocs/devices.html) | Getting measurements up from hardware, and commands down |
@@ -41,6 +42,13 @@ flowchart LR
 | **Event Streaming** | [event_streaming.md](event_streaming.md) | Pushing events, insights and subscriptions to a partner cloud |
 
 ---
+
+## Authentication
+
+[Authentication guide](authentication.md)
+
+Every call below needs an API key. The guide covers choosing a key type, the two-step
+administrator login, and the handful of details that cost people an afternoon.
 
 ## Application API
 

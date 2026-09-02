@@ -4,7 +4,7 @@ All of the interactive *platform* documentation is updated and managed online.
 Please follow these links for more details.
 
 ## Application API
-https://app.peoplepowerco.com/cloud/apidocs/cloud.html
+https://app.caredaily.ai/cloud/apidocs/cloud.html
 
 This documentation describes available APIs for mobile apps and web consoles. 
 
@@ -26,7 +26,7 @@ Use WebSockets in some time-critical experiences (such as updating the UI with b
 Care Daily's platform can stream events, insights, subscriptions, and more to partner platforms.
 
 ## Administrative API
-https://app.peoplepowerco.com/cloud/apidocs/admin.html
+https://app.caredaily.ai/cloud/apidocs/admin.html
 
 This document captures admin-specific APIs that were not documented in the Application API.
 These APIs are primarily used by administrative command centers to manage people, places, and things.
@@ -39,12 +39,12 @@ Care Daily recommends using MQTT protocol through AWS IoT Core to communicate de
 
 In addition Care Daily supports Cloud-to-Cloud integration and a set of asynchronous HTTP and WebSocket Device APIs.
 
-https://app.peoplepowerco.com/cloud/apidocs/devices.html
+https://app.caredaily.ai/cloud/apidocs/devices.html
 
 Devices, identified by their globally unique IDs, first need to be understood through the definition of a *device type* on the server, and then need to be registered to a specific location before they can start communicating. 
 
 ## Bot API
-https://app.peoplepowerco.com/cloud/apidocs/bots.html
+https://app.caredaily.ai/cloud/apidocs/bots.html
 
 This is private bot API documentation for bot infrastructure developers. The APIs documented in this private area are implemented as software APIs inside the `botengine`.
 The documentation also describes the management and lifecycles of a bot.

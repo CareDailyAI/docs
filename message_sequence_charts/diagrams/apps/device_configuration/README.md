@@ -15,7 +15,7 @@ This requires the device to be connected to the Cloud.
 
 #### APIs
 
-##### [GET List of Devices](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Devices/operation/Get%20Devices)
+##### [GET List of Devices](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Devices/operation/Get%20Devices)
 
 *Refreshing devices at the current location*
 
@@ -23,7 +23,7 @@ Params:
 - locationId: $locationId _Current Location ID_
 - checkPersistent: true _Determine if the device is connected_
 
-##### [PUT Send A Command](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Device-Measurements/operation/Send%20Commands)
+##### [PUT Send A Command](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Device-Measurements/operation/Send%20Commands)
 
 *Notify device to refresh discover SSIDs*
 
@@ -39,7 +39,7 @@ Params:
 - data: `{'commandType': 0, 'commandTimeout': 60, 'params': [\n{'name': 'wifiSsid', 'value': 'SSID'}, \n{'name': 'wifiPassword', 'value': 'Password'}, \n{'name': 'wifiSecurity', 'value': 'SSID Security'}]}`
 
 
-##### [GET Current Measurements](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Device-Measurements/operation/Get%20Current%20Measurements)
+##### [GET Current Measurements](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Device-Measurements/operation/Get%20Current%20Measurements)
 
 *Refresh device parameters to retrieve discovered SSIDs and to validate Wi-Fi connection state*
 

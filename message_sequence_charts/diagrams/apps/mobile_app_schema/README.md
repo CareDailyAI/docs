@@ -114,7 +114,7 @@ Below is a list of our current dynamic query variables:
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| service | String | Service name provided by Synthetic API [Services](synthetic_apis/services.md)] |
+| service | String | Service name provided by Synthetic API [Services](../../../../synthetic_apis/services.md)] |
 | question_id | String | _Optional_ Segue to a specific question |
 | collection_id | String | _Optional_ Segue to a collection of questions |
 

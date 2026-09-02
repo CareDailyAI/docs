@@ -2,4 +2,4 @@
 
 In progress.
 
-Please content dmoss@peoplepowerco.com if you need this as a priority.
+Please contact dmoss@caredaily.ai if you need this as a priority.

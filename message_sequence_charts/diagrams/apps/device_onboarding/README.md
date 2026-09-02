@@ -3,24 +3,24 @@
 ## Table of contents
 
 * [General Flow](#general-flow)
-    * [Step 1 - Get available Device Categories and Models](#oobe-list-models)
-    * [Step 2 - Select Device Model](#oobe-select-model)
-    * [Step 2.1 - Define how to show device connection process](#oobe-check-requirements)
-    * [Step 3 - Show OOBE Connection story](#oobe-connect)
-    * [Step 3.1 - Connect device](#oobe-device-pairing)
-    * [Step 3.2 - Wait for device pairing](#oobe-device-connection)
-    * [Step 3.3 - Show OOBE Reconnect story](#oobe-device-reconnection)
-    * [Step 4 - Show OOBE Success story](#oobe-success)
-    * [Step 5 - Get into standard device setup](#oobe-device-configuration)
-    * [Step 6 - Show OOBE Installation story](#oobe-install)
-    * [Step 7 - Show device UI](#oobe-device-ui)
+    * [Step 1 - Get available Device Categories and Models](#step-1---get-available-device-categories-and-models)
+    * [Step 2 - Select Device Model](#step-2---select-device-model)
+    * [Step 2.1 - Define how to show device connection process](#step-21---define-how-to-show-device-connection-process)
+    * [Step 3 - Show OOBE Connection story](#step-3---show-oobe-connection-story)
+    * [Step 3.1 - Connect device](#step-31---connect-device)
+    * [Step 3.2 - Wait for device pairing](#step-32---wait-for-device-pairing)
+    * [Step 3.3 - Show OOBE Reconnect story](#step-33---show-oobe-reconnect-story)
+    * [Step 4 - Show OOBE Success story](#step-4---show-oobe-success-story)
+    * [Step 5 - Get into standard device setup](#step-5---get-into-standard-device-setup)
+    * [Step 6 - Show OOBE Installation story](#step-6---show-oobe-installation-story)
+    * [Step 7 - Show device UI](#step-7---show-device-ui)
 * [Page Styles](#page-styles)
-    * [Info](#page-style-info)
-    * [Connect](#page-style-connect)
-    * [Picture](#page-style-picture)
-    * [Input](#page-style-input)
-    * [Bundle](#page-style-bundle)
-    * [Picker](#page-style-picker)
+    * [Info](#info)
+    * [Connect](#connect)
+    * [Picture](#picture)
+    * [Input](#input)
+    * [Bundle](#bundle)
+    * [Picker](#picker)
 * [Diagrams](#diagrams)
     * [Smart Home Center](#smart-home-center)
     * [Entry Sensor](#entry-sensor)
@@ -185,7 +185,7 @@ IMPORTANT: This feature is under development.  Fall back to `info`.
 <a id="page-style-bundle"></a>
 ### Bundle
 
-Display device bundle (e.g. packs) and allow the user to navigate through the device onboarding sequences for each device. See [Story Page Input Types](../device_ui/README.md#story_page_bundles) for more information.
+Display device bundle (e.g. packs) and allow the user to navigate through the device onboarding sequences for each device. See [Story Page Input Types](../device_ui/README.md#story-page-bundles) for more information.
 
 IMPORTANT: This feature is under development.  Fall back to `info`.
 
@@ -196,7 +196,7 @@ IMPORTANT: This feature is under development.  Fall back to `info`.
 <a id="page-style-picker"></a>
 ### Picker
 
-List of picker elements displayed below story page content.  Tapping individual items should present user with an input UI element. See [Story Page Input Types](../device_ui/README.md#story_page_picker_sets) for more information.
+List of picker elements displayed below story page content.  Tapping individual items should present user with an input UI element. See [Story Page Input Types](../device_ui/README.md#story-page-picker-sets) for more information.
 
 IMPORTANT: This feature is under development.  Fall back to `info`.
 

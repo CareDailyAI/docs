@@ -5,10 +5,10 @@ The client API interface allows for presenting specific screens from a url, prov
 ## Table of contents
 
 * [Global Variables](#global-variables)
-* [Dynamic Variables](#dynamic-variables)
+* [Dynamic Query Variables](#dynamic-query-variables)
 * [Main](#main)
     * [Devices](#devices)
-        * [Add Devices](#add-devices)
+        * [Add Device](#add-device)
     * [History](#history)
     * [Dashboard](#dashboard)
     * [People](#people)
@@ -21,7 +21,7 @@ The client API interface allows for presenting specific screens from a url, prov
 * [Locations](#locations)
 * [User Agreements](#user-agreements)
 * [Faqs](#faqs)
-* [Augmented Reality](#ar)
+* [Augmented Reality](#augmented-reality)
 * [Bundle](#bundle)
     * [OOBE](#oobe)
 * [User Codes](#user-codes)

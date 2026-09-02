@@ -2,7 +2,7 @@
 
 ## Table of contents
 
-* [Smart Home Center Wi-Fi](#smart-home-center-wifi)
+* [Smart Home Center Wi-Fi](#smart-home-center-wi-fi)
 
 ## Diagrams
 

@@ -1,18 +1,54 @@
-# Message Sequence Charts (MSC)
+# Message Sequence Charts
 
-## Table of contents
+The reference tells you what each call does. These tell you **what order to make them in**.
 
-* [What's included](#whats-included)
-* [People Power MSC](#peoplepower-msc)
-* [Usage](#usage)
+Every chart here is a real client flow drawn request by request, from the first tap to the last
+response, including the calls you would not have guessed were needed. If you are implementing a
+screen and it half works, this is usually the section that explains why.
 
-## Classes
+---
 
-* [Apps](diagrams/apps/README.md)
+## The flows
 
-## What's included
+| Flow | What it shows | Read it when |
+| --- | --- | --- |
+| [User Login and Registration](diagrams/apps/user_login_and_registration/README.md) | 8 charts covering sign up, sign in, password reset and the branches between them | You are building authentication and want the order, not just the endpoints |
+| [Device Onboarding](diagrams/apps/device_onboarding/README.md) | 5 charts taking a device from unboxed to reporting | A device pairs but never appears, or appears but stays "New Device" |
+| [Device Configuration](diagrams/apps/device_configuration/README.md) | Changing a device after it is installed | You are building settings screens |
+| [Device UI](diagrams/apps/device_ui/README.md) | How a device screen is assembled from the platform and the bots | You are rendering a device and cannot work out where a field comes from |
+| [Mobile App Schema](diagrams/apps/mobile_app_schema/README.md) | 13 charts of the app's overall structure and navigation | You are building a whole client rather than one screen |
+| [Services and Alerts](diagrams/apps/services_and_alerts/README.md) | Turning services on and off, and how alerts surface | You are wiring up the services screen |
 
-Within the download you'll find the following directories and files. You'll see something like this:
+Start with [Application MSC Diagrams](diagrams/apps/README.md) for the same list with a little more
+description of each.
+
+---
+
+## Reading a chart
+
+Charts are generated with [mscgen](http://www.mcternan.me.uk/mscgen/). Each one shows the
+participants across the top, usually some combination of **User**, **Client**, **Device**,
+**Server** and a **Bot**, and time running down the page. An arrow is a call, and the label on it
+is the API being invoked.
+
+Where a chart references an API, the surrounding page links to that call in the
+[Application API reference](https://app.caredaily.ai/cloud/apidocs/cloud.html) so you can go
+straight from the arrow to the parameters.
+
+---
+
+## Working on the charts
+
+Diagrams are committed already rendered, so you do not need to install anything to read them.
+
+To change one, edit its `.msc` source and regenerate:
+
+```bash
+./generateDiagrams.sh
+```
+
+That rebuilds every `.eps` from its `.msc`. The layout on disk is one directory per flow, each
+holding its sources and rendered output:
 
 ```text
 diagrams/
@@ -23,29 +59,8 @@ diagrams/
 │       │
 │       ├── sequence.eps
 │       └── sequence.msc
-│	
+│
 ├── generateDiagrams.sh
 │
 └── README.md
 ```
-
-## People Power MSC
-
-The People Power Message Sequence Charts (MSC) contains diagrams on integral logical flows for our clients, including user registration and sign on and device on-boarding.
-
-Use it to:
-
-* Understand communication sequences and processes
-* Explore examples of client scenarios
-
-For a complete definition of People Power's models and APIs, please refer to [IOT Apps](https://app.caredaily.ai/cloud/apidocs/cloud.html).
-
-### Installation
-
-This project uses the program [mscgen](http://www.mcternan.me.uk/mscgen/).  Packages and installation instructions are provided by the program developers.
-
-### Usage
-
-This project is meant as a resource and diagrams are already rendered and included.
-
-To make updates to existing charts, or add new charts, apply your changes and then run the bash script `./generateDiagrams.sh` to regenerate all eps diagrams.

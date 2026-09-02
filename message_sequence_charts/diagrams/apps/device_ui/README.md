@@ -6,7 +6,7 @@
 * [Device Model UX](#device-model-ux)
     * [APIS](#apis)
     * [How it should work](#how-it-should-work)
-        * [Associating Device Models with Device Types](#models-types)
+        * [Associating Device Models with Device Types](#associating-device-models-with-device-types)
         * [Device Parameters](#device-parameters)
     * [Device List Attributes](#device-list-attributes)
         * [Position Types](#position-types)
@@ -152,9 +152,9 @@ Display information specific to this described Device Model.  All fields are opt
 | bluetoothManager | String | Identifier for App's BLE manager to interface with this device. |
 | serialNumberPrefix | String | Used to identify input strings (e.g. QR Scanning) and map specific logic |
 | deviceListBindings | Array | Configure displacement and representation type for device parameter. See [Device List Bindings](#device-list-bindings) |
-| parameters | Array | Device Parameter display information. Precedes Device Parameter `displayInfo` properties. See [Device Model Parameter](#device-model-parameter) |
+| parameters | Array | Device Parameter display information. Precedes Device Parameter `displayInfo` properties. See [Device Model Parameters](#device-model-parameters) |
 | Location Spaces | Array | Describe if this model supports spaces and what spaces are supported. See [Location Spaces](#location-spaces) |
-| supportsAR | Bool | Describes if this model includes an 3d-model and allows for AR capabilities. See [Augmented Reality](#augmented-reality) |
+| supportsAR | Bool | Describes if this model includes an 3d-model and allows for AR capabilities. See [Augmented Reality](../mobile_app_schema/README.md#augmented-reality) |
 | calibrationParams | Array | Key-value pairs, where key equals parameter name and value equals the value to check for. Devices that require a calibration step the device model should provide the required parameter name. |
 | customRules | Bool | Describe if this model should allow creation/management custom rules in Device UI. Default `True` |
 | codes | Bool | Describe if this model should allow creation/management user codes in Device UI. Default `False` |
@@ -223,10 +223,10 @@ Display information specific to this described Story.  All fields are optional.
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| inputs | Array | Array to describe story page inputs. See [Story Page Inputs](#story_page_inputs). |
-| deviceBundle | Key:Value | Key value list to describe the different components of this device bundle. See [Story Page Bundles](#story_page_bundles). |
-| pickers | Array | Array to describe story page picker sets. See [Story Page Picker Set](#story_page_picker_sets). |
-| settings | Array | Array to describe story page settings. See [Story Page Settings](#story_page_settings). |
+| inputs | Array | Array to describe story page inputs. See [Story Page Inputs](#story-page-inputs). |
+| deviceBundle | Key:Value | Key value list to describe the different components of this device bundle. See [Story Page Bundles](#story-page-bundles). |
+| pickers | Array | Array to describe story page picker sets. See [Story Page Picker Sets](#story-page-picker-sets). |
+| settings | Array | Array to describe story page settings. See [Story Page Settings](#story-page-settings). |
 
 ##### Story Page Inputs
 
@@ -256,7 +256,7 @@ Describe if this story supports device bundles.
 | id | String | Identifier for this bundle. Usually maps to the primary device model ID. |
 | desc | String | Description of this device bundle. (e.g. "Family Pack 1") |
 | iconIndexes | Array | Array of integers. Show bundle icons for specific page indexes only. (deprecated) |
-| models | Array | Array of device bundle models included with this bundle. See [Story Page Bundle Device Models](#story_page_bundle_device_models). |
+| models | Array | Array of device bundle models included with this bundle. See [Story Page Bundle Device Models](#story-page-bundle-device-models). |
 
 ###### Story Page Bundle Device Models
 
@@ -285,7 +285,7 @@ Describe if this story supports pickers.
 | id | String | Identifier for this picker set. Application layer responsible for understanding available values |
 | desc | String | Description of this picker set |
 | index | Int | Page index this picker set should be displayed at |
-| pickers | Array | Array of picker definitions for this set. See [Story Page Picker](#story_page_picker) |
+| pickers | Array | Array of picker definitions for this set. See [Story Page Picker](#story-page-picker) |
 
 ###### Story Page Picker
 

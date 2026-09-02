@@ -2,3 +2,6 @@
 .idea
 
 *.code-workspace
+
+# working scripts used to prepare this revision, not part of the documentation
+_*.py

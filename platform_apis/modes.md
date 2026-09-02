@@ -28,7 +28,7 @@ There may be other identifiers associated with the Security Mode or Occupancy St
 
 Your application should check for the existance of a specific string inside this string to identify the mode you're interested in.
 
-```
+```python
 if "HOME" in mode:
    pass
 ```

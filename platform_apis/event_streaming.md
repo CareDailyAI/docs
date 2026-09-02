@@ -21,9 +21,9 @@ This document will capture information about some of the data formats of informa
 | 4 | Delete |
 
 
-#### General Data Structure
+## General Data Structure
 
-```
+```json
 { 
   "timestamp": long int,        // current time in milliseconds
   "cloudname": string,          // 'SBOX', 'Prod'
@@ -77,9 +77,9 @@ See additional [Narrative documentation](https://app.caredaily.ai/cloud/apidocs/
 | 3 | Critical-level logging. |
 
 
-#### Narrative JSON Formatting
+### Narrative JSON Formatting
 
-```
+```json
 { 
   "timestamp": long int,        // current time in milliseconds
   "cloudname": string,          // 'SBOX', 'Prod'
@@ -124,9 +124,9 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
 
 
 
-#### Location State JSON Formatting
+### Location State JSON Formatting
 
-```
+```json
 { 
   "timestamp": long int,        // current time in milliseconds
   "cloudname": string,          // 'SBOX', 'Prod'
@@ -161,9 +161,9 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
 | 6 | Subscription Expired |
 
 
-#### General Structure for all paid events
+### General Structure for all paid events
 
-```
+```json
 {
   "timestamp" : long int,       // current time in milliseconds 
   "cloudname": string,          // 'SBOX', 'Prod' 
@@ -203,9 +203,9 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
 }
 ```
 
-#### Subscription created
+### Subscription created
 
-```
+```json
 {
   "timestamp" : 1619644463123,
   "cloudname": "SBOX",
@@ -239,9 +239,9 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
 }
 ```
 
-#### Billing success
+### Billing success
 
-```
+```json
 { 
   "timestamp" : 1619644463123,
   "cloudname": "SBOX",
@@ -272,9 +272,9 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
 }
 ```
 
-#### Billing attempt failure
+### Billing attempt failure
 
-```
+```json
 { 
   "timestamp" : 1619644463123,
   "cloudname": "SBOX",
@@ -302,9 +302,9 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
 }
 ```
 
-#### Subscription canceled
+### Subscription canceled
 
-```
+```json
 { 
   "timestamp" : 1619644463123,
   "cloudname": "SBOX",
@@ -330,9 +330,9 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
 }
 ```
 
-#### Subscription update
+### Subscription update
 
-```
+```json
 { 
   "timestamp" : 1619644463123,
   "cloudname": "SBOX",
@@ -362,9 +362,9 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
 }
 ```
 
-#### Subscription expired
+### Subscription expired
 
-```
+```json
 {
   "timestamp" : 1619644463123,
   "cloudname": "SBOX",
@@ -400,9 +400,9 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
 Care Daily's platform can stream error messages produced by bots during execution.
 
 
-#### Bot Errors JSON Formatting
+### Bot Errors JSON Formatting
 
-```
+```json
 { 
   "timestamp": long int,        // current time in milliseconds
   "cloudname": string,          // 'SBOX', 'Prod'
@@ -431,9 +431,9 @@ Care Daily's platform can stream error messages produced by bots during executio
 Location event includes location's new Security and Occupancy states and previous state values.
 
 
-#### Location Event JSON Formatting
+### Location Event JSON Formatting
 
-```
+```json
 { 
   "timestamp": long int,        // current time in milliseconds
   "cloudname": string,          // 'SBOX', 'Prod'

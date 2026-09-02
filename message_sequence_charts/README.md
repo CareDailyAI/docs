@@ -14,7 +14,7 @@
 
 Within the download you'll find the following directories and files. You'll see something like this:
 
-```
+```text
 diagrams/
 │
 ├── class/

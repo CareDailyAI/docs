@@ -22,7 +22,7 @@ Note that the ping and pong characters are not wrapped in a JSON format - they a
 
 JSON is used for all requests and responses.
 
-#### Common Properties
+### Common Properties
 | Property | Type | Description |
 | -------- | ---- | ----------- |
 | id       | String | Mandatory. Every request or subscription has a unique 'id' field. The server will return the same `id` value in each response related to this subscription so the client will be able to identify what to do with the data. |
@@ -67,7 +67,7 @@ The client can subscribe on specific actions being performed to the data object.
 | 4 | Delete |
 
 ### Request example:
-```
+```json
 {
     "goal": 1,
     "id": "unique request ID",
@@ -76,7 +76,7 @@ The client can subscribe on specific actions being performed to the data object.
 ```
 
 ### Response example:
-```
+```json
 {
     "goal": 1,
     "id": "replied request ID",
@@ -93,8 +93,8 @@ The client must already be authenticated and retrieve the API key using the [Log
 
 When the server authenticates the user, it will define the scope of the session based on the API key type and return success or an error response.
 
-#### Authentication request example
-```
+### Authentication request example
+```json
 {
   "goal": 1,
   "key": "API_KEY",
@@ -104,7 +104,7 @@ When the server authenticates the user, it will define the scope of the session 
 
 #### Authentication response example
 Successful response:
-```
+```json
 {
   "resultCode": 0,
   "id": "1",
@@ -113,7 +113,7 @@ Successful response:
 ```
 
 Unsuccessful response:
-```
+```json
 {
   "resultCode": 2,
   "resultCodeMessage": "Wrong API key",
@@ -128,9 +128,9 @@ Unsuccessful response:
 
 The server will return supported subscription types based on the session scope.
 
-#### Presence response example
+### Presence response example
 
-```
+```json
 {
   "goal": 2,
   "id": "2",
@@ -148,8 +148,8 @@ The server will return supported subscription types based on the session scope.
 
 The server will return information about the current session.
 
-#### Status response example
-```
+### Status response example
+```json
 {
   "goal": 5,
   "id": "5",
@@ -184,11 +184,11 @@ Both the `type` and `operation` are sent to the client in the data object when a
 See the 'Types' and 'Operations' tables at the top of this document for more information about specific values. 
 
 
-#### Example: Subscribe to Narratives
+### Example: Subscribe to Narratives
 
 Read about the subscription parameters in the [GET Narratives API](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Locations/operation/Create%20or%20Update%20a%20Narrative/get-narratives) documentation.
 
-```
+```json
 {
   "goal": 3,
   "id": "3",
@@ -208,7 +208,7 @@ Read about the subscription parameters in the [GET Narratives API](https://app.c
 #### Example: Subscribe to Synthetic API state variables
 
 Request:
-```
+```json
 {
   "goal": 3,
   "id": "3",
@@ -224,7 +224,7 @@ Request:
 #### Example: Subscribe to Device Parameters
 
 Request:
-```
+```json
 {
   "goal": 3,
   "id": "3",
@@ -240,7 +240,7 @@ Request:
 #### Example: Subscribe to SIM card attribute changes
 
 Request:
-```
+```json
 {
   "goal": 3,
   "id": "3",
@@ -254,7 +254,7 @@ Request:
 ```
 
 #### Example: Successful Response
-```
+```json
 {
   "resultCode": 0,
   "goal": 3,
@@ -267,9 +267,9 @@ Request:
 
 *The user tapped into a different part of the app, how do I stop receiving data?*
 
-#### Unsubscribe example
+### Unsubscribe example
 
-```
+```json
 {
   "goal": 4,
   "id": "4",
@@ -288,9 +288,9 @@ The received message will contain the same "id" as at initial subscription reque
 The data field contains a data structure corresponding to the data type.
 Internal JSON data fields are flexible and include sub-objects and arrays.
 
-#### Example: Narrative (history) updated
+### Example: Narrative (history) updated
 
-```
+```json
 {
   "resultCode": 0,
   "id": "subscription request ID",
@@ -320,7 +320,7 @@ Internal JSON data fields are flexible and include sub-objects and arrays.
 
 #### Example: Synthetic API state variable updated
 
-```
+```json
 {
   "resultCode": 0,
   "id": "subscription request ID",
@@ -347,7 +347,7 @@ Internal JSON data fields are flexible and include sub-objects and arrays.
 
 #### Example: Device parameters updated
 
-```
+```json
 {
   "resultCode": 0,
   "id": "subscription request ID",
@@ -373,7 +373,7 @@ Internal JSON data fields are flexible and include sub-objects and arrays.
 
 #### Example: SIM card attributes updated
 
-```
+```json
 {
   "resultCode": 0,
   "id": "subscription request ID",
@@ -400,9 +400,9 @@ Internal JSON data fields are flexible and include sub-objects and arrays.
 
 The user can send questions or messages to AI agents using this interface.
 
-#### Chat request example
+### Chat request example
 
-```
+```json
 {
   "goal": 7,
   "id": "10",
@@ -416,7 +416,7 @@ The user can send questions or messages to AI agents using this interface.
 
 #### Chat response example
 
-```
+```json
 {
   "goal": 7,
   "id": "10",

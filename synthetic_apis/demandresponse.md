@@ -1,5 +1,12 @@
 # Synthetic API: Demand Response
 
-In progress.
+Demand response events.
 
-Please contact dmoss@caredaily.ai if you need this as a priority.
+Part of the energy management side of the platform, alongside
+[Time-of-Use Pricing](toupricing.md).
+
+**This page is not written yet**, and energy management is not where our current development effort
+sits. The API is not documented here.
+
+If demand response matters to what you are building, contact **dmoss@caredaily.ai** and say so.
+That is genuinely how these get prioritized.

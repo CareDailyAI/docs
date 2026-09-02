@@ -1,61 +1,112 @@
-# Care Daily AI+IoT SaaS Documentation
+# Platform APIs
 
-All of the interactive *platform* documentation is updated and managed online.
-Please follow these links for more details.
+These are the APIs of the AI+IoT platform itself: for applications, for devices, and for
+administrators. The platform answers role-based REST calls, and it streams events and observations
+to partner clouds.
+
+The complete reference for each is generated from the platform and lives online. This page tells you
+which one you want and what to expect from it.
+
+---
+
+## Which API do I want?
+
+```mermaid
+flowchart LR
+    Q{"What are you<br/>building?"}
+    Q -->|"a mobile or<br/>web app"| A["<b>Application API</b><br/>users · locations · devices<br/>spaces · commands"]
+    Q -->|"an admin or<br/>command center"| B["<b>Admin API</b><br/>organizations · people<br/>places · things"]
+    Q -->|"a device or<br/>a gateway"| C["<b>Device API</b><br/>MQTT via AWS IoT Core"]
+    Q -->|"a partner cloud<br/>receiving data"| D["<b>Event Streaming</b><br/>cloud to cloud"]
+    Q -->|"a bot<br/>microservice"| E["<b>Bots API</b><br/>private, inside botengine"]
+
+    A -.->|"needs it now,<br/>not on a poll"| F["<b>WebSockets</b>"]
+    B -.-> F
+
+    style A fill:#eef2ff,stroke:#3f3bf2
+    style B fill:#eef2ff,stroke:#3f3bf2
+    style C fill:#f0fdf4,stroke:#1b873f
+    style D fill:#f0fdf4,stroke:#1b873f
+    style E fill:#fff7ed,stroke:#b54708
+    style F fill:#fdf2f8,stroke:#e20074
+```
+
+| API | Reference | Use it for |
+| --- | --- | --- |
+| **Application** | [cloud.html](https://app.caredaily.ai/cloud/apidocs/cloud.html) | Everything an end-user app or web console does |
+| **Admin** | [admin.html](https://app.caredaily.ai/cloud/apidocs/admin.html) | Managing people, places, and things across an organization |
+| **Device** | [devices.html](https://app.caredaily.ai/cloud/apidocs/devices.html) | Getting measurements up from hardware, and commands down |
+| **Bots** | [bots.html](https://app.caredaily.ai/cloud/apidocs/bots.html) | Bot infrastructure development inside `botengine` |
+| **WebSockets** | [websockets.md](websockets.md) | Anything that must update the moment it changes |
+| **Event Streaming** | [event_streaming.md](event_streaming.md) | Pushing events, insights and subscriptions to a partner cloud |
+
+---
 
 ## Application API
-https://app.caredaily.ai/cloud/apidocs/cloud.html
 
-This documentation describes available APIs for mobile apps and web consoles. 
+[Reference](https://app.caredaily.ai/cloud/apidocs/cloud.html)
 
-These Application APIs are primarily synchronous RESTful APIs, and WebSocket alternatives do exist for some APIs.
-The Application API primarily focuses on APIs for end-user applications, although some APIs can be called with an `ADMIN_API_KEY` to execute as an administrator of an organization.
+The APIs available to mobile apps and web consoles. Primarily synchronous REST, with WebSocket
+alternatives for some calls.
 
-In addition, there are several APIs toward the beginning of the documentation for devices, allowing them to understand which of the device servers they should communicate with in a cloud deployment composed of multiple device servers.
-
-## WebSockets API
-
-[WebSockets API Documentation](websockets.md)
-
-Use WebSockets in some time-critical experiences (such as updating the UI with bot-driven [Synthetic APIs](../synthetic_apis/README.md) or displaying alerts on an administrative console), instead of polling with RESTful APIs.
-
-## Cloud-to-Cloud Streaming 
-
-[Event Streaming Documentation](event_streaming.md)
-
-Care Daily's platform can stream events, insights, subscriptions, and more to partner platforms.
+The Application API is focused on end-user applications, but some of its calls can be made with an
+`ADMIN_API_KEY` to execute as an administrator of an organization. There are also several APIs
+toward the beginning of the reference that exist for devices, so they can work out which of the
+device servers to talk to in a deployment made up of several.
 
 ## Administrative API
-https://app.caredaily.ai/cloud/apidocs/admin.html
 
-This document captures admin-specific APIs that were not documented in the Application API.
-These APIs are primarily used by administrative command centers to manage people, places, and things.
+[Reference](https://app.caredaily.ai/cloud/apidocs/admin.html)
+
+Admin-specific APIs that are not in the Application API. These are what administrative command
+centers use to manage people, places, and things.
 
 ## Device API
 
-[AWS IoT Core](mqtt.md)
+[MQTT through AWS IoT Core](mqtt.md) is the recommended path for getting device data to the cloud.
 
-Care Daily recommends using MQTT protocol through AWS IoT Core to communicate devices data to the cloud.
+Care Daily also supports cloud-to-cloud integration and a set of asynchronous HTTP and WebSocket
+device APIs. [Device API reference](https://app.caredaily.ai/cloud/apidocs/devices.html).
 
-In addition Care Daily supports Cloud-to-Cloud integration and a set of asynchronous HTTP and WebSocket Device APIs.
+Devices are identified by globally unique IDs. Before a device can communicate, two things must be
+true: the server must have a **device type** definition that describes it, and the device must be
+**registered to a location**.
 
-https://app.caredaily.ai/cloud/apidocs/devices.html
+```mermaid
+flowchart LR
+    A["device type<br/><i>defined on the server</i>"] --> B["device registered<br/><i>to a location</i>"] --> C["device can<br/>communicate"]
+    style C fill:#f0fdf4,stroke:#1b873f
+```
 
-Devices, identified by their globally unique IDs, first need to be understood through the definition of a *device type* on the server, and then need to be registered to a specific location before they can start communicating. 
+## WebSockets API
+
+[WebSockets documentation](websockets.md)
+
+Use WebSockets where the experience is time-critical, rather than polling REST. Two common cases:
+updating a UI driven by bot [Synthetic APIs](../synthetic_apis/README.md), and showing alerts on an
+administrative console.
+
+## Cloud-to-Cloud Streaming
+
+[Event Streaming documentation](event_streaming.md)
+
+The platform can stream events, insights, subscriptions and more to a partner platform.
 
 ## Bot API
-https://app.caredaily.ai/cloud/apidocs/bots.html
 
-This is private bot API documentation for bot infrastructure developers. The APIs documented in this private area are implemented as software APIs inside the `botengine`.
-The documentation also describes the management and lifecycles of a bot.
+[Reference](https://app.caredaily.ai/cloud/apidocs/bots.html)
 
-Today, we link bots to subscriptions manually on the backend, and there are no APIs publicly or privately exposed to manage the definitions of these subscriptions.
-We rely on communications with our server team to define and manage the available subscription services in each organization.
+This is private bot API documentation, for bot infrastructure developers. The APIs described there
+are implemented as software APIs inside the `botengine`, and the reference also covers the
+management and lifecycle of a bot.
 
+Note on subscriptions: bots are linked to subscriptions manually on the backend today. There are no
+public or private APIs for managing those subscription definitions. Defining and managing the
+available subscription services in an organization goes through our server team.
 
 ## Security Modes and Occupancy Status
 
 [Security Modes and Occupancy Status](modes.md)
 
-Explanation on how to configure and interpret the "Location Scene" field to be recognized by existing application layers.
-
+How to set and interpret the "Location Scene" field so that it is recognized by the existing
+application layers.

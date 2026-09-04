@@ -70,7 +70,7 @@ The subregion object describes the title and icon to show the user on the list o
 | title | Title to suggest to the user to add a subregion, like "Add a bed" |
 | icon | Suggested icon to show nearby the title when prompting a user to add a subregion, like "bed". |
 | icon_font | Icon font package to use, usually 'far' (fontawesome.com regular). |
-| context_id_list | List of compatible context ID's for the radar device that would fulfill this subregion's objectives. See the [Vayyar Home Documentation](vayyar.md) `vayyar_subregion_behaviors` for more details.
+| context_id_list | List of compatible context ID's for the radar device that would fulfill this subregion's objectives. See the [Radar Devices Documentation](radar.md) `radar_subregion_behaviors` for more details.
 
 #### Device Types
 

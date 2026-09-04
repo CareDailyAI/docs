@@ -4,10 +4,12 @@ Instead of one data stream message at a time, a multistream message can contain 
 
 Through the `multistream` state variable, it is possible to see what data stream messages have been scheduled with a multistream message, and edit/remove scheduled data stream messages from the queue.
 
+To edit a queued multistream message, send a new multistream message with the same `id` and a future `timestamp`; it replaces the queued entry. To remove a queued multistream message, send a multistream message with the same `id` and no future `timestamp`; the queued entry is deleted and any data stream addresses included in the new message are delivered immediately (send `{"id": "hello"}` alone to remove without delivering anything).
+
 | Property | Type | Description |
 | -------- | ---- | ----------- |
 | id       | String | Optional application-generated unique ID for scheduled multistream messages, to be able to edit/remove the multistream message in the future. If a multistream message is scheduled and an ID is not provided, then the multistream microservice will automatically generate a unique ID which the application layer can later reference to edit/remove the queued multistream message. |
-| timestamp | int | Optional absolute timestamp in **milliseconds**, to schedule the delivery of the multistream message. |
+| timestamp | int | Optional absolute timestamp in **milliseconds**, to schedule the delivery of the multistream message. The message is only queued if the timestamp is in the future; otherwise it is delivered immediately. |
 | Data Stream Address | String | A multistream message can contain arbitrary key/value pairs, each interpreted with the *key* as a data stream address, and the *value* as the JSON content to be delivered internally to that data stream address. |
 
 
@@ -39,13 +41,12 @@ State Variable Address : `multistream`
 
 The output only contains multistream content (multiple data stream messages) that are in the queue and have not executed yet.
 
-The output content is a dictionary of multistream messages, where the key for each object is the `id` that was originally passed in as the multistream message ID.
+The output content is a dictionary of multistream messages, where the key for each object is the `id` that was originally passed in as the multistream message ID (converted to a string). The `id` is stored only as the key and is not repeated inside the object.
 
 ```
 {
     "hello": {
-        "id": "hello",
-        "timestamp": optional_time_in_the_future_in_milliseconds,
+        "timestamp": time_in_the_future_in_milliseconds,
         "message": {
            "push_content": "Hello from a multistream message."
         },

@@ -2,24 +2,48 @@
 
 Trends allow us to understand if the knowledge we're observing now are normal or abnormal vs. historical lifestyle patterns. Trends are largely statistical in nature, and much of the underlying machinery focuses on the processing of historical data to provide high quality insights.
 
+Trends are implemented by `com.ppc.BotProprietary/signals/trends.py` (signal helpers and constants) and `com.ppc.Microservices/intelligence/trends/location_trends_microservice.py`. Trend IDs are truncated to 50 characters (`TREND_ID_CHARACTER_LIMIT`).
+
 ## Properties
 
-#### `trends` Properties
+#### `trends_metadata` Properties
 
 | Property | Type | Description |
 | -------- | ---- | ----------- |
-| trends | Dictionary | Dictionary of trends, where the key is the `trend_id`. |
+| trends_metadata | Dictionary | Dictionary of trends, where the key is the `trend_id`. |
 | title | String | Short human-readable title for this trend. |
 | comment | String | Human-readable description for this trend. |
+| category | String | Trend category ID. See the Trend Categories table. |
 | services | List | List of `service_id`'s that this trend is related to, for linking inside the UI. |
 | units | String | Units of measurement for this measurement. |
 | updated_ms | int | Timestamp in milliseconds of the last update. |
-| window | int | Number of days that trend data is accumulated, for comparing to today's values. |
+| window | int | Number of days that trend data is accumulated, for comparing to today's values. Trends not updated within their window are removed at midnight. |
 | icon | String | Icon to apply to this trend. |
-| icon_font | String | Icon font to apply to the icon, default is FontAwesome Regular ('far'). |
 | operation | int | Type of operation applied to this data. See the Operations table. |
 | daily | Boolean | True if this trend is captured once per day, False if the trend is captured multiple times per day. |
 | parent_id | String | Trend ID of this trend's parent, may be null. |
+| hidden | Boolean | True if this trend should not be displayed. Removed trends are marked hidden rather than deleted from the metadata. |
+| min_value | Float | Optional suggested minimum value for rendering historical trend values. |
+| max_value | Float | Optional suggested maximum value for rendering historical trend values. |
+| user_id | int | Optional. Present when this trend tracks an individual user; the `trend_id` is then suffixed with `.{user_id}`. |
+| running_type | String | Optional. `zeroed` or `last`. When set, the current day's `trends` record is seeded at midnight by copying the previous record forward (with value/display reset to 0 for `zeroed`). |
+
+#### Trend Categories
+
+| `category` value | Description |
+| ---------------- | ----------- |
+| `category.other` | Default |
+| `category.summary` | Summary (e.g. `trend.wellness_score`) |
+| `category.sleep` | Sleep |
+| `category.bathroom` | Bathroom |
+| `category.activity` | Activity / mobility |
+| `category.social` | Social |
+| `category.stability` | Stability / fall risk |
+| `category.energy` | Energy |
+| `category.ambient` | Ambient environment |
+| `category.care` | Care |
+| `category.health` | Health / biometrics |
+| `category.nutrition` | Nutrition |
 
 #### Operations
 
@@ -45,7 +69,7 @@ Here's how we extract the data sets:
 | Property | Type | Description |
 | -------- | ---- | ----------- |
 | value | Float | The newest value captured, pre-processed based on the applied operation |
-| avg | Float | Average across the data set |
+| avg | Float | Average across the data set (equal to `value` when only one data point exists) |
 | std | Float | Standard deviation of the data set |
 | zscore | Float | Z-Score of the current value relative to the historical data set - this is used to describe where the newest value is relative to the standard deviations |
 | display | String | Human-readable display value |
@@ -55,7 +79,7 @@ Here's how we extract the data sets:
 
 ## Inputs
 
-Trends are typically captured internally by bots. When a trend is finished processing, an additional data stream message is distributed internally with the update trend info to allow any interested microservices to perform higher-level calculations. For example, a microservice might observe the change in trends over the past few days, and alert if trends have been going in a bad direction.
+Trends are typically captured internally by bots through `signals.trends.capture()`. Trends are not captured while the `occupancy` state variable has `override` set to `"True"`. When a trend is finished processing, an additional data stream message (`trend_processed`, carrying the trend data plus `trend_id` and `trend_category`) is distributed internally to allow any interested microservices to perform higher-level calculations. For example, a microservice might observe the change in trends over the past few days, and alert if trends have been going in a bad direction.
 
 #### Create or Update a trend
 
@@ -64,6 +88,8 @@ Data Stream Address : `capture_trend_data`
 ```
 {
     "trend_id": trend_id,
+    "trend_category": trend_category,
+    "parent_id": parent_id,
     "value": value,
     "display_value": display_value,
     "title": title,
@@ -74,10 +100,18 @@ Data Stream Address : `capture_trend_data`
     "window": window,
     "once": once,
     "operation": operation,
+    "hidden": hidden,
     "services": related_services,
-    "timestamp_ms": timestamp_override_ms
+    "timestamp_ms": timestamp_override_ms,
+    "min_value": min_value,
+    "max_value": max_value,
+    "user_id": user_id,
+    "incorporated": incorporated,
+    "running_type": running_type
 }
 ```
+
+`trend_id`, `trend_category`, `value`, `display_value`, `title`, `comment`, `icon`, `units`, `window`, `once`, `operation` and `hidden` are required; the rest are optional. `display_value` may be a string or a lambda that formats the processed value. `once` is stored as `daily` in the metadata. When `user_id` is set the trend is stored as `{trend_id}.{user_id}`, and if `incorporated` is true the value is also aggregated into the location-level `trend_id`.
 
 #### Delete a trend
 
@@ -89,6 +123,8 @@ Data Stream Address : `remove_trend`
 }
 ```
 
+Removing a trend deletes its stored history, marks its `trends_metadata` entry `hidden`, and distributes an internal `trend_removed` message.
+
 ## Output
 
 The output for trends is broken into several parts:
@@ -96,6 +132,7 @@ The output for trends is broken into several parts:
 * Time-series daily trend information : `trends`
 * Average trends over the past 7 days: `trends_recently`
 * Time-series 7-day incremental trend information : `trends_weekly`
+* Trend category definitions for grouping trends in a UI : `trends_category`
 * Highlights of top-level trends for history : `trends_highlights`
 
 The `trends_metadata` captures the configuration values that are like overhead and remain quite static, to optimize data usage by preventing duplicate data. 
@@ -107,8 +144,10 @@ Trends related to specific device instances typically references the device ID's
 ```
 {
     "sitting": {
+      "category": "category.activity",
       "comment": "Time spent sitting today.",
       "daily": false,
+      "hidden": false,
       "icon": "loveseat",
       "operation": 2,
       "parent_id": null,
@@ -119,8 +158,10 @@ Trends related to specific device instances typically references the device ID's
       "window": 30
     },
     "trend.bedtime": {
+      "category": "category.sleep",
       "comment": "Time occupants went to sleep.",
       "daily": true,
+      "hidden": false,
       "icon": "bed",
       "operation": 1,
       "parent_id": null,
@@ -133,8 +174,10 @@ Trends related to specific device instances typically references the device ID's
       "window": 30
     },
     "trend.sleep_bathroom_visits": {
+      "category": "category.bathroom",
       "comment": "Number of bathroom visits at night.",
       "daily": true,
+      "hidden": false,
       "icon": "house-night",
       "operation": 1,
       "parent_id": null,
@@ -147,8 +190,10 @@ Trends related to specific device instances typically references the device ID's
       "window": 30
     },
     "trend.sleep_cycle_score": {
+      "category": "category.sleep",
       "comment": "Relative sleep cycle score.",
       "daily": true,
+      "hidden": false,
       "icon": "snooze",
       "operation": 1,
       "parent_id": null,
@@ -161,8 +206,10 @@ Trends related to specific device instances typically references the device ID's
       "window": 30
     },
     "trend.sleep_duration": {
+      "category": "category.sleep",
       "comment": "Amount of sleep.",
       "daily": true,
+      "hidden": false,
       "icon": "alarm-clock",
       "operation": 1,
       "parent_id": null,
@@ -175,8 +222,10 @@ Trends related to specific device instances typically references the device ID's
       "window": 30
     },
     "trend.wakeup": {
+      "category": "category.sleep",
       "comment": "Time occupants woke up.",
       "daily": true,
+      "hidden": false,
       "icon": "bed",
       "operation": 1,
       "parent_id": null,
@@ -189,8 +238,10 @@ Trends related to specific device instances typically references the device ID's
       "window": 30
     },
     "trends.absent": {
+      "category": "category.social",
       "comment": "Time occupants have been away from home today, a possible indicator of exercise or social activity.",
       "daily": false,
+      "hidden": false,
       "icon": "house-leave",
       "operation": 2,
       "parent_id": null,
@@ -201,8 +252,10 @@ Trends related to specific device instances typically references the device ID's
       "window": 30
     },
     "trends.movement_score": {
+      "category": "category.activity",
       "comment": "Relative mobility score.",
       "daily": false,
+      "hidden": false,
       "icon": "walking",
       "operation": 3,
       "parent_id": null,
@@ -220,7 +273,7 @@ Trends related to specific device instances typically references the device ID's
 
 ### `trends` Example
 
-The time-series state variable `trends` contains a Dictionary of trends, identified by their `trend_id`. The `trend_id` is captured again in the data for ease-of-processing by bots.
+The time-series state variable `trends` contains a Dictionary of trends, identified by their `trend_id`. The `trend_id` is captured again in the data for ease-of-processing by bots. Each day's entry is stored under the timestamp of midnight (local time) for that day.
 
 ```
 {
@@ -401,7 +454,7 @@ The time-series state variable `trends` contains a Dictionary of trends, identif
 
 ### `trends_recently` Example
 
-This shows the average trends over the past 7 days, for comparison with entries from `trends_weekly`.
+This shows the average trends over the past 7 days (ending yesterday), for comparison with entries from `trends_weekly`. It is a non-time-series state variable, recalculated once per day after midnight. It is not updated while occupants are definitely absent from the home.
 
 ```
 {
@@ -446,7 +499,7 @@ This shows the average trends over the past 7 days, for comparison with entries 
 
 ### `trends_weekly` Example
 
-Exactly the same as `trends_recently` but saved as time-series information many weeks ago.
+Exactly the same as `trends_recently` but saved as time-series information, once per week (on Mondays, under the timestamp of midnight that day).
 
 ```
 {
@@ -488,9 +541,36 @@ Exactly the same as `trends_recently` but saved as time-series information many 
 }
 ```
 
+### `trends_category` Example
+
+The `trends_category` state (`com.ppc.Microservices/intelligence/trends/location_trendscategory_microservice.py`) describes how to group trends in a UI. The key is the category ID from the Trend Categories table. Each category has a `title`, `description`, a `primary_trend` ID to display first, its `primary_trend_title`, and a list of `sub_trends` (trend IDs whose `parent_id` is the primary trend). Optional `ml_title`, `ml_description`, and `ml_primary_trend_title` dictionaries carry translations keyed by language code. The `category.other` entry is always present.
+
+```
+{
+    "category.other": {
+      "title": "Other Trends",
+      "description": "Additional trends recorded.",
+      "primary_trend": "",
+      "primary_trend_title": "",
+      "sub_trends": []
+    },
+    "category.summary": {
+      "title": "Wellness Score",
+      "description": "...",
+      "primary_trend": "trend.wellness_score",
+      "primary_trend_title": "Score",
+      "sub_trends": [
+        "trend.sleep_score",
+        "trend.stability_score",
+        "trend.mobility_score"
+      ]
+    }
+}
+```
+
 ### `trends_highlights` Example
 
-The `trends_highlights` state summarizes the history of the top-level categories for graphing or rendering on a UI. 
+The `trends_highlights` state summarizes the history of the top-level categories for graphing or rendering on a UI. It is produced by `com.ppc.Microservices/intelligence/score_wellness/location_wellness_score_microservice.py` and only contains the trends weighted into the wellness score plus `trend.wellness_score` itself. The `now` entries carry the latest `trend_processed` data (including `trend_category`); the `trend.wellness_score` entry under `now` also carries a `distribution` (see the Location Summary API). Historical entries (`0`, `15`, `30`, `45`, `60`, `90` days ago) carry `avg`, `std`, `n`, and a `zscore` relative to the next-older interval.
 
 Here's an example of that data structure.
 

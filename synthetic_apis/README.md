@@ -8,20 +8,21 @@
 |---------------------------------------------|----------------------------------------|---------------------------------------------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Dashboard Header](dashboard_header.md)     | `update_dashboard_header`              | `dashboard_header`                                                                                | #1 thing you need to know about this location.                                                                                                                   |
 | [Dashboard Status](dashboard_status.md)     | `update_dashboard_content`             | `now`                                                                                             | Interesting events that are happening now, or happened recently.                                                                                                 | 
-| [Services and Alerts](services.md)          |                                        | `services`                                                                                        | List of available services and alerts to turn on or off.                                                                                                         |
+| [Services and Alerts](services.md)          | `update_dashboard_content` (type 1)    | `services`                                                                                        | List of available services and alerts to turn on or off.                                                                                                         |
 | [Insights](insights.md)                     |                                        | `insights`                                                                                        | App-friendly summary of current insights in this location (occupancy, sleep, temperature, etc.).                                                                 |
-| [Daily Report](dailyreport.md)              | `daily_report_entry`                   | `dailyreport`                                                                                     | Categorized list of important events that have happened at this location each day.                                                                               |
-| [Trends](trends.md)                         | `capture_trend_data` and `remove_trend` | `location_properties` containing static overhead information, and `trends` containing dynamic data | Monitor trends across a variety of lifestyle patterns and Activites of Daily Living and identify when those patterns may be trending abnormal.                   |
-| [Tasks](tasks.md)                           |                                        |                                                                                                   | Assign or update a task to another person, or mark an existing task complete.                                                                                    |
+| [Daily Report](dailyreport.md)              | `report_add_event` (`daily_report_entry` is deprecated) | `dailyreport`, plus `weeklyreport` and `monthlyreport`                                    | Categorized list of important events that have happened at this location each day, week, and month.                                                              |
+| [Trends](trends.md)                         | `capture_trend_data` and `remove_trend` | `trends_metadata` containing static overhead information, and `trends` containing dynamic data (plus `trends_recently`, `trends_weekly`, `trends_category`, `trends_highlights`) | Monitor trends across a variety of lifestyle patterns and Activities of Daily Living and identify when those patterns may be trending abnormal.                  |
+| [Tasks](tasks.md)                           | `update_task`, `delete_task`, `update_device_bundles` | `tasks`, `device_bundles`                                                          | Assign or update a task to another person, or mark an existing task complete. Also carries system tasks such as adding people or setting up devices.            |
 | [Request Assistance](request_assistance.md) | `request_assistance`                   |                                                                                                   | Request assistance from the mobile app or smart speaker, including emergency help.                                                                               | 
 | [User Activity](user_activity.md)           | `user_activity`                        |                                                                                                   | Share information about what a user is doing in a mobile app with a bot, so the bot can take action and provide timely and relevant feedback and communications. |
-| [Fall History](falls.md)                    |                                        | `falls`                                                                                           | Time-series history of falls.                                                                                                                                    |
+| [Fall History](falls.md)                    |                                        | `falls`                                                                                           | Time-series history of falls detected by radars, wearables, and emergency SOS requests.                                                                          |
 
 #### User Communications
 
 | Synthetic API | Input Addresses | Output Address | Description |
 | ------------- | --------------- | -------------- | ----------- |
-| [Multistream Messages](multistream.md) | `multistream` | | Deliver multiple data stream messages (Synthetic API inputs) simultaneously. |
+| [Multistream Messages](multistream.md) | `multistream` | `multistream` | Deliver multiple data stream messages (Synthetic API inputs) simultaneously, now or at a scheduled future time. |
+| [Narrate](narrate.md) | `narrate` | | Capture history into the location or organization narratives. |
 | [Message](message.md) | `message` | | Communicate with users over push notification, SMS, and email. |
 | [Action Plans](action_plans.md) | | `action_plans` | Assist mobile apps with communicating to users about the protocol for resolving problems that require human intervention. |
 
@@ -30,15 +31,57 @@
 | Synthetic API | Input Addresses | Output Address | Description |
 | ------------- | --------------- | -------------- | ----------- |
 | [Behaviors](behaviors.md) | | `behaviors` | Behaviors provide the available user-selectable context for each device. |
-| [Bot-driven Rules](rules.md) | | | Bot-driven rules engine. |
-| [Vayyar Home](vayyar.md) | `set_vayyar_room`, `set_vayyar_subregion`, `delete_vayyar_subregion`, `set_vayyar_config` | `vayyar_room`, `vayyar_subregions`, `vayyar_subregion_behaviors`| Fully manage Vayyar Home devices to detect falls and occupancy. |
+| [Bot-driven Rules](rules.md) | `set_rule`, `delete_rule`, `pause_rule`, `play_rule` | `rules`, `rule_phrases` | Bot-driven rules engine: compose if-this-then-that rules from the phrases each device offers. |
+| [Radar Devices](vayyar.md) | `set_radar_room`, `set_radar_subregion`, `delete_radar_subregion`, `set_radar_config`, `submit_radar_fall_feedback` (the `set_vayyar_*` addresses remain as deprecated aliases) | `radar_room`, `radar_subregions`, `radar_subregion_behaviors` (also written as `vayyar_*` for compatibility) | Fully manage radar devices (Vayyar Care, Pontosense, Nobi, AeroSense Assure) to detect falls and occupancy. |
 
 #### Command Centers
 
 | Synthetic API                                                                                             | Input Addresses | Output Address | Description                                                    |
 |-----------------------------------------------------------------------------------------------------------|-----------------|----------------|----------------------------------------------------------------|
-| [Location Summary](summary.md) | `set_badge`     | `summmary`     | Summary of the score and notification badges for each location |
+| [Location Summary](summary.md) | `set_badge`     | `summary`     | Summary of the score and notification badges for each location |
 
+
+#### Developer Tools
+
+| Synthetic API | Input Addresses | Output Address | Description |
+| ------------- | --------------- | -------------- | ----------- |
+| [Machine Learning](machinelearning.md) | `download_data` | | Request the bot to re-download historical data and recalculate its machine learning models. |
+
+
+#### Other State Variables
+
+These outputs are produced by bot microservices but do not yet have a dedicated page. Names marked *time-series* are keyed by timestamp. The writing microservice is listed so developers can read the JSON shape from the source.
+
+| Output Address | Type | Written by | Description |
+| -------------- | ---- | ---------- | ----------- |
+| `occupancy` | time-series | `occupancy/location_occupancy_microservice.py` | Occupancy status over time: `PRESENT`, `ABSENT`, `SLEEP`, `VACATION`. |
+| `occupancy_overview` | | `occupancy/location_occupancy_microservice.py` | Current occupancy status, override flag, and the time the status began. |
+| `dashboard_overview` | | `dashboard/location_dashboard_overview_microservice.py` | Combined occupancy, sleep, header, and status cards for a single dashboard read. |
+| `location_highlights` | | `highlights/location_highlights_microservice.py` | Weighted highlight elements (sleep, bathroom, safety, occupancy, medication, devices) with status colors and tags. |
+| `checkin_status` | time-series | `checkin/location_checkin_microservice.py` | Daily check-in state: occupancy reason, bed occupancy, predicted and actual wake-up and bedtime. |
+| `stability_events` | time-series | `falls/location_stability_microservice.py` | Radar stability events, same shape as [Fall History](falls.md) entries. |
+| `movements` | time-series | `movements/location_movements_microservice.py` | Radar-tracked movement episodes with distances travelled. |
+| `visitors` | time-series | `visitors/location_visitor_microservice.py` | Detected visits: contributing devices, source, visitor count, and duration. |
+| `assessment_results` | time-series | `assessment/location_assessment_microservice.py` | Physical assessment results (gait speed, timed up-and-go, chair stand, grip strength, balance, and more). |
+| `goals` | | `goals/location_goals_microservice.py` | User goals keyed by goal ID with category, timestamps, and completion. |
+| `sleep_model` | | `occupancy/sleep/location_sleep_microservice.py` | Learned going-to-sleep, waking-up, and peak-morning times for each weekday. |
+| `sleep_flow` | | `occupancy/sleep/location_sleepflow_microservice.py` | Per-weekday history of sleeping and awake hours used to shape the sleep model. |
+| `security_state` | | `prosecurity/location_security_intelligence.py` | Security arm state and alarm description. |
+| `survey_results`, `survey_statistics` | time-series, regular | `surveys/location_survey_microservice.py` | Individual survey answers, and completion statistics for the survey list. |
+| `resident_report` | time-series | `reports/location_reports_resident_microservice.py` | Resident-facing edition of the periodic report. |
+
+All paths are under `com.ppc.Microservices/intelligence/` in botlab-core.
+
+#### Other Input Addresses
+
+| Input Address | Handled by | Description |
+| ------------- | ---------- | ----------- |
+| `clear_dashboard_content` | `dashboard/location_dashboard_microservice.py` | Remove every card from the `now` and `services` state variables. No content required. |
+| `clear_dashboard_headers` | `dashboard/location_dashboardheader_microservice.py` | Remove every dashboard header. No content required. |
+| `capture_fall` | `falls/location_fall_microservice.py` | Record or close a fall event in the `falls` time-series (see [Fall History](falls.md)). Content: `start_time_ms`, `device_id`, `device_desc`, `device_type`, `targets`, and `end_time_ms` to close. |
+| `capture_stability_event` | `falls/location_stability_microservice.py` | Same content as `capture_fall`, written to `stability_events`. |
+| `capture_movement` | `movements/location_movements_microservice.py` | Record or close a movement episode in `movements`, with `distance_m` in place of `targets`. |
+| `report_generate` | `reports/location_reports_microservice.py` | Generate a daily, weekly, or monthly report on demand (see [Daily Report](dailyreport.md)). |
 
 <!---
 #### Energy Management
@@ -98,6 +141,10 @@ Bots can create `state` variables to provide data back out to applications or vo
 * JSON content is arbitrary and agreed upon by app developers.
 
 Many times, state variables may contain extra JSON information that simply helps bots manage the objects contained within those variables.
+
+#### Discovering which state variables a location has
+
+Bots register the names of the state variables they write in the `location_properties` state variable: the `additional_properties` list holds the names of regular state variables, and the `timeseries_properties` dictionary maps each time-series state variable name to the timestamp of its most recent entry. Read `location_properties` first to learn which Synthetic API outputs are available in a location.
 
 
 ## Icons

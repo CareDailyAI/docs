@@ -4,6 +4,8 @@ Insights provide situational awareness and current predictions taking place in t
 
 Insights are captured in a JSON dictionary structure where the key is a unique (predictable) **Insight ID**, and the JSON object underneath includes the value, a developer-readable description, an optional device ID, and the timestamp of the last update in milliseconds.
 
+Insights are captured internally by bot microservices through `com.ppc.Bot/signals/insights.py` (`capture_insight()` / `delete_insight()`) and stored by `com.ppc.Microservices/intelligence/insights/location_insights_microservice.py`. An insight is deleted from the `insights` state variable when it is captured again with a `null` value.
+
 #### Standardized Insights
 
 Insights are based on available data and not guaranteed to exist in the `insights` state variable.
@@ -11,21 +13,38 @@ Insights are based on available data and not guaranteed to exist in the `insight
 | Insight ID              | Value Type | Description | 
 | ----------------------- | ---------- | ----------- |
 | `ambient_temperature_c` | float      | The ambient temperature in Celsius. The fastest update interval is once every 5 minutes. Motion sensors with temperature sensing capabilities will update this value based on where occupants were last observed. If no motion is detected recently, the value will fall back to a reading from a connected thermostat, if available. |
-| `ambient_temperature.zscore` | float | Z-score of ambient temperature based on the previous 15-day hourly history. |
+| `ambient_temperature.zscore` | float | Z-score of ambient temperature based on the previous 15-day hourly history. Appears only when the home is unusually warm or unusually cold. |
 | `sleep.wake_prediction_ms` | int | Predicted wake-up time in unix epoch milliseconds. Could be in the past if occupants have not woken up yet. |
 | `sleep.sleep_prediction_ms` | int | Predicted go-to-sleep time in unix epoch milliseconds. Could be in the past if occupants have not gone to sleep yet. | 
-| `sleep.duration_ms` | int | Recent sleep duration in milliseconds - gets erased when we're starting to go to sleep again. |
-| `sleep.sleep_score` | float | Relative sleep score. Deleted when occupants start sleeping. |
-| `sleep.bedtime_score` | float | Consistency of bedtime, a component of the sleep score. A low value indicates the occupants should try to go to bed at a more consistent time. Deleted when occupants start sleeping. |
-| `sleep.wakeup_score` | float | Consistency of wake-up time, a component of the sleep score. A low value indicates the occupants should try to wake up at a more consistent time. Deleted when occupants start sleeping. |
-| `sleep.bedtime_ms` | int | Bedtime in unix epoch milliseconds. |
-| `sleep.wakeup_ms` | int | Wakeup time in unix epoch milliseconds. |
-| `sleep.overslept` | True | Appears when occupants overslept today relative to historic patterns. |
-| `sleep.underslept` | True | Appears when occupants woke up too early today relative to historic patterns. |
-| `sleep.low_sleep_quality.warning` | int | Appears when there have been 4+ consecutive days of below-average sleep quality. The value is the number of consecutive days with low sleep quality. |
-| `sleep.too_many_bathrooms.warning` | int | Appears when there have been 2+ consecutive days of too many bathroom visits at night. The value is the number of consecutive nights with a high number of bathroom visits. |
-| `bathroom_visits.high` | int | Abnormally high number of bathroom visits. The value is the total number of visits. |
-| `bathroom_visits.low` | int | Abnormally low number of bathroom visits. The value is the total number of visits. |
+| `bathroom_visits.high` | int | Abnormally high number of bathroom visits today. The value is the total number of visits. |
+| `bathroom_visits.low` | int | Abnormally low number of bathroom visits today. The value is the total number of visits. |
+| `care.inactivity.time_to_stretch` | True | Appears when occupants have been inactive for a long time during the day and it is time to get up and stretch. The `device_id` references the sensor where activity was last observed. |
+| `care.inactivity.warning` | True | Appears when inactivity has continued long enough to become an inactivity alert. Replaces `care.inactivity.time_to_stretch`. The `device_id` references the sensor where activity was last observed. |
+| `care.inactivity.good_morning_sleeping_in` | True | Appears when occupants are usually awake by now and movement near a bed sensor indicates someone may be sleeping in. |
+| `care.inactivity.good_morning_problem_critical` | True | Appears when occupants are usually awake by now and no morning activity has been detected. |
+| `care.inactivity.good_morning_problem_critical_bed_only` | True | Appears when occupants are usually awake by now and are still in bed. |
+| `care.inactivity.bedtime_awake_too_late` | True | Appears when occupants are still up late relative to their usual bedtime. |
+| `care.inactivity.not_back_home.warning` | True | Appears when someone was expected to be back home and has not returned. |
+| `care.activity.bathroom_no_activity_detected` | True | Appears when someone has been in the bathroom too long. |
+| `care.activity.bathroom_activity_detected` | True | Incontinence warning: a brief sensor detected wetness. |
+| `care.activity.sleep.out_of_bedroom.morning_summary` | True | Morning summary of out-of-bedroom activity overnight. The `description` contains the summary. |
+| `care.activity.wandering_far_away` | True | Appears when a tracked wearable is far away from home. |
+| `care.sms_sos` | True | Emergency SOS received over SMS. The `description` contains the message text. |
+| `request_assistance` | int | Assistance was requested from the mobile app or smart speaker. The value is the request type: 0 = emergency, direct to call center; 1 = standard emergency; 2 = request assistance from occupants; 3 = request assistance from anyone. |
+| `rules.buttonpanic.alert` | True | A button with a panic / call-for-help behavior was pressed. |
+| `rules.buttononeshot.alert` | True | A one-shot button was pressed to call for help. |
+| `rules.buttonmulti.alert` | True | A multi-button was pressed to call for help. |
+| `rules.buttonmobile.alert` | True | A mobile button was pressed to call for help. |
+| `rules.audio_assistant.alert` | True | An audio assistant was used to call for help. |
+| `rules.leak.{device_id}` | True | The leak detector with this device ID detected a water leak. |
+| `radar.fall_confirmed_alert` | True | A radar device confirmed a fall. |
+| `vayyar.stability_event_confirmed_alert` | True | A Vayyar radar device confirmed a stability event. |
+| `health_high_heart_rate_warning` | True | A health device detected a higher than normal heart rate. |
+| `health_movement_confirmed_alert` | True | A health device detected movement. |
+| `onscreen.pain_level_increasing` | float | Pain level appears to be increasing based on AI Assessment results. The value is the current trend value. |
+| `onscreen.pain_level_declining` | float | Pain level appears to be declining based on AI Assessment results. The value is the current trend value. |
+| `onscreen.happiness_level_increasing` | float | Happiness level appears to be increasing based on AI Assessment results. The value is the current trend value. |
+| `onscreen.happiness_level_declining` | float | Happiness level appears to be declining based on AI Assessment results. The value is the current trend value. |
 | `device.blindspot.{device_id}` | True | Appears when there is a blind spot identified near a sensor with this device ID. Indicates a missing entry or motion sensor nearby. |
 | `device.alwaysopen.{device_id}` | True | Appears when the entry sensor with this device ID appears to be always open, and therefore broken (magnet fell off, door is always open, etc.). |
 | `device.name_behavior_mismatched.{device_id}` | True | Appears when the descriptive name of the device does not match the behavior selected for that device. For example, an entry sensor with a behavior for a perimeter door named 'Medicine Cabinet'. |
@@ -36,10 +55,16 @@ Insights are based on available data and not guaranteed to exist in the `insight
 | `device.offline.{device_id}` | True | The device with the given ID is offline. |
 | `device.low_battery.{device_id}` | int | This device has a low battery. The value is the current battery level from 0-100%. |
 | `device.low_signal.{device_id}` | float | This device appears to have a low wireless signal strength. The value is the average RSSI (receive signal strength indicator). |
-| `security_mode` | String | Mode of the system - HOME (disarmed); AWAY (fully armed); STAY (perimeter armed); TEST (test mode). |
-| `occupancy.status` | String | Occupancy status - PRESENT; ABSENT; SLEEP; VACATION; H2A (going away); A2H (expected home soon); H2S (going to sleep soon); S2H (waking up soon). | 
+| `device.fall.{device_id}` | True | The device with the given ID detected a positional fall. |
+| `device.far_away.{device_id}` | float | The tracked device with the given ID is far away from home. The value is the distance from home. |
+| `device.reboot_toomany.{device_id}` | int | The device with the given ID has rebooted too many times. The value is the reboot count. |
 | `occupancy.return_ms` | int | Approximate time in unix epoch ms occupants are expected to return. This could be in the past if occupants were expected home earlier. | 
-| `occupancy.last_seen` | None | The `title`, `description`, `device_id`, and `device_desc` describe where occupants were last seen. |
+
+#### Legacy Insights
+
+The following insight IDs were produced by earlier versions of the bots and may still appear in older `insights` state variables. The current sleep quantification microservice (`com.ppc.Microservices/intelligence/care/activity/location_sleep_quantification_microservice.py`) only deletes them, and no microservice in `botlab-core` or `botlab-private` currently captures `security_mode`, `occupancy.status`, or `occupancy.last_seen`. Apps should not depend on them.
+
+`sleep.duration_ms`, `sleep.sleep_score`, `sleep.cycle_score`, `sleep.bedtime_score`, `sleep.wakeup_score`, `sleep.restlessness_score`, `sleep.bedtime_ms`, `sleep.wakeup_ms`, `sleep.overslept`, `sleep.underslept`, `sleep.low_sleep_quality.warning`, `sleep.too_many_bathrooms.warning`
 
 ## Output
 
@@ -57,6 +82,8 @@ State Variable : `insights`
 | device_id | Optional field used to capture the device ID string of the device producing this insight, if applicable. |
 | device_desc | Optional field used to capture the nickname of the device producing this insight, if applicable. |
 | device_type | Optional field used to capture the device type, if applicable. |
+| confidence_state | Optional confidence state associated with this insight, if the producing microservice supplied one. |
+| confidence_reason | Optional human-readable reason for the confidence state. Only present when `confidence_state` is present. |
 | updated_ms | Timestamp of the last update to this insight, in unix epoch milliseconds. Can be used to render display information like "5 minutes ago", or simply see if this insight was updated. |
 
 #### Insight JSON Content Example

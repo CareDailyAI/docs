@@ -16,32 +16,36 @@ Each service element references one or more Question objects that the mobile app
 | description | String | Really long description of the service to explain it to the user. May include characters like \n.
 | icon | String | Icon name to apply |
 | icon_font | String | Icon font package to use for the icon |
-| weight | int | Lower weights float to the top. All ordered lists should be pre-sorted by weight before the apps receive the data, so the apps do not have to sort |
+| weight | int | Lower weights float to the top. All ordered lists are pre-sorted by `status` (critical first), then `weight`, then `updated` before the apps receive the data, so the apps do not have to sort |
 | updated | int | Timestamp in milliseconds of the last update to this element |
 | active | Boolean | Describes whether or not this service is running or disabled. Recommendation is to set services that are not active to a gray color in the UI. |
 | status | int | See the Status table |
-| status_text | String | Recommended text to display for the current status of this service - for example "RUNNING" or "ACTIVE - PHONE CALLS ONLY". |
-| percent | float | Deprecated - used to be used to describe how much this particular service has learned or trusts itself to run |
+| status_text | String | Recommended text to display for the current status of this service - for example "RUNNING" or "ACTIVE - PHONE CALLS ONLY". Defaults to "RUNNING" when `active` is true and "DISABLED" when false, if the bot did not supply text. |
+| percent | float | Deprecated - used to be used to describe how much this particular service has learned or trusts itself to run. Always present, clamped to 0-100, default 100. |
 | question_id | String | Question ID to answer to toggle this service on or off. This is useful when a single question drives the service. |
 | collection_id | String | String that represents a collection of questions (and the title of that collection). This is used when a service may be driven by multiple questions combined. |
+| section_id | int | Optional. Section ID within the question collection that groups this service's questions. |
+| display_info | JSON Object | Optional display hints. Currently may contain `display_home_area` (Boolean). |
 
 ### Status
-| Status | Meaning  | Recommended Color |
-| ------ | -------- | ----------------- |
-| 0      | Good     | Green             |
-| 1      | Learning | Blue              |
-| 2      | Critical | Red               |
+| Status | Meaning            | Recommended Color |
+| ------ | ------------------ | ----------------- |
+| 0      | Good               | Green             |
+| 1      | Learning / Warning | Blue              |
+| 2      | Critical           | Red               |
 
 ## Inputs
 
 The `services` state provides Question IDs for the user to answer. Control these services through the Questions API. 
+
+The list itself is populated by bots through the `update_dashboard_content` data stream address with `type` 1 and card title "ALERTS" (see [Dashboard Status](dashboard_status.md) for the message format). An older card title "SERVICES" is deprecated.
 
 ## Outputs
 
 State Variable : `services`
 
 #### Display recommendations
-The `cards` are pre-sorted by the bots based on the weight of each element.
+The `cards` are pre-sorted by the bots based on the status, then the weight, of each element.
 
 On the main "Services and Alerts" screen, we recommend showing these properties of each element in a table view:
 * title
@@ -237,5 +241,6 @@ This is one of the earlier Synthetic APIs. If we were to do it again, we would:
 * Provide a list of these questions when necessary, instead of a Collection.
 
 ## References
-* `com.ppc.BotProprietary/signals/dashboard.py`
-* `com.ppc.Microservices/intelligence/dashboard/location_dashboardheader_microservice.py`
+* `com.ppc.Bot/signals/dashboard.py`
+* `com.ppc.BotProprietary/signals/services.py` (service IDs, weights, section IDs, and collection names)
+* `com.ppc.Microservices/intelligence/dashboard/location_dashboard_microservice.py`

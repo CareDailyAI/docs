@@ -17,11 +17,15 @@ when prioritizing homes against each other in a specific category.
 | comment | String | Comment to display under the title |
 | icon | String | Icon name to show on the dashboard |
 | icon_font | String | See the Icon Font list in the README.md |
-| call | Boolean | True to show the Emergency Call button, which would allow a user to call people who have the alert texting permission 'I live here' or call the Emergency Call Center |
-| ecc | Boolean | True to show the Emergency Call Center as an option to call inside the menu that comes up for the Emergency Call button |
+| call | Boolean | True to show the Emergency Call button, which would allow a user to call people who have the alert texting permission 'I live here' or call the Emergency Call Center. Populated from the active conversation: True when the conversation is contacting residents or supporters. |
+| ecc | Boolean | True to show the Emergency Call Center as an option to call inside the menu that comes up for the Emergency Call button. Only True when this location has professional monitoring and the conversation has not already contacted the Emergency Call Center. |
 | updated_ms | int | Timestamp in milliseconds when this dashboard header was updated. Use this absolute time to render UI information like "38 seconds ago" or "2 hours ago" on the dashboard of the app. |
 | resolution | JSON Object | See the Resolution Data Structure table |
 | feedback | JSON Object | See the Feedback Data Structure table |
+| ttl_ms | int | Optional. Time-to-live in milliseconds requested by the bot, after which this header is automatically deleted. Informational only. |
+| external_partner | Boolean | Optional. True if this header should also be shown on external partner dashboards. |
+| user_id | int | Optional. User ID this header is associated with (the subject of, or actor on, the alert). Distinct from the `user_id` the app adds to resolution and feedback content. |
+| alert_status | int | Optional. 0 = no alert semantics (neutral); 1 = header represents an active alert; 2 = header represents a cancelled alert. Absent when the bot did not specify it. |
 
 ### Priority
 | Dashboard Priority | Definition         | Color Recommendation | Description |
@@ -33,6 +37,8 @@ when prioritizing homes against each other in a specific category.
 | 4                  | System Problem     | Orange               | Attention is needed on the infrastructure of this home's installation, something is wrong with the devices. |
 | 5                  | Subjective Warning | Orange               | Something seems off with the behavioral patterns or trends of the occupants of this home, human attention is needed to see if it is really a problem. |
 | 6                  | Critical Alert     | Red                  | A critical alert is happening live in this home. Immediate attention needed. |
+
+Multiple bots may each contribute a header. The header with the highest priority is published. Between headers of equal priority, one tied to an active conversation wins, otherwise the one with the lowest internal "percent good" wins. Priority values are clamped to the range 0-100 by the microservice.
 
 ### Resolution Data Structure
 If populated in the dashboard header, the `resolution` object allows the app to send user-selectable information back into the bot.
@@ -49,6 +55,9 @@ If populated in the dashboard header, the `resolution` object allows the app to 
 | {response_option}.icon | String | Icon to show on the dashboard when the user selects this option. |
 | {response_option}.icon_font | String | Icon font for the icon on the dashboard when the user selects this option. |
 | {response_option}.content | JSON Dictionary | When the user selects this option, merge this key/value dictionary content with the `resolution.content` content to form the content for a data stream message, to be delivered back to the location and its bots via data stream message to the `datastream_address` address. |
+| {response_option}.key_words | List | Ignore. Used internally by the bots to match SMS replies to this option. |
+
+The `datastream_address` is usually `conversation_resolved` (headers driven by a conversation) or `resolve_dashboard_header` (one-shot headers not tied to a conversation, whose `resolution.content` carries the header `name`). Always send to the address given in the object rather than hard-coding one.
 
 ### Feedback Data Structure
 Asking for user feedback is optional, but very useful to see how our bots and services are doing. The bots decide whether they want the mobile app to ask for feedback after the user selects some response option in the app. Note that if an alert is handled via SMS or some other mechanism, the bots may ask for feedback independently over SMS, and this has its own probability associated with it.
@@ -77,16 +86,19 @@ The dashboard header is typically managed internally by bots, but allows an exte
 
 ### Content
 You can provide the content you see in the state variable below.
-* Populating the data stream message content will create or update the dashboard. The highest priority dashboard header content will be selected for display.
+* Populating the data stream message content with a `name` and a `priority` will create or update the dashboard. The highest priority dashboard header content will be selected for display.
 * Leaving the data stream message content blank will refresh the dashboard, and do nothing else.
-* Including the name but no additional content (except for the future_timestamp_ms) will delete the dashboard header content. If you specify a `future_timestamp_ms` field, then this dashboard header content will automatically be deleted at that absolute future timestamp.
+* Including the `name` but no `priority` will delete the dashboard header content. If you also specify a `future_timestamp_ms` field, then this dashboard header content will automatically be deleted at that absolute future timestamp.
+* Including a `future_timestamp_ms` in the future together with a `priority` will apply the header at that future time. Sending an update without `future_timestamp_ms` cancels any pending future updates for that `name`.
 
 ## Outputs
 
 State Variable : `dashboard_header`
 
 #### Content
-Anything marked "Internal Usage" is not meant to be used by the application UI's, but may exist in the object to help bots manage this content.
+Anything marked "Internal Usage" is not meant to be used by the application UI's. The microservice strips `future_timestamp_ms`, `conversation_object`, and `percent` before publishing the state variable, so apps will not normally see them.
+
+When no bot has published a header, the microservice publishes a default header named `default` with priority 0, icon `cogs` (`far`), the service name as the title, and the comment "Listening for activity".
 ```
     {
         # Unique identifying name
@@ -107,18 +119,28 @@ Anything marked "Internal Usage" is not meant to be used by the application UI's
         # Icon font package
         "icon_font": icon_font,
 
+        # Timestamp in milliseconds when this header was last updated
+        "updated_ms": <timestamp in milliseconds>,
+
         # Auto-Populated by a Conversation: True to show the emergency call button
         "call": False,
 
         # If the emergency call button is present, this flag allows the user to contact the emergency call center.
         "ecc": False,
 
-        # Question ID for the resolution question
+        # Optional fields, present only when the bot specified them
+        "ttl_ms": <milliseconds>,
+        "external_partner": <True/False>,
+        "user_id": <int>,
+        "alert_status": <0 | 1 | 2>,
+
+        # Resolution question
         "resolution": {
-            "question": "CHANGE STATUS >",
+            # Button text to place on the front page of the app
+            "button": "UPDATE STATUS >",
 
             # Title at the top of the action sheet
-            "title": "Change Status",
+            "title": "Update Status",
 
             # To answer this question, send a data stream message to this address ...
             "datastream_address": "conversation_resolved",
@@ -161,7 +183,7 @@ Anything marked "Internal Usage" is not meant to be used by the application UI's
             "verbatim": "What do you think caused the alert?",
 
             # To answer this question, send a data stream message to this address ...
-            "datastream_address": "conversation_feedback_quantified",
+            "datastream_address": "conversation_feedback",
 
             # ... and include this content - you fill in the 'quantified', 'verbatim', and optional 'user_id' fields.
             "content": {
@@ -175,13 +197,13 @@ Anything marked "Internal Usage" is not meant to be used by the application UI's
             }
         },
 
-        # Internal usage: Future timestamp to apply this header
+        # Internal usage (stripped before publishing): Future timestamp to apply this header
         "future_timestamp_ms": <timestamp in milliseconds>
 
-        # Internal usage only: Conversation object reference, so we don't keep a dashboard header around for a conversation that expired.
+        # Internal usage only (stripped before publishing): Conversation object reference, so we don't keep a dashboard header around for a conversation that expired.
         "conversation_object": <conversation_object>,
 
-        # Internal usage only: Percentage good, to help rank two identical priority headers against each other. Lower percentages get shown first because they're not good.
+        # Internal usage only (stripped before publishing): Percentage good, to help rank two identical priority headers against each other. Lower percentages get shown first because they're not good.
         "percent": <0-100 weight>
     }
 ```
@@ -192,7 +214,7 @@ Anything marked "Internal Usage" is not meant to be used by the application UI's
 A fall is detected. The `dashboard_header` state variable is updated with the JSON content below. As the conversation plays out, this `dashboard_header` state variable will continue to get refreshed with the latest updates.
 
 The app should use [WebSocket APIs](../platform_apis/websockets.md) to subscribe to receive updates to the `dashboard_header` state variable.
-A more primitive method for testing or early development would be to periodically (poll for the state variable)[https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Synthetic-APIs/operation/Set%20Location%20State].
+A more primitive method for testing or early development would be to periodically [poll for the state variable](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Synthetic-APIs/operation/Get%20Location%20State).
 
 ```
 {
@@ -291,7 +313,9 @@ When a user selects a response option, the app does two things:
 The data stream message is sent to the address defined in the `resolution.datastream_address` field. In this example, the address is "conversation_resolved".
 
 The feed content of the data stream message must be assembled by the app. It is a union of the `resolution.content` dictionary with the `resolution.response_options[#].content` dictionary.
-Even though it is not asked for explicitly in the dashboard_header JSON content, it's strongly recommended to include a `user_id` field in all of these dynamic data stream messages as well.
+Even though it is not asked for explicitly in the dashboard_header JSON content, it's strongly recommended to include a `user_id` field in all of these dynamic data stream messages as well. The bots record it as the user who handled the alert.
+
+The app should not interpret the `answer` values itself; echo back exactly the `content` of the selected option. The example above is a historical capture. The current default conversation resolution object offers a single option, "Resolve this alert.", whose content is `{"answer": 1}`. Answers of 2 (confirmed) or 3 (unsure) make the bot continue escalating the conversation; any other answer ends it.
 
 If the user selected "Resolved", then the app would send this data stream message:
 
@@ -357,5 +381,7 @@ Data Stream Content (exclude comments of course):
 
 
 ## References
-* `com.ppc.BotProprietary/signals/dashboard.py`
+* `com.ppc.Bot/signals/dashboard.py`
 * `com.ppc.Microservices/intelligence/dashboard/location_dashboardheader_microservice.py`
+* `com.ppc.Microservices/intelligence/conversations/types/conversation_type.py` (default `resolution` and `feedback` objects)
+* `com.ppc.Microservices/intelligence/conversations/location_conversation_microservice.py` (`conversation_resolved`, `conversation_feedback`, `contact_ecc` handlers)

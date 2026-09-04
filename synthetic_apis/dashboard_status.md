@@ -5,7 +5,7 @@ Dashboard status shows noteworthy events that recently happened. These typically
 ### Properties
 The `now` state variable contains a list of cards to show. Although this concept of 'cards' is now a bit deprecated versus what our latest UI's display. This was originally designed to support multiple sections on the main page of the app, each section having its own weight and title and sub-elements.
 
-The main information is stored in the `content` list on the first and only card. These should have been pre-sorted by weight, where smaller numbers are lighter and float to the top.
+The main information is stored in the `content` list of each card. In practice the `now` state variable holds a "NOW" card (`type` 0, `weight` 0) and may also hold a "TODAY" card (`type` 2, `weight` 5) describing what happened today. Cards are pre-sorted by card weight. Within each card, `content` is pre-sorted by `status` (critical first), then by `weight` (smaller numbers float to the top), then by `updated`.
 
 | Property | Type | Description | 
 | -------- | ---- | ----------- |
@@ -14,11 +14,14 @@ The main information is stored in the `content` list on the first and only card.
 | content.status | int | See the status table |
 | content.icon | String | Icon to apply |
 | content.icon_font | String | Icon font for the icon selection |
-| content.updated | int | Timestamp in milliseconds when this content was updated |
-| content.weight | int | Lower values float to the top. Used internally by the microservice to auto-sort the list before saving the state variable, so the apps shouldn't have to do anything else to sort this list. |
+| content.updated | int | Timestamp in milliseconds when this content was updated. Populated by the microservice if the sender did not provide it. |
+| content.weight | int | Lower values float to the top. Used internally by the microservice to auto-sort the list (after `status`) before saving the state variable, so the apps shouldn't have to do anything else to sort this list. |
 | content.device_id | String | Optional device ID this content is related to. If this is populated, we recommend allowing the user to tap on this item and be taken directly to that device UI. |
-| content.alarms | Dictionary | Ignore. Used internally by the microservice to automatically change this item's information over time. |
+| content.alarms | Dictionary | Ignore. Used internally by the microservice to automatically change this item's information over time. Keys are absolute timestamps in milliseconds; values are the Status code to apply at that time (see the Status table). |
+| content.comments | Dictionary | Ignore. Used internally alongside `alarms` to swap in a new `comment` when a warning or critical status is applied. |
 | content.url | String | Optional URL so when a user taps on this content they are taken to this URL. You typically won't have a URL and a device_id in the same status content, because a user can only click one. |
+
+Content older than one week is automatically removed by the microservice unless one of its `alarms` fired within the last day or is still pending.
 
 ### Status
 | Status | Meaning | Recommended Color |
@@ -29,7 +32,7 @@ The main information is stored in the `content` list on the first and only card.
 | 1      | Warning | Orange            |
 | 2      | Critical | Red              |
 
-You can generally ignore these deprecated fields which will remain for historical reasons:
+Apps can generally ignore these card-level fields which will remain for historical reasons:
 * `type`
 * `title`
 
@@ -39,8 +42,9 @@ Data Stream Address : `update_dashboard_content`
 
 Typically controlled by bots.
 
-* To create some status - populate the data stream content as you see below.
-* To delete an object - populate the type, title, content.id, and nothing else.
+* `type`, `title`, and `content` are required. Messages missing any of them are ignored. `type` 0 (NOW) and `type` 2 (TODAY) write to the `now` state variable; `type` 1 writes to the `services` state variable (see [Services and Alerts](services.md)). Content is placed into the card whose `title` matches, creating the card if needed.
+* To create or update some status - populate the data stream content as you see below.
+* To delete an object - populate the type, title, content.id, and no `comment` (or `comment` set to null). Empty cards are removed.
 
 ### Data Stream Content
 This content goes into the `feed` of a data stream message.
@@ -107,5 +111,5 @@ State Variable: `now`
 ```
 
 ## References
-* `com.ppc.BotProprietary/signals/dashboard.py`
+* `com.ppc.Bot/signals/dashboard.py`
 * `com.ppc.Microservices/intelligence/dashboard/location_dashboard_microservice.py`

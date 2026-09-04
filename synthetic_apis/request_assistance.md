@@ -2,6 +2,8 @@
 
 Enable mobile apps and smart speakers to request assistance for the user.
 
+A new request is ignored while a previous request's conversation is still unresolved.
+
 #### Properties
 
 | Property | Type | Description |
@@ -11,7 +13,8 @@ Enable mobile apps and smart speakers to request assistance for the user.
 | `user_id` | int | Optional. User ID that is making the request, if available. |
 | `latitude` | String | Optional. Latitude for mobile alerts. |
 | `longitude` | String | Optional. Longitude for mobile alerts. |
-| `no_dispatch` | Bool | Optional. Declare that professional monitoring services should not dispatch. |
+| `no_dispatch` | Bool | Optional. Declare that professional monitoring services should not dispatch. Applies to `type` 0 only. |
+| `priority` | Bool | Optional. True if this is a priority request and emergency dispatch should be contacted immediately. Applies to `type` 0 only, and is ignored when `no_dispatch` is true. |
 
 #### Types
 
@@ -60,5 +63,5 @@ Data Stream Address: `request_assistance`
 
 ## References
 * `com.ppc.BotProprietary/signals/request_assistance.py`
-* `com.ppc.Microservices/intelligence/care/pers`
+* `com.ppc.Microservices/intelligence/care/pers/location_requestassistance_microservice.py`
 

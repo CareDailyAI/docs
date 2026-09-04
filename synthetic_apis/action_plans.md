@@ -7,20 +7,22 @@ When a problem occurs, an action plan oversees the resolution of the problem. Th
 | `action_plans` | Dictionary | Dictionary of action plans. The key in each entry is the name of the unique identifier for service related to this action plan. |
 | `group_1` | List of Dictionary user objects | List of people who would get contacted first. In some apps, this is the list of people who are marked "I live here". |
 | `group_2` | List of Dictionary user objects | List of people who would get contacted second. In some apps, this is the list of people who are marked "Family / Friend". |
-| `push_only` | Boolean | True if this alert will prefer a push notification only. Note that alerts will still fail-over to SMS if they cannot be delivered via push. |
+| `push_only` | Boolean | True if this alert will prefer a push notification only. Note that alerts will still fail-over to SMS if they cannot be delivered via push. Currently always False. |
 | `contact_group_1` | Boolean | True if group 1 will be contacted for this alert. |
 | `contact_group_2` | Boolean | True if group 2 could be contacted for this alert. |
 | `group_2_delay_ms` | Integer | Milliseconds delay between contacting group 1 and then escalating to group 2 if the alert is not resolved. You would normally turn this into minutes or hours to communicate the value to users. |
-| `allow_ecc` | Boolean | True if this alert could escalate to the Emergency Call Center *without dispatch*. Note that sometimes `allow_ecc` may be False but `allow_dispatch` may be True - this scenario means we would escalate directly to the Emergency Call Center with authorization to dispatch. |
+| `allow_ecc` | Boolean | True if this alert could escalate to the Emergency Call Center *without dispatch*. This is `ecc_eligible` combined with the user's professional monitoring subscription, registration, and Emergency Call Center service being on. `allow_dispatch` can only be True when `allow_ecc` is True. |
 | `ecc_delay_ms` | Integer | Milliseconds delay between contacting group 2 and then escalating to the Emergency Call Center. |
-| `allow_dispatch` | Boolean | True if this alert could trigger a dispatch from emergency services. |
-| `dispatch_delay_ms` | Integer | Milliseconds delay between contacting the Emergency Call Center without dispatch, and then contacting the Emergency Call Center again with authorization to dispatch. |
+| `allow_dispatch` | Boolean | True if this alert could trigger a dispatch from emergency services. This is `dispatch_eligible` combined with `allow_ecc` and the user's dispatch service being on. |
+| `dispatch_delay_ms` | Integer | Milliseconds delay between contacting the Emergency Call Center without dispatch, and then contacting the Emergency Call Center again with authorization to dispatch. Currently exported with the same value as `ecc_delay_ms`. |
 | `ecc_eligible` | Boolean | True if this action plan is eligible for escalation to the Emergency Call Center, regardless of whether the user is subscribed or has their Emergency Call Center turned on or off. |
 | `dispatch_eligible` | Boolean | True if this action plan is eligible for emergency dispatch, regardless of whether the user is subscribed or has their Emergency Call Center turned on or off. |
 
 ## Output
 
 State Variable : `action_plans`
+
+The `action_plans` dictionary currently contains an entry for each of these service keys: `care.button.supernova`, `care.button.supernova_not_dispatch`, `care.button.medical`, `care.button.help_from_anyone`, `care.button.help_from_occupants`, `care.generalinactivity`, `care.notbackhome`, `care.bathroomactivity`, `care.latenight`, `care.midnightsnack`, `care.wandering`, `care.radar`, `care.radar_stability`, `care.apple`, and `care.outofbedtoolong`. Every entry also includes `ecc_eligible` and `dispatch_eligible`, which are not shown in the example below.
 
 #### Example
 
@@ -118,7 +120,7 @@ State Variable : `action_plans`
         "group_2_delay_ms": 600000,
         "push_only": false
       },
-      "care.vayyar": {
+      "care.radar": {
         "allow_dispatch": true,
         "allow_ecc": true,
         "contact_group_1": true,

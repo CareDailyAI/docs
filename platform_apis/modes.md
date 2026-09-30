@@ -91,8 +91,8 @@ stateDiagram-v2
     S2H --> PRESENT
 ```
 
-The diagram shows the transitional states between their neighbors. It is an illustration of the
-vocabulary, not a rule about which transitions are allowed.
+The diagram places each transitional state between the two states it connects. It illustrates the
+vocabulary; the bots decide which transitions happen.
 
 | Occupancy Status | Description |
 | ---------------- | ----------- |

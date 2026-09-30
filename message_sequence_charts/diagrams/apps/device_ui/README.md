@@ -2,7 +2,6 @@
 
 ## Table of contents
 
-* [Table of contents]()
 * [Device Model UX](#device-model-ux)
     * [APIS](#apis)
     * [How it should work](#how-it-should-work)
@@ -372,3 +371,9 @@ _Note: The device model's `displayInfo` property describes what parameter names 
 Params:
 - locationId: $locationId
 - data: `{'devices': [{'deviceId': $deviceId, 'commandType': 4, 'commandTimeout': 60, 'params': $DeviceModel.refreshParameters}]}`
+
+## Related
+
+- [Devices and parameters](../../../../concepts/devices_and_parameters.md)
+- [Device Onboarding](../device_onboarding/README.md)
+- [Behaviors](../../../../synthetic_apis/behaviors.md)

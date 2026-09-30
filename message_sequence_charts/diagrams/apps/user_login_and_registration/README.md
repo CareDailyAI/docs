@@ -11,6 +11,31 @@
 * [Username Phone Login](#username-phone-login)
 * [Username Phone Register](#username-phone-register)
 
+## The pattern behind every registration chart
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant U as 👤 User
+    participant App as 📱 App
+    participant P as ☁️ Platform
+    U->>App: email (or phone) and password
+    App->>P: GET Operation Token (type 1)
+    P-->>App: operation token
+    App->>P: POST user, with the token<br/>user + location {"name": "Home"}
+    P-->>App: userId
+    opt phone sign-up, or an account that requires it
+        App->>P: GET passcode
+        P->>U: passcode by SMS or email
+    end
+    App->>P: GET Login by username
+    P-->>App: API key
+```
+
+The charts below are the variations: email or phone, with or without a separate username, and the
+verification steps each one adds. The [Authentication guide](../../../../platform_apis/authentication.md)
+covers key types and the two-step administrator login.
+
 ## Diagrams
 
 ### Email Login
@@ -330,3 +355,9 @@ Params:
 - passcode: $passcode
 - expiry: -1
 - appName: $appName
+
+## Related
+
+- [Authentication](../../../../platform_apis/authentication.md)
+- [Quick Start](../../../../getting_started/quick_start.md)
+- [Users and access](../../../../concepts/users_and_access.md)

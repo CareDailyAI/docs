@@ -32,6 +32,27 @@
 
 This is the general flow for onboarding devices.
 
+```mermaid
+flowchart TD
+    S1["1. GET Device Models<br/><i>categories and models</i>"] --> S2["2. Select a model<br/><i>check pairingType and<br/>dependencyDeviceTypes</i>"]
+    S2 --> S21["2.1 GET Stories<br/><i>storyType 1: connection</i>"]
+    S21 --> S3["3. Show the connection story"]
+    S3 --> S31["3.1 Connect the device<br/><i>by pairing type</i>"]
+    S31 --> S32{"3.2 Poll GET devices<br/>for newDevice = true"}
+    S32 -->|"timeout"| S33["3.3 Reconnect story<br/><i>storyType 3, if any</i>"]
+    S33 --> S3
+    S32 -->|"found"| S4["4. Success story<br/><i>storyType 2, if any</i>"]
+    S4 --> S5["5. Standard setup<br/><i>behavior, spaces, name</i>"]
+    S5 --> S6["6. Installation story<br/><i>storyType 4, if any</i>"]
+    S6 --> S7["7. Device UI"]
+    style S7 fill:#f0fdf4,stroke:#1b873f
+```
+
+> **Finish by clearing the badge.** The "New Device" badge is the device's `newDevice` flag, and
+> naming the device or choosing its behavior does not clear it. Send `newDevice: false` with
+> [PUT Update a Device](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Devices/operation/Update%20Device)
+> at the end of setup.
+
 <a id="oobe-list-models"></a>
 ### Step 1 - Get available Device Categories and Models
 
@@ -104,7 +125,7 @@ Newly registered devices will include the property `device.newDevice=true` and m
 Two options of result:
 
 - Timeout - No new devices were found. If the page provides an action to link to a support page the user may do so.
-- New Device Found - If a Connection Success story exists (`storyType == 2`) proceed to [Step 7]()
+- New Device Found - If a Connection Success story exists (`storyType == 2`) proceed to [Step 7](#step-7---show-device-ui)
 
 <a id="oobe-device-reconnection"></a>
 #### Step 3.3 - Show OOBE Reconnect story
@@ -528,3 +549,9 @@ Params:
 
 Params:
 - desc: $textfield.text
+
+## Related
+
+- [Devices and parameters](../../../../concepts/devices_and_parameters.md)
+- [Behaviors](../../../../synthetic_apis/behaviors.md)
+- [Watch a home live](../../../../guides/watch_a_home_live.md), for confirming a new device is reporting

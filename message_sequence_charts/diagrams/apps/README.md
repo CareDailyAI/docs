@@ -47,3 +47,8 @@ a single screen.
 [Turning services on and off](services_and_alerts/README.md), and how an alert reaches a person.
 Sits directly on top of the [Services](../../../synthetic_apis/services.md) and
 [Action Plans](../../../synthetic_apis/action_plans.md) Synthetic APIs.
+
+## Related
+
+- [Message Sequence Charts](../../README.md)
+- [Guides](../../../guides/README.md), the same flows told as stories

@@ -328,3 +328,8 @@ Open common Wi-Fi configuration page that lists Wi-Fi access points and allows f
 | location_id | Int | _Optional_ Assigns location information as contact |
 | organization_id | Int | _Optional_ Assigns organization information as contact |
 | user_id  | Int  | _Optional_ Assigns user information as contact |
+
+## Related
+
+- [Start here](../../../../getting_started/README.md)
+- [Synthetic APIs](../../../../synthetic_apis/README.md), which drive most screens

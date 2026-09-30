@@ -46,3 +46,8 @@ Params:
 Params:
 - locationId: $locationId
 - deviceId: $deviceId
+
+## Related
+
+- [Devices and parameters: sending a command](../../../../concepts/devices_and_parameters.md#sending-a-command)
+- [Device UI](../device_ui/README.md)

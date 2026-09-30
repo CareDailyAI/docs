@@ -8,6 +8,16 @@ screen and it half works, this is usually the section that explains why.
 
 ---
 
+```mermaid
+flowchart LR
+    L["🔐 Login and<br/>Registration"] --> S["🗺️ Mobile App<br/>Schema"]
+    S --> O["➕ Device<br/>Onboarding"] --> U["🎛️ Device UI"] --> C["⚙️ Device<br/>Configuration"]
+    S --> SA["🔔 Services<br/>and Alerts"]
+```
+
+A person meets the flows roughly in this order: they sign in, land in the app, add a device, use
+its screen, change its settings later, and turn services on.
+
 ## The flows
 
 | Flow | What it shows | Read it when |

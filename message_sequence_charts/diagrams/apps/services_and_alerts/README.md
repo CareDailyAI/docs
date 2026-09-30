@@ -27,3 +27,9 @@ Params:
 
 Params:
 - locationId: $locationId
+
+## Related
+
+- [Services and Alerts](../../../../synthetic_apis/services.md)
+- [Action Plans](../../../../synthetic_apis/action_plans.md)
+- [The life of an alert](../../../../guides/life_of_an_alert.md)

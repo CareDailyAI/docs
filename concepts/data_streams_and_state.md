@@ -54,6 +54,9 @@ What to know about a data stream message:
   what you mean.
 - **Discover before you send.** `GET /cloud/appstore/summary?locationId=` lists the data stream
   addresses the bots on that location accept, in `dataStreams[]`.
+- **Discover what they publish.** The `location_properties` state variable lists the state
+  variables bots write on that location: `additional_properties` holds regular state names, and
+  `timeseries_properties` maps each time-series state to the timestamp of its latest entry.
 
 ### Creating objects without a reply
 

@@ -49,7 +49,7 @@ Then read the state the page says the bot updates, and report what changed.
 ### Worked example: remove a card from the NOW dashboard
 
 The [Dashboard Status](../synthetic_apis/dashboard_status.md) page says a message with the card's
-`type`, `title` and `content.id` and nothing else deletes it:
+`type`, `title` and `content.id`, with no `comment` (or `comment` set to null), deletes it:
 
 ```bash
 curl -s -X POST "$CAREDAILY_SERVER/cloud/appstore/stream?address=update_dashboard_content&scope=1&locationId=<loc>" \

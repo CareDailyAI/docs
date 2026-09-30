@@ -59,11 +59,16 @@ have fallen, it writes its conclusions back to the platform in three forms.
 | --- | --- | --- |
 | A **narrative** | The history entry the timeline shows. Priority 2 is a warning, 3 is critical | [Event Streaming: narratives](../platform_apis/event_streaming.md#narrative-event-streaming) |
 | The **`dashboard_header`** state, priority 6 | The red banner: "Help needed!" | [Dashboard Header](../synthetic_apis/dashboard_header.md) |
-| The **`falls`** time-series state | A record of the fall itself, when a fall-detecting radar saw it | [Fall History](../synthetic_apis/falls.md) |
+| The **`falls`** time-series state | A record of the fall itself, from a radar, a wearable button or an emergency SOS | [Fall History](../synthetic_apis/falls.md) |
 
 Priority 6 on the dashboard header means **Critical Alert**, rendered red. The header also says
 whether to show the call button (`call`) and the Emergency Call Center (`ecc`), and holds the
 `resolution` and `feedback` objects your app will use in step 5.
+
+Every priority 5 and 6 header has a `name` your app can route on. A radar fall, for example, is
+`radar_fall_{device_type}` and a wearable fall is `positional_fall_{device_id}`. The full catalog,
+with titles, escalation phases and how each one clears, is in
+[Dashboard Alerts](../synthetic_apis/dashboard_alerts.md).
 
 ## 3. Everyone who needs to know, knows
 
@@ -127,10 +132,11 @@ with the system tell it how it did.
 
 Not every alert starts with a sensor. A person can ask for help from the app or a smart speaker by
 sending a [Request Assistance](../synthetic_apis/request_assistance.md) message. From step 2
-onward, the story is the same.
+onward, the story is the same. A new request is ignored while an earlier one is still unresolved.
 
 ## Related
 
+- [Dashboard Alerts](../synthetic_apis/dashboard_alerts.md)
 - [Dashboard Header](../synthetic_apis/dashboard_header.md)
 - [Action Plans](../synthetic_apis/action_plans.md)
 - [WebSockets](../platform_apis/websockets.md)

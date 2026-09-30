@@ -72,9 +72,12 @@ The organization row's ID field is `id`, and `parentId` walks up the hierarchy.
 | Which rooms? | `GET /cloud/json/location/{locationId}/spaces` |
 | Which bots run here? | `GET /cloud/appstore/appInstance?locationId={locationId}` |
 | Which data stream addresses do those bots accept? | `GET /cloud/appstore/summary?locationId={locationId}` |
+| Which bot states exist here? | `GET /cloud/json/locations/{locationId}/state?name=location_properties` |
 | Which service plans? | `GET /cloud/json/userServicePlans?locationId={locationId}` |
 
 `/cloud/appstore/summary` returns `dataStreams[]`. Check an address is there before you send to it.
+`location_properties` lists the state variables bots write: `additional_properties` for regular
+states, and `timeseries_properties` for time-series states with the timestamp of the latest entry.
 
 ---
 

@@ -1,6 +1,26 @@
 # Synthetic API: Multistream Messages
 
+<!-- at-a-glance -->
+> **Data stream in** `multistream`  ·  **State variable out** `multistream`  ·  [All Synthetic APIs](README.md)
+
 Instead of one data stream message at a time, a multistream message can contain multiple data stream messages at a time, each with an optional specified delivery date in the future.
+
+**When to use it:** you want to send several data stream messages at once, schedule them for later, or see, replace and cancel what is still waiting.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant App as 📱 App
+    participant MS as 🤖 Multistream microservice
+    participant T as 🤖 Addressed microservices
+    App->>MS: multistream {id, timestamp, message: {...}, narrate: {...}}
+    MS->>MS: queue it, listed in state "multistream"
+    Note over App,MS: same id again replaces the queued entry
+    Note over MS: at timestamp
+    MS-)T: "message" content
+    MS-)T: "narrate" content
+    MS->>MS: no longer listed in "multistream"
+```
 
 Through the `multistream` state variable, it is possible to see what data stream messages have been scheduled with a multistream message, and edit/remove scheduled data stream messages from the queue.
 
@@ -60,6 +80,11 @@ The output content is a dictionary of multistream messages, where the key for ea
     }
 }
 ```
+
+## Related
+
+- [Message](message.md) and [Narrate](narrate.md), the two addresses in the example
+- [Data streams and state](../concepts/data_streams_and_state.md)
 
 ## References
 * `com.ppc.Microservices/intelligence/multistream/location_multistream_microservice.py`

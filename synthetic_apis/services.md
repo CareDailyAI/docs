@@ -1,6 +1,24 @@
 # Synthetic API: Services and Alerts
 
+<!-- at-a-glance -->
+> **Data stream in** `update_dashboard_content`  ·  **State variable out** `services`  ·  [All Synthetic APIs](README.md)
+
 The "Services and Alerts" menu provides a list of available services to render for the user, allowing the user to turn those services on and off.
+
+**When to use it:** your app shows the menu of services and alerts a home can turn on or off, and the settings behind each one.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant App as 📱 App
+    participant P as ☁️ Platform
+    App->>P: GET state "services"
+    P-->>App: pre-sorted service elements
+    App->>P: GET Questions API
+    P-->>App: the questions that configure each service
+    App->>P: answer a question
+    Note over P: the service turns on or off
+```
 
 In our app design, we show the user a menu of services, and the ability to tap into a single service to learn more.
 
@@ -239,6 +257,12 @@ This is one of the earlier Synthetic APIs. If we were to do it again, we would:
 * Flatten out the hierarchy
 * Remove dependencies on the server's Questions API and build our own into the Synthetic API, following the design of the `resolution` or `feedback` architecture inside the `dashboard_header` state variable.
 * Provide a list of these questions when necessary, instead of a Collection.
+
+## Related
+
+- [Services and Alerts charts](../message_sequence_charts/diagrams/apps/services_and_alerts/README.md)
+- [Action Plans](action_plans.md)
+- [Questions API](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/User-Communications/operation/Get%20Questions)
 
 ## References
 * `com.ppc.Bot/signals/dashboard.py`

@@ -1,5 +1,36 @@
 # Synthetic APIs
 
+Synthetic APIs are provided by the **bot application layer**, on top of the platform. To an app, a
+Synthetic API looks like any other API. Behind it is a bot rather than the platform.
+
+**When to use this section:** you are building a screen that shows what the bots know about a home
+(the dashboard, alerts, insights, trends, reports), or you want to ask a bot to do something.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant App as 📱 App
+    participant Cloud as ☁️ Platform
+    participant Bot as 🤖 Bot microservice
+
+    App->>Cloud: POST data stream message<br/>address + JSON content
+    Cloud-)Bot: deliver to bots subscribed<br/>to that address
+    Note over Bot: bot does the work<br/>(asynchronous, no reply on the original call)
+    Bot->>Cloud: write location state variable
+    Cloud--)App: WebSocket push (subscribed)
+    App->>Cloud: GET location state
+    Cloud-->>App: state variable JSON
+```
+
+Two halves, asynchronous: data goes *in* as a **data stream message** and answers come *out* as a
+**location state variable**. New to bots? Read [Bots and services](../concepts/bots_and_services.md)
+and [Data streams and state](../concepts/data_streams_and_state.md) first. The golden rule:
+**change what a bot shows by sending it a message, never by overwriting its state.**
+
+**On this page:** [Libraries](#synthetic-api-libraries) · [About](#about) ·
+[Inputs](#inputs-data-stream-messages) · [Outputs](#outputs-location-state-variables) ·
+[Address lookup](#address-lookup) · [Icons](#icons)
+
 ## Synthetic API Libraries
 
 #### User Interfaces
@@ -148,6 +179,65 @@ Many times, state variables may contain extra JSON information that simply helps
 Bots register the names of the state variables they write in the `location_properties` state variable: the `additional_properties` list holds the names of regular state variables, and the `timeseries_properties` dictionary maps each time-series state variable name to the timestamp of its most recent entry. Read `location_properties` first to learn which Synthetic API outputs are available in a location.
 
 
+## Address lookup
+
+You saw an address in a log or a message and want to know which page documents it. The addresses
+from the libraries above, in one place. The Other State Variables and Other Input Addresses tables
+above list the rest.
+
+| Address | Direction | Documented in |
+| --- | --- | --- |
+| `action_plans` | state variable out | [Action Plans](action_plans.md) |
+| `behaviors` | state variable out | [Behaviors](behaviors.md) |
+| `capture_fall` | data stream in | [Fall History](falls.md) |
+| `capture_trend_data` | data stream in | [Trends](trends.md) |
+| `conversation_resolved` | data stream in | [Dashboard Alerts](dashboard_alerts.md) |
+| `dailyreport` | state variable out | [Daily Report](dailyreport.md) |
+| `daily_report_entry` | data stream in (deprecated) | [Daily Report](dailyreport.md) |
+| `dashboard_header` | state variable out | [Dashboard Header, Dashboard Alerts](dashboard_header.md) |
+| `delete_radar_subregion` | data stream in | [Radar](radar.md) |
+| `delete_rule` | data stream in | [Rules](rules.md) |
+| `delete_task` | data stream in | [Tasks](tasks.md) |
+| `device_bundles` | state variable out | [Tasks](tasks.md) |
+| `download_data` | data stream in | [Machine Learning](machinelearning.md) |
+| `falls` | state variable out | [Fall History](falls.md) |
+| `insights` | state variable out | [Insights](insights.md) |
+| `location_properties` | state variable out | [Outputs, below](#discovering-which-state-variables-a-location-has) |
+| `message` | data stream in | [Message](message.md) |
+| `monthlyreport` | state variable out | [Daily Report](dailyreport.md) |
+| `multistream` | data stream in, state variable out | [Multistream Messages](multistream.md) |
+| `narrate` | data stream in | [Narrate](narrate.md) |
+| `now` | state variable out | [Dashboard Status](dashboard_status.md) |
+| `pause_rule` | data stream in | [Rules](rules.md) |
+| `play_rule` | data stream in | [Rules](rules.md) |
+| `radar_room` | state variable out | [Radar](radar.md) |
+| `radar_subregion_behaviors` | state variable out | [Radar](radar.md) |
+| `radar_subregions` | state variable out | [Radar](radar.md) |
+| `remove_trend` | data stream in | [Trends](trends.md) |
+| `report_add_event` | data stream in | [Daily Report](dailyreport.md) |
+| `report_generate` | data stream in | [Daily Report](dailyreport.md) |
+| `request_assistance` | data stream in | [Request Assistance](request_assistance.md) |
+| `resolve_dashboard_header` | data stream in | [Dashboard Alerts](dashboard_alerts.md) |
+| `rule_phrases` | state variable out | [Rules](rules.md) |
+| `rules` | state variable out | [Rules](rules.md) |
+| `services` | state variable out | [Services and Alerts](services.md) |
+| `set_badge` | data stream in | [Location Summary](summary.md) |
+| `set_radar_config` | data stream in | [Radar](radar.md) |
+| `set_radar_room` | data stream in | [Radar](radar.md) |
+| `set_radar_subregion` | data stream in | [Radar](radar.md) |
+| `set_rule` | data stream in | [Rules](rules.md) |
+| `submit_radar_fall_feedback` | data stream in | [Radar](radar.md) |
+| `summary` | state variable out | [Location Summary](summary.md) |
+| `tasks` | state variable out | [Tasks](tasks.md) |
+| `trends`, `trends_metadata`, `trends_recently`, `trends_weekly`, `trends_category`, `trends_highlights` | state variable out | [Trends](trends.md) |
+| `update_dashboard_content` | data stream in | [Dashboard Status, Services and Alerts](dashboard_status.md) |
+| `update_dashboard_header` | data stream in | [Dashboard Header](dashboard_header.md) |
+| `update_device_bundles` | data stream in | [Tasks](tasks.md) |
+| `update_task` | data stream in | [Tasks](tasks.md) |
+| `user_activity` | data stream in | [User Activity](user_activity.md) |
+| `weeklyreport` | state variable out | [Daily Report](dailyreport.md) |
+
+
 ## Icons
 
 Both `icon` and `icon_font` are fields used throughout Synthetic APIs.
@@ -166,5 +256,8 @@ Both `icon` and `icon_font` are fields used throughout Synthetic APIs.
 | wir             | People Power Weather - Regular |
 | wil             | People Power Weather - Light |
 
+## Related
 
-
+- [The life of an alert](../guides/life_of_an_alert.md), several of these APIs working together
+- [WebSockets](../platform_apis/websockets.md), to have state changes pushed to you
+- [Agent Kit: bots and state](../agent_kit/07_bots_and_state.md)

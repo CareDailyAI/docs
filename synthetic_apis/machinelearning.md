@@ -1,6 +1,11 @@
 # Synthetic API: Machine Learning
 
+<!-- at-a-glance -->
+> **Data stream in** `download_data`  ·  [All Synthetic APIs](README.md)
+
 Request all machine learning models to recalculate. 
+
+**When to use it:** you are developing or testing bots and want the models on a location to recalculate from history.
 
 Useful primarily for bot developer activities.
 
@@ -23,6 +28,11 @@ Data Stream Address : `download_data`
     "reference": "all"
 }
 ```
+
+## Related
+
+- [Bots and services](../concepts/bots_and_services.md)
+- [Data streams and state](../concepts/data_streams_and_state.md)
 
 ## References
 * `com.ppc.Microservices/intelligence/data_request/location_datarequest_microservice.py`

@@ -1,6 +1,19 @@
 # Synthetic API: Fall History
 
+<!-- at-a-glance -->
+> **Data stream in** `capture_fall`  ·  **State variable out** `falls`  ·  [All Synthetic APIs](README.md)
+
 Fall history will maintain a time-series record of each fall incident detected at the location. The start time of the fall, in milliseconds, is the unique identifier (timestamp) of each entry in this time-series state variable.
+
+**When to use it:** your app or console shows a history of falls, whether a radar, a wearable or an emergency SOS reported them.
+
+```mermaid
+flowchart LR
+    R["📡 Radars"] --> F["🧾 falls<br/><i>time-series, keyed by start time</i>"]
+    W["⌚ Wearable buttons"] --> F
+    S["🆘 Emergency SOS"] --> F
+    F --> A["📱 Fall history screen"]
+```
 
 Falls are recorded from every fall-detecting device supported by the bot:
 
@@ -99,6 +112,13 @@ State Variable Name : `falls`
   ]
 }
 ```
+
+## Related
+
+- Read it with `GET /cloud/json/locations/{locationId}/timeStates?name=falls&startDate=`
+- [Radar](radar.md)
+- [Dashboard Alerts](dashboard_alerts.md), the live alerts for the same events
+- [The life of an alert](../guides/life_of_an_alert.md)
 
 ## References
 * `com.ppc.BotProprietary/signals/falls/falls.py` (fall lifecycle signals and `FallConfirmation` values)

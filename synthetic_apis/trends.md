@@ -1,6 +1,22 @@
 # Synthetic API: Trends
 
+<!-- at-a-glance -->
+> **Data stream in** `capture_trend_data`, `remove_trend`  ·  **State variable out** `trends_metadata`, `trends`, `trends_recently`, `trends_weekly`, `trends_category`, `trends_highlights`  ·  [All Synthetic APIs](README.md)
+
 Trends allow us to understand if the knowledge we're observing now are normal or abnormal vs. historical lifestyle patterns. Trends are largely statistical in nature, and much of the underlying machinery focuses on the processing of historical data to provide high quality insights.
+
+**When to use it:** your app compares today with a home's own history (sleep, bathroom visits, time away, sitting) and shows whether any of it is drifting.
+
+```mermaid
+flowchart LR
+    C["capture_trend_data"] --> TR["📈 Trends"]
+    TR --> MD["trends_metadata<br/><i>static configuration</i>"]
+    TR --> D["trends<br/><i>daily, time-series</i>"]
+    TR --> R["trends_recently"]
+    TR --> W["trends_weekly"]
+    TR --> CA["trends_category"]
+    TR --> H["trends_highlights"]
+```
 
 Trends are implemented by `com.ppc.BotProprietary/signals/trends.py` (signal helpers and constants) and `com.ppc.Microservices/intelligence/trends/location_trends_microservice.py`. Trend IDs are truncated to 50 characters (`TREND_ID_CHARACTER_LIMIT`).
 
@@ -642,3 +658,9 @@ Here's an example of that data structure.
     "90": {}
 }
 ```
+
+## Related
+
+- [Insights](insights.md), for the current moment rather than the history
+- [Location Summary](summary.md)
+- [Data streams and state](../concepts/data_streams_and_state.md)

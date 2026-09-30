@@ -1,7 +1,21 @@
 # Synthetic API: Tasks
 
+<!-- at-a-glance -->
+> **Data stream in** `update_task`, `delete_task`, `update_device_bundles`  ·  **State variable out** `tasks`, `device_bundles`  ·  [All Synthetic APIs](README.md)
+
 Tasks are to-do items shared by the people in a location. A person can create a task, optionally assign it to someone else in the Trusted Circle, give it a due date, and later mark it complete.
 The bot stores the tasks, narrates changes to the History, and notifies the people involved.
+
+**When to use it:** your app shows a shared to-do list for the people in a home, including the setup tasks the system creates on its own.
+
+```mermaid
+flowchart LR
+    A["📱 App"] -->|"update_task<br/><i>app-generated id</i>"| T["🧾 tasks"]
+    A -->|"delete_task"| T
+    SYS["🤖 tasks_system"] -->|"__people__, __ecc__,<br/>__oobe__, __init__"| T
+    A -->|"update_device_bundles"| DB["🧾 device_bundles"]
+    T --> H["📜 history + notifications"]
+```
 
 Tasks are provided by the `tasks` microservice package. The companion `tasks_system` package automatically creates and removes system tasks (for example "Add People to your Trusted Circle.") as the location is set up.
 
@@ -147,6 +161,12 @@ Apps report device pack (bundle) installation progress with the `update_device_b
   "pack_model_id": 1
 }
 ```
+
+## Related
+
+- [Daily Report](dailyreport.md)
+- [Users and access](../concepts/users_and_access.md)
+- [Data streams and state](../concepts/data_streams_and_state.md)
 
 ## References
 

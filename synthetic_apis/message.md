@@ -1,6 +1,19 @@
 # Synthetic API: Message
 
+<!-- at-a-glance -->
+> **Data stream in** `message`  ·  [All Synthetic APIs](README.md)
+
 Communicate with users over push notification, SMS, and email.
+
+**When to use it:** an app or another bot needs to reach the people of a home by push notification, SMS or email.
+
+```mermaid
+flowchart LR
+    MS["✉️ message"] --> P["📲 push<br/><i>push_content</i>"]
+    P -.->|"cannot deliver"| F["💬 SMS<br/><i>push_sms_fallback_content</i>"]
+    MS --> S["💬 SMS<br/><i>sms_content</i>"]
+    MS --> EM["📧 email<br/><i>email_subject + content<br/>or a template</i>"]
+```
 
 This essentially implements the `notify()` method available to bots.
 
@@ -61,6 +74,12 @@ Data Stream Address : `message`
 #### Content
 
 The content of this data stream message is any combination of the **Properties** above, as if you are calling the `notify()` method in our bot architecture and passing in arguments.
+
+## Related
+
+- [Multistream Messages](multistream.md), to schedule a message for later
+- [Users and access](../concepts/users_and_access.md), who is a resident and who is a supporter
+- Sent notifications can be read back with `GET /cloud/json/notifications`
 
 ## References
 * `com.ppc.Microservices/intelligence/messaging/location_messaging_microservice.py`

@@ -1,7 +1,27 @@
 # Synthetic API: Rules
 
+<!-- at-a-glance -->
+> **Data stream in** `set_rule`, `delete_rule`, `pause_rule`, `play_rule`  ·  **State variable out** `rules`, `rule_phrases`  ·  [All Synthetic APIs](README.md)
+
 The bot-driven rules engine lets a user compose if-this-then-that rules out of **phrases** that bot microservices declare at runtime.
 A rule is made of one or more **triggers** ("When my 'Front Door' opens"), zero or more **states** ("while it is nighttime"), and one or more **actions** ("then notify people who live here").
+
+**When to use it:** your app lets a person build their own if-this-then-that automations from what their devices can do.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant App as 📱 App
+    participant P as ☁️ Platform
+    participant Bot as 🤖 Rules engine
+    App->>P: GET state "rule_phrases"
+    P-->>App: triggers, states and actions on offer
+    Note over App: person composes a rule<br/>app generates rule_id
+    App->>P: stream "set_rule"
+    P-)Bot: data stream message
+    Bot->>P: state "rules" updated
+    App->>P: stream "pause_rule" / "play_rule" / "delete_rule"
+```
 
 The rules engine is provided by the `rules_engine` microservice package (or the reduced `free_rules_engine` package). Phrases are declared by the device-type and location rules microservices inside that package, so the exact set of phrases available in a location depends on the bot and the devices installed there.
 
@@ -241,6 +261,11 @@ Any additional top-level keys sent in the `set_rule` content are stored on the r
   }
 }
 ```
+
+## Related
+
+- [Behaviors](behaviors.md)
+- [Data streams and state](../concepts/data_streams_and_state.md)
 
 ## References
 

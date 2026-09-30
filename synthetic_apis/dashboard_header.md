@@ -1,7 +1,29 @@
 # Synthetic API: Dashboard Header
 
+<!-- at-a-glance -->
+> **Data stream in** `update_dashboard_header`  ·  **State variable out** `dashboard_header`  ·  [All Synthetic APIs](README.md)
+
 The dashboard header presents at-a-glance information to the user, describing how well this home and its occupants are doing.
 When a problem occurs, the dashboard header also allows a user in the app to select options that interact with the bots underneath, for example to resolve a problem.
+
+**When to use it:** you are building the top of the home screen: the one thing a person most needs to know about this home, and the button that resolves an alert.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant Bot as 🤖 Bot
+    participant P as ☁️ Platform
+    participant App as 📱 App
+    Bot->>P: state "dashboard_header"<br/>priority, title, resolution, feedback
+    P--)App: WebSocket push
+    Note over App: shows the banner and the resolution button
+    App->>P: stream to resolution.datastream_address<br/>resolution.content + option content + user_id
+    Note over App: shows the option's "ack" at once
+    P-)Bot: data stream message
+    Bot->>P: updated "dashboard_header"
+    P--)App: WebSocket push
+    App->>P: stream to feedback.datastream_address<br/>quantified + verbatim + user_id
+```
 
 Under the hood inside the dashboard microservices, the dashboard header is directly tied to the "home health metrics" which help prioritize this home against other homes for human attention needed.
 These metrics contain a priority (category) and a number from 0-100% that identifies how "well" the home is doing. Lower numbers are bad, and like a weight, lower numbers will float up to the surface
@@ -379,6 +401,13 @@ Data Stream Content (exclude comments of course):
 }
 ```
 
+
+## Related
+
+- [Dashboard Alerts](dashboard_alerts.md), the catalog of every priority 5 and 6 header
+- [The life of an alert](../guides/life_of_an_alert.md)
+- [Dashboard Status Now](dashboard_status.md), the cards below the header
+- [WebSockets](../platform_apis/websockets.md)
 
 ## References
 * `com.ppc.Bot/signals/dashboard.py`

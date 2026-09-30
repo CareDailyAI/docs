@@ -1,6 +1,20 @@
 # Synthetic API: Request Assistance
 
+<!-- at-a-glance -->
+> **Data stream in** `request_assistance`  ·  [All Synthetic APIs](README.md)
+
 Enable mobile apps and smart speakers to request assistance for the user.
+
+**When to use it:** your app or smart speaker offers a help button, from a request to the people who live there up to an emergency.
+
+```mermaid
+flowchart LR
+    R["🆘 request_assistance"] --> T{"type"}
+    T -->|"0 Supernova"| A["👪 Trusted Circle<br/>+ ☎️ professional monitoring<br/><i>at the same time</i>"]
+    T -->|"1 Standard emergency"| B["👪 Trusted Circle<br/>then ☎️ after 2 minutes"]
+    T -->|"2"| C["🏠 People who live here"]
+    T -->|"3"| D["👪 Anyone in the Trusted Circle"]
+```
 
 A new request is ignored while a previous request's conversation is still unresolved.
 
@@ -60,6 +74,12 @@ Data Stream Address: `request_assistance`
   "no_dispatch": true
 }
 ```
+
+## Related
+
+- [Dashboard Alerts: Request Assistance](dashboard_alerts.md#request-assistance)
+- [The life of an alert](../guides/life_of_an_alert.md)
+- [Action Plans](action_plans.md)
 
 ## References
 * `com.ppc.BotProprietary/signals/request_assistance.py`

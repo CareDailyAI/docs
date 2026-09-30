@@ -1,6 +1,11 @@
 # Synthetic API: Narrate
 
+<!-- at-a-glance -->
+> **Data stream in** `narrate`  ·  [All Synthetic APIs](README.md)
+
 Capture history into the Narratives. Useful with multistream messages and communications to end-users.
+
+**When to use it:** you want to add an entry to a home's history timeline, for the family, for administrators, or both.
 
 Follows most of the `narrate()` method arguments provided by the botengine.
 
@@ -27,6 +32,12 @@ Data Stream Address : `narrate`
 #### Content
 
 The content of this data stream message is any combination of the **Properties** above, as if you are calling the `narrate()` method in our bot architecture and passing in arguments.
+
+## Related
+
+- Narrative fields are in [Event Streaming](../platform_apis/event_streaming.md#narrative-event-streaming)
+- Read history with `GET /cloud/json/locations/{locationId}/narratives`
+- [Multistream Messages](multistream.md), to schedule a narrative
 
 ## References
 * `com.ppc.Microservices/intelligence/narrative/location_narrative_microservice.py`

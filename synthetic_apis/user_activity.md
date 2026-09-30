@@ -1,6 +1,11 @@
 # Synthetic API: User Activity
 
+<!-- at-a-glance -->
+> **Data stream in** `user_activity`  ·  [All Synthetic APIs](README.md)
+
 The mobile app can inform the bots about what a user is doing in the app right now, so that the bot can help track engagement and activities that may improve the user experience for this person.
+
+**When to use it:** your mobile app wants to tell the bots what the person is doing in the app, so they can respond in a timely and relevant way.
 
 The `event` and `event_properties` fields are required; the message is ignored if either is missing or `event_properties` is null. The `event` becomes the title of an analytic narrative. The `user_id` field is strongly recommended. The rest of the JSON content is arbitrary in nature, agreed upon by mobile app and bot developers to provide insights about what the user is doing and the type of device they're using.
  
@@ -40,6 +45,11 @@ Data Stream Address : `user_activity`
     'os': '11'
 }
 ```
+
+## Related
+
+- [Narrate](narrate.md)
+- [Data streams and state](../concepts/data_streams_and_state.md)
 
 ## References
 * `com.ppc.Microservices/intelligence/user_activity/location_useractivity_microservice.py`

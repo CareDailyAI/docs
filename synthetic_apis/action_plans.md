@@ -1,6 +1,19 @@
 # Synthetic API: Action Plans
 
+<!-- at-a-glance -->
+> **State variable out** `action_plans`  ·  [All Synthetic APIs](README.md)
+
 When a problem occurs, an action plan oversees the resolution of the problem. This Synthetic API helps mobile apps communicate to users about how various problems are resolved. While the real action plans are much more detailed and complex, the objective here is to keep the content consumable by regular users.
+
+**When to use it:** your app explains to a family who will be contacted about an alert, in what order, and how long before it escalates.
+
+```mermaid
+flowchart LR
+    A["⚠️ Alert"] --> G1["👤 group_1<br/><i>if contact_group_1</i>"]
+    G1 -->|"group_2_delay_ms"| G2["👪 group_2<br/><i>if contact_group_2</i>"]
+    G2 -->|"ecc_delay_ms"| EC["☎️ Emergency Call Center<br/><i>if allow_ecc</i>"]
+    EC -->|"dispatch_delay_ms"| D["🚑 Dispatch<br/><i>if allow_dispatch</i>"]
+```
 
 | Property    | Type | Description |
 | ----------- | ---- | ----------- |
@@ -192,3 +205,9 @@ The `action_plans` dictionary currently contains an entry for each of these serv
   }
 }
 ```
+
+## Related
+
+- [The life of an alert](../guides/life_of_an_alert.md)
+- [Dashboard Alerts](dashboard_alerts.md), the alerts these plans escalate
+- [Users and access](../concepts/users_and_access.md), where each person's notification category is set

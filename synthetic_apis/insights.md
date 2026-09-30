@@ -1,6 +1,16 @@
 # Synthetic API: Insights
 
+<!-- at-a-glance -->
+> **State variable out** `insights`  ·  [All Synthetic APIs](README.md)
+
 Insights provide situational awareness and current predictions taking place in the home. The content captured in insights is intended to enable mobile applications to dynamically render useful information.
+
+**When to use it:** your app wants a compact, ready-to-render picture of what is happening in the home right now: occupancy, sleep, temperature, device health.
+
+```mermaid
+flowchart LR
+    I["🧾 insights"] --> O["occupancy.*"] & S["sleep.*"] & T["ambient_temperature*"] & D["device.*.{device_id}"] & MO["security_mode"]
+```
 
 Insights are captured in a JSON dictionary structure where the key is a unique (predictable) **Insight ID**, and the JSON object underneath includes the value, a developer-readable description, an optional device ID, and the timestamp of the last update in milliseconds.
 
@@ -257,3 +267,9 @@ State Variable : `insights`
   }
 }
 ```
+
+## Related
+
+- [Modes](../platform_apis/modes.md), the vocabulary behind `security_mode` and `occupancy.status`
+- [Trends](trends.md), for how today compares with the past
+- [WebSockets](../platform_apis/websockets.md)

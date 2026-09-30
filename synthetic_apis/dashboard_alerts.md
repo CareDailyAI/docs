@@ -1,6 +1,24 @@
 # Synthetic API: Dashboard Alerts
 
+<!-- at-a-glance -->
+> **Data stream in** `conversation_resolved`, `resolve_dashboard_header`  ·  **State variable out** `dashboard_header`  ·  [All Synthetic APIs](README.md)
+
 This page catalogs every alert that a care-enabled location can publish through the `dashboard_header` state variable, so that external partners and app developers can recognize, render, and clear each one.
+
+**When to use it:** your app or partner dashboard must recognize each priority 5 or 6 alert by name, render it, and clear it correctly.
+
+```mermaid
+flowchart TD
+    H["🧾 dashboard_header<br/>changed"] --> P{"priority"}
+    P -->|"0 to 4"| S["Status information.<br/>Do not render as an alert"]
+    P -->|"5 or 6"| N{"name matches<br/>this catalog?<br/><i>prefix match for<br/>radar_fall_*, positional_fall_*,<br/>sedentary_*</i>"}
+    N -->|"yes"| A["⚠️ Render the alert"]
+    N -->|"no"| O["See Other headers<br/>at priority 5 or 6"]
+    A --> C{"How does it clear?"}
+    C -->|"person resolves"| R["send resolution content to<br/>conversation_resolved or<br/>resolve_dashboard_header"]
+    C -->|"ttl_ms passes"| T["bot deletes it"]
+    C -->|"condition clears"| X["producing microservice<br/>deletes it"]
+```
 
 It is a companion to [Dashboard Header](dashboard_header.md), which documents the JSON schema, the `resolution` and `feedback` objects, and the `contact_ecc` flow. This page does not repeat that field reference. Every value below was checked against the bot microservices that produce the headers (see [References](#references)).
 
@@ -514,6 +532,13 @@ Headers that do not exist despite similar features: the Kallos band wandering mi
 | `pacing` | Pacing Detected | 5 | No | Yes | When pacing stops |
 | `recent_fall_resolved` | Recent Fall Resolved | 5 | No | Yes | Resolve, TTL 24 h |
 | `sedentary_*` | Sedentary | 5 | No | No | Dismiss, TTL 45 min, or leaves chair |
+
+## Related
+
+- [Dashboard Header](dashboard_header.md), the field reference for every value on this page
+- [The life of an alert](../guides/life_of_an_alert.md)
+- [Action Plans](action_plans.md)
+- [WebSockets](../platform_apis/websockets.md)
 
 ## References
 

@@ -1,6 +1,19 @@
 # Synthetic API: Dashboard Status Now
 
+<!-- at-a-glance -->
+> **Data stream in** `update_dashboard_content`  ·  **State variable out** `now`  ·  [All Synthetic APIs](README.md)
+
 Dashboard status shows noteworthy events that recently happened. These typically appear below the main dashboard header in the app.
+
+**When to use it:** you are rendering the list of recent, noteworthy events under the dashboard header, or you need to remove a stale card.
+
+```mermaid
+flowchart LR
+    B["🤖 Bots"] -->|"update_dashboard_content"| N["🧾 now<br/><i>NOW and TODAY cards</i>"]
+    A["📱 App or agent"] -->|"update_dashboard_content<br/>type, title, content.id, no comment = delete"| N
+    N -->|"pre-sorted by weight"| UI["📱 Dashboard list"]
+    N -.->|"alarms: at time T, set status"| N
+```
 
 ### Properties
 The `now` state variable contains a list of cards to show. Although this concept of 'cards' is now a bit deprecated versus what our latest UI's display. This was originally designed to support multiple sections on the main page of the app, each section having its own weight and title and sub-elements.
@@ -109,6 +122,13 @@ State Variable: `now`
   }
 }
 ```
+
+## Related
+
+- [Dashboard Header](dashboard_header.md)
+- [Services and Alerts](services.md), which `type` 1 writes to
+- [Data streams and state](../concepts/data_streams_and_state.md)
+- [Troubleshooting: the card keeps coming back](../guides/troubleshooting.md#6-the-card-keeps-coming-back)
 
 ## References
 * `com.ppc.Bot/signals/dashboard.py`

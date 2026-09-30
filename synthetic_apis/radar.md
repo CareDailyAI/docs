@@ -1,6 +1,23 @@
 # Synthetic API: Radar
 
+<!-- at-a-glance -->
+> **Data stream in** `set_radar_room`, `set_radar_subregion`, `delete_radar_subregion`, `set_radar_config`, `submit_radar_fall_feedback`  ·  **State variable out** `radar_room`, `radar_subregions`, `radar_subregion_behaviors`  ·  [All Synthetic APIs](README.md)
+
 Radars can sense falls in real-time, and detect occupants in the room.
+
+**When to use it:** you are installing or configuring a radar: setting the room, drawing subregions such as a bed, tuning its configuration, or labeling a fall.
+
+```mermaid
+flowchart TB
+    D["📡 Radar device<br/><i>behavior = the room it is in</i>"] --> R["set_radar_room<br/><i>room boundaries</i>"]
+    R --> S1["set_radar_subregion<br/><i>a bed</i>"]
+    R --> S2["set_radar_subregion<br/><i>an area to ignore</i>"]
+    SB["radar_subregion_behaviors<br/><i>what a subregion can be</i>"] -.-> S1 & S2
+    R --> O1["radar_room"]
+    S1 & S2 --> O2["radar_subregions"]
+    D --> C["set_radar_config"]
+    D --> FB["submit_radar_fall_feedback"]
+```
 
 To use the device, we need to specify (a) the boundaries of the room, and (b) subregions within that room to ignore or detect special occupancy status (like a bed).
 
@@ -967,6 +984,13 @@ The list is regenerated (and its `title` / `description` strings re-localized) w
   ]
 }
 ```
+
+## Related
+
+- [Behaviors](behaviors.md)
+- [Fall History](falls.md)
+- [Dashboard Alerts: Radar Fall Detection](dashboard_alerts.md#radar-fall-detection)
+- [Device Onboarding charts](../message_sequence_charts/diagrams/apps/device_onboarding/README.md)
 
 ## References
 * `com.ppc.BotProprietary/signals/radar.py` (subregion context ID's, configuration constants and helper functions)

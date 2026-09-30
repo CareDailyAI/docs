@@ -1,8 +1,13 @@
 # Synthetic API: Location Summary
 
+<!-- at-a-glance -->
+> **Data stream in** `set_badge`  ·  **State variable out** `summary`  ·  [All Synthetic APIs](README.md)
+
 The `summary` state variable assists user interfaces by providing snapshots of 'scores' back in time which rank
 how well this location is doing or was doing. It can also include a 'badge' which may notify a person
 to pay more attention to this location, plus methods to clear or set ("Mark as unread") that badge.
+
+**When to use it:** an administrative console lists many homes and needs to put the ones that need attention first, with an unread badge.
 
 These location summaries are used when loading a list of locations where we want to identify the
 location we should focus human attention upon.
@@ -106,3 +111,9 @@ Mark unread (set the badge again)
     "badge": 1
 }
 ```
+
+## Related
+
+- [Dashboard Header](dashboard_header.md)
+- Organization-wide: `GET /admin/json/locations?organizationId=&stateName=summary` returns this state with each location
+- [Data streams and state](../concepts/data_streams_and_state.md)

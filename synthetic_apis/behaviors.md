@@ -1,6 +1,25 @@
 # Synthetic API: Behaviors
 
+<!-- at-a-glance -->
+> **State variable out** `behaviors`  ·  [All Synthetic APIs](README.md)
+
 Behaviors provide **context** in each device to assist with automations and intelligence.
+
+**When to use it:** your app lets a person say what a device is for (front door, medicine cabinet, bedroom), during onboarding or later.
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant App as 📱 App
+    participant P as ☁️ Platform
+    participant Bot as 🤖 Bots
+    App->>P: GET state "behaviors"
+    P-->>App: behaviors by device type
+    Note over App: person picks one for this device
+    App->>P: PUT /cloud/json/locations/{id}/devices/{deviceId}<br/>{"device": {"goalId": id}}
+    P-)Bot: device metadata updated
+    Note over Bot: applies the behavior at runtime
+```
 
 For example, a `Temperature and Humidity Sensor` may be used to detect a mold or mildew, or identify someone is taking a shower, or help ensure your refrigerator is operating properly.
 An `Entry Sensor` may be installed on an exit door on the perimeter of the home, or attached to a medicine cabinet.
@@ -2059,6 +2078,12 @@ Radar device types are resolved from the radar devices actually present in the l
   }
 }
 ```
+## Related
+
+- [Devices and parameters](../concepts/devices_and_parameters.md)
+- [Radar](radar.md), which uses behaviors for rooms and subregions
+- [Device Onboarding charts](../message_sequence_charts/diagrams/apps/device_onboarding/README.md)
+
 ## References
 
 * `com.ppc.Bot/signals/behaviors.py` - `set_behaviors()` signal used by microservices to declare behaviors for a list of device types.

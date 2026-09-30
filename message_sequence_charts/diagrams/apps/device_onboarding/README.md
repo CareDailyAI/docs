@@ -122,7 +122,7 @@ For example
 During the actual pairing process you'll need to wait for new device by calling [GET devices](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Devices/operation/Get%20Devices) API.
 Newly registered devices will include the property `device.newDevice=true` and may be used in coordination with `device.modelId` to understand if the desired device has been added.
 
-Two options of result:
+The wait ends one of two ways:
 
 - Timeout - No new devices were found. If the page provides an action to link to a support page the user may do so.
 - New Device Found - If a Connection Success story exists (`storyType == 2`) proceed to [Step 7](#step-7---show-device-ui)

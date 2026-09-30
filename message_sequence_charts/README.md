@@ -22,7 +22,7 @@ its screen, change its settings later, and turn services on.
 
 | Flow | What it shows | Read it when |
 | --- | --- | --- |
-| [User Login and Registration](diagrams/apps/user_login_and_registration/README.md) | 8 charts covering sign up, sign in, password reset and the branches between them | You are building authentication and want the order, not just the endpoints |
+| [User Login and Registration](diagrams/apps/user_login_and_registration/README.md) | 8 charts covering sign up, sign in, password reset and the branches between them | You are building authentication and want to know what order the calls go in |
 | [Device Onboarding](diagrams/apps/device_onboarding/README.md) | 5 charts taking a device from unboxed to reporting | A device pairs but never appears, or appears but stays "New Device" |
 | [Device Configuration](diagrams/apps/device_configuration/README.md) | Changing a device after it is installed | You are building settings screens |
 | [Device UI](diagrams/apps/device_ui/README.md) | How a device screen is assembled from the platform and the bots | You are rendering a device and cannot work out where a field comes from |

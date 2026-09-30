@@ -27,7 +27,7 @@ where you expected it.
 ## Device Configuration
 
 [Changing a device](device_configuration/README.md) once it is installed. Short, and it is the one
-that explains where a configuration change actually lands.
+that explains where a configuration change actually goes.
 
 ## Device UI
 
@@ -45,7 +45,7 @@ a single screen.
 ## Services and Alerts
 
 [Turning services on and off](services_and_alerts/README.md), and how an alert reaches a person.
-Sits directly on top of the [Services](../../../synthetic_apis/services.md) and
+Built directly on the [Services](../../../synthetic_apis/services.md) and
 [Action Plans](../../../synthetic_apis/action_plans.md) Synthetic APIs.
 
 ## Related

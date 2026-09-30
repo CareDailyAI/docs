@@ -39,7 +39,7 @@ Data Stream Address: `request_assistance`
 #### Example content
 
 **Supernova**
-```
+```json
 {
   "type": 0,
   "agent": 0,
@@ -50,7 +50,7 @@ Data Stream Address: `request_assistance`
 ```
 
 **Supernova without dispatch**
-```
+```json
 {
   "type": 0,
   "agent": 0,

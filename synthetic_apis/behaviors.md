@@ -8,7 +8,7 @@ Each of these options are defined by the behaviors offered by bot microservices 
 
 Historically, the server originally had a concept of "goals" and objectives for each device, allowing the mobile app to specify a `goalId`
 which would dictate the set of if-then rules that were automatically created for a device.
-You can see this [Legacy Goals API Documentation Here](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Products-Management/operation/Get%20Device%20Goals%20by%20Type) if you're interested.
+You can see this [Legacy Goals API Documentation Here](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Products-Management/operation/Get%20Device%20Goals%20by%20Type) if you're interested.
 
 As we moved beyond the server-driven rules engine and into the world of bots for automation, we maintained the same `goalId` value for device instances but mapped them to behaviors offered by bots.
 This allows the context of the device to remain with the device instance itself, and not be lost if a bot disappears.
@@ -24,7 +24,7 @@ Advantages of Behaviors:
 
 ## **Input** : Update Device API
 
-[Update a Device](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Devices/operation/Update%20Device) and specify its `goalId` to declare the behavior ID you wish for this device to take on. 
+[Update a Device](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Devices/operation/Update%20Device) and specify its `goalId` to declare the behavior ID you wish for this device to take on. 
 
 Bots will be notified with a `device_metadata_updated(...)` event that cause the bot to treat this device differently when its behavior or context changes. It is up to the bots running inside this location to apply the behavior at runtime.
 
@@ -54,7 +54,7 @@ Some behaviors are conditional on the bot's `domain.py` configuration:
 | name        | The title of this behavior |
 | suggestions | Prioritized list of suggested names for each new device that selects this behavior. For example, when installing an Entry Sensor on an exit door, it is suggested that the first one be called 'Front Door', while the second Entry Sensor on an exit door be called 'Back/Side Door'. |
 | weight      | Lower weights float to the top of the list. |
-| spaces      | Prioritized list of multi-choice multi-select spaces to auto-select for each new sensor. For example, the first motion sensor should be installed in the Kitchen, so it is recommended that the app auto-select the 'Kitchen' space for this motion sensor. Note that a motion sensor can sometimes see multiple spaces, which is why that one is multi-choice multi-select. See the [Get Spaces API](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Locations/operation/Get%20Location%20Spaces) for a list of spaces to render in the app. |
+| spaces      | Prioritized list of multi-choice multi-select spaces to auto-select for each new sensor. For example, the first motion sensor should be installed in the Kitchen, so it is recommended that the app auto-select the 'Kitchen' space for this motion sensor. Note that a motion sensor can sometimes see multiple spaces, which is why that one is multi-choice multi-select. See the [Get Spaces API](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Locations/operation/Get%20Location%20Spaces) for a list of spaces to render in the app. |
 | force_nickname | Optional. Default is False. If True, this tells the app to skip allowing the user to nickname the device and just force the next nickname in the list of suggestions. |
 | subregions | List of compatible and recommended subregions for radar behaviors (Vayyar Home, AeroSense Assure, Pontosense). Defines a list of recommended subregions to create when a person selects this room for the radar device. |
 
@@ -102,7 +102,7 @@ Radar device types are resolved from the radar devices actually present in the l
 
 #### JSON Content
 
-```
+```json
 {
   "value": {
     "10014": [

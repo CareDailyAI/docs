@@ -8,7 +8,7 @@ The original `daily_report_entry` address and section-ID based `com.ppc.Microser
 
 Sections are derived from the prefix of each event's `event_type` (the part before the first `.`). Presentation for each prefix is defined in `EVENT_TYPE_SCHEMA`:
 
-```
+```text
 com.ppc.Bot/signals/report/constants.py
 ```
 
@@ -59,7 +59,7 @@ Bots normally add events through `signals.report.add_event()` (`com.ppc.Bot/sign
 
 #### Content
 Example data stream content to add an event to the report
-```
+```json
 {
     "event_type": "sleep.bedtime",
     "comment": "Went to sleep.",
@@ -105,7 +105,7 @@ The time-series timestamp of a daily or weekly report is midnight (local time) a
 | {item}.criticality | String | `info`, `warning`, or `critical`. Absent on LLM-synthesized items. |
 
 #### Content
-```
+```json
 {
   "title": "JORDAN LEE",
   "subtitle": "Daily Report for Monday December 29, 2025",

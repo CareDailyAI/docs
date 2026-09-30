@@ -85,7 +85,7 @@ Trends are typically captured internally by bots through `signals.trends.capture
 
 Data Stream Address : `capture_trend_data`
 
-```
+```json
 {
     "trend_id": trend_id,
     "trend_category": trend_category,
@@ -117,7 +117,7 @@ Data Stream Address : `capture_trend_data`
 
 Data Stream Address : `remove_trend`
 
-```
+```json
 {
     "trend_id": trend_id
 }
@@ -141,7 +141,7 @@ The `trends_metadata` captures the configuration values that are like overhead a
 
 Trends related to specific device instances typically references the device ID's in the `trend_id`.
 
-```
+```json
 {
     "sitting": {
       "category": "category.activity",
@@ -275,7 +275,7 @@ Trends related to specific device instances typically references the device ID's
 
 The time-series state variable `trends` contains a Dictionary of trends, identified by their `trend_id`. The `trend_id` is captured again in the data for ease-of-processing by bots. Each day's entry is stored under the timestamp of midnight (local time) for that day.
 
-```
+```json
 {
   "value": {
     "trend.bathroom_duration": {
@@ -456,7 +456,7 @@ The time-series state variable `trends` contains a Dictionary of trends, identif
 
 This shows the average trends over the past 7 days (ending yesterday), for comparison with entries from `trends_weekly`. It is a non-time-series state variable, recalculated once per day after midnight. It is not updated while occupants are definitely absent from the home.
 
-```
+```json
 {
     "sitting": {
       "avg": 0.0,
@@ -501,7 +501,7 @@ This shows the average trends over the past 7 days (ending yesterday), for compa
 
 Exactly the same as `trends_recently` but saved as time-series information, once per week (on Mondays, under the timestamp of midnight that day).
 
-```
+```json
 {
     "sitting": {
       "avg": 0.0,
@@ -545,7 +545,7 @@ Exactly the same as `trends_recently` but saved as time-series information, once
 
 The `trends_category` state (`com.ppc.Microservices/intelligence/trends/location_trendscategory_microservice.py`) describes how to group trends in a UI. The key is the category ID from the Trend Categories table. Each category has a `title`, `description`, a `primary_trend` ID to display first, its `primary_trend_title`, and a list of `sub_trends` (trend IDs whose `parent_id` is the primary trend). Optional `ml_title`, `ml_description`, and `ml_primary_trend_title` dictionaries carry translations keyed by language code. The `category.other` entry is always present.
 
-```
+```json
 {
     "category.other": {
       "title": "Other Trends",
@@ -574,7 +574,7 @@ The `trends_highlights` state summarizes the history of the top-level categories
 
 Here's an example of that data structure.
 
-```
+```json
 {
     "now": {
         "trend.bathroom_score": {

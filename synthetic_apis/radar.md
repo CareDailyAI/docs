@@ -56,7 +56,7 @@ Out-of-range values are not rejected. They are clamped to the nearest limit the 
 #### Set Room Boundary Example
 
 **Wall Mount Example**
-```
+```json
 {
     "device_id": device_id,
     "x_min_meters": x_min_meters,
@@ -70,7 +70,7 @@ Out-of-range values are not rejected. They are clamped to the nearest limit the 
 <img src="img/vayyar_wall_mount.jpg" width="600">
 
 **Ceiling Mount Example**
-```
+```json
 {
     "device_id": device_id,
     "x_min_meters": x_min_meters,
@@ -124,7 +124,7 @@ If any of `x_min_meters`, `x_max_meters`, `y_min_meters` or `y_max_meters` is mi
 
 #### Set Subregion Example
 
-```
+```json
 {
     "device_id": device_id,
     "subregion_id": subregion_id,
@@ -152,14 +152,14 @@ Passing in a `unique_id` is preferred, but this Synthetic API will also accept a
 
 **Warning:** if neither `unique_id` nor `subregion_id` is given, or the given ID does not exist, all subregions for the entire device are removed.
 
-```
+```json
 {
     "device_id": device_id,
     "unique_id": unique_id
 }
 ```
 
-```
+```json
 {
     "device_id": device_id,
     "subregion_id": subregion_id
@@ -172,7 +172,7 @@ Data Stream Address : `set_radar_config`
 
 This address only applies to Vayyar Care devices (device type `2000`). Messages for other radar device types are ignored.
 
-```
+```text
 # fall_sensitivity
 FALL_SENSITIVITY_NO_FALLING = 0
 FALL_SENSITIVITY_LOW = 1
@@ -214,7 +214,7 @@ All fields are optional except for `device_id`. Only the fields present in the m
 
 #### `set_radar_config` Example
 
-```
+```json
 {
     "device_id": "id_EXAMPLE_RADAR_1",
     "fall_sensitivity": FALL_SENSITIVITY_NORMAL,
@@ -233,7 +233,7 @@ Data Stream Address : `submit_radar_fall_feedback`
 
 Record feedback about a radar fall event. All four fields are required; a message missing any of them is ignored. The bot currently records the feedback as a narrative on the location (event type `radar.fall_feedback_sent`); forwarding to the radar vendor's aggregation service is not enabled.
 
-```
+```text
 # classification
 FEEDBACK_CLASSIFICATION_TRUE_POSITIVE = "TRUE_POSITIVE"
 FEEDBACK_CLASSIFICATION_FALSE_POSITIVE = "FALSE_POSITIVE"
@@ -241,7 +241,7 @@ FEEDBACK_CLASSIFICATION_FALSE_NEGATIVE = "FALSE_NEGATIVE"
 FEEDBACK_CLASSIFICATION_TEST_FALL = "TEST_FALL"
 ```
 
-```
+```json
 {
     "device_id": device_id,
     "classification": "FALSE_POSITIVE",
@@ -261,7 +261,7 @@ One entry per radar device at the location, keyed by device ID. Values reflect t
 
 #### `radar_room` Example
 
-```
+```json
 {
     "device_id": {
         "mounting_type": 0,
@@ -297,7 +297,7 @@ A dictionary keyed by device ID, each holding an ordered list of subregions. Eac
 
 #### `radar_subregions` Example
 
-```
+```json
 {
   "value": {
     "id_EXAMPLE_RADAR_2": [
@@ -472,7 +472,7 @@ The list is regenerated (and its `title` / `description` strings re-localized) w
 
 #### `radar_subregion_behaviors` Example
 
-```
+```json
 {
   "value": [
     {

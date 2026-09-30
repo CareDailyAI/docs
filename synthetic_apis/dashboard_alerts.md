@@ -10,7 +10,7 @@ It is a companion to [Dashboard Header](dashboard_header.md), which documents th
 
 `dashboard_header` is a location state variable holding a single JSON object: the highest-priority header currently active for the location. Many microservices each contribute a header; the dashboard header microservice keeps the whole stack and publishes only the winner. Between headers of equal priority, one tied to an active conversation wins, otherwise the one with the lowest internal "percent good" wins.
 
-Subscribe to the state variable over [WebSockets](../platform_apis/websockets.md) or [poll it](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Synthetic-APIs/operation/Get%20Location%20State). Each change replaces the previous value. When the winning alert is removed, the state variable falls back to the next header in the stack, typically a priority 0 or 1 status such as occupancy or "last seen".
+Subscribe to the state variable over [WebSockets](../platform_apis/websockets.md) or [poll it](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Synthetic-APIs/operation/Get%20Location%20State). Each change replaces the previous value. When the winning alert is removed, the state variable falls back to the next header in the stack, typically a priority 0 or 1 status such as occupancy or "last seen".
 
 ### Example
 

@@ -4,7 +4,7 @@ The "Services and Alerts" menu provides a list of available services to render f
 
 In our app design, we show the user a menu of services, and the ability to tap into a single service to learn more.
 
-Services turn on and off through the [Questions API](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/User-Communications/operation/Get%20Questions), and not through a data stream message.
+Services turn on and off through the [Questions API](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/User-Communications/operation/Get%20Questions), and not through a data stream message.
 Each service element references one or more Question objects that the mobile app can answer to configure the service.
 
 ### Properties
@@ -58,7 +58,7 @@ On the main "Services and Alerts" screen, we recommend showing these properties 
 Drilling into a single service / alert element, we show all the content available, including the long `description`.
 
 #### Content
-```
+```json
 {
   "value": {
     "cards": [

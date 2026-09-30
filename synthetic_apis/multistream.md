@@ -18,7 +18,7 @@ To edit a queued multistream message, send a new multistream message with the sa
 Data Stream Address : `multistream`
 
 #### Content
-```
+```json
  {
     "id": "hello",
     "timestamp": optional_time_in_the_future_in_milliseconds,
@@ -43,7 +43,7 @@ The output only contains multistream content (multiple data stream messages) tha
 
 The output content is a dictionary of multistream messages, where the key for each object is the `id` that was originally passed in as the multistream message ID (converted to a string). The `id` is stored only as the key and is not repeated inside the object.
 
-```
+```json
 {
     "hello": {
         "timestamp": time_in_the_future_in_milliseconds,

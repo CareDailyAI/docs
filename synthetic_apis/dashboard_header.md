@@ -99,7 +99,7 @@ State Variable : `dashboard_header`
 Anything marked "Internal Usage" is not meant to be used by the application UI's. The microservice strips `future_timestamp_ms`, `conversation_object`, and `percent` before publishing the state variable, so apps will not normally see them.
 
 When no bot has published a header, the microservice publishes a default header named `default` with priority 0, icon `cogs` (`far`), the service name as the title, and the comment "Listening for activity".
-```
+```json
     {
         # Unique identifying name
         "name": name,
@@ -214,9 +214,9 @@ When no bot has published a header, the microservice publishes a default header 
 A fall is detected. The `dashboard_header` state variable is updated with the JSON content below. As the conversation plays out, this `dashboard_header` state variable will continue to get refreshed with the latest updates.
 
 The app should use [WebSocket APIs](../platform_apis/websockets.md) to subscribe to receive updates to the `dashboard_header` state variable.
-A more primitive method for testing or early development would be to periodically [poll for the state variable](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Synthetic-APIs/operation/Get%20Location%20State).
+A more primitive method for testing or early development would be to periodically [poll for the state variable](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Synthetic-APIs/operation/Get%20Location%20State).
 
-```
+```json
 {
   "value": {
     "call": true,
@@ -281,7 +281,7 @@ Selecting one of these contacts should place a phone call on this user's phone.
 
 We also see `ecc` is True, so we can also recommend triggering the emergency call center as one of the contacts.
 This will not call the emergency call center directly from your phone, so it is recommended that the app update its own dashboard or provide a confirmation about what will happen next:
-the emergency call center will back, in the order of the people listed on the predefined call tree in the app.
+the emergency call center will call back, in the order of the people listed on the predefined call tree in the app.
 The app must send a data stream message to the address `contact_ecc`.
 The feed content in the data stream message should contain the `user_id`.
 
@@ -292,7 +292,7 @@ so it is not documented as a general Synthetic API to trigger emergency help.
 Data Stream Address: `contact_ecc`
 
 Data Stream Content:
-```
+```json
 {
   "feed": {
     "user_id": 12345
@@ -322,7 +322,7 @@ If the user selected "Resolved", then the app would send this data stream messag
 Data Stream Address: "conversation_resolved" (as defined in the `resolution.datastream_address` field)
 
 Data Stream Content (exclude comments of course):
-```
+```json
 {
   "feed": {
      # Resolution static content in resolution.content
@@ -361,7 +361,7 @@ Data Stream Address: "conversation_feedback" (as defined by the `feedback.datast
 
 Data Stream Content (exclude comments of course):
 
-```
+```json
 {
   "feed": {
      # Echo back everything found in `feedback.content`

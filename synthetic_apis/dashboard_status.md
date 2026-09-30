@@ -49,7 +49,7 @@ Typically controlled by bots.
 ### Data Stream Content
 This content goes into the `feed` of a data stream message.
 
-```
+```json
 {
     "type": 0,
     "title": "NOW",
@@ -77,7 +77,7 @@ This content goes into the `feed` of a data stream message.
 State Variable: `now`
 
 ### State Content
-```
+```json
 {
   "value": {
     "cards": [

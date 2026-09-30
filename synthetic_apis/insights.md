@@ -88,7 +88,7 @@ State Variable : `insights`
 
 #### Insight JSON Content Example
 
-```
+```json
 {
   "device.low_battery.0000000000000001-03B7": {
     "description": "'Garage Back Door' has a low battery.",

@@ -44,7 +44,7 @@ State Variable : `summary`
 
 #### Example
 
-```
+```json
 {
     "value": {
         "badge": 0,
@@ -94,14 +94,14 @@ Sent internally by `signals.badge.set_badge()` (`com.ppc.BotProprietary/signals/
 #### Data stream content
 
 Clear the badge
-```
+```json
 {
     "badge": 0
 }
 ```
 
 Mark unread (set the badge again)
-```
+```json
 {
     "badge": 1
 }

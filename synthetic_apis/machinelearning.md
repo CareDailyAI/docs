@@ -17,7 +17,7 @@ Data Stream Address : `download_data`
 
 #### Content
 
-```
+```json
 {
     "force": true,
     "reference": "all"

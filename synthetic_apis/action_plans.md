@@ -26,7 +26,7 @@ The `action_plans` dictionary currently contains an entry for each of these serv
 
 #### Example
 
-```
+```json
 {
   "value": {
     "action_plans": {

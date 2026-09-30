@@ -101,7 +101,7 @@ The Synthetic APIs we document here are for our most popular bot microservice pa
 
 Bots receive messages from the outside world (and between microservices running inside the bot) via `data stream messages`. These messages have an address and arbitrary JSON content.
 
-[Data Stream Message API Documentation](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Synthetic-APIs/operation/Stream%20message)
+[Data Stream Message API Documentation](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Synthetic-APIs/operation/Stream%20message)
 
 #### Properties of Data Stream Messages
 
@@ -114,7 +114,7 @@ Bots receive messages from the outside world (and between microservices running 
 * Data stream messages cannot send data or responses back instantaneously - they operate asynchronously. That's why we have a separate mechanism, `state` variables, to get data back out again.
 * JSON content is arbitrary and agreed upon by app developers.
 
-Mobile app developers can [get a list of data stream addresses](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Synthetic-APIs/operation/Get%20Summary) to understand if the bots and services offer some set of capabilities.
+Mobile app developers can [get a list of data stream addresses](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Synthetic-APIs/operation/Get%20Summary) to understand if the bots and services offer some set of capabilities.
 
 #### Best practices for managing objects
 
@@ -131,7 +131,7 @@ A UUID is an obvious choice for an app-generated unique ID for objects created a
 
 Bots can create `state` variables to provide data back out to applications or voice UI's. These state variables are stored in a way that can be accessed at any time through a RESTful API call or WebSocket.
 
-[Location States API Documentation](https://app.peoplepowerco.com/cloud/apidocs/cloud.html#tag/Synthetic-APIs/operation/Get%20Location%20State)
+[Location States API Documentation](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Synthetic-APIs/operation/Get%20Location%20State)
 
 #### Properties of State Variables
 * Like data stream messages, state variables have an address and arbitrary JSON content.

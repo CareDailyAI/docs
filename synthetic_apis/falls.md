@@ -44,7 +44,7 @@ State Variable Name : `falls`
 
 #### Example
 
-```
+```json
 {
   "device_id": "id_EXAMPLE_RADAR_1",
   "device_type": 2000,

@@ -21,7 +21,7 @@ The following `event` values additionally produce a descriptive analytic narrati
 Data Stream Address : `user_activity`
 
 #### Feed Content Example
-```
+```json
 {
     'event': 'Exiting OOBE story',
     'user_id': '12345',

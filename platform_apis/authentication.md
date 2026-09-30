@@ -135,7 +135,7 @@ The full table is in [Result codes](result_codes.md) and at the top of the
 
 ## "It logged in, and it says organizations: 0"
 
-Two different situations produce this:
+It happens in two situations:
 
 1. **You have a user key.** A `keyType=0` key logs in cleanly and then every organization-scoped
    call fails with `resultCode 7`. Log in again with `keyType=11`.

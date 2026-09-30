@@ -34,6 +34,8 @@ flowchart LR
 | API | Reference | Use it for |
 | --- | --- | --- |
 | **Authentication** | [authentication.md](authentication.md) | Getting an API key, and the traps in it. Start here |
+| **REST conventions** | [conventions.md](conventions.md) | Base URLs, reading a response, dates, paging, reports |
+| **Result codes** | [result_codes.md](result_codes.md) | What each code usually means, and success that did not happen |
 | **Application** | [cloud.html](https://app.caredaily.ai/cloud/apidocs/cloud.html) | Everything an end-user app or web console does |
 | **Admin** | [admin.html](https://app.caredaily.ai/cloud/apidocs/admin.html) | Managing people, places, and things across an organization |
 | **Device** | [devices.html](https://app.caredaily.ai/cloud/apidocs/devices.html) | Getting measurements up from hardware, and commands down |
@@ -49,6 +51,13 @@ flowchart LR
 
 Every call below needs an API key. The guide covers choosing a key type, the two-step
 administrator login, and the handful of details that cost people an afternoon.
+
+## Working with the REST API
+
+[Conventions](conventions.md) · [Result codes and gotchas](result_codes.md)
+
+Every REST call returns a `resultCode`, accepts dates as ISO 8601 or epoch milliseconds, and pages
+collections the same way. Read these two pages once and every reference page reads faster.
 
 ## Application API
 
@@ -118,3 +127,9 @@ available subscription services in an organization goes through our server team.
 
 How to set and interpret the "Location Scene" field so that it is recognized by the existing
 application layers.
+
+## Related
+
+- [Concepts](../concepts/README.md), the nouns these APIs are about
+- [Quick Start](../getting_started/quick_start.md)
+- [Agent Kit](../agent_kit/README.md)

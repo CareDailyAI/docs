@@ -10,3 +10,8 @@ sits. The API is not documented here.
 
 If time-of-use pricing matters to what you are building, contact **dmoss@caredaily.ai** and say so.
 That is genuinely how these get prioritized.
+
+## Related
+
+- [Demand Response](demandresponse.md)
+- [All Synthetic APIs](README.md)

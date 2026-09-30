@@ -1,8 +1,72 @@
 # WebSocket Application API
 
+Real server push for apps and consoles. Subscribe once, and the platform sends you each new
+narrative, bot state change, device parameter or SIM update as it happens. No polling.
+
+**When to use it:** anything on screen that should change the moment the home changes: the
+dashboard header during an alert, a live sensor during installation, the alert list on an
+administrative console. For cloud-to-cloud delivery, use [Event Streaming](event_streaming.md).
+
+**On this page:**
+[Session at a glance](#a-session-at-a-glance) ·
+[Get the URL](#get-the-websocket-url) ·
+[Ping / Pong](#ping--pong) ·
+[Data structure](#data-structure-architecture) ·
+[Authenticate](#authenticate) ·
+[Presence](#presence) ·
+[Status](#status) ·
+[Subscribe](#subscribe) ·
+[Unsubscribe](#unsubscribe) ·
+[Receiving data](#receiving-data) ·
+[Chat](#chat) ·
+[A minimal client](#a-minimal-client)
+
+## A session at a glance
+
+```mermaid
+sequenceDiagram
+    autonumber
+    participant C as 📱 Client
+    participant R as ☁️ REST API
+    participant W as ⚡ WebSocket server
+
+    C->>R: GET /cloud/json/settingsServer/wsapi
+    R-->>C: host, port, path, ssl
+    C->>W: open wss://host:port/path
+    C->>W: {"goal": 1, "key": API_KEY, "id": "1"}
+    W-->>C: {"goal": 1, "resultCode": 0}
+    C->>W: {"goal": 2} presence: what may I subscribe to?
+    W-->>C: {"types": [1, 2, ...]}
+    C->>W: {"goal": 3, "subscription": {...}}
+    W-->>C: {"goal": 3, "subscriptionId": 2}
+    loop while the session lives
+        W--)C: {"goal": 6, "data": {...}} each change
+        C->>W: ? (every 15 to 30 s)
+        W-->>C: !
+        W->>C: ?
+        C-->>W: !
+    end
+    C->>W: {"goal": 4, "subscription": {"id": 2}}
+```
+
 ## Get the WebSocket URL
 
 Each time the client starts a new WebSocket session, it must obtain its WebSocket API server connection settings and URL by calling the [Get Server Instance API](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Cloud-Connectivity/operation/Get%20Server) with `type=wsapi`.
+
+```http
+GET /cloud/json/settingsServer/wsapi
+```
+
+```json
+{
+  "resultCode": 0,
+  "server": { "type": "wsapi", "host": "<host>", "port": 8090, "path": "/wsapi", "ssl": true }
+}
+```
+
+Build the address from those fields: `wss://<host>:<port><path>` when `ssl` is true. This call
+needs no API key. Ask every time, rather than storing the answer, because the server you are given
+can change.
 
 ## Ping / Pong
 
@@ -98,7 +162,7 @@ When the server authenticates the user, it will define the scope of the session 
 {
   "goal": 1,
   "key": "API_KEY",
-  "id": "1",
+  "id": "1"
 }
 ```
 
@@ -195,7 +259,7 @@ Read about the subscription parameters in the [GET Narratives API](https://app.c
   "subscription": {
     "type": 2,
     "operation": 7,
-    "organizationId": 316, // required for organization narratives
+    "organizationId": 1234, // required for organization narratives
     "locationId": 123,     // required for location narratives, optional for organization narratives
     // optional fields
     "groupId": 12,
@@ -331,7 +395,7 @@ Internal JSON data fields are flexible and include sub-objects and arrays.
     "locationState": {
       "locationId": 123,
       "name": "dashboard_header",
-      "value":   "value": {
+      "value": {
         "comment": "Occupants appear to be asleep.",
         "icon": "bed",
         "icon_font": "far",
@@ -382,10 +446,10 @@ Internal JSON data fields are flexible and include sub-objects and arrays.
     "type": 8,
     "operation": 2,             // always 2 - update
     "simCard": {
-      "id": "8901260021105854428",
+      "id": "8900000000000000001",
       "status": 4,
       "deviceId": "ABC234",
-      "serialNumber": "cmp-k1-subscription-47076309",
+      "serialNumber": "example-subscription-00000001",
       "carrierName": "KATTCC",
       "lifecycleStatus": "Suspended",
       "activationDateMs": 1423428106000,
@@ -427,3 +491,64 @@ The user can send questions or messages to AI agents using this interface.
   }
 }
 ```
+
+
+## A minimal client
+
+Python, with the `websocket-client` package (`pip install websocket-client`). It asks for the
+server, authenticates, subscribes to one home's device parameters, answers the server's pings and
+sends its own. The API key comes from the environment and is never printed.
+
+```python
+import json, os, threading, time, urllib.request
+import websocket  # websocket-client
+
+SERVER = os.environ["CAREDAILY_SERVER"]          # REST base URL
+KEY = os.environ["CAREDAILY_API_KEY"]
+LOCATION_ID = int(os.environ["CAREDAILY_LOCATION_ID"])
+
+s = json.load(urllib.request.urlopen(f"{SERVER}/cloud/json/settingsServer/wsapi"))["server"]
+url = f"{'wss' if s.get('ssl') else 'ws'}://{s['host']}:{s['port']}{s.get('path', '')}"
+
+def on_open(ws):
+    ws.send(json.dumps({"goal": 1, "id": "auth", "key": KEY}))
+    def pinger():
+        while ws.keep_running:
+            time.sleep(20)
+            ws.send("?")                          # our ping
+    threading.Thread(target=pinger, daemon=True).start()
+
+def on_message(ws, msg):
+    if msg == "?":                                # the server's ping
+        ws.send("!")
+        return
+    if msg == "!":                                # the server's pong
+        return
+    m = json.loads(msg)
+    if m.get("goal") == 1 and m.get("resultCode") == 0:
+        ws.send(json.dumps({"goal": 3, "id": "params",
+                            "subscription": {"type": 6, "operation": 1,
+                                             "locationId": LOCATION_ID}}))
+    elif m.get("goal") == 6:
+        for p in m["data"].get("params", []):
+            print(p["deviceId"], p["name"], "=", p["value"])
+    elif m.get("resultCode", 0) != 0:
+        print("error", m.get("resultCode"), m.get("resultCodeMessage"))
+
+websocket.WebSocketApp(url, on_open=on_open, on_message=on_message).run_forever()
+```
+
+Before you start listening, read each value's current state over REST
+(`GET /cloud/json/devices/{deviceId}/parameters?locationId=`). Without that baseline you cannot tell
+a change from a first observation.
+
+> **TODO(verify):** a production client should reconnect with back-off when no pong arrives,
+> re-authenticate, and resubscribe. Confirm whether subscriptions survive a reconnect before
+> relying on that. Until then, resubscribe after every reconnect.
+
+## Related
+
+- [Get Server Instance API](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Cloud-Connectivity/operation/Get%20Server)
+- [Synthetic APIs](../synthetic_apis/README.md), the state variables behind subscription `type` 3
+- [Watch a home live](../guides/watch_a_home_live.md), a worked example
+- [Event Streaming](event_streaming.md), for delivery to another cloud

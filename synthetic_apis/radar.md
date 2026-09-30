@@ -216,7 +216,7 @@ All fields are optional except for `device_id`. Only the fields present in the m
 
 ```
 {
-    "device_id": "id_MzA6QUU6QTQ6TM6OEY6",
+    "device_id": "id_EXAMPLE_RADAR_1",
     "fall_sensitivity": FALL_SENSITIVITY_NORMAL,
     "alert_delay_s": 15,
     "led_mode": LED_MODE_ON,
@@ -300,7 +300,7 @@ A dictionary keyed by device ID, each holding an ordered list of subregions. Eac
 ```
 {
   "value": {
-    "id_MzA6QUU6QTQ6RTI": [
+    "id_EXAMPLE_RADAR_2": [
       {
         "context_id": 12,
         "unique_id": "d19978fe-606a-4ebf-8c51-b573b6ed0a23",
@@ -362,7 +362,7 @@ A dictionary keyed by device ID, each holding an ordered list of subregions. Eac
         "z_max_meters": 2
       }
     ],
-    "id_MzA6QUU6QTQ6RTU": [
+    "id_EXAMPLE_RADAR_4": [
       {
         "context_id": 1,
         "unique_id": "49f9c146-8367-4d4d-ac06-172634473fe6",
@@ -385,7 +385,7 @@ A dictionary keyed by device ID, each holding an ordered list of subregions. Eac
         "z_max_meters": 2
       }
     ],
-    "id_MzA6QUU6QTQ6RTM6": [
+    "id_EXAMPLE_RADAR_3": [
       {
         "context_id": 20,
         "unique_id": "3b7fd31c-5c59-462e-b97a-5d99127a94d4",

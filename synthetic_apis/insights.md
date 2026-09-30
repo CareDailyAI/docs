@@ -90,10 +90,10 @@ State Variable : `insights`
 
 ```
 {
-  "device.low_battery.00155F00F861FCF5-03B7": {
+  "device.low_battery.0000000000000001-03B7": {
     "description": "'Garage Back Door' has a low battery.",
     "device_desc": "Garage Back Door",
-    "device_id": "00155F00F861FCF5-03B7",
+    "device_id": "0000000000000001-03B7",
     "device_type": 9114,
     "icon": "battery-empty",
     "icon_font": "far",
@@ -101,10 +101,10 @@ State Variable : `insights`
     "updated_ms": 1630956432881,
     "value": 1
   },
-  "device.low_battery.FFFFFFFF006b34e8": {
+  "device.low_battery.0000000000000004": {
     "description": "'Front Door' has a low battery.",
     "device_desc": "Front Door",
-    "device_id": "FFFFFFFF006b34e8",
+    "device_id": "0000000000000004",
     "device_type": 9114,
     "icon": "battery-empty",
     "icon_font": "far",
@@ -112,10 +112,10 @@ State Variable : `insights`
     "updated_ms": 1630627884736,
     "value": 10
   },
-  "device.low_signal.94f3b202008d1500": {
+  "device.low_signal.0000000000000005": {
     "description": "Low wireless signal strength on 'TV'.",
     "device_desc": "TV",
-    "device_id": "94f3b202008d1500",
+    "device_id": "0000000000000005",
     "device_type": 9135,
     "icon": null,
     "icon_font": null,
@@ -123,10 +123,10 @@ State Variable : `insights`
     "updated_ms": 1632351525676,
     "value": -89
   },
-  "device.offline.00155F0074838333-0375": {
+  "device.offline.0000000000000002-0375": {
     "description": "Device 'Bathroom' is offline.",
     "device_desc": "Bathroom",
-    "device_id": "00155F0074838333-0375",
+    "device_id": "0000000000000002-0375",
     "device_type": 9138,
     "icon": "unlink",
     "icon_font": "far",
@@ -134,10 +134,10 @@ State Variable : `insights`
     "updated_ms": 1629964522663,
     "value": true
   },
-  "device.offline.020000013000042E": {
-    "description": "'Smart Home Center Develco' is disconnected",
-    "device_desc": "Smart Home Center Develco",
-    "device_id": "020000013000042E",
+  "device.offline.0000000000000006": {
+    "description": "'Smart Home Center Gateway' is disconnected",
+    "device_desc": "Smart Home Center Gateway",
+    "device_id": "0000000000000006",
     "device_type": 36,
     "icon": "unlink",
     "icon_font": "far",
@@ -145,10 +145,10 @@ State Variable : `insights`
     "updated_ms": 1632749668747,
     "value": true
   },
-  "device.wall_powered.020000013000042E": {
-    "description": "'Smart Home Center Develco' is on wall power",
-    "device_desc": "Smart Home Center Develco",
-    "device_id": "020000013000042E",
+  "device.wall_powered.0000000000000006": {
+    "description": "'Smart Home Center Gateway' is on wall power",
+    "device_desc": "Smart Home Center Gateway",
+    "device_id": "0000000000000006",
     "device_type": 36,
     "icon": "battery-bolt",
     "icon_font": "far",
@@ -159,7 +159,7 @@ State Variable : `insights`
   "occupancy.last_seen": {
     "description": "Last seen closing the 'Front Door'.",
     "device_desc": "Front Door",
-    "device_id": "FFFFFFFF006b34e8",
+    "device_id": "0000000000000004",
     "device_type": 9114,
     "icon": null,
     "icon_font": null,

@@ -36,7 +36,7 @@ Each phrase object contains a `phrase_id` from the `rule_phrases` state variable
   "triggers": [
     {
       "phrase_id": "entry_opened",
-      "trigger_device_id": "00155F003468AFA0-039B"
+      "trigger_device_id": "0000000000000009-039B"
     }
   ],
   "states": [
@@ -144,7 +144,7 @@ Phrases for a device class are only declared when at least one device of that cl
           "values": [
             {
               "name": "Front Door",
-              "id": "00155F003468AFA0-039B",
+              "id": "0000000000000009-039B",
               "icon": "door-open",
               "icon_font": "far"
             }
@@ -216,7 +216,7 @@ Any additional top-level keys sent in the `set_rule` content are stored on the r
       "triggers": [
         {
           "phrase_id": "entry_opened",
-          "trigger_device_id": "00155F003468AFA0-039B"
+          "trigger_device_id": "0000000000000009-039B"
         }
       ],
       "states": [

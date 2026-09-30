@@ -350,38 +350,38 @@ The time-series state variable `trends` contains a Dictionary of trends, identif
       "value": 7.283333333333333,
       "zscore": 0.07
     },
-    "trends.00155F00F84539D6-039B": {
+    "trends.0000000000000003-039B": {
       "avg": 3.69,
       "display": "7.0 times today",
       "std": 3.9,
-      "trend_id": "trends.00155F00F84539D6-039B",
+      "trend_id": "trends.0000000000000003-039B",
       "updated_ms": 1620763719765,
       "value": 7.0,
       "zscore": 0.85
     },
-    "trends.506eda0a006f0d00": {
+    "trends.0000000000000007": {
       "avg": 2.07,
       "display": "5.0 times today",
       "std": 1.77,
-      "trend_id": "trends.506eda0a006f0d00",
+      "trend_id": "trends.0000000000000007",
       "updated_ms": 1620852356291,
       "value": 5.0,
       "zscore": 1.66
     },
-    "trends.63a5f00e006f0d00": {
+    "trends.0000000000000008": {
       "avg": 1.25,
       "display": "Once today",
       "std": 1.26,
-      "trend_id": "trends.63a5f00e006f0d00",
+      "trend_id": "trends.0000000000000008",
       "updated_ms": 1620434150567,
       "value": 1.0,
       "zscore": -0.2
     },
-    "trends.94f3b202008d1500": {
+    "trends.0000000000000005": {
       "avg": 2.09,
       "display": "2.0 times today",
       "std": 1.04,
-      "trend_id": "trends.94f3b202008d1500",
+      "trend_id": "trends.0000000000000005",
       "updated_ms": 1620885137728,
       "value": 2.0,
       "zscore": -0.09

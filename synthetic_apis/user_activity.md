@@ -24,7 +24,7 @@ Data Stream Address : `user_activity`
 ```
 {
     'event': 'Exiting OOBE story',
-    'user_id': '37146',
+    'user_id': '12345',
     'event_properties': {
         'modelId': 'devKeypad',
         'storyId': 'devKeypadConnection',
@@ -33,7 +33,7 @@ Data Stream Address : `user_activity`
         'Event Type': 'OOBE'
     },
     'platform': 'android',
-    'device_id': '40a71f8f-5eac-4435-a231-fa8ea6606e39',
+    'device_id': '00000000-0000-4000-8000-000000000001',
     'device_type': 'samsung SM-G981U1',
     'version': 'null',
     'library': 'Peoplepower-Analytics/1.0.0',

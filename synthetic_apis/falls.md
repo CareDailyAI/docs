@@ -46,7 +46,7 @@ State Variable Name : `falls`
 
 ```
 {
-  "device_id": "id_MzA6QUUQTQ6RTM6OY6RUMF",
+  "device_id": "id_EXAMPLE_RADAR_1",
   "device_type": 2000,
   "device_desc": "Office",
   "goal_id": 5,
@@ -65,8 +65,8 @@ State Variable Name : `falls`
   "first_response_ms": 1644866260882,
   "labeled_ms": 1644866402117,
   "label": 1,
-  "locationId": 271383,
-  "organizationId": 100,
+  "locationId": 234567,
+  "organizationId": 1234,
   "targets": [
     {
       "0": {

@@ -44,8 +44,8 @@ Data Stream Address: `request_assistance`
   "type": 0,
   "agent": 0,
   "user_id": 123456789,
-  "latitude": "44.062211",
-  "longitude": "-79.500925"
+  "latitude": "47.620500",
+  "longitude": "-122.349300"
 }
 ```
 
@@ -55,8 +55,8 @@ Data Stream Address: `request_assistance`
   "type": 0,
   "agent": 0,
   "user_id": 123456789,
-  "latitude": "44.062211",
-  "longitude": "-79.500925",
+  "latitude": "47.620500",
+  "longitude": "-122.349300",
   "no_dispatch": true
 }
 ```

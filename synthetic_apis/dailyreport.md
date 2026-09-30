@@ -107,7 +107,7 @@ The time-series timestamp of a daily or weekly report is midnight (local time) a
 #### Content
 ```
 {
-  "title": "ILENE JOHNSON",
+  "title": "JORDAN LEE",
   "subtitle": "Daily Report for Monday December 29, 2025",
   "created_ms": creation_timestamp_in_milliseconds,
   "period": "dailyreport",

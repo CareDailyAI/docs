@@ -60,7 +60,7 @@ This content goes into the `feed` of a data stream message.
           "1620858636783": -2
         },
         "comment": "Some comment you should know about here.",
-        "device_id": "id_MzA6QUU6QTM6OEY6RUM",
+        "device_id": "id_EXAMPLE_DEVICE_1",
         "icon": "radar",
         "icon_font": "iotr",
         "id": "unique_identifier",
@@ -91,7 +91,7 @@ State Variable: `now`
               "1620858636783": -2
             },
             "comment": "Some comment you should know about here.",
-            "device_id": "id_MzA6QUU6QTM6OEY6RUM",
+            "device_id": "id_EXAMPLE_DEVICE_1",
             "icon": "radar",
             "icon_font": "iotr",
             "id": "unique_identifier",

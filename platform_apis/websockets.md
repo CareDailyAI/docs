@@ -44,9 +44,9 @@ Setting a `goal` for each WebSocket JSON message tells the server or client what
 | 6 | data | New data from the server related to one of your current WebSocket data subscriptions |
 | 7 | chat | AI request/response chat |
 
-#### Types
+#### Data Types
 
-These are the supported WebSocket subscription types
+These are the supported WebSocket subscription data types
 
 | `type` | Description |
 | ------ | ----------- |
@@ -55,6 +55,9 @@ These are the supported WebSocket subscription types
 | 3 | Location `state` variable updates from [Synthetic APIs](../synthetic_apis/README.md) |
 | 6 | Updated device parameters |
 | 8 | Updated SIM card attributes |
+| 9 | Location event |
+| 10 | Location Tag |
+| 11 | Escalation |
 
 #### Operations
 

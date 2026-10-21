@@ -9,10 +9,8 @@ This document will capture information about some of the data formats of informa
 | 1 | [Location Narrative](#narrative-event-streaming) |
 | 2 | [Organization Narrative](#narrative-event-streaming) |
 | 3 | [Location State](#location-state-streaming) |
-| 4 | [Paid Services Event](#paid-events-streaming) |
 | 5 | [Location Time-Series State](#location-state-streaming) |
-| 7 | [Bot Error](#bot-errors-streaming) |
-| 9 | [Location Event](#location-event-streaming) |
+| 11 | [Escalation](#escalation-streaming) |
 
 | Operation | Description |
 | :-------: | ----------- |
@@ -27,7 +25,6 @@ This document will capture information about some of the data formats of informa
 { 
   "timestamp": long int,        // current time in milliseconds
   "cloudname": string,          // 'SBOX', 'Prod'
-  "organizationId": int,        // Organization ID
   "parentOrganizationId": int,  // Parent Organization ID
   "locationExternalId": string, // Location external ID
   "externalUsers": [            // all external user IDs associated with the location
@@ -48,13 +45,11 @@ This document will capture information about some of the data formats of informa
   "data" : { 
     "type": byte,               // data type
     "operation": byte,          // 1 – create, 2 – update, 4 – delete
-    "locationId": int,          // Location ID if evailable
+    "locationId": int,          // Location ID if available
+    "organizationId": int,      // Organization ID
     "narrative": {},            // Narrative data
     "locationState": {},        // Location state data
-    "paidEvent": {},            // Paid services event data
-    "params": [],               // Device parameters
-    "botError": {},             // Bot error
-    "locationEvent": {}         // Location event
+    "escalation": {}            // escalation
   }
 }
 ```
@@ -83,13 +78,13 @@ See additional [Narrative documentation](https://app.peoplepowerco.com/cloud/api
 { 
   "timestamp": long int,        // current time in milliseconds
   "cloudname": string,          // 'SBOX', 'Prod'
-  "organizationId": int,        // Organization ID
   "parentOrganizationId": int,  // Parent Organization ID
   "locationExternalId": string, // Location external ID
   "data" : { 
     "type": byte,               // 1 - location narrative, 2 - organization narrative
     "operation": byte,          // 1 – create, 2 – update, 4 – delete
     "locationId": int,          // Location ID
+    "organizationId": int,      // Organization ID
     "narrative": {
       // narrative fields, many are optional 
       "narrativeId": int,       // auto generated ID, PK 
@@ -130,13 +125,13 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
 { 
   "timestamp": long int,        // current time in milliseconds
   "cloudname": string,          // 'SBOX', 'Prod'
-  "organizationId": int,        // Organization ID
   "parentOrganizationId": int,  // Parent Organization ID
   "locationExternalId": string, // Location external ID
   "data" : { 
     "type": byte,               // 3 - Location State, 5 - Location Time-Series State
     "operation": byte,          // 1 – create, 2 – update, 4 – delete
     "locationId": int,          // Location ID
+    "organizationId": int,      // Organization ID
     "locationState": { 
       "locationId": int,        // location ID 
       "name": string,           // variable's name
@@ -149,306 +144,37 @@ See [Synthetic APIs](../synthetic_apis/README.md) for details.
 ```
 
 
-## Paid Events Streaming
+## Escalation Streaming
 
-| Event Type | Description |
-| :--------: | ----------- |
-| 1 | Subscription Created |
-| 2 | Billing Attempt Success |
-| 3 | Billing Attempt Failure |
-| 4 | Subscription Canceled |
-| 5 | Subscription Update |
-| 6 | Subscription Expired |
+Escalations are significant events captured inside Care Daily platform. For examples, a fall alert, an emergency request, a device outage, "not back home".
 
 
-#### General Structure for all paid events
-
-```
-{
-  "timestamp" : long int,       // current time in milliseconds 
-  "cloudname": string,          // 'SBOX', 'Prod' 
-  "organizationId": int,        // Organization ID if available
-  "parentOrganizationId": int,  // Parent Organization ID if available
-  "data": { 
-    "type": byte,               // 4 = paid event
-    "operation": byte,          // 1 = create
-    "locationId": int,          // Location ID
-    "paidEvent": {
-        "eventType": byte,      // 1 = subscription created, 2 = billing attempt success, 3 = billing attempt failure, 4 = subscription canceled, 5 = subscription update, 6 = subscription expired
-        "eventTime": long int,  // when the event created in the store in milliseconds
-        "eventDate": string,    // ISO-8601 date time with UTC timezone, 2021-08-20T12:09:15Z
-        "subscriptionId": string // subscription ID made as store subscription ID + store sub-domain name, e.g. "123@test-store"
-        "startTime": long int,  // subscription billing period start time
-        "startDate": string,    // ISO-8601 date time with UTC timezone, 2021-08-20T12:09:15Z
-        "endTime": long int,    // subscription billing period end time
-        "endDate": string,      // ISO-8601 date time with UTC timezone, 2021-08-20T12:09:15Z
-        "transactionId": string, // financial transaction ID
-        "orderId": string,      // store order ID
-        "planId": int,          // service plan ID
-        "planName": string,     // service plan name
-        "priceId": int,         // plan price ID
-        "userPlanId": int,      // assigned on location service plan instance ID
-        "locationId": int,      // location ID
-        "paymentType": byte,    // 5 = Shopify
-        "subscriptionType": byte, // 1 = one time, 3 = monthly, 4 = annual, 5 = daily
-        "customer": {           // user's data received from the store
-            "email": string,
-            "firstName" : string,
-            "lastName" : string,
-            "phone": string     // optional
-        },
-        "errorMessage": string, // Shopify error message
-        "errorCode": string     // Shopify error code, see https://shopify.dev/api/admin/graphql/reference/orders/subscriptionbillingattempterrorcode
-    }
-}
-```
-
-#### Subscription created
-
-```
-{
-  "timestamp" : 1619644463123,
-  "cloudname": "SBOX",
-  "data": { 
-    "type": 4,
-    "operation": 1,
-    "locationId": 123,
-    "paidEvent": {
-        "eventType": 1,
-        "eventTime": 1619644463123,
-        "eventDate": "2021-08-20T12:09:15Z",
-        "subscriptionId": "123@test-store",
-        "startTime": 1625097600000,
-        "startDate": "2021-08-20T12:09:15Z",
-        "endTime": 1625097600000,
-        "endDate": "2021-09-21T00:00:00Z",
-        "transactionId": "4569847984375943853",
-        "orderId": "12345645645645",
-        "planId": 11,
-        "planName": "Home",
-        "priceId": 12,
-        "paymentType": 5,
-        "subscriptionType": 3,
-        "customer": {
-            "email": "test@test.test",
-            "firstName" : "First",
-            "lastName" : "Last",
-            "phone": "1234567890"
-        }
-    }
-}
-```
-
-#### Billing success
-
-```
-{ 
-  "timestamp" : 1619644463123,
-  "cloudname": "SBOX",
-  "organizationId": 123,
-  "parentOrganizationId": 456,
-  "data": { 
-    "type": 4,
-    "operation": 1,
-    "locationId": 123,
-    "paidEvent": {
-        "eventType": 2,
-        "eventTime": 1619644463123,
-        "eventDate": "2021-08-20T12:09:15Z",
-        "subscriptionId": "123@test-store",
-        "startTime": 1625097600000,
-        "startDate": "2021-08-20T00:00:00Z",
-        "endTime": 1625097600000,
-        "endDate": "2021-09-21T00:00:00Z",
-        "transactionId": "4569847984375943853",
-        "planId": 11,
-        "planName": "Home",
-        "priceId": 12,
-        "userPlanId": 56789,
-        "paymentType": 5,
-        "subscriptionType": 3,
-        "locationId": 8901
-    }
-}
-```
-
-#### Billing attempt failure
-
-```
-{ 
-  "timestamp" : 1619644463123,
-  "cloudname": "SBOX",
-  "organizationId": 123,
-  "parentOrganizationId": 456,
-  "data": { 
-    "type": 4,
-    "operation": 1,
-    "locationId": 123,
-    "paidEvent": {
-        "eventType": 3,
-        "eventTime": 1619644463123,
-        "eventDate": "2021-08-20T12:09:15Z",
-        "subscriptionId": "123@test-store",
-        "planId": 11,
-        "planName": "Home",
-        "priceId": 12,
-        "userPlanId": 56789,
-        "locationId": 8901,
-        "paymentType": 5,
-        "subscriptionType": 3,
-        "errorMessage": "Payment method is expired",
-        "errorCode": "EXPIRED_PAYMENT_METHOD"
-    }
-}
-```
-
-#### Subscription canceled
-
-```
-{ 
-  "timestamp" : 1619644463123,
-  "cloudname": "SBOX",
-  "organizationId": 123,
-  "parentOrganizationId": 456,
-  "data": { 
-    "type": 4,
-    "operation": 1,
-    "locationId": 123,
-    "paidEvent": {
-        "eventType": 4,
-        "eventTime": 1619644463123,
-        "eventDate": "2021-08-20T12:09:15Z",
-        "subscriptionId": "123@test-store",
-        "planId": 11,
-        "planName": "Home",
-        "priceId": 12,
-        "userPlanId": 56789,
-        "locationId": 8901,
-        "paymentType": 5,
-        "subscriptionType": 3
-    }
-}
-```
-
-#### Subscription update
-
-```
-{ 
-  "timestamp" : 1619644463123,
-  "cloudname": "SBOX",
-  "organizationId": 123,
-  "parentOrganizationId": 456,
-  "data": { 
-    "type": 5,
-    "operation": 1,
-    "locationId": 123,
-    "paidEvent": {
-        "eventType": 5,
-        "eventTime": 1619644463123,
-        "eventDate": "2021-08-20T12:09:15Z",
-        "subscriptionId": "123@test-store",
-        "startTime": 1625097600000,
-        "startDate": "2021-08-20T12:09:15Z",
-        "endTime": 1625097600000,
-        "endDate": "2021-09-21T00:00:00Z",
-        "planId": 11, // new plan ID
-        "planName": "Home",
-        "priceId": 12, // new price ID
-        "userPlanId": 56789,
-        "locationId": 8901,
-        "paymentType": 5,
-        "subscriptionType": 3
-    }
-}
-```
-
-#### Subscription expired
-
-```
-{
-  "timestamp" : 1619644463123,
-  "cloudname": "SBOX",
-  "organizationId": 123,
-  "parentOrganizationId": 456,
-  "data": { 
-    "type": 6,
-    "operation": 1,
-    "locationId": 123,
-    "paidEvent": {
-        "eventType": 6,
-        "eventTime": 1619644463123,
-        "eventDate": "2021-08-20T12:09:15Z",
-        "subscriptionId": "123@test-store",
-        "startTime": 1625097600000,
-        "startDate": "2021-07-13T00:00:00Z", // previous billing date of expired subscription
-        "endTime": 1625097600000,
-        "endDate": "2021-08-13T00:00:00Z",
-        "planId": 11,
-        "planName": "Home",
-        "priceId": 12,
-        "userPlanId": 56789,
-        "locationId": 8901,
-        "paymentType": 5,
-        "subscriptionType": 3
-    }
-}
-```
-
-
-## Bot Errors Streaming
-
-Care Daily's platform can stream error messages produced by bots during execution.
-
-
-#### Bot Errors JSON Formatting
+#### Escalation JSON Formatting
 
 ```
 { 
   "timestamp": long int,        // current time in milliseconds
   "cloudname": string,          // 'SBOX', 'Prod'
-  "organizationId": int,        // Organization ID
   "parentOrganizationId": int,  // Parent Organization ID
   "data" : { 
-    "type": byte,               // 7 - bot error
+    "type": byte,               // 11 - escalation
     "operation": byte,          // 1 – create
     "locationId": int,          // Location ID
-    "botError": {
-      "bundle": string,         // bot bundle name
-      "version": string,        // bot version
-      "appInstanceId": int,     // bot instance ID
-      "locationId": int,        // location ID for location bots
-      "organizationId": int,    // organization ID for organization bots
-      "error": string,          // error message
-      "log": string             // bot execution log
-    }
-  }
-}
-```
-
-
-## Location Event Streaming
-
-Location event includes location's new Security and Occupancy states and previous state values.
-
-
-#### Location Event JSON Formatting
-
-```
-{ 
-  "timestamp": long int,        // current time in milliseconds
-  "cloudname": string,          // 'SBOX', 'Prod'
-  "organizationId": int,        // Organization ID
-  "parentOrganizationId": int,  // Parent Organization ID
-  "data" : { 
-    "type": byte,               // 9 - location event
-    "operation": byte,          // 2 – update
-    "locationId": int,          // Location ID
-    "locationEvent": {
-      "securityState": string,      // new security state value
-      "occupancyState": string,     // new occupancy state value
-      "prevSecurityState": string,  // previous security state value
-      "prevOccupancyState": string, // previous occupancy state value
-      "comment": string             // bot execution log
+    "organizationId": int,      // Organization ID
+    "escalation": {
+      "escalationId": int,
+      "escalationType": int,
+      "status": int,
+      "title": string,
+      "description": string,
+      "creationDate": long int,
+      "eventDate": long int,
+      "userId": int,
+      "deviceId": string,
+      "eventSourceType": int,
+      "resolutionDate": long int,
+      "resolveUserId": int,
+      "resolveSourceType": int
     }
   }
 }

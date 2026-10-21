@@ -198,17 +198,17 @@ Read about the subscription parameters in the [GET Narratives API](https://app.p
   "subscription": {
     "type": 2,
     "operation": 7,
-    "organizationId": 316, // required for organization narratives
-    "locationId": 123,     // required for location narratives, optional for organization narratives
+    "organizationId": 316, // required for organization narratives, optional for location narratives
+    "locationId": 123,     // either locationId or organizationId is required for location narratives
     // optional fields
-    "groupId": 12,
     "priority": 0,
-    "priorityTo": 2
+    "priorityTo": 2,
+    "locationTags": ["GroupA", "GroupB"]
   }
 }
 ```
 
-#### Example: Subscribe to Synthetic API state variables
+#### Example: Subscribe to Location States
 
 Request:
 ```
@@ -218,12 +218,36 @@ Request:
   "subscription": {
     "type": 3,
     "operation": 3,
-    "locationId": 123,
-    "name": "dashboard_header"
+    "organizationId": 316,
+    "locationId": 123,     // either locationId or organizationId is required
+    "name": "dashboard_header",
+    // optional fields
+    "locationTags": ["GroupA", "GroupB"]
   }
 }
 ```
 
+
+
+#### Example: Subscribe to Escalations
+
+```
+{
+  "goal": 3,
+  "id": "3",
+  "subscription": {
+    "type": 11,
+    "operation": 7,
+    "organizationId": 316,
+    "locationId": 123,     // either locationId or organizationId is required
+    // optional fields
+    "escalationTypes": [1,2,3],
+    "locationTags": ["GroupA", "GroupB"],
+    "priority": 0,
+    "priorityTo": 2
+  }
+}
+```
 #### Example: Subscribe to Device Parameters
 
 Request:

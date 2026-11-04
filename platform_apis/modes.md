@@ -4,7 +4,7 @@ This page describes the security system modes and occupancy status as recognized
 application layers, including existing bots.
 
 **When to use it:** your app arms or disarms a home, shows whether anyone is home, or reacts to
-mode changes in an [event stream](event_streaming.md#location-event-streaming).
+mode changes.
 
 ```mermaid
 flowchart LR
@@ -107,6 +107,5 @@ vocabulary; the bots decide which transitions happen.
 
 ## Related
 
-- [Location Event Streaming](event_streaming.md#location-event-streaming), mode changes delivered to a partner cloud
 - [Insights](../synthetic_apis/insights.md), where `security_mode` and `occupancy.status` also appear
 - [Location Scene API](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Locations/operation/Change%20the%20Scene%20at%20a%20Location)

@@ -108,9 +108,9 @@ Setting a `goal` for each WebSocket JSON message tells the server or client what
 | 6 | data | New data from the server related to one of your current WebSocket data subscriptions |
 | 7 | chat | AI request/response chat |
 
-#### Types
+#### Data Types
 
-These are the supported WebSocket subscription types
+These are the supported WebSocket subscription data types
 
 | `type` | Description |
 | ------ | ----------- |
@@ -119,6 +119,9 @@ These are the supported WebSocket subscription types
 | 3 | Location `state` variable updates from [Synthetic APIs](../synthetic_apis/README.md) |
 | 6 | Updated device parameters |
 | 8 | Updated SIM card attributes |
+| 9 | Location event |
+| 10 | Location Tag |
+| 11 | Escalation |
 
 #### Operations
 
@@ -259,17 +262,17 @@ Read about the subscription parameters in the [GET Narratives API](https://app.c
   "subscription": {
     "type": 2,
     "operation": 7,
-    "organizationId": 1234, // required for organization narratives
-    "locationId": 123,     // required for location narratives, optional for organization narratives
+    "organizationId": 316, // required for organization narratives, optional for location narratives
+    "locationId": 123,     // either locationId or organizationId is required for location narratives
     // optional fields
-    "groupId": 12,
     "priority": 0,
-    "priorityTo": 2
+    "priorityTo": 2,
+    "locationTags": ["GroupA", "GroupB"]
   }
 }
 ```
 
-#### Example: Subscribe to Synthetic API state variables
+#### Example: Subscribe to Location States
 
 Request:
 ```json
@@ -279,12 +282,36 @@ Request:
   "subscription": {
     "type": 3,
     "operation": 3,
-    "locationId": 123,
-    "name": "dashboard_header"
+    "organizationId": 316,
+    "locationId": 123,     // either locationId or organizationId is required
+    "name": "dashboard_header",
+    // optional fields
+    "locationTags": ["GroupA", "GroupB"]
   }
 }
 ```
 
+
+
+#### Example: Subscribe to Escalations
+
+```
+{
+  "goal": 3,
+  "id": "3",
+  "subscription": {
+    "type": 11,
+    "operation": 7,
+    "organizationId": 316,
+    "locationId": 123,     // either locationId or organizationId is required
+    // optional fields
+    "escalationTypes": [1,2,3],
+    "locationTags": ["GroupA", "GroupB"],
+    "priority": 0,
+    "priorityTo": 2
+  }
+}
+```
 #### Example: Subscribe to Device Parameters
 
 Request:

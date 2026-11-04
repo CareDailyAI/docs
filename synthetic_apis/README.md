@@ -122,7 +122,7 @@ All paths are under `com.ppc.Microservices/intelligence/` in botlab-core.
 --->
 
 ## About
-Synthetic APIs are provided by the *bot application layer*, on top of the platform. Synthetic APIs effectively allow bot and UI developers to invent new application features beyond what the AI+IoT platform offers alone. You can create your own application APIs on this platform, with bots.
+Synthetic APIs are provided by the *bot application layer*, on top of the platform. Synthetic APIs effectively allow bot and UI developers to invent new application features beyond what the platform offers alone. You can create your own application APIs on this platform, with bots.
 
 These asynchronous APIs offered by bot application developers leverage `data stream messages` to communicate data into the bot, and `state` variables to communicate responses back from the bot. 
 

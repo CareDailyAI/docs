@@ -21,7 +21,7 @@
 
 ## Device Model UX
 
-Cloud API and high-level logic prototypes for Presence Evolution. Includes multiple improvements to PPC IoT Cloud services.
+Cloud API and high-level logic for the device screens in Care Daily apps.
 
 ### APIS
 

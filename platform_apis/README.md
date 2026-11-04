@@ -1,6 +1,6 @@
 # Platform APIs
 
-These are the APIs of the AI+IoT platform itself: for applications, for devices, and for
+These are the APIs of the Care Daily Ambient Operating System itself: for applications, for devices, and for
 administrators. The platform answers role-based REST calls, and it streams events and observations
 to partner clouds.
 

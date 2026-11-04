@@ -1,7 +1,7 @@
 # Care Daily Developer Documentation
 
-**Care Daily is an AI and IoT platform for care at home.** Sensors in a home report to the
-Care&nbsp;Daily cloud. Bots running in the cloud turn those signals into insights, alerts and a
+**Care Daily is the Ambient Operating System that helps people live independently, in homes and
+communities.** Sensors in a home or an apartment report to the Care&nbsp;Daily cloud. Bots running in the cloud turn those signals into insights, alerts and a
 daily picture of how someone is doing. Apps, consoles, partner clouds and AI agents read all of it
 through open APIs, and talk back to the bots to act on it.
 
@@ -22,7 +22,7 @@ flowchart TB
     DEV["🔌 <b>Devices</b><br/><i>sensors · gateways · radar</i>"]
     APP["📱 <b>Apps and consoles</b><br/><i>mobile · web · voice</i>"]
     AG["🤖 <b>AI agents</b>"]
-    P["☁️ <b>Care Daily AI+IoT platform</b><br/><i>users · locations · devices · spaces</i>"]
+    P["☁️ <b>Care Daily Ambient Operating System</b><br/><i>users · locations · devices · spaces</i>"]
     B["🧠 <b>Bot microservices</b><br/><i>application logic</i>"]
     EXT["🏢 <b>Partner cloud</b>"]
 

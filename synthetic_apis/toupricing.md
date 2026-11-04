@@ -5,7 +5,7 @@ Time-of-use energy pricing.
 Part of the energy management side of the platform, alongside
 [Demand Response](demandresponse.md).
 
-**This page is not written yet.** Our current development work is focused on care at home, and
+**This page is not written yet.** Our current development work is focused on helping people live independently in homes and communities, and
 this API is not documented here.
 
 If time-of-use pricing matters to what you are building, contact **dmoss@caredaily.ai** and say so.

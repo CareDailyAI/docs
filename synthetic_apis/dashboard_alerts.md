@@ -65,7 +65,7 @@ Subscribe to the state variable over [WebSockets](../platform_apis/websockets.md
     ]
   },
   "feedback": {
-    "quantified": "Did People Power Family do a good job?",
+    "quantified": "Did Care Daily do a good job?",
     "verbatim": "What do you think caused the alert?",
     "datastream_address": "conversation_feedback",
     "content": {

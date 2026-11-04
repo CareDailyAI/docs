@@ -38,6 +38,7 @@ flowchart TB
 | **Devices and parameters** | Hardware, what it reports, and how to send it a command | [devices_and_parameters.md](devices_and_parameters.md) |
 | **Bots and services** | Where the intelligence runs, and why a new home can look empty | [bots_and_services.md](bots_and_services.md) |
 | **Data streams and state** | How you talk to a bot, and how it answers | [data_streams_and_state.md](data_streams_and_state.md) |
+| **Application attributes** | The shared names every app uses for user properties, tags, and location states | [application_attributes.md](application_attributes.md) |
 
 ---
 

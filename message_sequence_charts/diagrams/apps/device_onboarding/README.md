@@ -303,7 +303,7 @@ Params:
 Params:
 - locationId: $locationId
 - deviceId: $proxy.deviceId
-- data: `{'commandType': 0, 'commandTimeout': 60, 'params': [\n{'name': 'permitJoining', 'value': '1'}, \n{'name': 'autoAdd', 'value': '1'}]}`
+- data: `{'commandType': 0, 'commandTimeout': 60, 'params': [{'name': 'permitJoining', 'value': '1'}, {'name': 'autoAdd', 'value': '1'}]}`
 
 ##### [GET devices](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Devices/operation/Get%20Devices)
 
@@ -382,7 +382,7 @@ Params:
 Params:
 - locationId: $locationId
 - deviceId: $proxy.deviceId
-- data: `{'commandType': 0, 'commandTimeout': 60, 'params': [\n{'name': 'permitJoining', 'value': '1'}, \n{'name': 'autoAdd', 'value': '1'}]}`
+- data: `{'commandType': 0, 'commandTimeout': 60, 'params': [{'name': 'permitJoining', 'value': '1'}, {'name': 'autoAdd', 'value': '1'}]}`
 
 ##### [GET devices](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Devices/operation/Get%20Devices)
 

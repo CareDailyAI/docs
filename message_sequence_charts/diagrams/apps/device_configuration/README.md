@@ -36,7 +36,7 @@ Params:
 Params:
 - locationId: $locationId
 - deviceId: $deviceId
-- data: `{'commandType': 0, 'commandTimeout': 60, 'params': [\n{'name': 'wifiSsid', 'value': 'SSID'}, \n{'name': 'wifiPassword', 'value': 'Password'}, \n{'name': 'wifiSecurity', 'value': 'SSID Security'}]}`
+- data: `{'commandType': 0, 'commandTimeout': 60, 'params': [{'name': 'wifiSsid', 'value': 'SSID'}, {'name': 'wifiPassword', 'value': 'Password'}, {'name': 'wifiSecurity', 'value': 'SSID Security'}]}`
 
 
 ##### [GET Current Measurements](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Device-Measurements/operation/Get%20Current%20Measurements)

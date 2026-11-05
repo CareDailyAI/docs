@@ -5,15 +5,15 @@ first. They are short because they are meant to be followed without exceptions.
 
 ```mermaid
 flowchart TD
-    W["✍️ About to write"] --> S{"On sandbox?"}
-    S -->|"yes"| GO["Go. Then read it back"]
+    W["✍️ About to<br/>write"] --> S{"On sandbox?"}
+    S -->|"yes"| GO["Go. Then read it<br/>back"]
     S -->|"no, production"| N{"Did a person name<br/>this exact change<br/>in this conversation?"}
     N -->|"no"| STOP["🛑 Stop and ask"]
     N -->|"yes"| O{"Inside your own<br/>organizations?"}
     O -->|"no"| STOP
     O -->|"yes"| D{"Is it a delete?"}
     D -->|"yes"| STOP
-    D -->|"no"| SAY["Say the cloud, org and location<br/>out loud, then write"] --> RB["Read it back and report<br/>what the read-back showed"]
+    D -->|"no"| SAY["Say the cloud<br/>org and location<br/>out loud, then<br/>write"] --> RB["Read it back and<br/>report<br/>what the<br/>read-back showed"]
     style STOP fill:#fef2f2,stroke:#b42318,stroke-width:2px
     style GO fill:#f0fdf4,stroke:#1b873f
     style RB fill:#f0fdf4,stroke:#1b873f

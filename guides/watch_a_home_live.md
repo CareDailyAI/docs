@@ -9,10 +9,10 @@ output as they change.
 
 ```mermaid
 flowchart LR
-    A["1️⃣ Baseline<br/><i>REST: current values</i>"] --> B["2️⃣ Connect<br/><i>ask for the wss URL,<br/>authenticate</i>"]
-    B --> C["3️⃣ Subscribe<br/><i>one home,<br/>the types you need</i>"]
-    C --> D["4️⃣ React<br/><i>diff each change<br/>against the baseline</i>"]
-    D -->|"keep alive: ? and !"| D
+    A["1️⃣ Baseline<br/>REST: current<br/>values"] --> B["2️⃣ Connect<br/>ask for the wss<br/>URL,<br/>authenticate"]
+    B --> C["3️⃣ Subscribe<br/>one home,<br/>the types you<br/>need"]
+    C --> D["4️⃣ React<br/>diff each change<br/>against the<br/>baseline"]
+    D -->|"keep alive: ?<br/>and !"| D
     style A fill:#eef2ff,stroke:#3f3bf2
     style D fill:#f0fdf4,stroke:#1b873f
 ```

@@ -34,16 +34,16 @@ This is the general flow for onboarding devices.
 
 ```mermaid
 flowchart TD
-    S1["1. GET Device Models<br/><i>categories and models</i>"] --> S2["2. Select a model<br/><i>check pairingType and<br/>dependencyDeviceTypes</i>"]
-    S2 --> S21["2.1 GET Stories<br/><i>storyType 1: connection</i>"]
-    S21 --> S3["3. Show the connection story"]
-    S3 --> S31["3.1 Connect the device<br/><i>by pairing type</i>"]
+    S1["1. GET Device<br/>Models<br/>categories and<br/>models"] --> S2["2. Select a<br/>model<br/>check<br/>pairingType and<br/>dependencyDeviceTypes"]
+    S2 --> S21["2.1 GET Stories<br/>storyType 1:<br/>connection"]
+    S21 --> S3["3. Show the<br/>connection story"]
+    S3 --> S31["3.1 Connect the<br/>device<br/>by pairing type"]
     S31 --> S32{"3.2 Poll GET devices<br/>for newDevice = true"}
-    S32 -->|"timeout"| S33["3.3 Reconnect story<br/><i>storyType 3, if any</i>"]
+    S32 -->|"timeout"| S33["3.3 Reconnect<br/>story<br/>storyType 3, if<br/>any"]
     S33 --> S3
-    S32 -->|"found"| S4["4. Success story<br/><i>storyType 2, if any</i>"]
-    S4 --> S5["5. Standard setup<br/><i>behavior, spaces, name</i>"]
-    S5 --> S6["6. Installation story<br/><i>storyType 4, if any</i>"]
+    S32 -->|"found"| S4["4. Success story<br/>storyType 2, if<br/>any"]
+    S4 --> S5["5. Standard<br/>setup<br/>behavior, spaces<br/>name"]
+    S5 --> S6["6. Installation<br/>story<br/>storyType 4, if<br/>any"]
     S6 --> S7["7. Device UI"]
     style S7 fill:#f0fdf4,stroke:#1b873f
 ```

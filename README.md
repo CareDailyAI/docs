@@ -19,19 +19,19 @@ This repository is the guide. The complete, generated API reference lives online
 
 ```mermaid
 flowchart TB
-    DEV["🔌 <b>Devices</b><br/><i>sensors · gateways · radar</i>"]
-    APP["📱 <b>Apps and consoles</b><br/><i>mobile · web · voice</i>"]
+    DEV["🔌 <b>Devices</b><br/>sensors<br/>gateways · radar"]
+    APP["📱 <b>Apps</b><br/><b>and consoles</b><br/>mobile · web<br/>voice"]
     AG["🤖 <b>AI agents</b>"]
-    P["☁️ <b>Care Daily Ambient Operating System</b><br/><i>users · locations · devices · spaces</i>"]
-    B["🧠 <b>Bot microservices</b><br/><i>application logic</i>"]
+    P["☁️ <b>Care Daily</b><br/><b>Ambient</b><br/><b>Operating System</b><br/>users<br/>locations<br/>devices · spaces"]
+    B["🧠 <b>Bot</b><br/><b>microservices</b><br/>application<br/>logic"]
     EXT["🏢 <b>Partner cloud</b>"]
 
-    DEV -->|"MQTT / device API"| P
+    DEV -->|"MQTT<br/>device API"| P
     APP <-->|"Application API<br/>REST + WebSocket"| P
-    AG <-->|"the same open APIs"| P
-    P -->|"data stream messages"| B
-    B -->|"location state variables"| P
-    P -.->|"event streaming"| EXT
+    AG <-->|"the same<br/>open APIs"| P
+    P -->|"data stream<br/>messages"| B
+    B -->|"location state<br/>variables"| P
+    P -.->|"event<br/>streaming"| EXT
 
     classDef plat fill:#eef2ff,stroke:#3f3bf2,stroke-width:2px
     classDef bot  fill:#f0fdf4,stroke:#1b873f,stroke-width:2px

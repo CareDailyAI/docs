@@ -9,15 +9,15 @@ This page catalogs every alert that a care-enabled location can publish through 
 
 ```mermaid
 flowchart TD
-    H["🧾 dashboard_header<br/>changed"] --> P{"priority"}
-    P -->|"0 to 4"| S["Status information.<br/>Do not render as an alert"]
+    H["🧾<br/>dashboard_header<br/>changed"] --> P{"priority"}
+    P -->|"0 to 4"| S["Status<br/>information.<br/>Do not render as<br/>an alert"]
     P -->|"5 or 6"| N{"name matches<br/>this catalog?<br/><i>prefix match for<br/>radar_fall_*, positional_fall_*,<br/>sedentary_*</i>"}
-    N -->|"yes"| A["⚠️ Render the alert"]
-    N -->|"no"| O["See Other headers<br/>at priority 5 or 6"]
+    N -->|"yes"| A["⚠️ Render the<br/>alert"]
+    N -->|"no"| O["See Other<br/>headers<br/>at priority 5 or<br/>6"]
     A --> C{"How does it clear?"}
-    C -->|"person resolves"| R["send resolution content to<br/>conversation_resolved or<br/>resolve_dashboard_header"]
+    C -->|"person resolves"| R["send resolution<br/>content to<br/>conversation_resolved<br/>or<br/>resolve_dashboard_header"]
     C -->|"ttl_ms passes"| T["bot deletes it"]
-    C -->|"condition clears"| X["producing microservice<br/>deletes it"]
+    C -->|"condition clears"| X["producing<br/>microservice<br/>deletes it"]
 ```
 
 It is a companion to [Dashboard Header](dashboard_header.md), which documents the JSON schema, the `resolution` and `feedback` objects, and the `contact_ecc` flow. This page does not repeat that field reference. Every value below was checked against the bot microservices that produce the headers (see [References](#references)).

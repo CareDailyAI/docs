@@ -10,8 +10,8 @@ Trends allow us to understand if the knowledge we're observing now are normal or
 ```mermaid
 flowchart LR
     C["capture_trend_data"] --> TR["📈 Trends"]
-    TR --> MD["trends_metadata<br/><i>static configuration</i>"]
-    TR --> D["trends<br/><i>daily, time-series</i>"]
+    TR --> MD["trends_metadata<br/>static<br/>configuration"]
+    TR --> D["trends<br/>daily<br/>time-series"]
     TR --> R["trends_recently"]
     TR --> W["trends_weekly"]
     TR --> CA["trends_category"]

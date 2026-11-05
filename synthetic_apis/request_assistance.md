@@ -9,11 +9,11 @@ Enable mobile apps and smart speakers to request assistance for the user.
 
 ```mermaid
 flowchart LR
-    R["🆘 request_assistance"] --> T{"type"}
-    T -->|"0 Supernova"| A["👪 Trusted Circle<br/>+ ☎️ professional monitoring<br/><i>at the same time</i>"]
-    T -->|"1 Standard emergency"| B["👪 Trusted Circle<br/>then ☎️ after 2 minutes"]
-    T -->|"2"| C["🏠 People who live here"]
-    T -->|"3"| D["👪 Anyone in the Trusted Circle"]
+    R["🆘<br/>request_assistance"] --> T{"type"}
+    T -->|"0 Supernova"| A["👪 Trusted Circle<br/>+ ☎️<br/>professional<br/>monitoring<br/>at the same time"]
+    T -->|"1 Standard<br/>emergency"| B["👪 Trusted Circle<br/>then ☎️ after 2<br/>minutes"]
+    T -->|"2"| C["🏠 People who<br/>live here"]
+    T -->|"3"| D["👪 Anyone in the<br/>Trusted Circle"]
 ```
 
 A new request is ignored while a previous request's conversation is still unresolved.

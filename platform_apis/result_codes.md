@@ -45,12 +45,12 @@ The authoritative list is at the top of the
 ```mermaid
 flowchart TD
     A["resultCode ≠ 0"] --> B{"Which kind?"}
-    B -->|"1, 27, 30, 44"| C["⏳ Transient<br/>back off: 1 s, 2 s, 4 s ...<br/>then stop and report"]
-    B -->|"19"| D["⏳ Locked<br/>wait lockTimeout ms"]
-    B -->|"2"| E["🔑 Mint a new key<br/>once, then retry once"]
-    B -->|"7, 8, 9, 12, 14, 29"| F["🛠️ Your request is wrong<br/>fix it, do not retry"]
-    B -->|"16"| G["🛑 Locked out<br/>stop, tell a person"]
-    B -->|"21"| H["📴 Device offline<br/>check power and network"]
+    B -->|"1, 27, 30, 44"| C["⏳ Transient<br/>back off: 1 s, 2<br/>s, 4 s ...<br/>then stop and<br/>report"]
+    B -->|"19"| D["⏳ Locked<br/>wait lockTimeout<br/>ms"]
+    B -->|"2"| E["🔑 Mint a new key<br/>once, then retry<br/>once"]
+    B -->|"7, 8, 9, 12, 14<br/>29"| F["🛠️ Your request<br/>is wrong<br/>fix it, do not<br/>retry"]
+    B -->|"16"| G["🛑 Locked out<br/>stop, tell a<br/>person"]
+    B -->|"21"| H["📴 Device offline<br/>check power and<br/>network"]
 ```
 
 Never retry a login in a loop. Repeated failures lock the account, and every step-one call of an

@@ -9,10 +9,10 @@ When a problem occurs, an action plan oversees the resolution of the problem. Th
 
 ```mermaid
 flowchart LR
-    A["⚠️ Alert"] --> G1["👤 group_1<br/><i>if contact_group_1</i>"]
-    G1 -->|"group_2_delay_ms"| G2["👪 group_2<br/><i>if contact_group_2</i>"]
-    G2 -->|"ecc_delay_ms"| EC["☎️ Emergency Call Center<br/><i>if allow_ecc</i>"]
-    EC -->|"dispatch_delay_ms"| D["🚑 Dispatch<br/><i>if allow_dispatch</i>"]
+    A["⚠️ Alert"] --> G1["👤 group_1<br/>if<br/>contact_group_1"]
+    G1 -->|"group_2_delay_ms"| G2["👪 group_2<br/>if<br/>contact_group_2"]
+    G2 -->|"ecc_delay_ms"| EC["☎️ Emergency<br/>Call Center<br/>if allow_ecc"]
+    EC -->|"dispatch_delay_ms"| D["🚑 Dispatch<br/>if<br/>allow_dispatch"]
 ```
 
 | Property    | Type | Description |

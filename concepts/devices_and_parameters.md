@@ -18,8 +18,8 @@ flowchart LR
     end
     GW ==>|"parameters up<br/>(MQTT or HTTP)"| P["☁️ Platform"]
     P ==>|"commands down"| GW
-    P -->|"GET .../parameters"| APP["📱 Your app"]
-    APP -->|"PUT .../parameters"| P
+    P -->|"GET<br/>.../parameters"| APP["📱 Your app"]
+    APP -->|"PUT<br/>.../parameters"| P
 
     style P fill:#eef2ff,stroke:#3f3bf2,stroke-width:2px
     style Home fill:#fff7ed,stroke:#b54708

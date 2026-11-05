@@ -9,13 +9,13 @@ reasons about which organization a home belongs to.
 
 ```mermaid
 flowchart TB
-    P["🏢 Parent organization<br/><code>id</code> · <code>parentId: null</code>"]
-    C1["🏢 Child organization<br/><code>parentId</code> = parent's <code>id</code>"]
-    C2["🏢 Child organization"]
+    P["🏢 Parent<br/>organization<br/><code>id</code> · <code>parentId: null</code>"]
+    C1["🏢 Child<br/>organization<br/><code>parentId</code> = parent's <code>id</code>"]
+    C2["🏢 Child<br/>organization"]
     L1["🏠 Location"]
     L2["🏠 Location"]
     L3["🏠 Location"]
-    S1["🏠 Sub-location<br/><i>subType &gt; 0</i>"]
+    S1["🏠 Sub-location<br/>subType &gt; 0"]
 
     P --> C1 & C2
     C1 --> L1 & L2

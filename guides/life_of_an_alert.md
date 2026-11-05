@@ -83,10 +83,10 @@ At the same moment:
 
 ```mermaid
 flowchart LR
-    B["🤖 Bot writes<br/>narrative + state"] --> P["☁️ Platform"]
-    P -->|"WebSocket type 1, 3"| A["📱 Family app"]
+    B["🤖 Bot writes<br/>narrative +<br/>state"] --> P["☁️ Platform"]
+    P -->|"WebSocket type 1<br/>3"| A["📱 Family app"]
     P -->|"WebSocket type 2"| C["🖥️ Admin console"]
-    P -->|"Event stream type 1, 3"| X["🏢 Partner cloud"]
+    P -->|"Event stream<br/>type 1, 3"| X["🏢 Partner cloud"]
     style P fill:#eef2ff,stroke:#3f3bf2,stroke-width:2px
 ```
 
@@ -97,9 +97,9 @@ Who hears about it, and when, is the location's **action plan** for that service
 
 ```mermaid
 flowchart LR
-    G1["👤 Group 1<br/><i>often: people who live here</i>"] -->|"group_2_delay_ms"| G2["👪 Group 2<br/><i>family and friends</i>"]
-    G2 -->|"ecc_delay_ms"| ECC["☎️ Emergency Call Center<br/><i>if allow_ecc</i>"]
-    ECC -->|"dispatch_delay_ms"| D["🚑 Dispatch<br/><i>if allow_dispatch</i>"]
+    G1["👤 Group 1<br/>often: people<br/>who live here"] -->|"group_2_delay_ms"| G2["👪 Group 2<br/>family and<br/>friends"]
+    G2 -->|"ecc_delay_ms"| ECC["☎️ Emergency<br/>Call Center<br/>if allow_ecc"]
+    ECC -->|"dispatch_delay_ms"| D["🚑 Dispatch<br/>if<br/>allow_dispatch"]
 ```
 
 Who is in each group comes from each person's settings on the location: their `category` (Notify

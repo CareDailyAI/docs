@@ -14,9 +14,9 @@ name with the same values and reads it the same way.
 
 ```mermaid
 flowchart LR
-    P["🧱 <b>Primitives</b><br/><i>defined by the API</i><br/>role · category · residency · callOrder"]
-    A["🏷️ <b>Application attributes</b><br/><i>defined in this registry</i><br/>user properties · tags · location states"]
-    APPS["📱 Every Care Daily app<br/>and partner app"]
+    P["🧱 <b>Primitives</b><br/>defined by the<br/>API<br/>role · category<br/>residency<br/>callOrder"]
+    A["🏷️<br/><b>Application</b><br/><b>attributes</b><br/>defined in this<br/>registry<br/>user properties<br/>tags · location<br/>states"]
+    APPS["📱 Every Care<br/>Daily app<br/>and partner app"]
     P --> APPS
     A --> APPS
 ```

@@ -14,11 +14,11 @@ which one you want and what to expect from it.
 ```mermaid
 flowchart LR
     Q{"What are you<br/>building?"}
-    Q -->|"a mobile or<br/>web app"| A["<b>Application API</b><br/>users · locations · devices<br/>spaces · commands"]
-    Q -->|"an admin or<br/>command center"| B["<b>Admin API</b><br/>organizations · people<br/>places · things"]
-    Q -->|"a device or<br/>a gateway"| C["<b>Device API</b><br/>MQTT via AWS IoT Core"]
+    Q -->|"a mobile or<br/>web app"| A["<b>Application API</b><br/>users<br/>locations<br/>devices<br/>spaces<br/>commands"]
+    Q -->|"an admin or<br/>command center"| B["<b>Admin API</b><br/>organizations<br/>people<br/>places · things"]
+    Q -->|"a device or<br/>a gateway"| C["<b>Device API</b><br/>MQTT via AWS IoT<br/>Core"]
     Q -->|"a partner cloud<br/>receiving data"| D["<b>Event Streaming</b><br/>cloud to cloud"]
-    Q -->|"a bot<br/>microservice"| E["<b>Bots API</b><br/>private, inside botengine"]
+    Q -->|"a bot<br/>microservice"| E["<b>Bots API</b><br/>private, inside<br/>botengine"]
 
     A -.->|"needs it now,<br/>not on a poll"| F["<b>WebSockets</b>"]
     B -.-> F
@@ -91,7 +91,7 @@ true: the server must have a **device type** definition that describes it, and t
 
 ```mermaid
 flowchart LR
-    A["device type<br/><i>defined on the server</i>"] --> B["device registered<br/><i>to a location</i>"] --> C["device can<br/>communicate"]
+    A["device type<br/>defined on the<br/>server"] --> B["device<br/>registered<br/>to a location"] --> C["device can<br/>communicate"]
     style C fill:#f0fdf4,stroke:#1b873f
 ```
 

@@ -9,10 +9,10 @@ Communicate with users over push notification, SMS, and email.
 
 ```mermaid
 flowchart LR
-    MS["✉️ message"] --> P["📲 push<br/><i>push_content</i>"]
-    P -.->|"cannot deliver"| F["💬 SMS<br/><i>push_sms_fallback_content</i>"]
-    MS --> S["💬 SMS<br/><i>sms_content</i>"]
-    MS --> EM["📧 email<br/><i>email_subject + content<br/>or a template</i>"]
+    MS["✉️ message"] --> P["📲 push<br/>push_content"]
+    P -.->|"cannot deliver"| F["💬 SMS<br/>push_sms_fallback_content"]
+    MS --> S["💬 SMS<br/>sms_content"]
+    MS --> EM["📧 email<br/>email_subject +<br/>content<br/>or a template"]
 ```
 
 This essentially implements the `notify()` method available to bots.

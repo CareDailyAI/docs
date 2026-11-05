@@ -10,17 +10,17 @@ you want to know which bots are running where.
 ```mermaid
 flowchart LR
     subgraph In["What a bot hears"]
-        D["📈 device parameters"]
+        D["📈 device<br/>parameters"]
         M["🔁 mode changes"]
-        S["✉️ data stream messages<br/>from apps and other bots"]
+        S["✉️ data stream<br/>messages<br/>from apps and<br/>other bots"]
         T["⏰ schedules"]
     end
     B(["🤖 <b>Bot instance</b><br/>on one location"])
     subgraph Out["What a bot says"]
-        ST["🧾 state variables<br/><i>the current picture</i>"]
-        N["📜 narratives<br/><i>the history</i>"]
-        NT["🔔 notifications<br/><i>push, SMS, email</i>"]
-        C["🎛️ device commands"]
+        ST["🧾 state<br/>variables<br/>the current<br/>picture"]
+        N["📜 narratives<br/>the history"]
+        NT["🔔 notifications<br/>push, SMS, email"]
+        C["🎛️ device<br/>commands"]
     end
     D & M & S & T --> B --> ST & N & NT & C
 

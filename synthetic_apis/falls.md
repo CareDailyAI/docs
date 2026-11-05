@@ -9,10 +9,10 @@ Fall history will maintain a time-series record of each fall incident detected a
 
 ```mermaid
 flowchart LR
-    R["📡 Radars"] --> F["🧾 falls<br/><i>time-series, keyed by start time</i>"]
-    W["⌚ Wearable buttons"] --> F
+    R["📡 Radars"] --> F["🧾 falls<br/>time-series<br/>keyed by start<br/>time"]
+    W["⌚ Wearable<br/>buttons"] --> F
     S["🆘 Emergency SOS"] --> F
-    F --> A["📱 Fall history screen"]
+    F --> A["📱 Fall history<br/>screen"]
 ```
 
 Falls are recorded from every fall-detecting device supported by the bot:

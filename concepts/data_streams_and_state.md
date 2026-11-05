@@ -105,8 +105,8 @@ yours; the next time it runs, your change is gone and the old value is back.
 
 ```mermaid
 flowchart LR
-    A["You want the dashboard<br/>card gone"] --> B{"How?"}
-    B -->|"PUT the state yourself"| C["❌ Bot rewrites it<br/>on its next run"]
+    A["You want the<br/>dashboard<br/>card gone"] --> B{"How?"}
+    B -->|"PUT the state<br/>yourself"| C["❌ Bot rewrites<br/>it<br/>on its next run"]
     B -->|"Send the bot its<br/>delete message"| D["✅ Bot removes it<br/>and republishes"]
     style C fill:#fef2f2,stroke:#b42318
     style D fill:#f0fdf4,stroke:#1b873f

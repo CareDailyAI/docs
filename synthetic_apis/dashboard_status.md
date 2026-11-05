@@ -9,10 +9,10 @@ Dashboard status shows noteworthy events that recently happened. These typically
 
 ```mermaid
 flowchart LR
-    B["🤖 Bots"] -->|"update_dashboard_content"| N["🧾 now<br/><i>NOW and TODAY cards</i>"]
-    A["📱 App or agent"] -->|"update_dashboard_content<br/>type, title, content.id, no comment = delete"| N
-    N -->|"pre-sorted by weight"| UI["📱 Dashboard list"]
-    N -.->|"alarms: at time T, set status"| N
+    B["🤖 Bots"] -->|"update_dashboard_content"| N["🧾 now<br/>NOW and TODAY<br/>cards"]
+    A["📱 App or agent"] -->|"update_dashboard_content<br/>type, title<br/>content.id, no<br/>comment = delete"| N
+    N -->|"pre-sorted by<br/>weight"| UI["📱 Dashboard list"]
+    N -.->|"alarms: at time<br/>T, set status"| N
 ```
 
 ### Properties

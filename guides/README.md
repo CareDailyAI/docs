@@ -15,7 +15,7 @@ flowchart LR
     B --> P
     P --> A["📱 Apps"]
     P --> X["🏢 Partner clouds"]
-    A -->|"data stream messages"| P
+    A -->|"data stream<br/>messages"| P
     style P fill:#eef2ff,stroke:#3f3bf2,stroke-width:2px
     style B fill:#f0fdf4,stroke:#1b873f
 ```

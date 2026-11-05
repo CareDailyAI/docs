@@ -8,7 +8,7 @@ mode changes.
 
 ```mermaid
 flowchart LR
-    APP["📱 App"] -->|"sets HOME · AWAY · STAY · TEST"| S["🏠 Location Scene"]
+    APP["📱 App"] -->|"sets HOME · AWAY<br/>STAY · TEST"| S["🏠 Location Scene"]
     BOT["🤖 Bots"] -->|"append occupancy<br/>and source tags"| S
     S -->|"read back as"| V["<code>HOME.:.PRESENT.AI</code>"]
     style S fill:#fff7ed,stroke:#b54708,stroke-width:2px

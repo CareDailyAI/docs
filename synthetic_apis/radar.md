@@ -9,10 +9,10 @@ Radars can sense falls in real-time, and detect occupants in the room.
 
 ```mermaid
 flowchart TB
-    D["📡 Radar device<br/><i>behavior = the room it is in</i>"] --> R["set_radar_room<br/><i>room boundaries</i>"]
-    R --> S1["set_radar_subregion<br/><i>a bed</i>"]
-    R --> S2["set_radar_subregion<br/><i>an area to ignore</i>"]
-    SB["radar_subregion_behaviors<br/><i>what a subregion can be</i>"] -.-> S1 & S2
+    D["📡 Radar device<br/>behavior = the<br/>room it is in"] --> R["set_radar_room<br/>room boundaries"]
+    R --> S1["set_radar_subregion<br/>a bed"]
+    R --> S2["set_radar_subregion<br/>an area to<br/>ignore"]
+    SB["radar_subregion_behaviors<br/>what a subregion<br/>can be"] -.-> S1 & S2
     R --> O1["radar_room"]
     S1 & S2 --> O2["radar_subregions"]
     D --> C["set_radar_config"]

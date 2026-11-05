@@ -32,10 +32,10 @@ GET /espapi/watch                          "OK" when the cloud is up
 ```mermaid
 flowchart LR
     R["HTTP response"] --> H{"HTTP 2xx?"}
-    H -->|"no"| N["Transport problem<br/><i>wrong host, network</i>"]
+    H -->|"no"| N["Transport<br/>problem<br/>wrong host<br/>network"]
     H -->|"yes"| C{"resultCode"}
     C -->|"0"| OK["✅ It worked"]
-    C -->|"anything else"| E["❌ Read resultCodeMessage"]
+    C -->|"anything else"| E["❌ Read<br/>resultCodeMessage"]
     style OK fill:#f0fdf4,stroke:#1b873f
     style E fill:#fef2f2,stroke:#b42318
 ```

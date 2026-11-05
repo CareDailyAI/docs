@@ -5,11 +5,11 @@ have made a real API call, understood what came back, and know which page to ope
 
 ```mermaid
 flowchart LR
-    A["1. Quick Start<br/><i>first API call<br/>in ten minutes</i>"] --> B["2. Concepts<br/><i>organizations, locations,<br/>devices, users, bots</i>"]
+    A["1. Quick Start<br/>first API call<br/>in ten minutes"] --> B["2. Concepts<br/>organizations<br/>locations,<br/>devices, users<br/>bots"]
     B --> C{"3. What are<br/>you building?"}
-    C -->|"an app or console"| D["Synthetic APIs<br/>+ WebSockets"]
+    C -->|"an app or<br/>console"| D["Synthetic APIs<br/>+ WebSockets"]
     C -->|"a device"| E["MQTT<br/>+ Device API"]
-    C -->|"a cloud integration"| F["Event Streaming"]
+    C -->|"a cloud<br/>integration"| F["Event Streaming"]
     C -->|"an AI agent"| G["Agent Kit"]
 
     style A fill:#eef2ff,stroke:#3f3bf2,stroke-width:2px

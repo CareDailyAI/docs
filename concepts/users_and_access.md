@@ -8,10 +8,10 @@ working out why a family member does not receive alerts.
 
 ```mermaid
 flowchart LR
-    U1["👤 Resident"] -->|"role 1 · residency 1<br/>category 1"| L["🏠 Location"]
-    U2["👤 Daughter<br/>lives nearby"] -->|"role 2 · residency 3<br/>category 1"| L
-    U3["👤 Son<br/>lives remotely"] -->|"role 3 · residency 4<br/>category 2"| L
-    U4["👤 Community staff"] -->|"role 4 · residency 2"| L
+    U1["👤 Resident"] -->|"role 1<br/>residency 1<br/>category 1"| L["🏠 Location"]
+    U2["👤 Daughter<br/>lives nearby"] -->|"role 2<br/>residency 3<br/>category 1"| L
+    U3["👤 Son<br/>lives remotely"] -->|"role 3<br/>residency 4<br/>category 2"| L
+    U4["👤 Community<br/>staff"] -->|"role 4<br/>residency 2"| L
 
     style L fill:#fff7ed,stroke:#b54708,stroke-width:2px
 ```

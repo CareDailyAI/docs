@@ -11,14 +11,14 @@ shell environment.
 
 ```mermaid
 flowchart LR
-    I["📄 AGENT_INSTRUCTIONS.md<br/><i>copied into your project</i>"] --> A["🤖 Your agent"]
-    A --> K1["01 Authentication"]
+    I["📄<br/>AGENT_INSTRUCTIONS.md<br/>copied into your<br/>project"] --> A["🤖 Your agent"]
+    A --> K1["01<br/>Authentication"]
     A --> K2["02 Discovery"]
     A --> K3["03 Reading data"]
     A --> K4["04 Safe writes"]
-    A --> K5["05 Errors and retries"]
+    A --> K5["05 Errors and<br/>retries"]
     A --> K6["06 Live events"]
-    A --> K7["07 Bots and state"]
+    A --> K7["07 Bots and<br/>state"]
     K1 & K2 & K3 & K4 & K5 & K6 & K7 --> P["☁️ Care Daily<br/>open APIs"]
     style I fill:#fdf2f8,stroke:#e20074,stroke-width:2px
     style P fill:#eef2ff,stroke:#3f3bf2,stroke-width:2px

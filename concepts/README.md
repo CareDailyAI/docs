@@ -5,14 +5,14 @@ documentation reads like a map.
 
 ```mermaid
 flowchart TB
-    ORG["🏢 <b>Organization</b><br/><i>a provider, a community, a brand</i>"]
-    SUB["🏢 <b>Child organization</b><br/><i>optional, nests as deep as needed</i>"]
-    LOC["🏠 <b>Location</b><br/><i>one home or one apartment</i>"]
-    USR["👤 <b>Users</b><br/><i>residents, family, staff</i>"]
-    DEV["🔌 <b>Devices</b><br/><i>sensors, gateways, radar</i>"]
-    PAR["📈 <b>Parameters</b><br/><i>named values over time</i>"]
-    SPC["🚪 <b>Spaces</b><br/><i>Kitchen, Bedroom, ...</i>"]
-    BOT["🤖 <b>Bots</b><br/><i>application logic</i>"]
+    ORG["🏢 <b>Organization</b><br/>a provider, a<br/>community, a<br/>brand"]
+    SUB["🏢<br/><b>Child</b><br/><b>organization</b><br/>optional, nests<br/>as deep as<br/>needed"]
+    LOC["🏠 <b>Location</b><br/>one home or one<br/>apartment"]
+    USR["👤 <b>Users</b><br/>residents<br/>family, staff"]
+    DEV["🔌 <b>Devices</b><br/>sensors<br/>gateways, radar"]
+    PAR["📈 <b>Parameters</b><br/>named values<br/>over time"]
+    SPC["🚪 <b>Spaces</b><br/>Kitchen, Bedroom<br/>..."]
+    BOT["🤖 <b>Bots</b><br/>application<br/>logic"]
     ST["🧾 <b>State variables</b><br/>+ <b>narratives</b>"]
 
     ORG --> SUB --> LOC

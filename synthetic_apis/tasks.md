@@ -10,11 +10,11 @@ The bot stores the tasks, narrates changes to the History, and notifies the peop
 
 ```mermaid
 flowchart LR
-    A["📱 App"] -->|"update_task<br/><i>app-generated id</i>"| T["🧾 tasks"]
+    A["📱 App"] -->|"update_task<br/>app-generated id"| T["🧾 tasks"]
     A -->|"delete_task"| T
-    SYS["🤖 tasks_system"] -->|"__people__, __ecc__,<br/>__oobe__, __init__"| T
+    SYS["🤖 tasks_system"] -->|"__people__<br/>__ecc__,<br/>__oobe__<br/>__init__"| T
     A -->|"update_device_bundles"| DB["🧾 device_bundles"]
-    T --> H["📜 history + notifications"]
+    T --> H["📜 history +<br/>notifications"]
 ```
 
 Tasks are provided by the `tasks` microservice package. The companion `tasks_system` package automatically creates and removes system tasks (for example "Add People to your Trusted Circle.") as the location is set up.

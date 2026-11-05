@@ -20,7 +20,7 @@ flowchart LR
     A["🤖 Agent"] -->|"POST stream<br/>address + feed"| P["☁️ Platform"]
     P -->|"delivers"| B["Bot"]
     B -->|"writes state"| P
-    A -->|"GET state<br/>or WebSocket type 3"| P
+    A -->|"GET state<br/>or WebSocket<br/>type 3"| P
     style B fill:#f0fdf4,stroke:#1b873f
 ```
 

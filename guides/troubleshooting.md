@@ -8,17 +8,17 @@ cause is the account, the hardware, the network, or the bots.
 
 ```mermaid
 flowchart TD
-    Q["😟 It is not working"] --> A{"Is the device<br/>on this location?"}
-    A -->|"no"| A1["Paired to another home<br/>or another account"]
+    Q["😟 It is not<br/>working"] --> A{"Is the device<br/>on this location?"}
+    A -->|"no"| A1["Paired to<br/>another home<br/>or another<br/>account"]
     A -->|"yes"| B{"Is it reporting?<br/>lastDataReceivedDateMs"}
-    B -->|"stale"| B1["Power, or the home's network.<br/>Check the gateway first"]
+    B -->|"stale"| B1["Power, or the<br/>home's network.<br/>Check the<br/>gateway first"]
     B -->|"fresh"| C{"Does it take commands?"}
-    C -->|"resultCode 21"| C1["The platform cannot<br/>reach it right now"]
-    C -->|"0, then read-back matches"| D{"Is a bot running<br/>on the home?"}
-    D -->|"no"| D1["No dashboard, insights<br/>or history. Expected"]
+    C -->|"resultCode 21"| C1["The platform<br/>cannot<br/>reach it right<br/>now"]
+    C -->|"0, then<br/>read-back<br/>matches"| D{"Is a bot running<br/>on the home?"}
+    D -->|"no"| D1["No dashboard<br/>insights<br/>or history.<br/>Expected"]
     D -->|"yes"| E{"Are alerts reaching<br/>the family?"}
-    E -->|"no"| E1["Check role, category,<br/>then notification history"]
-    E -->|"yes"| F["✅ Working. Look at the<br/>specific screen's state"]
+    E -->|"no"| E1["Check role<br/>category,<br/>then<br/>notification<br/>history"]
+    E -->|"yes"| F["✅ Working. Look<br/>at the<br/>specific<br/>screen's state"]
 
     style F fill:#f0fdf4,stroke:#1b873f
 ```

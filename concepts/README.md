@@ -51,6 +51,13 @@ them, and publish their conclusions as **state variables** (the current picture)
 **narratives** (the history). Apps read the state and the narratives, and subscribe over WebSocket
 to hear when either changes.
 
+**In a care facility** the home splits in two. Each resident has a **resident location**: the
+resident, their support users, the bots, their personal devices, state variables, narratives and
+subscriptions. Each room or apartment is a **device location** that holds only devices. A resident
+location is related to the device location of the resident's room; two residents who share a room
+are both related to it, and the relation keeps its history when someone moves. See
+[Resident locations and device locations](organizations_and_locations.md#resident-locations-and-device-locations-in-care-facilities).
+
 ---
 
 ## Four rules that hold everywhere

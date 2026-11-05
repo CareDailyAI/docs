@@ -111,6 +111,48 @@ A location can hold sub-locations, for example the apartments of a building. A s
 > **Not subscriptions.** Despite the name, `/subs` is about sub-locations. For the bots running on a
 > location, see [Bots and services](bots_and_services.md).
 
+### Resident locations and device locations in care facilities
+
+In a home, one location holds everything: the people, the devices and the bots. In a care facility
+the platform splits that into two kinds of location, because people move between rooms and rooms
+are shared.
+
+| | Resident location | Device location |
+| --- | --- | --- |
+| **Is** | One resident | A room or an apartment in the facility |
+| **Holds** | The resident, their support users (family, staff), the bots, the resident's personal devices, state variables, narratives and subscriptions | Devices only, no users |
+| **Lives** | As long as the person is a resident | As long as the room exists |
+
+A resident location is related to the device location of the room the resident lives in, with
+the `/subs` calls above. The bots on the resident location read the devices of that room.
+
+- **A shared room has two residents.** Two resident locations can be related to the same device
+  location at the same time, when two residents share a room.
+- **The relation is historical.** When a resident moves to another room, the new relation starts
+  and the old one ends, but it is kept. `GET /cloud/json/location/{locationId}/subs` with a
+  `startDate` returns which room a resident was in, and when. Read the relation for the time you
+  are asking about, never only the current one.
+
+```mermaid
+flowchart LR
+    R1["👤 Resident<br/>location A<br/>resident, support<br/>users, bots"]
+    R2["👤 Resident<br/>location B<br/>resident, support<br/>users, bots"]
+    D1["🚪 Device<br/>location<br/>Room 204<br/>devices only"]
+    D0["🚪 Device<br/>location<br/>Room 110<br/>(before)"]
+    R1 -->|"since March"| D1
+    R2 -->|"since June"| D1
+    R1 -.->|"until March"| D0
+
+    classDef res fill:#fff7ed,stroke:#b54708,stroke-width:2px
+    classDef dev fill:#eef2ff,stroke:#3f3bf2
+    class R1,R2 res
+    class D0,D1 dev
+```
+
+> **TODO(verify):** confirm which location goes in the path and which in `subLocationId` when a
+> resident location is related to a device location, and how a device location is marked
+> (`subType`, `locationType`).
+
 ### Spaces
 
 Spaces are the rooms of a home. Each has a `type` and a `name`, and a device can link to several.

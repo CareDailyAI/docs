@@ -11,9 +11,11 @@ flowchart LR
     U1["👤 Resident"] -->|"role 1<br/>residency 1<br/>category 1"| L["🏠 Location"]
     U2["👤 Daughter<br/>lives nearby"] -->|"role 2<br/>residency 3<br/>category 1"| L
     U3["👤 Son<br/>lives remotely"] -->|"role 3<br/>residency 4<br/>category 2"| L
-    U4["👤 Community<br/>staff"] -->|"role 4<br/>residency 2"| L
+    U4["👤 Home care<br/>aide"] -->|"role 4"| L
+    S["🏢 Facility staff<br/>organization<br/>admins"] -.->|"every location<br/>in the org"| O["🏢 Organization"]
 
     style L fill:#fff7ed,stroke:#b54708,stroke-width:2px
+    style O fill:#eef2ff,stroke:#3f3bf2,stroke-width:2px
 ```
 
 The people attached to a location are its **Trusted Circle**. Every person's link to a home has
@@ -77,6 +79,21 @@ These tables are from the [Application API reference](https://app.caredaily.ai/c
 
 `callOrder` ranks people for a phone tree. `hidden` keeps a person out of the list other members
 see. `temporary` marks an access grant that ends.
+
+## Location users and facility staff
+
+Location users and facility staff reach a home in two different ways.
+
+| | Location users | Facility or community staff |
+| --- | --- | --- |
+| **Who** | The resident, family, friends, and the people who support this one home, including professional caregivers and support personnel (`role` 4) | The staff of a care facility or senior living community |
+| **Linked to** | One location at a time, through `/cloud/json/location/{locationId}/users` | The organization, as organization administrators. See [Organizations and locations](organizations_and_locations.md) |
+| **Sees** | Only the locations they are added to | Every location in the organization |
+
+Staff users are not added to individual locations. A professional caregiver who visits one house
+is a location user of that house; a nurse on a community's staff is an administrator of the
+community's organization. To list a facility's staff, read
+`GET /admin/json/organizations/{organizationId}/admins`, not the users of each location.
 
 > **"My brother never gets the alerts."** Check his `role` and `category` on that location first.
 > A person with `category` 0 is not in the alert order, and bots may leave a person with `role` 0

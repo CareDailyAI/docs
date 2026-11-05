@@ -522,47 +522,52 @@ The user can send questions or messages to AI agents using this interface.
 
 ## A minimal client
 
-Python, with the `websocket-client` package (`pip install websocket-client`). It asks for the
-server, authenticates, subscribes to one home's device parameters, answers the server's pings and
-sends its own. The API key comes from the environment and is never printed.
+JavaScript, as a web UI runs it, with the browser's own `fetch` and `WebSocket` (no packages). It
+asks for the server, authenticates, subscribes to one home's device parameters, answers the
+server's pings, and sends its own. The API key is the signed-in user's, from your app's session;
+never log it or put it in a URL.
 
-```python
-import json, os, threading, time, urllib.request
-import websocket  # websocket-client
+```javascript
+const SERVER = "https://app.caredaily.ai";   // REST base URL
+const apiKey = session.apiKey;               // the signed-in user's key, from your app
+const locationId = 123;                      // the home to watch
 
-SERVER = os.environ["CAREDAILY_SERVER"]          # REST base URL
-KEY = os.environ["CAREDAILY_API_KEY"]
-LOCATION_ID = int(os.environ["CAREDAILY_LOCATION_ID"])
+async function connect() {
+  const res = await fetch(`${SERVER}/cloud/json/settingsServer/wsapi`);
+  const { server: s } = await res.json();
+  const url = `${s.ssl ? "wss" : "ws"}://${s.host}:${s.port}${s.path || ""}`;
 
-s = json.load(urllib.request.urlopen(f"{SERVER}/cloud/json/settingsServer/wsapi"))["server"]
-url = f"{'wss' if s.get('ssl') else 'ws'}://{s['host']}:{s['port']}{s.get('path', '')}"
+  const ws = new WebSocket(url);
+  let pinger;
 
-def on_open(ws):
-    ws.send(json.dumps({"goal": 1, "id": "auth", "key": KEY}))
-    def pinger():
-        while ws.keep_running:
-            time.sleep(20)
-            ws.send("?")                          # our ping
-    threading.Thread(target=pinger, daemon=True).start()
+  ws.onopen = () => {
+    ws.send(JSON.stringify({ goal: 1, id: "auth", key: apiKey }));
+    pinger = setInterval(() => ws.send("?"), 20000);   // our ping
+  };
 
-def on_message(ws, msg):
-    if msg == "?":                                # the server's ping
-        ws.send("!")
-        return
-    if msg == "!":                                # the server's pong
-        return
-    m = json.loads(msg)
-    if m.get("goal") == 1 and m.get("resultCode") == 0:
-        ws.send(json.dumps({"goal": 3, "id": "params",
-                            "subscription": {"type": 6, "operation": 1,
-                                             "locationId": LOCATION_ID}}))
-    elif m.get("goal") == 6:
-        for p in m["data"].get("params", []):
-            print(p["deviceId"], p["name"], "=", p["value"])
-    elif m.get("resultCode", 0) != 0:
-        print("error", m.get("resultCode"), m.get("resultCodeMessage"))
+  ws.onmessage = (event) => {
+    if (event.data === "?") { ws.send("!"); return; }  // the server's ping
+    if (event.data === "!") return;                    // the server's pong
+    const m = JSON.parse(event.data);
+    if (m.goal === 1 && m.resultCode === 0) {
+      ws.send(JSON.stringify({
+        goal: 3, id: "params",
+        subscription: { type: 6, operation: 1, locationId },
+      }));
+    } else if (m.goal === 6) {
+      for (const p of m.data.params || []) {
+        console.log(p.deviceId, p.name, "=", p.value);
+      }
+    } else if ((m.resultCode || 0) !== 0) {
+      console.warn("error", m.resultCode, m.resultCodeMessage);
+    }
+  };
 
-websocket.WebSocketApp(url, on_open=on_open, on_message=on_message).run_forever()
+  ws.onclose = () => clearInterval(pinger);
+  return ws;
+}
+
+connect();
 ```
 
 Before you start listening, read each value's current state over REST

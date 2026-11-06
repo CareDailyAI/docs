@@ -17,6 +17,13 @@ flowchart LR
     style D fill:#f0fdf4,stroke:#1b873f
 ```
 
+**Diagram in text:**
+
+1. Baseline: current values over REST.
+2. Connect: ask for the wss URL, then authenticate.
+3. Subscribe: one home, the types you need.
+4. React: diff each change against the baseline, and keep the connection alive with `?` and `!`.
+
 ---
 
 ## 1. Take a baseline over REST

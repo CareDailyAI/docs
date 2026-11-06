@@ -21,6 +21,13 @@ sequenceDiagram
     Note over Bot: applies the behavior at runtime
 ```
 
+**Diagram in text:**
+
+1. The app sends GET state `behaviors`.
+2. The platform returns behaviors by device type. The person picks one for this device.
+3. The app sends `PUT /cloud/json/locations/{id}/devices/{deviceId}` with `{"device": {"goalId": id}}`.
+4. The platform tells the bots the device metadata was updated. The bots apply the behavior at runtime.
+
 For example, a `Temperature and Humidity Sensor` may be used to detect a mold or mildew, or identify someone is taking a shower, or help ensure your refrigerator is operating properly.
 An `Entry Sensor` may be installed on an exit door on the perimeter of the home, or attached to a medicine cabinet.
 Each of these options are defined by the behaviors offered by bot microservices that add intelligence to the everyday operation of each device.
@@ -126,7 +133,8 @@ Radar device types are resolved from the radar devices actually present in the l
   "value": {
     "10014": [
       {
-        "description": "Install this entry sensor on an exit door on the perimeter of the home to protect the home and help save energy. A security alarm can trigger when the door opens.",
+        "description":
+          "Install this entry sensor on an exit door on the perimeter of the home to protect the home and help save energy. A security alarm can trigger when the door opens.",
         "icon": "home",
         "id": 0,
         "name": "Exit Door on the perimeter (default)",
@@ -138,7 +146,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Install the sensor on a medicine cabinet, drawer, or a container where medicine is stored. The History will record when this compartment was opened, helping track medication adherence.",
+        "description":
+          "Install the sensor on a medicine cabinet, drawer, or a container where medicine is stored. The History will record when this compartment was opened, helping track medication adherence.",
         "icon": "pills",
         "id": 8,
         "name": "Medicine Storage",
@@ -148,7 +157,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Install the sensor on a refrigerator door. The History will record when the refrigerator was opened, helping track meal time activities.",
+        "description":
+          "Install the sensor on a refrigerator door. The History will record when the refrigerator was opened, helping track meal time activities.",
         "icon": "utensils",
         "id": 9,
         "name": "Refrigerator",
@@ -158,7 +168,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 3
       },
       {
-        "description": "Install this entry sensor anywhere inside or outside of the home, but not on the perimeter. You can create your own rules. This will not automatically help save energy or protect the home. This will NOT trigger a security alarm if your door opens.",
+        "description":
+          "Install this entry sensor anywhere inside or outside of the home, but not on the perimeter. You can create your own rules. This will not automatically help save energy or protect the home. This will NOT trigger a security alarm if your door opens.",
         "icon": "mailbox",
         "id": 4,
         "name": "Install somewhere else",
@@ -168,7 +179,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "10019": [
       {
-        "description": "Get mobile alerts anytime your Vibration Detect Sensor detects movement. Perfect for safes and valuables.",
+        "description":
+          "Get mobile alerts anytime your Vibration Detect Sensor detects movement. Perfect for safes and valuables.",
         "icon": "hand-point-right",
         "icon_font": "far",
         "id": 20,
@@ -179,7 +191,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Get mobile alerts anytime your Vibration Detect Sensor moves while you are AWAY, or when your home appears unoccupied.",
+        "description":
+          "Get mobile alerts anytime your Vibration Detect Sensor moves while you are AWAY, or when your home appears unoccupied.",
         "icon": "shield-check",
         "icon_font": "far",
         "id": 21,
@@ -190,7 +203,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 1
       },
       {
-        "description": "Attach the sensor to a window. Get mobile alerts anytime your Vibration Detect Sensor detects glass break while you are AWAY, or when your home appears unoccupied.",
+        "description":
+          "Attach the sensor to a window. Get mobile alerts anytime your Vibration Detect Sensor detects glass break while you are AWAY, or when your home appears unoccupied.",
         "icon": "window-frame",
         "icon_font": "far",
         "id": 5,
@@ -201,7 +215,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Monitoring toileting behavior is important to caregivers of people at risk of dehydration, UTI's, diabetes issues, and more. Start by placing the Vibration Detect Sensor into a small plastic waterproof container or jar. If you're not certain about the reliability of the waterproof container, consider placing the Vibration Detect Sensor inside a re-sealable zipper platic bag and then into the waterproof container. Float the container in the upper water tank of the toilet. We find placing it near the handle area inside the tank works best, but you will need to experiment. If the floating container may interfere with the flap, consider attaching a string to the container and tying the other end of that string to something inside the tank to prevent the container from getting near the flap. When the toilet flushes, the drainage and movement of the water from the tank will be detected by the Touch Sensor and will register as a toilet flush.",
+        "description":
+          "Monitoring toileting behavior is important to caregivers of people at risk of dehydration, UTI's, diabetes issues, and more. Start by placing the Vibration Detect Sensor into a small plastic waterproof container or jar. If you're not certain about the reliability of the waterproof container, consider placing the Vibration Detect Sensor inside a re-sealable zipper platic bag and then into the waterproof container. Float the container in the upper water tank of the toilet. We find placing it near the handle area inside the tank works best, but you will need to experiment. If the floating container may interfere with the flap, consider attaching a string to the container and tying the other end of that string to something inside the tank to prevent the container from getting near the flap. When the toilet flushes, the drainage and movement of the water from the tank will be detected by the Touch Sensor and will register as a toilet flush.",
         "icon": "toilet",
         "icon_font": "far",
         "id": 22,
@@ -225,7 +240,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "10033": [
       {
-        "description": "Place the temperature sensor in your house, or even your second home. Get alerted if your pipes are about to freeze or if your home is getting very hot.",
+        "description":
+          "Place the temperature sensor in your house, or even your second home. Get alerted if your pipes are about to freeze or if your home is getting very hot.",
         "icon": "home",
         "id": 30,
         "name": "Monitor my home (default)",
@@ -235,7 +251,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Place the temperature sensor in the refrigerator. It is said that the ideal temperature range for a refrigerator is 35-38\u00b0F / 2-4\u00b0C, but we know your refrigerator goes up and down a bit.  Get an alert if the fridge goes above 45\u00b0F / 7\u00b0C.  Maybe you left the door open for too long, or maybe you need to adjust that temperature dial in the fridge.",
+        "description":
+          "Place the temperature sensor in the refrigerator. It is said that the ideal temperature range for a refrigerator is 35-38\u00b0F / 2-4\u00b0C, but we know your refrigerator goes up and down a bit.  Get an alert if the fridge goes above 45\u00b0F / 7\u00b0C.  Maybe you left the door open for too long, or maybe you need to adjust that temperature dial in the fridge.",
         "icon": "temperature-low",
         "id": 32,
         "name": "Refrigerator",
@@ -245,7 +262,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Place the temperature sensor in the freezer. If the temperature goes above 32\u00b0F / 0\u00b0C, get a mobile alert on your phone.",
+        "description":
+          "Place the temperature sensor in the freezer. If the temperature goes above 32\u00b0F / 0\u00b0C, get a mobile alert on your phone.",
         "icon": "temperature-frigid",
         "id": 33,
         "name": "Freezer",
@@ -255,7 +273,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 3
       },
       {
-        "description": "Place the temperature sensor near your wine collection. Many experts say wine should be stored at around 55\u00b0F / 13\u00b0C.  Wine can be stored as high as 69\u00b0F / 21\u00b0C without any long-term negative effects. Get alerts automatically if the temperature goes above 69\u00b0F / 21\u00b0C or below 50\u00b0F / 10\u00b0C.",
+        "description":
+          "Place the temperature sensor near your wine collection. Many experts say wine should be stored at around 55\u00b0F / 13\u00b0C.  Wine can be stored as high as 69\u00b0F / 21\u00b0C without any long-term negative effects. Get alerts automatically if the temperature goes above 69\u00b0F / 21\u00b0C or below 50\u00b0F / 10\u00b0C.",
         "icon": "wine-bottle",
         "id": 31,
         "name": "Wine rack",
@@ -265,7 +284,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 4
       },
       {
-        "description": "Steinway & Sons recommends pianos be kept at a constant 68\u00b0F / 20\u00b0C.  Place the temperature sensor in a musical instrument, and get alerted if the temperature gets hotter than 77\u00b0F / 25\u00b0C, or colder than 59\u00b0F / 15\u00b0C. Sudden fluctuations in temperature should be avoided to prevent problems with tuning and regulation.",
+        "description":
+          "Steinway & Sons recommends pianos be kept at a constant 68\u00b0F / 20\u00b0C.  Place the temperature sensor in a musical instrument, and get alerted if the temperature gets hotter than 77\u00b0F / 25\u00b0C, or colder than 59\u00b0F / 15\u00b0C. Sudden fluctuations in temperature should be avoided to prevent problems with tuning and regulation.",
         "icon": "music",
         "id": 35,
         "name": "Musical Instrument",
@@ -285,7 +305,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "10034": [
       {
-        "description": "Place the temperature sensor in your house, or even your second home. Get alerted if your pipes are about to freeze or if your home is getting very hot.",
+        "description":
+          "Place the temperature sensor in your house, or even your second home. Get alerted if your pipes are about to freeze or if your home is getting very hot.",
         "icon": "home",
         "id": 30,
         "name": "Monitor my home (default)",
@@ -295,7 +316,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Many medicines become ineffective at high temperatures and humidities. Continuously monitor medicine to be stored in a \"cool and dry\" place by installing this Temperature and Humidity sensor near the medication. Get alerted if the temperature, humidity, and water vapor pressure is too high and may weaken the medication.",
+        "description":
+          "Many medicines become ineffective at high temperatures and humidities. Continuously monitor medicine to be stored in a \"cool and dry\" place by installing this Temperature and Humidity sensor near the medication. Get alerted if the temperature, humidity, and water vapor pressure is too high and may weaken the medication.",
         "icon": "pills",
         "id": 36,
         "name": "\"Cool & Dry\" Medicine Storage",
@@ -305,7 +327,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 1
       },
       {
-        "description": "Place the temperature sensor in the refrigerator. It is said that the ideal temperature range for a refrigerator is 35-38\u00b0F / 2-4\u00b0C, but we know your refrigerator goes up and down a bit.  Get an alert if the fridge goes above 45\u00b0F / 7\u00b0C.  Maybe you left the door open for too long, or maybe you need to adjust that temperature dial in the fridge.",
+        "description":
+          "Place the temperature sensor in the refrigerator. It is said that the ideal temperature range for a refrigerator is 35-38\u00b0F / 2-4\u00b0C, but we know your refrigerator goes up and down a bit.  Get an alert if the fridge goes above 45\u00b0F / 7\u00b0C.  Maybe you left the door open for too long, or maybe you need to adjust that temperature dial in the fridge.",
         "icon": "temperature-low",
         "id": 32,
         "name": "Refrigerator",
@@ -315,7 +338,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Place the temperature sensor in the freezer. If the temperature goes above 32\u00b0F / 0\u00b0C, get a mobile alert on your phone.",
+        "description":
+          "Place the temperature sensor in the freezer. If the temperature goes above 32\u00b0F / 0\u00b0C, get a mobile alert on your phone.",
         "icon": "temperature-frigid",
         "id": 33,
         "name": "Freezer",
@@ -325,7 +349,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 3
       },
       {
-        "description": "Place the temperature sensor near your wine collection. Many experts say wine should be stored at around 55\u00b0F / 13\u00b0C.  Wine can be stored as high as 69\u00b0F / 21\u00b0C without any long-term negative effects. Get alerts automatically if the temperature goes above 69\u00b0F / 21\u00b0C or below 50\u00b0F / 10\u00b0C.",
+        "description":
+          "Place the temperature sensor near your wine collection. Many experts say wine should be stored at around 55\u00b0F / 13\u00b0C.  Wine can be stored as high as 69\u00b0F / 21\u00b0C without any long-term negative effects. Get alerts automatically if the temperature goes above 69\u00b0F / 21\u00b0C or below 50\u00b0F / 10\u00b0C.",
         "icon": "wine-bottle",
         "id": 31,
         "name": "Wine rack",
@@ -335,7 +360,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 4
       },
       {
-        "description": "Steinway & Sons recommends pianos be kept at a constant 68\u00b0F / 20\u00b0C.  Place the temperature sensor in a musical instrument, and get alerted if the temperature gets hotter than 77\u00b0F / 25\u00b0C, or colder than 59\u00b0F / 15\u00b0C. Sudden fluctuations in temperature should be avoided to prevent problems with tuning and regulation.",
+        "description":
+          "Steinway & Sons recommends pianos be kept at a constant 68\u00b0F / 20\u00b0C.  Place the temperature sensor in a musical instrument, and get alerted if the temperature gets hotter than 77\u00b0F / 25\u00b0C, or colder than 59\u00b0F / 15\u00b0C. Sudden fluctuations in temperature should be avoided to prevent problems with tuning and regulation.",
         "icon": "music",
         "id": 35,
         "name": "Musical Instrument",
@@ -345,7 +371,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 5
       },
       {
-        "description": "Place the sensor close to the ceiling near the shower. It will monitor humidity levels in the bathroom and indicate on the dashboard when occupants last took a shower.",
+        "description":
+          "Place the sensor close to the ceiling near the shower. It will monitor humidity levels in the bathroom and indicate on the dashboard when occupants last took a shower.",
         "icon": "shower",
         "id": 42,
         "name": "Track showers",
@@ -365,14 +392,16 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "10035": [
       {
-        "description": "Turn off the lights automatically when everyone leaves the home or you toggle out of HOME mode.  If you come home or toggle into HOME mode in the evening, the lights will turn on for you automatically.",
+        "description":
+          "Turn off the lights automatically when everyone leaves the home or you toggle out of HOME mode.  If you come home or toggle into HOME mode in the evening, the lights will turn on for you automatically.",
         "icon": "lightbulb-dollar",
         "id": 80,
         "name": "Save energy (default)",
         "weight": 0
       },
       {
-        "description": "When you leave the home and it's after sunset or before sunrise, the lights will remain on for your pets.",
+        "description":
+          "When you leave the home and it's after sunset or before sunrise, the lights will remain on for your pets.",
         "icon": "paw",
         "id": 81,
         "name": "Leave the lights on for the pets",
@@ -392,7 +421,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Using your smart plug on an appliance that should remain on all the time, like a refrigerator or a fish tank? This scenario will protect the smart plug from accidentally switching off, as long as it's powered up and connected to the Internet.",
+        "description":
+          "Using your smart plug on an appliance that should remain on all the time, like a refrigerator or a fish tank? This scenario will protect the smart plug from accidentally switching off, as long as it's powered up and connected to the Internet.",
         "icon": "bolt",
         "id": 84,
         "name": "Always On",
@@ -432,7 +462,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 6
       },
       {
-        "description": "Connect a window air conditioner to this smart plug. Note that some digitally controlled air conditionings may not turn back on automatically after power is restored by the smart plug. Please verify how yours reacts before selecting this behavior.",
+        "description":
+          "Connect a window air conditioner to this smart plug. Note that some digitally controlled air conditionings may not turn back on automatically after power is restored by the smart plug. Please verify how yours reacts before selecting this behavior.",
         "icon": "snowflake",
         "id": 88,
         "name": "Window Air Conditioner",
@@ -442,7 +473,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 7
       },
       {
-        "description": "Plug a coffee maker or hot water kettle into the smart plug. The smart plug will power off in the evening or when occupants leave so you can manually prepare the coffee maker or hot water kettle for the next day. In the morning, it will automatically turn on power when motion is detected anywhere outside the bedroom or bathroom. The smart plug will turn off power automatically if it appears it's been powered on for longer than 4 hours. The dashboard will log what time coffee appears to have been made.  WARNING: Digital coffee pots do not turn on automatically when power is applied, so this service is only compatible with coffee pots and hot water kettles that can be manually switched on.",
+        "description":
+          "Plug a coffee maker or hot water kettle into the smart plug. The smart plug will power off in the evening or when occupants leave so you can manually prepare the coffee maker or hot water kettle for the next day. In the morning, it will automatically turn on power when motion is detected anywhere outside the bedroom or bathroom. The smart plug will turn off power automatically if it appears it's been powered on for longer than 4 hours. The dashboard will log what time coffee appears to have been made.  WARNING: Digital coffee pots do not turn on automatically when power is applied, so this service is only compatible with coffee pots and hot water kettles that can be manually switched on.",
         "icon": "coffee",
         "id": 90,
         "name": "Make coffee when I wake up",
@@ -452,7 +484,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 8
       },
       {
-        "description": "Plug a microwave into the smart plug. This behavior will track when food is cooked and make a record of meal time activities. If the door to the microwave does not appear to open within 2 minutes after cooking is complete, a reminder text notification will be delivered to people who have the alert texting role 'I live here'.",
+        "description":
+          "Plug a microwave into the smart plug. This behavior will track when food is cooked and make a record of meal time activities. If the door to the microwave does not appear to open within 2 minutes after cooking is complete, a reminder text notification will be delivered to people who have the alert texting role 'I live here'.",
         "icon": "microwave",
         "id": 92,
         "name": "Microwave",
@@ -462,7 +495,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 9
       },
       {
-        "description": "Plug an appliance (TV, digital coffee maker, hot water kettle, etc.) into the smart plug. The smart plug will only turn off power if you tell it to - either manually, through the app, or based on custom rules - and will report to the dashboard when the appliance turned on as indicated by power consumption. This behavior is useful for monitoring daily activities that involve electronic appliances.",
+        "description":
+          "Plug an appliance (TV, digital coffee maker, hot water kettle, etc.) into the smart plug. The smart plug will only turn off power if you tell it to - either manually, through the app, or based on custom rules - and will report to the dashboard when the appliance turned on as indicated by power consumption. This behavior is useful for monitoring daily activities that involve electronic appliances.",
         "icon": "plug",
         "id": 91,
         "name": "Track when an appliance turns on",
@@ -481,14 +515,16 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "10036": [
       {
-        "description": "Turn off the lights automatically when everyone leaves the home or you toggle out of HOME mode.  If you come home or toggle into HOME mode in the evening, the lights will turn on for you automatically.",
+        "description":
+          "Turn off the lights automatically when everyone leaves the home or you toggle out of HOME mode.  If you come home or toggle into HOME mode in the evening, the lights will turn on for you automatically.",
         "icon": "lightbulb-dollar",
         "id": 60,
         "name": "Save energy (default)",
         "weight": 0
       },
       {
-        "description": "When you leave the home and it's after sunset or before sunrise, the lights will remain on for your pets.",
+        "description":
+          "When you leave the home and it's after sunset or before sunrise, the lights will remain on for your pets.",
         "icon": "paw",
         "id": 61,
         "name": "Leave the lights on for the pets",
@@ -502,7 +538,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Automatically turn on lights for security every night, and turn them off in the morning.",
+        "description":
+          "Automatically turn on lights for security every night, and turn them off in the morning.",
         "icon": "lights-holiday",
         "id": 64,
         "name": "Outdoor security lighting",
@@ -521,7 +558,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "10038": [
       {
-        "description": "The motion sensor will recognize movement patterns to help increase safety, protect your home, and reduce energy consumption. You will receive alerts if motion is detected while you are in away mode. A security alarm will trigger if motion is detected.",
+        "description":
+          "The motion sensor will recognize movement patterns to help increase safety, protect your home, and reduce energy consumption. You will receive alerts if motion is detected while you are in away mode. A security alarm will trigger if motion is detected.",
         "icon": "home",
         "id": 50,
         "name": "Inside the Home",
@@ -552,7 +590,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Ignore motion from this sensor. Useful for areas outside the home, including the garage. This will NOT trigger a security alarm when motion is detected.",
+        "description":
+          "Ignore motion from this sensor. Useful for areas outside the home, including the garage. This will NOT trigger a security alarm when motion is detected.",
         "icon": "eye-slash",
         "id": 52,
         "name": "Ignore Motion",
@@ -562,14 +601,16 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "10071": [
       {
-        "description": "Turn off the lights automatically when everyone leaves the home or you toggle out of HOME mode.  If you come home or toggle into HOME mode in the evening, the lights will turn on for you automatically.",
+        "description":
+          "Turn off the lights automatically when everyone leaves the home or you toggle out of HOME mode.  If you come home or toggle into HOME mode in the evening, the lights will turn on for you automatically.",
         "icon": "lightbulb-dollar",
         "id": 60,
         "name": "Save energy (default)",
         "weight": 0
       },
       {
-        "description": "When you leave the home and it's after sunset or before sunrise, the lights will remain on for your pets.",
+        "description":
+          "When you leave the home and it's after sunset or before sunrise, the lights will remain on for your pets.",
         "icon": "paw",
         "id": 61,
         "name": "Leave the lights on for the pets",
@@ -583,7 +624,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Automatically turn on lights for security every night, and turn them off in the morning.",
+        "description":
+          "Automatically turn on lights for security every night, and turn them off in the morning.",
         "icon": "lights-holiday",
         "id": 64,
         "name": "Outdoor security lighting",
@@ -602,14 +644,16 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "10072": [
       {
-        "description": "Turn off the lights automatically when everyone leaves the home or you toggle out of HOME mode.  If you come home or toggle into HOME mode in the evening, the lights will turn on for you automatically.",
+        "description":
+          "Turn off the lights automatically when everyone leaves the home or you toggle out of HOME mode.  If you come home or toggle into HOME mode in the evening, the lights will turn on for you automatically.",
         "icon": "lightbulb-dollar",
         "id": 60,
         "name": "Save energy (default)",
         "weight": 0
       },
       {
-        "description": "When you leave the home and it's after sunset or before sunrise, the lights will remain on for your pets.",
+        "description":
+          "When you leave the home and it's after sunset or before sunrise, the lights will remain on for your pets.",
         "icon": "paw",
         "id": 61,
         "name": "Leave the lights on for the pets",
@@ -623,7 +667,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Automatically turn on lights for security every night, and turn them off in the morning.",
+        "description":
+          "Automatically turn on lights for security every night, and turn them off in the morning.",
         "icon": "lights-holiday",
         "id": 64,
         "name": "Outdoor security lighting",
@@ -642,7 +687,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "10074": [
       {
-        "description": "Install this entry sensor on an exit door on the perimeter of the home to protect the home and help save energy. A security alarm can trigger when the door opens.",
+        "description":
+          "Install this entry sensor on an exit door on the perimeter of the home to protect the home and help save energy. A security alarm can trigger when the door opens.",
         "icon": "home",
         "id": 0,
         "name": "Exit Door on the perimeter (default)",
@@ -654,7 +700,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Install the sensor on a medicine cabinet, drawer, or a container where medicine is stored. The History will record when this compartment was opened, helping track medication adherence.",
+        "description":
+          "Install the sensor on a medicine cabinet, drawer, or a container where medicine is stored. The History will record when this compartment was opened, helping track medication adherence.",
         "icon": "pills",
         "id": 8,
         "name": "Medicine Storage",
@@ -664,7 +711,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Install the sensor on a refrigerator door. The History will record when the refrigerator was opened, helping track meal time activities.",
+        "description":
+          "Install the sensor on a refrigerator door. The History will record when the refrigerator was opened, helping track meal time activities.",
         "icon": "utensils",
         "id": 9,
         "name": "Refrigerator",
@@ -674,7 +722,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 3
       },
       {
-        "description": "Install this entry sensor anywhere inside or outside of the home, but not on the perimeter. You can create your own rules. This will not automatically help save energy or protect the home. This will NOT trigger a security alarm if your door opens.",
+        "description":
+          "Install this entry sensor anywhere inside or outside of the home, but not on the perimeter. You can create your own rules. This will not automatically help save energy or protect the home. This will NOT trigger a security alarm if your door opens.",
         "icon": "mailbox",
         "id": 4,
         "name": "Install somewhere else",
@@ -684,7 +733,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "2000": [
       {
-        "description": "Place the Radar in a bathroom. Install the center of the device 5 feet off the ground, and at least 1 foot away from objects on the wall like a towel rack. Do not point the Radar directly at a mirror across the room.",
+        "description":
+          "Place the Radar in a bathroom. Install the center of the device 5 feet off the ground, and at least 1 foot away from objects on the wall like a towel rack. Do not point the Radar directly at a mirror across the room.",
         "force_nickname": true,
         "icon": "restroom",
         "icon_font": "far",
@@ -723,7 +773,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Place the Radar in a bedroom. Install the center of the device 5 feet off the ground, and at least 1 foot away from objects on the wall.",
+        "description":
+          "Place the Radar in a bedroom. Install the center of the device 5 feet off the ground, and at least 1 foot away from objects on the wall.",
         "force_nickname": true,
         "icon": "bed",
         "icon_font": "far",
@@ -751,7 +802,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 5
       },
       {
-        "description": "Place the Radar in a living room or office. Install the center of the device 5 feet off the ground, and at least 1 foot away from objects on the wall.",
+        "description":
+          "Place the Radar in a living room or office. Install the center of the device 5 feet off the ground, and at least 1 foot away from objects on the wall.",
         "force_nickname": true,
         "icon": "couch",
         "icon_font": "far",
@@ -774,7 +826,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 10
       },
       {
-        "description": "Place the Radar in the kitchen. Install the center of the device 5 feet off the ground, and at least 1 foot away from objects on the wall.",
+        "description":
+          "Place the Radar in the kitchen. Install the center of the device 5 feet off the ground, and at least 1 foot away from objects on the wall.",
         "force_nickname": true,
         "icon": "refrigerator",
         "icon_font": "far",
@@ -797,7 +850,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 15
       },
       {
-        "description": "Place the Radar in a room or hallway. Install the center of the device 5 feet off the ground, and at least 1 foot away from objects on the wall.",
+        "description":
+          "Place the Radar in a room or hallway. Install the center of the device 5 feet off the ground, and at least 1 foot away from objects on the wall.",
         "force_nickname": false,
         "icon": "home-heart",
         "icon_font": "far",
@@ -811,7 +865,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "2007": [
       {
-        "description": "Place the Radar in a bathroom. Monitor bathroom usage with advanced tracking capabilities including: extended toilet usage alerts, frequent night bathroom visits tracking, occupancy and time spent in the bathroom, and wandering detection during daytime.",
+        "description":
+          "Place the Radar in a bathroom. Monitor bathroom usage with advanced tracking capabilities including: extended toilet usage alerts, frequent night bathroom visits tracking, occupancy and time spent in the bathroom, and wandering detection during daytime.",
         "force_nickname": true,
         "icon": "restroom",
         "icon_font": "far",
@@ -841,7 +896,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Place the Radar in a bedroom. Provides comprehensive sleep and activity monitoring: oversleeping detection, night activity tracking, wandering at night alerts, abnormal sleep pattern identification, time in bed measurement, and fall detection capabilities.",
+        "description":
+          "Place the Radar in a bedroom. Provides comprehensive sleep and activity monitoring: oversleeping detection, night activity tracking, wandering at night alerts, abnormal sleep pattern identification, time in bed measurement, and fall detection capabilities.",
         "force_nickname": true,
         "icon": "bed",
         "icon_font": "far",
@@ -877,7 +933,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 5
       },
       {
-        "description": "Place the Radar in a living room. Advanced activity and behavior monitoring includes daytime wandering detection, sedentary behavior analysis, activity level tracking, and occupancy and presence detection.",
+        "description":
+          "Place the Radar in a living room. Advanced activity and behavior monitoring includes daytime wandering detection, sedentary behavior analysis, activity level tracking, and occupancy and presence detection.",
         "force_nickname": true,
         "icon": "couch",
         "icon_font": "far",
@@ -908,7 +965,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 10
       },
       {
-        "description": "Place the Radar in the kitchen. Provides insights into daily routines including nutrition and regular kitchen usage tracking, sedentary behavior monitoring, activity and time spent in the kitchen, and continuous and accumulative sitting alerts.",
+        "description":
+          "Place the Radar in the kitchen. Provides insights into daily routines including nutrition and regular kitchen usage tracking, sedentary behavior monitoring, activity and time spent in the kitchen, and continuous and accumulative sitting alerts.",
         "force_nickname": true,
         "icon": "refrigerator",
         "icon_font": "far",
@@ -939,7 +997,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 15
       },
       {
-        "description": "Place the Radar in an office space. Monitors work and activity patterns including sedentary behavior tracking, activity level detection, presence and movement monitoring, and sitting duration analysis.",
+        "description":
+          "Place the Radar in an office space. Monitors work and activity patterns including sedentary behavior tracking, activity level detection, presence and movement monitoring, and sitting duration analysis.",
         "force_nickname": true,
         "icon": "desktop",
         "icon_font": "far",
@@ -969,7 +1028,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 17
       },
       {
-        "description": "Place the Radar in any other room. Provides flexible monitoring capabilities including general presence detection, movement tracking, and basic activity insights.",
+        "description":
+          "Place the Radar in any other room. Provides flexible monitoring capabilities including general presence detection, movement tracking, and basic activity insights.",
         "force_nickname": false,
         "icon": "home-heart",
         "icon_font": "far",
@@ -1024,7 +1084,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "2020": [
       {
-        "description": "Place the Radar in a bathroom. Monitor bathroom usage with advanced tracking capabilities including: extended toilet usage alerts, frequent night bathroom visits tracking, occupancy and time spent in the bathroom, and wandering detection during daytime.",
+        "description":
+          "Place the Radar in a bathroom. Monitor bathroom usage with advanced tracking capabilities including: extended toilet usage alerts, frequent night bathroom visits tracking, occupancy and time spent in the bathroom, and wandering detection during daytime.",
         "force_nickname": true,
         "icon": "restroom",
         "icon_font": "far",
@@ -1063,7 +1124,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Place the Radar in a bedroom. Provides comprehensive sleep and activity monitoring: oversleeping detection, night activity tracking, wandering at night alerts, abnormal sleep pattern identification, time in bed measurement, and fall detection capabilities.",
+        "description":
+          "Place the Radar in a bedroom. Provides comprehensive sleep and activity monitoring: oversleeping detection, night activity tracking, wandering at night alerts, abnormal sleep pattern identification, time in bed measurement, and fall detection capabilities.",
         "force_nickname": true,
         "icon": "bed",
         "icon_font": "far",
@@ -1091,7 +1153,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 5
       },
       {
-        "description": "Place the Radar in a living room. Advanced activity and behavior monitoring includes daytime wandering detection, sedentary behavior analysis, activity level tracking, and occupancy and presence detection.",
+        "description":
+          "Place the Radar in a living room. Advanced activity and behavior monitoring includes daytime wandering detection, sedentary behavior analysis, activity level tracking, and occupancy and presence detection.",
         "force_nickname": true,
         "icon": "couch",
         "icon_font": "far",
@@ -1114,7 +1177,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 10
       },
       {
-        "description": "Place the Radar in the kitchen. Provides insights into daily routines including nutrition and regular kitchen usage tracking, sedentary behavior monitoring, activity and time spent in the kitchen, and continuous and accumulative sitting alerts.",
+        "description":
+          "Place the Radar in the kitchen. Provides insights into daily routines including nutrition and regular kitchen usage tracking, sedentary behavior monitoring, activity and time spent in the kitchen, and continuous and accumulative sitting alerts.",
         "force_nickname": true,
         "icon": "refrigerator",
         "icon_font": "far",
@@ -1137,7 +1201,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 15
       },
       {
-        "description": "Place the Radar in an office space. Monitors work and activity patterns including sedentary behavior tracking, activity level detection, presence and movement monitoring, and sitting duration analysis.",
+        "description":
+          "Place the Radar in an office space. Monitors work and activity patterns including sedentary behavior tracking, activity level detection, presence and movement monitoring, and sitting duration analysis.",
         "force_nickname": true,
         "icon": "desktop",
         "icon_font": "far",
@@ -1159,7 +1224,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 17
       },
       {
-        "description": "Place the Radar in any other room. Provides flexible monitoring capabilities including general presence detection, movement tracking, and basic activity insights.",
+        "description":
+          "Place the Radar in any other room. Provides flexible monitoring capabilities including general presence detection, movement tracking, and basic activity insights.",
         "force_nickname": false,
         "icon": "home-heart",
         "icon_font": "far",
@@ -1225,7 +1291,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "4504": [
       {
-        "description": "Install this multi-sensor on an exit door on the perimeter of the home to protect the home and help save energy. A security alarm can trigger when the door opens.",
+        "description":
+          "Install this multi-sensor on an exit door on the perimeter of the home to protect the home and help save energy. A security alarm can trigger when the door opens.",
         "icon": "home",
         "id": 0,
         "name": "Exit Door on the perimeter (default)",
@@ -1248,7 +1315,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Install the multi-sensor on a medicine cabinet, drawer, or a container where medicine is stored. The History will record when this compartment was opened, helping track medication adherence.",
+        "description":
+          "Install the multi-sensor on a medicine cabinet, drawer, or a container where medicine is stored. The History will record when this compartment was opened, helping track medication adherence.",
         "icon": "pills",
         "id": 2,
         "name": "Medicine Storage",
@@ -1269,7 +1337,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Install the multi-sensor on a refrigerator door. The History will record when the refrigerator was opened, helping track meal time activities.",
+        "description":
+          "Install the multi-sensor on a refrigerator door. The History will record when the refrigerator was opened, helping track meal time activities.",
         "icon": "utensils",
         "id": 3,
         "name": "Refrigerator",
@@ -1284,7 +1353,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 3
       },
       {
-        "description": "Ignore this multi-sensor. Useful for areas outside the home, including the garage. This will NOT trigger a security alarm if your door opens or motion is detected.",
+        "description":
+          "Ignore this multi-sensor. Useful for areas outside the home, including the garage. This will NOT trigger a security alarm if your door opens or motion is detected.",
         "icon": "mailbox",
         "id": 1,
         "name": "Install somewhere else",
@@ -1294,14 +1364,16 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "9001": [
       {
-        "description": "Turn off the lights automatically when everyone leaves the home or you toggle out of HOME mode.  If you come home or toggle into HOME mode in the evening, the lights will turn on for you automatically.",
+        "description":
+          "Turn off the lights automatically when everyone leaves the home or you toggle out of HOME mode.  If you come home or toggle into HOME mode in the evening, the lights will turn on for you automatically.",
         "icon": "lightbulb-dollar",
         "id": 60,
         "name": "Save energy (default)",
         "weight": 0
       },
       {
-        "description": "When you leave the home and it's after sunset or before sunrise, the lights will remain on for your pets.",
+        "description":
+          "When you leave the home and it's after sunset or before sunrise, the lights will remain on for your pets.",
         "icon": "paw",
         "id": 61,
         "name": "Leave the lights on for the pets",
@@ -1315,7 +1387,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Automatically turn on lights for security every night, and turn them off in the morning.",
+        "description":
+          "Automatically turn on lights for security every night, and turn them off in the morning.",
         "icon": "lights-holiday",
         "id": 64,
         "name": "Outdoor security lighting",
@@ -1334,7 +1407,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "9010": [
       {
-        "description": "Your smart lock will automatically lock itself when your home detects that you've gone away, went to sleep, or have armed your security system.",
+        "description":
+          "Your smart lock will automatically lock itself when your home detects that you've gone away, went to sleep, or have armed your security system.",
         "icon": "lock",
         "icon_font": "far",
         "id": 101,
@@ -1342,7 +1416,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Your keypad is waterproof and can optionally be placed outside your home. When you disarm the security system by badging in or typing in a code, this smart lock will unlock too. The smart lock will automatically lock itself when your home thinks it should be secured.",
+        "description":
+          "Your keypad is waterproof and can optionally be placed outside your home. When you disarm the security system by badging in or typing in a code, this smart lock will unlock too. The smart lock will automatically lock itself when your home thinks it should be secured.",
         "icon": "key",
         "icon_font": "far",
         "id": 103,
@@ -1352,7 +1427,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "9014": [
       {
-        "description": "Press the button more than 3 seconds to call for medical emergency help. An SMS text message will be sent to family and friends associated with your home before contacting the emergency call center with a medical alarm.",
+        "description":
+          "Press the button more than 3 seconds to call for medical emergency help. An SMS text message will be sent to family and friends associated with your home before contacting the emergency call center with a medical alarm.",
         "icon": "ambulance",
         "id": 111,
         "name": "Emergency Medical Alert (default)",
@@ -1362,7 +1438,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Press the button more than 3 seconds to send a text message that requests assistance from people in the Trusted Circle who have the alert texting role 'I Live Here'. This behavior will not signal the Emergency Call Center.",
+        "description":
+          "Press the button more than 3 seconds to send a text message that requests assistance from people in the Trusted Circle who have the alert texting role 'I Live Here'. This behavior will not signal the Emergency Call Center.",
         "icon": "user-friends",
         "id": 100,
         "name": "Signal: I need help from people who live with me",
@@ -1372,7 +1449,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 1
       },
       {
-        "description": "Press the button more than 3 seconds to send a text message that requests assistance from people in the Trusted Circle who have the alert texting roles 'I Live Here' or 'Family/Friend'. This behavior will not signal the Emergency Call Center.",
+        "description":
+          "Press the button more than 3 seconds to send a text message that requests assistance from people in the Trusted Circle who have the alert texting roles 'I Live Here' or 'Family/Friend'. This behavior will not signal the Emergency Call Center.",
         "icon": "users-class",
         "id": 105,
         "name": "Signal: I need help from anyone",
@@ -1392,7 +1470,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 4
       },
       {
-        "description": "Place your button in a secret location that only you and trusted people know about, like hidden under a shelf or in a kitchen drawer. If your security system is currently disarmed, press and hold the button about 5 seconds to toggle into AWAY mode. If the security system is armed, tap and release the button to disarm back into OFF mode. Any connected siren will audibly remind you whether the security system has been armed or disarmed.",
+        "description":
+          "Place your button in a secret location that only you and trusted people know about, like hidden under a shelf or in a kitchen drawer. If your security system is currently disarmed, press and hold the button about 5 seconds to toggle into AWAY mode. If the security system is armed, tap and release the button to disarm back into OFF mode. Any connected siren will audibly remind you whether the security system has been armed or disarmed.",
         "icon": "shield-check",
         "id": 110,
         "name": "Security Arm/Disarm in Away Mode",
@@ -1402,7 +1481,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 6
       },
       {
-        "description": "Place your button in a secret location that only you and trusted people know about, like hidden under a shelf or in a kitchen drawer. If your security system is currently disarmed, press and hold the button about 5 seconds to toggle into STAY mode. If the security system is armed, tap and release the button to disarm back into OFF mode. Any connected siren will audibly remind you whether the security system has been armed or disarmed.",
+        "description":
+          "Place your button in a secret location that only you and trusted people know about, like hidden under a shelf or in a kitchen drawer. If your security system is currently disarmed, press and hold the button about 5 seconds to toggle into STAY mode. If the security system is armed, tap and release the button to disarm back into OFF mode. Any connected siren will audibly remind you whether the security system has been armed or disarmed.",
         "icon": "lock-alt",
         "id": 116,
         "name": "Security Arm/Disarm in Stay Mode",
@@ -1439,21 +1519,24 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Intelligently manage power to a pool pump timer to save energy during high electricity prices or demand response events.",
+        "description":
+          "Intelligently manage power to a pool pump timer to save energy during high electricity prices or demand response events.",
         "icon": "swimming-pool",
         "id": 121,
         "name": "Pool Pump",
         "weight": 1
       },
       {
-        "description": "Intelligently manage an electric vehicle charging station to save energy during high electricity prices or demand response events.",
+        "description":
+          "Intelligently manage an electric vehicle charging station to save energy during high electricity prices or demand response events.",
         "icon": "charging-station",
         "id": 122,
         "name": "Electric Vehicle",
         "weight": 2
       },
       {
-        "description": "Plug a dryer into the large load controller. If the dryer is not running and a demand response event begins, the large load controller will turn the dryer off for the duration of the event to remind you to save money.",
+        "description":
+          "Plug a dryer into the large load controller. If the dryer is not running and a demand response event begins, the large load controller will turn the dryer off for the duration of the event to remind you to save money.",
         "icon": "dryer",
         "id": 123,
         "name": "Dryer",
@@ -1462,7 +1545,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "9039": [
       {
-        "description": "Place the pressure pad under the fitted sheet or mattress cover to detect someone lying down on the bed. Do not place it under the mattress itself. Try to keep the plastic sensor box off the ground for maximum wireless coverage. This will add fall detection services at night, help with occupancy sensing, and more accurately quantify sleep.",
+        "description":
+          "Place the pressure pad under the fitted sheet or mattress cover to detect someone lying down on the bed. Do not place it under the mattress itself. Try to keep the plastic sensor box off the ground for maximum wireless coverage. This will add fall detection services at night, help with occupancy sensing, and more accurately quantify sleep.",
         "icon": "bed",
         "id": 0,
         "name": "Install on a Bed (default)",
@@ -1472,7 +1556,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Place the pressure pad under a cushion on a chair. Some testing may be required to ensure the cushion itself does not get recognized like a person sitting in the chair. Try to keep the plastic sensor box off the ground for maximum wireless coverage. This will help detect occupancy and make fall detection services more aggressive around chairs.",
+        "description":
+          "Place the pressure pad under a cushion on a chair. Some testing may be required to ensure the cushion itself does not get recognized like a person sitting in the chair. Try to keep the plastic sensor box off the ground for maximum wireless coverage. This will help detect occupancy and make fall detection services more aggressive around chairs.",
         "icon": "loveseat",
         "id": 1,
         "name": "Install on a Chair",
@@ -1482,7 +1567,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 1
       },
       {
-        "description": "Install the pressure pad under a floor mat, such as in the bathroom or kitchen. Try to keep the plastic sensor box off the ground for maximum wireless coverage. This can serve in place of a motion sensor in sensitive areas like the bathroom, allowing fall detection algorithms to perform more aggressively in those locations. Please keep in mind that pets will be recognized as humans when they step on the mat.",
+        "description":
+          "Install the pressure pad under a floor mat, such as in the bathroom or kitchen. Try to keep the plastic sensor box off the ground for maximum wireless coverage. This can serve in place of a motion sensor in sensitive areas like the bathroom, allowing fall detection algorithms to perform more aggressively in those locations. Please keep in mind that pets will be recognized as humans when they step on the mat.",
         "icon": "shoe-prints",
         "id": 2,
         "name": "Install under a Floor Mat",
@@ -1494,7 +1580,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "9101": [
       {
-        "description": "Press the button once to call for medical emergency help. An SMS text message will be sent to family and friends associated with your home before contacting the emergency call center with a medical alarm.",
+        "description":
+          "Press the button once to call for medical emergency help. An SMS text message will be sent to family and friends associated with your home before contacting the emergency call center with a medical alarm.",
         "icon": "ambulance",
         "id": 111,
         "name": "Emergency Medical Alert (default)",
@@ -1504,7 +1591,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Press the button to send a text message that requests assistance from people in the Trusted Circle who have the alert texting role 'I Live Here'. This behavior will not signal the Emergency Call Center.",
+        "description":
+          "Press the button to send a text message that requests assistance from people in the Trusted Circle who have the alert texting role 'I Live Here'. This behavior will not signal the Emergency Call Center.",
         "icon": "user-friends",
         "id": 100,
         "name": "Signal: I need help from people who live with me",
@@ -1514,7 +1602,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 1
       },
       {
-        "description": "Press the button to send a text message that requests assistance from people in the Trusted Circle who have the alert texting roles 'I Live Here' or 'Family/Friend'. This behavior will not signal the Emergency Call Center.",
+        "description":
+          "Press the button to send a text message that requests assistance from people in the Trusted Circle who have the alert texting roles 'I Live Here' or 'Family/Friend'. This behavior will not signal the Emergency Call Center.",
         "icon": "users-class",
         "id": 105,
         "name": "Signal: I need help from anyone",
@@ -1533,7 +1622,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Connect a wired security system. This requires a professional installation or someone comfortable with wiring the Digital IO Module to an electrical alarm control panel. This will react to and handle an alarm, but you will not be able to control the wired security system remotely.\n\nFirst, search for and download the installation manual for your alarm control panel. You must identify two sets of terminals: always-on power, and alarm output. Use the DC voltage measurement on your multimeter to verify voltage and polarity. You may find it helpful to trigger an alarm to verify the voltage at the alarm output terminals.\n\nIt is recommended that you disable power to the alarm panel before proceeding.\n\nWire the Digital IO Module's 5-28V power terminals to always-on power from the alarm control panel.\n\nWire any of one the Digital IO Module's inputs to the alarm output (ALRM+) on the alarm control panel. Be sure to wire the input's ground to a ground terminal, or back to the power ground on the module itself.\n\nThe intelligence in your home will automatically learn the normal states of all inputs. If any input's state changes - for example when your alarm triggers - this will send out alerts to the Trusted Circle and notify the emergency call center if you have subscribed to professional monitoring services.\n\nBecause the alarm signal is the only input received, you will not be able to control your wired security system from the app or see what mode it is in remotely. But you will be able to get rid of your old alarm service and any required phone line!",
+        "description":
+          "Connect a wired security system. This requires a professional installation or someone comfortable with wiring the Digital IO Module to an electrical alarm control panel. This will react to and handle an alarm, but you will not be able to control the wired security system remotely.\n\nFirst, search for and download the installation manual for your alarm control panel. You must identify two sets of terminals: always-on power, and alarm output. Use the DC voltage measurement on your multimeter to verify voltage and polarity. You may find it helpful to trigger an alarm to verify the voltage at the alarm output terminals.\n\nIt is recommended that you disable power to the alarm panel before proceeding.\n\nWire the Digital IO Module's 5-28V power terminals to always-on power from the alarm control panel.\n\nWire any of one the Digital IO Module's inputs to the alarm output (ALRM+) on the alarm control panel. Be sure to wire the input's ground to a ground terminal, or back to the power ground on the module itself.\n\nThe intelligence in your home will automatically learn the normal states of all inputs. If any input's state changes - for example when your alarm triggers - this will send out alerts to the Trusted Circle and notify the emergency call center if you have subscribed to professional monitoring services.\n\nBecause the alarm signal is the only input received, you will not be able to control your wired security system from the app or see what mode it is in remotely. But you will be able to get rid of your old alarm service and any required phone line!",
         "icon": "shield-check",
         "id": 1,
         "name": "Wired Security System",
@@ -1545,14 +1635,16 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "9105": [
       {
-        "description": "Turn off the lights automatically when everyone leaves the home or you toggle out of HOME mode.  If you come home or toggle into HOME mode in the evening, the lights will turn on for you automatically.",
+        "description":
+          "Turn off the lights automatically when everyone leaves the home or you toggle out of HOME mode.  If you come home or toggle into HOME mode in the evening, the lights will turn on for you automatically.",
         "icon": "lightbulb-dollar",
         "id": 80,
         "name": "Save energy (default)",
         "weight": 0
       },
       {
-        "description": "When you leave the home and it's after sunset or before sunrise, the lights will remain on for your pets.",
+        "description":
+          "When you leave the home and it's after sunset or before sunrise, the lights will remain on for your pets.",
         "icon": "paw",
         "id": 81,
         "name": "Leave the lights on for the pets",
@@ -1572,7 +1664,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Using your smart plug on an appliance that should remain on all the time, like a refrigerator or a fish tank? This scenario will protect the smart plug from accidentally switching off, as long as it's powered up and connected to the Internet.",
+        "description":
+          "Using your smart plug on an appliance that should remain on all the time, like a refrigerator or a fish tank? This scenario will protect the smart plug from accidentally switching off, as long as it's powered up and connected to the Internet.",
         "icon": "bolt",
         "id": 84,
         "name": "Always On",
@@ -1612,7 +1705,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 6
       },
       {
-        "description": "Connect a window air conditioner to this smart plug. Note that some digitally controlled air conditionings may not turn back on automatically after power is restored by the smart plug. Please verify how yours reacts before selecting this behavior.",
+        "description":
+          "Connect a window air conditioner to this smart plug. Note that some digitally controlled air conditionings may not turn back on automatically after power is restored by the smart plug. Please verify how yours reacts before selecting this behavior.",
         "icon": "snowflake",
         "id": 88,
         "name": "Window Air Conditioner",
@@ -1622,7 +1716,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 7
       },
       {
-        "description": "Plug a coffee maker or hot water kettle into the smart plug. The smart plug will power off in the evening or when occupants leave so you can manually prepare the coffee maker or hot water kettle for the next day. In the morning, it will automatically turn on power when motion is detected anywhere outside the bedroom or bathroom. The smart plug will turn off power automatically if it appears it's been powered on for longer than 4 hours. The dashboard will log what time coffee appears to have been made.  WARNING: Digital coffee pots do not turn on automatically when power is applied, so this service is only compatible with coffee pots and hot water kettles that can be manually switched on.",
+        "description":
+          "Plug a coffee maker or hot water kettle into the smart plug. The smart plug will power off in the evening or when occupants leave so you can manually prepare the coffee maker or hot water kettle for the next day. In the morning, it will automatically turn on power when motion is detected anywhere outside the bedroom or bathroom. The smart plug will turn off power automatically if it appears it's been powered on for longer than 4 hours. The dashboard will log what time coffee appears to have been made.  WARNING: Digital coffee pots do not turn on automatically when power is applied, so this service is only compatible with coffee pots and hot water kettles that can be manually switched on.",
         "icon": "coffee",
         "id": 90,
         "name": "Make coffee when I wake up",
@@ -1632,7 +1727,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 8
       },
       {
-        "description": "Plug a microwave into the smart plug. This behavior will track when food is cooked and make a record of meal time activities. If the door to the microwave does not appear to open within 2 minutes after cooking is complete, a reminder text notification will be delivered to people who have the alert texting role 'I live here'.",
+        "description":
+          "Plug a microwave into the smart plug. This behavior will track when food is cooked and make a record of meal time activities. If the door to the microwave does not appear to open within 2 minutes after cooking is complete, a reminder text notification will be delivered to people who have the alert texting role 'I live here'.",
         "icon": "microwave",
         "id": 92,
         "name": "Microwave",
@@ -1642,7 +1738,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 9
       },
       {
-        "description": "Plug an appliance (TV, digital coffee maker, hot water kettle, etc.) into the smart plug. The smart plug will only turn off power if you tell it to - either manually, through the app, or based on custom rules - and will report to the dashboard when the appliance turned on as indicated by power consumption. This behavior is useful for monitoring daily activities that involve electronic appliances.",
+        "description":
+          "Plug an appliance (TV, digital coffee maker, hot water kettle, etc.) into the smart plug. The smart plug will only turn off power if you tell it to - either manually, through the app, or based on custom rules - and will report to the dashboard when the appliance turned on as indicated by power consumption. This behavior is useful for monitoring daily activities that involve electronic appliances.",
         "icon": "plug",
         "id": 91,
         "name": "Track when an appliance turns on",
@@ -1661,7 +1758,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "9106": [
       {
-        "description": "Press the button more than 3 seconds to call for medical emergency help. An SMS text message will be sent to family and friends associated with your home before contacting the emergency call center with a medical alarm.",
+        "description":
+          "Press the button more than 3 seconds to call for medical emergency help. An SMS text message will be sent to family and friends associated with your home before contacting the emergency call center with a medical alarm.",
         "icon": "ambulance",
         "id": 111,
         "name": "Emergency Medical Alert (default)",
@@ -1671,7 +1769,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Press the button more than 3 seconds to send a text message that requests assistance from people in the Trusted Circle who have the alert texting role 'I Live Here'. This behavior will not signal the Emergency Call Center.",
+        "description":
+          "Press the button more than 3 seconds to send a text message that requests assistance from people in the Trusted Circle who have the alert texting role 'I Live Here'. This behavior will not signal the Emergency Call Center.",
         "icon": "user-friends",
         "id": 100,
         "name": "Signal: I need help from people who live with me",
@@ -1681,7 +1780,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 1
       },
       {
-        "description": "Press the button more than 3 seconds to send a text message that requests assistance from people in the Trusted Circle who have the alert texting roles 'I Live Here' or 'Family/Friend'. This behavior will not signal the Emergency Call Center.",
+        "description":
+          "Press the button more than 3 seconds to send a text message that requests assistance from people in the Trusted Circle who have the alert texting roles 'I Live Here' or 'Family/Friend'. This behavior will not signal the Emergency Call Center.",
         "icon": "users-class",
         "id": 105,
         "name": "Signal: I need help from anyone",
@@ -1701,7 +1801,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 4
       },
       {
-        "description": "Place your button in a secret location that only you and trusted people know about, like hidden under a shelf or in a kitchen drawer. If your security system is currently disarmed, press and hold the button about 5 seconds to toggle into AWAY mode. If the security system is armed, tap and release the button to disarm back into OFF mode. Any connected siren will audibly remind you whether the security system has been armed or disarmed.",
+        "description":
+          "Place your button in a secret location that only you and trusted people know about, like hidden under a shelf or in a kitchen drawer. If your security system is currently disarmed, press and hold the button about 5 seconds to toggle into AWAY mode. If the security system is armed, tap and release the button to disarm back into OFF mode. Any connected siren will audibly remind you whether the security system has been armed or disarmed.",
         "icon": "shield-check",
         "id": 110,
         "name": "Security Arm/Disarm in Away Mode",
@@ -1711,7 +1812,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 6
       },
       {
-        "description": "Place your button in a secret location that only you and trusted people know about, like hidden under a shelf or in a kitchen drawer. If your security system is currently disarmed, press and hold the button about 5 seconds to toggle into STAY mode. If the security system is armed, tap and release the button to disarm back into OFF mode. Any connected siren will audibly remind you whether the security system has been armed or disarmed.",
+        "description":
+          "Place your button in a secret location that only you and trusted people know about, like hidden under a shelf or in a kitchen drawer. If your security system is currently disarmed, press and hold the button about 5 seconds to toggle into STAY mode. If the security system is armed, tap and release the button to disarm back into OFF mode. Any connected siren will audibly remind you whether the security system has been armed or disarmed.",
         "icon": "lock-alt",
         "id": 116,
         "name": "Security Arm/Disarm in Stay Mode",
@@ -1741,7 +1843,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "9114": [
       {
-        "description": "Install this entry sensor on an exit door on the perimeter of the home to protect the home and help save energy. A security alarm can trigger when the door opens.",
+        "description":
+          "Install this entry sensor on an exit door on the perimeter of the home to protect the home and help save energy. A security alarm can trigger when the door opens.",
         "icon": "home",
         "id": 0,
         "name": "Exit Door on the perimeter (default)",
@@ -1753,7 +1856,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Install the sensor on a medicine cabinet, drawer, or a container where medicine is stored. The History will record when this compartment was opened, helping track medication adherence.",
+        "description":
+          "Install the sensor on a medicine cabinet, drawer, or a container where medicine is stored. The History will record when this compartment was opened, helping track medication adherence.",
         "icon": "pills",
         "id": 8,
         "name": "Medicine Storage",
@@ -1763,7 +1867,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Install the sensor on a refrigerator door. The History will record when the refrigerator was opened, helping track meal time activities.",
+        "description":
+          "Install the sensor on a refrigerator door. The History will record when the refrigerator was opened, helping track meal time activities.",
         "icon": "utensils",
         "id": 9,
         "name": "Refrigerator",
@@ -1773,7 +1878,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 3
       },
       {
-        "description": "Install this entry sensor anywhere inside or outside of the home, but not on the perimeter. You can create your own rules. This will not automatically help save energy or protect the home. This will NOT trigger a security alarm if your door opens.",
+        "description":
+          "Install this entry sensor anywhere inside or outside of the home, but not on the perimeter. You can create your own rules. This will not automatically help save energy or protect the home. This will NOT trigger a security alarm if your door opens.",
         "icon": "mailbox",
         "id": 4,
         "name": "Install somewhere else",
@@ -1783,7 +1889,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "9119": [
       {
-        "description": "Get mobile alerts anytime your Vibration Detect Sensor detects movement. Perfect for safes and valuables.",
+        "description":
+          "Get mobile alerts anytime your Vibration Detect Sensor detects movement. Perfect for safes and valuables.",
         "icon": "hand-point-right",
         "icon_font": "far",
         "id": 20,
@@ -1794,7 +1901,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Get mobile alerts anytime your Vibration Detect Sensor moves while you are AWAY, or when your home appears unoccupied.",
+        "description":
+          "Get mobile alerts anytime your Vibration Detect Sensor moves while you are AWAY, or when your home appears unoccupied.",
         "icon": "shield-check",
         "icon_font": "far",
         "id": 21,
@@ -1805,7 +1913,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 1
       },
       {
-        "description": "Attach the sensor to a window. Get mobile alerts anytime your Vibration Detect Sensor detects glass break while you are AWAY, or when your home appears unoccupied.",
+        "description":
+          "Attach the sensor to a window. Get mobile alerts anytime your Vibration Detect Sensor detects glass break while you are AWAY, or when your home appears unoccupied.",
         "icon": "window-frame",
         "icon_font": "far",
         "id": 5,
@@ -1816,7 +1925,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Monitoring toileting behavior is important to caregivers of people at risk of dehydration, UTI's, diabetes issues, and more. Start by placing the Vibration Detect Sensor into a small plastic waterproof container or jar. If you're not certain about the reliability of the waterproof container, consider placing the Vibration Detect Sensor inside a re-sealable zipper platic bag and then into the waterproof container. Float the container in the upper water tank of the toilet. We find placing it near the handle area inside the tank works best, but you will need to experiment. If the floating container may interfere with the flap, consider attaching a string to the container and tying the other end of that string to something inside the tank to prevent the container from getting near the flap. When the toilet flushes, the drainage and movement of the water from the tank will be detected by the Touch Sensor and will register as a toilet flush.",
+        "description":
+          "Monitoring toileting behavior is important to caregivers of people at risk of dehydration, UTI's, diabetes issues, and more. Start by placing the Vibration Detect Sensor into a small plastic waterproof container or jar. If you're not certain about the reliability of the waterproof container, consider placing the Vibration Detect Sensor inside a re-sealable zipper platic bag and then into the waterproof container. Float the container in the upper water tank of the toilet. We find placing it near the handle area inside the tank works best, but you will need to experiment. If the floating container may interfere with the flap, consider attaching a string to the container and tying the other end of that string to something inside the tank to prevent the container from getting near the flap. When the toilet flushes, the drainage and movement of the water from the tank will be detected by the Touch Sensor and will register as a toilet flush.",
         "icon": "toilet",
         "icon_font": "far",
         "id": 22,
@@ -1840,7 +1950,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "9134": [
       {
-        "description": "Place the temperature sensor in your house, or even your second home. Get alerted if your pipes are about to freeze or if your home is getting very hot.",
+        "description":
+          "Place the temperature sensor in your house, or even your second home. Get alerted if your pipes are about to freeze or if your home is getting very hot.",
         "icon": "home",
         "id": 30,
         "name": "Monitor my home (default)",
@@ -1850,7 +1961,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Many medicines become ineffective at high temperatures and humidities. Continuously monitor medicine to be stored in a \"cool and dry\" place by installing this Temperature and Humidity sensor near the medication. Get alerted if the temperature, humidity, and water vapor pressure is too high and may weaken the medication.",
+        "description":
+          "Many medicines become ineffective at high temperatures and humidities. Continuously monitor medicine to be stored in a \"cool and dry\" place by installing this Temperature and Humidity sensor near the medication. Get alerted if the temperature, humidity, and water vapor pressure is too high and may weaken the medication.",
         "icon": "pills",
         "id": 36,
         "name": "\"Cool & Dry\" Medicine Storage",
@@ -1860,7 +1972,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 1
       },
       {
-        "description": "Place the temperature sensor in the refrigerator. It is said that the ideal temperature range for a refrigerator is 35-38\u00b0F / 2-4\u00b0C, but we know your refrigerator goes up and down a bit.  Get an alert if the fridge goes above 45\u00b0F / 7\u00b0C.  Maybe you left the door open for too long, or maybe you need to adjust that temperature dial in the fridge.",
+        "description":
+          "Place the temperature sensor in the refrigerator. It is said that the ideal temperature range for a refrigerator is 35-38\u00b0F / 2-4\u00b0C, but we know your refrigerator goes up and down a bit.  Get an alert if the fridge goes above 45\u00b0F / 7\u00b0C.  Maybe you left the door open for too long, or maybe you need to adjust that temperature dial in the fridge.",
         "icon": "temperature-low",
         "id": 32,
         "name": "Refrigerator",
@@ -1870,7 +1983,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Place the temperature sensor in the freezer. If the temperature goes above 32\u00b0F / 0\u00b0C, get a mobile alert on your phone.",
+        "description":
+          "Place the temperature sensor in the freezer. If the temperature goes above 32\u00b0F / 0\u00b0C, get a mobile alert on your phone.",
         "icon": "temperature-frigid",
         "id": 33,
         "name": "Freezer",
@@ -1880,7 +1994,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 3
       },
       {
-        "description": "Place the temperature sensor near your wine collection. Many experts say wine should be stored at around 55\u00b0F / 13\u00b0C.  Wine can be stored as high as 69\u00b0F / 21\u00b0C without any long-term negative effects. Get alerts automatically if the temperature goes above 69\u00b0F / 21\u00b0C or below 50\u00b0F / 10\u00b0C.",
+        "description":
+          "Place the temperature sensor near your wine collection. Many experts say wine should be stored at around 55\u00b0F / 13\u00b0C.  Wine can be stored as high as 69\u00b0F / 21\u00b0C without any long-term negative effects. Get alerts automatically if the temperature goes above 69\u00b0F / 21\u00b0C or below 50\u00b0F / 10\u00b0C.",
         "icon": "wine-bottle",
         "id": 31,
         "name": "Wine rack",
@@ -1890,7 +2005,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 4
       },
       {
-        "description": "Steinway & Sons recommends pianos be kept at a constant 68\u00b0F / 20\u00b0C.  Place the temperature sensor in a musical instrument, and get alerted if the temperature gets hotter than 77\u00b0F / 25\u00b0C, or colder than 59\u00b0F / 15\u00b0C. Sudden fluctuations in temperature should be avoided to prevent problems with tuning and regulation.",
+        "description":
+          "Steinway & Sons recommends pianos be kept at a constant 68\u00b0F / 20\u00b0C.  Place the temperature sensor in a musical instrument, and get alerted if the temperature gets hotter than 77\u00b0F / 25\u00b0C, or colder than 59\u00b0F / 15\u00b0C. Sudden fluctuations in temperature should be avoided to prevent problems with tuning and regulation.",
         "icon": "music",
         "id": 35,
         "name": "Musical Instrument",
@@ -1900,7 +2016,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 5
       },
       {
-        "description": "Place the sensor close to the ceiling near the shower. It will monitor humidity levels in the bathroom and indicate on the dashboard when occupants last took a shower.",
+        "description":
+          "Place the sensor close to the ceiling near the shower. It will monitor humidity levels in the bathroom and indicate on the dashboard when occupants last took a shower.",
         "icon": "shower",
         "id": 42,
         "name": "Track showers",
@@ -1920,14 +2037,16 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "9135": [
       {
-        "description": "Turn off the lights automatically when everyone leaves the home or you toggle out of HOME mode.  If you come home or toggle into HOME mode in the evening, the lights will turn on for you automatically.",
+        "description":
+          "Turn off the lights automatically when everyone leaves the home or you toggle out of HOME mode.  If you come home or toggle into HOME mode in the evening, the lights will turn on for you automatically.",
         "icon": "lightbulb-dollar",
         "id": 80,
         "name": "Save energy (default)",
         "weight": 0
       },
       {
-        "description": "When you leave the home and it's after sunset or before sunrise, the lights will remain on for your pets.",
+        "description":
+          "When you leave the home and it's after sunset or before sunrise, the lights will remain on for your pets.",
         "icon": "paw",
         "id": 81,
         "name": "Leave the lights on for the pets",
@@ -1947,7 +2066,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 2
       },
       {
-        "description": "Using your smart plug on an appliance that should remain on all the time, like a refrigerator or a fish tank? This scenario will protect the smart plug from accidentally switching off, as long as it's powered up and connected to the Internet.",
+        "description":
+          "Using your smart plug on an appliance that should remain on all the time, like a refrigerator or a fish tank? This scenario will protect the smart plug from accidentally switching off, as long as it's powered up and connected to the Internet.",
         "icon": "bolt",
         "id": 84,
         "name": "Always On",
@@ -1987,7 +2107,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 6
       },
       {
-        "description": "Connect a window air conditioner to this smart plug. Note that some digitally controlled air conditionings may not turn back on automatically after power is restored by the smart plug. Please verify how yours reacts before selecting this behavior.",
+        "description":
+          "Connect a window air conditioner to this smart plug. Note that some digitally controlled air conditionings may not turn back on automatically after power is restored by the smart plug. Please verify how yours reacts before selecting this behavior.",
         "icon": "snowflake",
         "id": 88,
         "name": "Window Air Conditioner",
@@ -1997,7 +2118,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 7
       },
       {
-        "description": "Plug a coffee maker or hot water kettle into the smart plug. The smart plug will power off in the evening or when occupants leave so you can manually prepare the coffee maker or hot water kettle for the next day. In the morning, it will automatically turn on power when motion is detected anywhere outside the bedroom or bathroom. The smart plug will turn off power automatically if it appears it's been powered on for longer than 4 hours. The dashboard will log what time coffee appears to have been made.  WARNING: Digital coffee pots do not turn on automatically when power is applied, so this service is only compatible with coffee pots and hot water kettles that can be manually switched on.",
+        "description":
+          "Plug a coffee maker or hot water kettle into the smart plug. The smart plug will power off in the evening or when occupants leave so you can manually prepare the coffee maker or hot water kettle for the next day. In the morning, it will automatically turn on power when motion is detected anywhere outside the bedroom or bathroom. The smart plug will turn off power automatically if it appears it's been powered on for longer than 4 hours. The dashboard will log what time coffee appears to have been made.  WARNING: Digital coffee pots do not turn on automatically when power is applied, so this service is only compatible with coffee pots and hot water kettles that can be manually switched on.",
         "icon": "coffee",
         "id": 90,
         "name": "Make coffee when I wake up",
@@ -2007,7 +2129,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 8
       },
       {
-        "description": "Plug a microwave into the smart plug. This behavior will track when food is cooked and make a record of meal time activities. If the door to the microwave does not appear to open within 2 minutes after cooking is complete, a reminder text notification will be delivered to people who have the alert texting role 'I live here'.",
+        "description":
+          "Plug a microwave into the smart plug. This behavior will track when food is cooked and make a record of meal time activities. If the door to the microwave does not appear to open within 2 minutes after cooking is complete, a reminder text notification will be delivered to people who have the alert texting role 'I live here'.",
         "icon": "microwave",
         "id": 92,
         "name": "Microwave",
@@ -2017,7 +2140,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 9
       },
       {
-        "description": "Plug an appliance (TV, digital coffee maker, hot water kettle, etc.) into the smart plug. The smart plug will only turn off power if you tell it to - either manually, through the app, or based on custom rules - and will report to the dashboard when the appliance turned on as indicated by power consumption. This behavior is useful for monitoring daily activities that involve electronic appliances.",
+        "description":
+          "Plug an appliance (TV, digital coffee maker, hot water kettle, etc.) into the smart plug. The smart plug will only turn off power if you tell it to - either manually, through the app, or based on custom rules - and will report to the dashboard when the appliance turned on as indicated by power consumption. This behavior is useful for monitoring daily activities that involve electronic appliances.",
         "icon": "plug",
         "id": 91,
         "name": "Track when an appliance turns on",
@@ -2036,7 +2160,8 @@ Radar device types are resolved from the radar devices actually present in the l
     ],
     "9138": [
       {
-        "description": "The motion sensor will recognize movement patterns to help increase safety, protect your home, and reduce energy consumption. You will receive alerts if motion is detected while you are in away mode. A security alarm will trigger if motion is detected.",
+        "description":
+          "The motion sensor will recognize movement patterns to help increase safety, protect your home, and reduce energy consumption. You will receive alerts if motion is detected while you are in away mode. A security alarm will trigger if motion is detected.",
         "icon": "home",
         "id": 50,
         "name": "Inside the Home",
@@ -2067,7 +2192,8 @@ Radar device types are resolved from the radar devices actually present in the l
         "weight": 0
       },
       {
-        "description": "Ignore motion from this sensor. Useful for areas outside the home, including the garage. This will NOT trigger a security alarm when motion is detected.",
+        "description":
+          "Ignore motion from this sensor. Useful for areas outside the home, including the garage. This will NOT trigger a security alarm when motion is detected.",
         "icon": "eye-slash",
         "id": 52,
         "name": "Ignore Motion",

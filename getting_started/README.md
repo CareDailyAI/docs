@@ -20,6 +20,12 @@ flowchart LR
     style G fill:#fdf2f8,stroke:#e20074
 ```
 
+**Diagram in text:**
+
+1. Quick Start: your first API call in ten minutes.
+2. Concepts: organizations, locations, devices, users, and bots.
+3. What are you building? An app or console: Synthetic APIs and WebSockets. A device: MQTT and the Device API. A cloud integration: Event Streaming. An AI agent: Agent Kit.
+
 | Step | Read | You will know |
 | :---: | --- | --- |
 | 1 | [Quick Start](quick_start.md) | How to find the server, log in, and read your own home and devices |

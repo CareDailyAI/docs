@@ -16,6 +16,13 @@ flowchart LR
     T -->|"3"| D["👪 Anyone in the<br/>Trusted Circle"]
 ```
 
+**Diagram in text:**
+
+- Type 0, Supernova: the Trusted Circle and professional monitoring at the same time.
+- Type 1, standard emergency: the Trusted Circle, then professional monitoring after 2 minutes.
+- Type 2: the people who live here.
+- Type 3: anyone in the Trusted Circle.
+
 A new request is ignored while a previous request's conversation is still unresolved.
 
 #### Properties

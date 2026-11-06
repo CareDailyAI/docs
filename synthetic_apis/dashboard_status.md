@@ -15,6 +15,8 @@ flowchart LR
     N -.->|"alarms: at time<br/>T, set status"| N
 ```
 
+**Diagram in text:** Bots send `update_dashboard_content` to the `now` state (NOW and TODAY cards). An app or agent sends `update_dashboard_content` too, with type, title, and `content.id`; with no comment, it deletes the card. The `now` cards reach the dashboard list pre-sorted by weight. Alarms in `now` set a status at time T.
+
 ### Properties
 The `now` state variable contains a list of cards to show. Although this concept of 'cards' is now a bit deprecated versus what our latest UI's display. This was originally designed to support multiple sections on the main page of the app, each section having its own weight and title and sub-elements.
 

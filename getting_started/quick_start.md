@@ -24,6 +24,19 @@ sequenceDiagram
     P-->>You: what the app's dashboard is showing right now
 ```
 
+**Diagram in text:**
+
+1. You send `GET /espapi/watch`.
+2. The platform answers OK: the cloud is up.
+3. You send `GET /cloud/json/login` with the PASSWORD header.
+4. The platform returns `resultCode 0` and an API key.
+5. You send `GET /cloud/json/user` with the API_KEY header.
+6. The platform returns you, plus your locations.
+7. You send `GET /cloud/json/devices?locationId=...`.
+8. The platform returns the devices in that home.
+9. You send `GET .../state?name=dashboard_header` for that location.
+10. The platform returns what the app's dashboard is showing right now.
+
 ---
 
 ## Step 0: pick a server

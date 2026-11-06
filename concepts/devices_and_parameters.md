@@ -25,6 +25,8 @@ flowchart LR
     style Home fill:#fff7ed,stroke:#b54708
 ```
 
+**Diagram in text:** Inside a location, a door sensor and a motion sensor connect to the gateway over Zigbee. The gateway sends parameters up to the platform (MQTT or HTTP), and the platform sends commands down to the gateway. Your app reads with `GET .../parameters` and writes with `PUT .../parameters`.
+
 ---
 
 ## Identity
@@ -146,6 +148,15 @@ sequenceDiagram
     App->>P: GET .../parameters
     P-->>App: outletStatus = "1" ✅
 ```
+
+**Diagram in text:**
+
+1. The app sends `PUT .../parameters` with `outletStatus = 1`.
+2. The platform answers `resultCode 0`: queued, not done.
+3. The platform sends the command to the device.
+4. The device reports the new parameter value a few seconds later.
+5. The app sends `GET .../parameters`.
+6. The platform returns `outletStatus = "1"`.
 
 > **`resultCode 0` means the command was queued.** The device applies it when it can. Read the
 > parameter back after a few seconds when it matters, and treat a setting that never changes as

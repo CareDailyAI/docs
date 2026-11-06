@@ -14,6 +14,8 @@ flowchart LR
     style S fill:#fff7ed,stroke:#b54708,stroke-width:2px
 ```
 
+**Diagram in text:** The app sets the Location Scene to HOME, AWAY, STAY, or TEST. Bots append occupancy and source tags. The scene reads back as `HOME.:.PRESENT.AI`.
+
 ## History
 
 Care Daily's modes have evolved a lot over the years, and have always remained backwards
@@ -90,6 +92,12 @@ stateDiagram-v2
     SLEEP --> S2H: waking soon
     S2H --> PRESENT
 ```
+
+**Diagram in text:**
+
+- PRESENT to ABSENT through H2A (may be leaving), and ABSENT back to PRESENT through A2H (expected back soon).
+- ABSENT to VACATION (gone a long time), and VACATION back to PRESENT.
+- PRESENT to SLEEP through H2S (bedtime approaching), and SLEEP back to PRESENT through S2H (waking soon).
 
 The diagram places each transitional state between the two states it connects. It illustrates the
 vocabulary; the bots decide which transitions happen.

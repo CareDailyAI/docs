@@ -48,6 +48,16 @@ flowchart TD
     style S7 fill:#f0fdf4,stroke:#1b873f
 ```
 
+**Diagram in text:**
+
+1. GET Device Models: categories and models.
+2. Select a model, and check `pairingType` and `dependencyDeviceTypes`. Step 2.1: GET Stories, storyType 1 (connection).
+3. Show the connection story. Step 3.1: connect the device by pairing type. Step 3.2: poll GET devices for `newDevice = true`. Step 3.3, on timeout: show the reconnect story (storyType 3, if any) and go back to step 3.
+4. When the device is found, show the success story (storyType 2, if any).
+5. Standard setup: behavior, spaces, and name.
+6. Installation story (storyType 4, if any).
+7. Device UI.
+
 > **Finish by clearing the badge.** The "New Device" badge is the device's `newDevice` flag, and
 > naming the device or choosing its behavior does not clear it. Send `newDevice: false` with
 > [PUT Update a Device](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Devices/operation/Update%20Device)
@@ -229,7 +239,9 @@ IMPORTANT: This feature is under development.  Fall back to `info`.
 
 ### Smart Home Center
 
-![png](./smart_home_center.png)
+[![Smart Home Center onboarding sequence chart](./smart_home_center.png)](./smart_home_center.png)
+
+*Tap the chart to open it full size.* The user selects '+', Add Devices, and Smart Home Center, powers on the device, and scans its QR code (the serial number is the device ID); the app registers the device with POST Register Device, polls GET devices every 10 seconds until the new device appears, updates it, and shows the Connection Success story, the Device Name screen, and the Installation story.
 
 #### APIs
 
@@ -277,7 +289,9 @@ Params:
 
 ### Entry Sensor
 
-![png](./entry_sensor.png)
+[![Entry Sensor onboarding sequence chart](./entry_sensor.png)](./entry_sensor.png)
+
+*Tap the chart to open it full size.* The user selects '+', Add Devices, and Entry Sensor, then powers on the sensor while the app sends a command that turns on pairing at the proxy; the proxy registers the sensor, the app polls GET devices every 10 seconds until it appears, and the user then picks a behavior, names the device, and takes a picture of it in the Installation story.
 
 #### APIs
 
@@ -356,7 +370,9 @@ Params:
 
 ### Motion Sensor
 
-![png](./motion_sensor.png)
+[![Motion Sensor onboarding sequence chart](./motion_sensor.png)](./motion_sensor.png)
+
+*Tap the chart to open it full size.* The user selects '+', Add Devices, and Motion Sensor, then powers on the sensor while the app sends a command that turns on pairing at the proxy; the proxy registers the sensor, the app polls GET devices every 10 seconds until it appears, and the user then picks a behavior, picks spaces (when the model's `displayInfo` has `supportsSpaces=True`), names the device, and takes a picture of it in the Installation story.
 
 #### APIs
 
@@ -447,7 +463,9 @@ Params:
 
 ### Vayyar Home
 
-![png](./vayyar_home.png)
+[![Vayyar Home onboarding sequence chart](./vayyar_home.png)](./vayyar_home.png)
+
+*Tap the chart to open it full size.* The user selects '+' and Add Devices, powers the device, and starts pairing; the app finds it by BLE discovery, sends it the Wi-Fi details, registers it (device type 2000, device ID from the base64 MAC address), updates its cloud settings and its firmware if needed, and reboots it so it connects to the cloud over MQTT, then shows the Connection Success story, the Device Name screen, and the Installation story, where the user sets up the region and subregion.
 
 *Vayyar Home BLE configuration* 
 
@@ -501,7 +519,9 @@ Params:
 
 ### D-Link Camera
 
-![png](./d_link_camera.png)
+[![D-Link Camera onboarding sequence chart](./d_link_camera.png)](./d_link_camera.png)
+
+*Tap the chart to open it full size.* The user selects '+', Add Devices, the D-Link DCS-8302LH, and a proxy Smart Home Center DP2X/4X; the app connects to the camera by BLE and unlocks it with the pincode, has the proxy update its Wi-Fi settings, connects the camera to Wi-Fi, has the proxy add the Nabto service, opens a tunnel through Nabto, and registers the camera (device type 7007), then shows the Connection Success story, the Device Name screen, and the Installation story, where the user sets up the region and subregion.
 
 *D-Link Camera BLE configuration* 
 

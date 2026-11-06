@@ -40,6 +40,22 @@ sequenceDiagram
     App->>P: POST stream "conversation_feedback"<br/>(thumbs up or down + verbatim)
 ```
 
+**Diagram in text:**
+
+1. The sensor sends device parameters (a fall) to the platform.
+2. The platform passes the new measurements to the bots.
+3. The bots write a narrative (a history entry).
+4. The bots write state `dashboard_header`, priority 6.
+5. The bots write state `falls` (a time-series).
+6. The platform tells the family app over WebSocket (goal 6) that `dashboard_header` changed.
+7. The platform sends the narrative and the location state to the partner cloud on the event stream.
+8. The bots contact the first group of the Trusted Circle by push, SMS, or call. If nobody resolves it, they escalate on the action plan's delays.
+9. The app posts stream `conversation_resolved` (resolution content, answer, and `user_id`).
+10. The platform passes the data stream message to the bots.
+11. The bots update `dashboard_header` (resolved).
+12. The platform tells the app over WebSocket that the header changed.
+13. The app posts stream `conversation_feedback` (thumbs up or down, and the verbatim).
+
 ---
 
 ## 1. The measurement arrives
@@ -90,6 +106,8 @@ flowchart LR
     style P fill:#eef2ff,stroke:#3f3bf2,stroke-width:2px
 ```
 
+**Diagram in text:** After the bot writes the narrative and state, the platform sends them to the family app (WebSocket types 1 and 3), to the admin console (WebSocket type 2), and to a partner cloud (event stream types 1 and 3).
+
 ## 4. People are contacted, in order
 
 Who hears about it, and when, is the location's **action plan** for that service, published in the
@@ -101,6 +119,8 @@ flowchart LR
     G2 -->|"ecc_delay_ms"| ECC["☎️ Emergency<br/>Call Center<br/>if allow_ecc"]
     ECC -->|"dispatch_delay_ms"| D["🚑 Dispatch<br/>if<br/>allow_dispatch"]
 ```
+
+**Diagram in text:** Group 1 (often the people who live here) comes first. After `group_2_delay_ms`, group 2 (family and friends). After `ecc_delay_ms`, the Emergency Call Center, if `allow_ecc`. After `dispatch_delay_ms`, dispatch, if `allow_dispatch`.
 
 Who is in each group comes from each person's settings on the location: their `category` (Notify
 First, Notify Second) and `callOrder`. See [Users and access](../concepts/users_and_access.md). What

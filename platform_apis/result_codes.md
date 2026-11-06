@@ -53,6 +53,15 @@ flowchart TD
     B -->|"21"| H["📴 Device offline<br/>check power and<br/>network"]
 ```
 
+**Diagram in text:**
+
+- **1, 27, 30, 44:** transient. Back off 1 s, 2 s, 4 s, and so on, then stop and report.
+- **19:** locked. Wait `lockTimeout` ms.
+- **2:** mint a new key once, then retry once.
+- **7, 8, 9, 12, 14, 29:** your request is wrong. Fix it, and do not retry.
+- **16:** locked out. Stop, and tell a person.
+- **21:** device offline. Check power and network.
+
 Never retry a login in a loop. Repeated failures lock the account, and every step-one call of an
 administrator login throws away the previous passcode.
 

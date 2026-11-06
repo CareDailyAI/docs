@@ -25,6 +25,16 @@ sequenceDiagram
     App->>P: stream to feedback.datastream_address<br/>quantified + verbatim + user_id
 ```
 
+**Diagram in text:**
+
+1. The bot writes state `dashboard_header`: priority, title, resolution, and feedback.
+2. The platform pushes it to the app over WebSocket. The app shows the banner and the resolution button.
+3. The app streams to `resolution.datastream_address`: `resolution.content`, the option's content, and `user_id`. The app shows the option's `ack` at once.
+4. The platform passes the data stream message to the bot.
+5. The bot writes an updated `dashboard_header`.
+6. The platform pushes it to the app over WebSocket.
+7. The app streams to `feedback.datastream_address`: quantified, verbatim, and `user_id`.
+
 Under the hood inside the dashboard microservices, the dashboard header is directly tied to the "home health metrics" which help prioritize this home against other homes for human attention needed.
 These metrics contain a priority (category) and a number from 0-100% that identifies how "well" the home is doing. Lower numbers are bad, and like a weight, lower numbers will float up to the surface
 when prioritizing homes against each other in a specific category.

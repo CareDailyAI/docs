@@ -21,6 +21,8 @@ flowchart LR
     A --> APPS
 ```
 
+**Diagram in text:** Primitives, defined by the API (role, category, residency, callOrder), and application attributes, defined in this registry (user properties, tags, location states), are both used by every Care Daily app and partner app.
+
 **On this page:**
 [Conventions](#conventions) ·
 [User properties](#user-properties) ·

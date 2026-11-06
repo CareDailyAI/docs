@@ -28,6 +28,8 @@ flowchart TB
     class L1,L2,L3,S1 home
 ```
 
+**Diagram in text:** A parent organization (`parentId: null`) has two child organizations, each with `parentId` set to the parent's `id`. One child has two locations and the other has one. One location has a sub-location (`subType > 0`), listed through `/location/{id}/subs`.
+
 ---
 
 ## Organizations
@@ -148,6 +150,8 @@ flowchart LR
     class R1,R2 res
     class D0,D1 dev
 ```
+
+**Diagram in text:** Resident location A (the resident, support users, and bots) has been related to device location Room 204 since March, and was related to Room 110 until March. Resident location B has been related to Room 204 since June. A device location has devices only.
 
 > **TODO(verify):** confirm which location goes in the path and which in `subLocationId` when a
 > resident location is related to a device location, and how a device location is marked

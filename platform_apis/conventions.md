@@ -40,6 +40,8 @@ flowchart LR
     style E fill:#fef2f2,stroke:#b42318
 ```
 
+**Diagram in text:** Check the HTTP status first. Anything but 2xx is a transport problem (wrong host, or the network). On a 2xx, read `resultCode`: `0` means it worked, and anything else means read `resultCodeMessage`.
+
 A 2xx HTTP status means the request arrived. Whether it worked is `resultCode` inside the JSON.
 
 | Field | Meaning |
@@ -133,6 +135,16 @@ sequenceDiagram
     end
     P-->>C: the rows, as JSON
 ```
+
+**Diagram in text:**
+
+1. The client sends `GET /reports/reports?organizationId=`.
+2. The platform returns the reports you may run.
+3. The client sends `GET /reports/generate?reportId=&deliveryType=3&organizationId=`.
+4. The platform returns `resultCode 0` and a token.
+5. Until the report is ready, the client sends `GET /reports/data/{token}?responseFormat=1`.
+6. The platform answers HTTP 404 while the report is still being built.
+7. The platform returns the rows, as JSON.
 
 | Detail | Why it matters |
 | --- | --- |

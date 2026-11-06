@@ -15,6 +15,8 @@ flowchart LR
     S --> SA["🔔 Services<br/>and Alerts"]
 ```
 
+**Diagram in text:** Login and Registration leads to the Mobile App Schema. From there, one path goes to Device Onboarding, then Device UI, then Device Configuration. The other path goes to Services and Alerts.
+
 A person meets the flows roughly in this order: they sign in, land in the app, add a device, use
 its screen, change its settings later, and turn services on.
 

@@ -84,6 +84,15 @@ sequenceDiagram
     P-->>C: resultCode 0 + API key
 ```
 
+**Diagram in text:**
+
+1. Your client sends `GET /cloud/json/login` with username, `keyType=11`, expiry, `prefDeliveryType=2`, and the PASSWORD header.
+2. The platform answers `resultCode 17` (passcode sent).
+3. The platform sends the passcode to the person by email or SMS.
+4. The person reads it and hands it to your client.
+5. Your client sends `GET /cloud/json/login` again: the same username and keyType, with only the passcode header.
+6. The platform returns `resultCode 0` and the API key.
+
 What to know about the second call:
 
 - **`passcode` is a header, and it is lowercase.** Sent as a query parameter it is ignored and you

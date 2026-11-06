@@ -22,6 +22,14 @@ sequenceDiagram
     MS->>MS: no longer listed in "multistream"
 ```
 
+**Diagram in text:**
+
+1. The app sends `multistream` with `id`, `timestamp`, `message`, and `narrate`. Sending the same `id` again replaces the queued entry.
+2. The multistream microservice queues it, listed in state `multistream`.
+3. At the timestamp, it sends the `message` content to the addressed microservices.
+4. It sends the `narrate` content.
+5. The entry is no longer listed in `multistream`.
+
 Through the `multistream` state variable, it is possible to see what data stream messages have been scheduled with a multistream message, and edit/remove scheduled data stream messages from the queue.
 
 To edit a queued multistream message, send a new multistream message with the same `id` and a future `timestamp`; it replaces the queued entry. To remove a queued multistream message, send a multistream message with the same `id` and no future `timestamp`; the queued entry is deleted and any data stream addresses included in the new message are delivered immediately (send `{"id": "hello"}` alone to remove without delivering anything).

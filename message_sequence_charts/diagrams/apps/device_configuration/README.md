@@ -11,7 +11,9 @@
 Configuring Wi-Fi for the Smart Home Center device types is done by using device commands to interact with the device.
 This requires the device to be connected to the Cloud.
 
-![png](./smart_home_center_wifi.png)
+[![Smart Home Center Wi-Fi configuration sequence chart](./smart_home_center_wifi.png)](./smart_home_center_wifi.png)
+
+*Tap the chart to open it full size.* The user selects Wi-Fi, the app reads the current measurements and sends a command so the device refreshes nearby SSIDs, shows them with their signal strength, takes the chosen SSID and its password (none is needed when `wifiSecurityValues` is 'none'), sends the command that sets Wi-Fi, and after a minute or two reads the measurements again to confirm that `wifiSsid` matches and `wifiConnected` is 1.
 
 #### APIs
 

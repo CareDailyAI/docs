@@ -8,7 +8,9 @@
 
 ### Services Summary
 
-![png](./services_summary.png)
+[![Services Summary sequence chart](./services_summary.png)](./services_summary.png)
+
+*Tap the chart to open it full size.* Starting on the Dashboard tab, the user selects Services & Alerts, and the app gets the location state and the questions, then shows a section for each service.
 
 #### APIS
 

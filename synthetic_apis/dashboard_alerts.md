@@ -20,6 +20,12 @@ flowchart TD
     C -->|"condition clears"| X["producing<br/>microservice<br/>deletes it"]
 ```
 
+**Diagram in text:**
+
+- When `dashboard_header` changes, check its priority. Priority 0 to 4 is status information: do not render it as an alert.
+- At priority 5 or 6, check whether the name matches this catalog (prefix match for `radar_fall_*`, `positional_fall_*`, and `sedentary_*`). If it does, render the alert. If it does not, see Other headers at priority 5 or 6.
+- A rendered alert clears when a person resolves it (send resolution content to `conversation_resolved` or `resolve_dashboard_header`), when `ttl_ms` passes (the bot deletes it), or when the condition clears (the producing microservice deletes it).
+
 It is a companion to [Dashboard Header](dashboard_header.md), which documents the JSON schema, the `resolution` and `feedback` objects, and the `contact_ecc` flow. This page does not repeat that field reference. Every value below was checked against the bot microservices that produce the headers (see [References](#references)).
 
 ## Overview

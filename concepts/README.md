@@ -31,6 +31,13 @@ flowchart TB
     class BOT,ST bot
 ```
 
+**Diagram in text:**
+
+- An **organization** (a provider, a community, or a brand) has locations directly or through optional **child organizations**, which nest as deep as needed.
+- A **location** is one home or one apartment. It has **users** (residents, family, and staff), **devices**, **spaces** (Kitchen, Bedroom, and so on), and **bots**.
+- A device has **parameters**, named values over time. A device can be linked to a space.
+- Bots hold the application logic and write **state variables** and **narratives**.
+
 | Concept | One line |
 | --- | --- |
 | [**Organizations and locations**](organizations_and_locations.md) | Who the account belongs to, and the home it describes |

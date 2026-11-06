@@ -23,6 +23,15 @@ sequenceDiagram
     App->>P: stream "pause_rule" / "play_rule" / "delete_rule"
 ```
 
+**Diagram in text:**
+
+1. The app sends GET state `rule_phrases`.
+2. The platform returns the triggers, states, and actions on offer. The person composes a rule, and the app generates `rule_id`.
+3. The app sends stream `set_rule`.
+4. The platform passes the data stream message to the rules engine.
+5. The rules engine updates state `rules`.
+6. The app sends stream `pause_rule`, `play_rule`, or `delete_rule`.
+
 The rules engine is provided by the `rules_engine` microservice package (or the reduced `free_rules_engine` package). Phrases are declared by the device-type and location rules microservices inside that package, so the exact set of phrases available in a location depends on the bot and the devices installed there.
 
 Apps discover the available phrases from the `rule_phrases` state variable, build a rule from those phrases, send it in with the `set_rule` data stream message, and read the resulting rules back from the `rules` state variable.

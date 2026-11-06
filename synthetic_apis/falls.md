@@ -15,6 +15,8 @@ flowchart LR
     F --> A["📱 Fall history<br/>screen"]
 ```
 
+**Diagram in text:** Radars, wearable buttons, and Emergency SOS all record into the `falls` time-series, keyed by start time, which feeds the fall history screen.
+
 Falls are recorded from every fall-detecting device supported by the bot:
 
 * Radar devices: Vayyar Care (device type `2000`), AeroSense Assure (`2020`), Pontosense (`2007`) and Nobi (`2003`).

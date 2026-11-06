@@ -24,6 +24,16 @@ sequenceDiagram
     P-->>App: the new value
 ```
 
+**Diagram in text:**
+
+1. The app sends `POST /cloud/appstore/stream?address=set_badge&scope=1&locationId=...` with `{"feed": {"badge": 0}}`.
+2. The platform answers `resultCode 0`: delivered, nothing returned.
+3. The platform passes the message on address `set_badge` to the bot, which does the work.
+4. The bot writes state `summary`.
+5. The platform tells the app over WebSocket that state `summary` was updated.
+6. The app sends `GET /cloud/json/locations/{id}/state?name=summary`.
+7. The platform returns the new value.
+
 ---
 
 ## Sending: data stream messages
@@ -111,6 +121,8 @@ flowchart LR
     style C fill:#fef2f2,stroke:#b42318
     style D fill:#f0fdf4,stroke:#1b873f
 ```
+
+**Diagram in text:** You want a dashboard card gone. If you PUT the state yourself, the bot rewrites it on its next run. If you send the bot its delete message, the bot removes the card and republishes.
 
 Each [Synthetic API](../synthetic_apis/README.md) page lists the input address that changes its
 output. For example, [Dashboard Status](../synthetic_apis/dashboard_status.md) explains how to

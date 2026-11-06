@@ -334,7 +334,9 @@ Describe the configurations for this setting. The app must send a command to the
 
 ### Smart Home Center
 
-![png](./smart_home_center.png)
+[![Smart Home Center device UI sequence chart](./smart_home_center.png)](./smart_home_center.png)
+
+*Tap the chart to open it full size.* The user selects Smart Home Center; the app gets the list of devices, the current measurements, and the device properties, sends commands to refresh the parameters the device model marks for manual refresh, and shows the Device UI after the device sends new measurements.
 
 #### APIs
 

@@ -31,14 +31,21 @@ flowchart TB
     class BOT,ST bot
 ```
 
-| Concept | One line | Read |
-| --- | --- | --- |
-| **Organizations and locations** | Who the account belongs to, and the home it describes | [organizations_and_locations.md](organizations_and_locations.md) |
-| **Users and access** | People, what they can do in each home, and who gets alerted first | [users_and_access.md](users_and_access.md) |
-| **Devices and parameters** | Hardware, what it reports, and how to send it a command | [devices_and_parameters.md](devices_and_parameters.md) |
-| **Bots and services** | Where the intelligence runs, and why a new home can look empty | [bots_and_services.md](bots_and_services.md) |
-| **Data streams and state** | How you talk to a bot, and how it answers | [data_streams_and_state.md](data_streams_and_state.md) |
-| **Application attributes** | The shared names every app uses for user properties, tags, and location states | [application_attributes.md](application_attributes.md) |
+**Diagram in text:**
+
+- An **organization** (a provider, a community, or a brand) has locations directly or through optional **child organizations**, which nest as deep as needed.
+- A **location** is one home or one apartment. It has **users** (residents, family, and staff), **devices**, **spaces** (Kitchen, Bedroom, and so on), and **bots**.
+- A device has **parameters**, named values over time. A device can be linked to a space.
+- Bots hold the application logic and write **state variables** and **narratives**.
+
+| Concept | One line |
+| --- | --- |
+| [**Organizations and locations**](organizations_and_locations.md) | Who the account belongs to, and the home it describes |
+| [**Users and access**](users_and_access.md) | People, what they can do in each home, and who gets alerted first |
+| [**Devices and parameters**](devices_and_parameters.md) | Hardware, what it reports, and how to send it a command |
+| [**Bots and services**](bots_and_services.md) | Where the intelligence runs, and why a new home can look empty |
+| [**Data streams and state**](data_streams_and_state.md) | How you talk to a bot, and how it answers |
+| [**Application attributes**](application_attributes.md) | The shared names every app uses for user properties, tags, and location states |
 
 ---
 

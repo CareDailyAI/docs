@@ -27,6 +27,8 @@ flowchart LR
     style B fill:#f0fdf4,stroke:#1b873f,stroke-width:2px
 ```
 
+**Diagram in text:** A bot instance on one location hears device parameters, mode changes, data stream messages from apps and other bots, and schedules. It produces state variables (the current picture), narratives (the history), notifications (push, SMS, email), and device commands.
+
 This page describes bots from the outside, as an API consumer sees them: what goes in and what
 comes out. How any particular bot reaches its conclusions is not part of the public API.
 

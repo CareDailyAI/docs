@@ -66,7 +66,9 @@ Below is a list of our current dynamic query variables:
 
 ### Main
 
-![png](./main.png)
+[![Main App Schema sequence chart](./main.png)](./main.png)
+
+*Tap the chart to open it full size.* The chart marks the start and the end of the Main App Schema; its path is below.
 
 *Path*
 
@@ -152,7 +154,9 @@ Below is a list of our current dynamic query variables:
 
 ### Account
 
-![png](./account.png)
+[![Account App Schema sequence chart](./account.png)](./account.png)
+
+*Tap the chart to open it full size.* The chart marks the start and the end of the Account App Schema; its path is below.
 
 *Path*
 
@@ -160,7 +164,9 @@ Below is a list of our current dynamic query variables:
 
 ### Settings
 
-![png](./settings.png)
+[![Settings App Schema sequence chart](./settings.png)](./settings.png)
+
+*Tap the chart to open it full size.* The chart marks the start and the end of the Settings App Schema; its path is below.
 
 *Path*
 
@@ -175,7 +181,9 @@ Below is a list of our current dynamic query variables:
 
 ### About
 
-![png](./about.png)
+[![About App Schema sequence chart](./about.png)](./about.png)
+
+*Tap the chart to open it full size.* The chart marks the start and the end of the About App Schema; its path is below.
 
 *Path*
 
@@ -183,7 +191,9 @@ Below is a list of our current dynamic query variables:
 
 ### Support
 
-![png](./support.png)
+[![Support App Schema sequence chart](./support.png)](./support.png)
+
+*Tap the chart to open it full size.* The chart marks the start and the end of the Support App Schema; its path is below.
 
 *Path*
 
@@ -191,7 +201,9 @@ Below is a list of our current dynamic query variables:
 
 ### Locations
 
-![png](./locations.png)
+[![Locations App Schema sequence chart](./locations.png)](./locations.png)
+
+*Tap the chart to open it full size.* The chart marks the start and the end of the Locations App Schema; its path is below.
 
 *Path*
 
@@ -199,7 +211,9 @@ Below is a list of our current dynamic query variables:
 
 ### User Agreements
 
-![png](./user_agreements.png)
+[![User Agreements App Schema sequence chart](./user_agreements.png)](./user_agreements.png)
+
+*Tap the chart to open it full size.* The chart marks the start and the end of the User Agreements App Schema; its path is below.
 
 *Path*
 
@@ -214,7 +228,9 @@ Below is a list of our current dynamic query variables:
 
 ### Faqs
 
-![png](./faqs.png)
+[![Frequently Asked Questions App Schema sequence chart](./faqs.png)](./faqs.png)
+
+*Tap the chart to open it full size.* The chart marks the start and the end of the Frequently Asked Questions App Schema; its path is below.
 
 *Path*
 
@@ -228,7 +244,9 @@ Below is a list of our current dynamic query variables:
 
 ### Augmented Reality
 
-![png](./ar.png)
+[![Augmented Reality App Schema sequence chart](./ar.png)](./ar.png)
+
+*Tap the chart to open it full size.* The chart marks the start and the end of the Augmented Reality App Schema; its path is below.
 
 *Path*
 
@@ -242,7 +260,9 @@ Below is a list of our current dynamic query variables:
 
 ### Bundle
 
-![png](./bundle.png)
+[![Bundle App Schema sequence chart](./bundle.png)](./bundle.png)
+
+*Tap the chart to open it full size.* The chart marks the start and the end of the Bundle App Schema; its path is below.
 
 *Path*
 
@@ -257,7 +277,9 @@ Below is a list of our current dynamic query variables:
 
 #### OOBE
 
-![png](./bundle.png)
+[![Bundle App Schema sequence chart](./bundle.png)](./bundle.png)
+
+*Tap the chart to open it full size.* The chart marks the start and the end of the Bundle App Schema, the same chart as Bundle above, used here for OOBE; its path is below.
 
 *Path*
 
@@ -271,7 +293,9 @@ Below is a list of our current dynamic query variables:
 
 ### User Codes
 
-![png](./user_codes.png)
+[![User Codes App Schema sequence chart](./user_codes.png)](./user_codes.png)
+
+*Tap the chart to open it full size.* The chart marks the start and the end of the User Codes App Schema; its path is below.
 
 *Path*
 
@@ -286,7 +310,9 @@ Below is a list of our current dynamic query variables:
 
 Open common Wi-Fi configuration page that lists Wi-Fi access points and allows for password input.
 
-![png](./wifi.png)
+[![Wi-Fi App Schema sequence chart](./wifi.png)](./wifi.png)
+
+*Tap the chart to open it full size.* The user opens the URL, the platform launches the app with it, the session is restored, and the app shows the Wi-Fi configuration; the next steps are in the [Smart Home Center Wi-Fi chart](../device_configuration/README.md#smart-home-center-wi-fi).
 
 *Path*
 
@@ -308,7 +334,9 @@ Open common Wi-Fi configuration page that lists Wi-Fi access points and allows f
 
 ### OS
 
-![png](./os.png)
+[![OS App Schema sequence chart](./os.png)](./os.png)
+
+*Tap the chart to open it full size.* The chart marks the start and the end of the OS App Schema; its paths are in the sections below.
 
 #### Add Contact
 

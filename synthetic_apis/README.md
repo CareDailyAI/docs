@@ -22,6 +22,15 @@ sequenceDiagram
     Cloud-->>App: state variable JSON
 ```
 
+**Diagram in text:**
+
+1. The app POSTs a data stream message: an address and JSON content.
+2. The platform delivers it to the bots subscribed to that address. The bot does the work asynchronously, with no reply on the original call.
+3. The bot writes a location state variable.
+4. The platform pushes the change over WebSocket to the subscribed app.
+5. The app sends GET location state.
+6. The platform returns the state variable JSON.
+
 Two halves, asynchronous: data goes *in* as a **data stream message** and answers come *out* as a
 **location state variable**. New to bots? Read [Bots and services](../concepts/bots_and_services.md)
 and [Data streams and state](../concepts/data_streams_and_state.md) first. The golden rule:

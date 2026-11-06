@@ -31,6 +31,15 @@ flowchart LR
     style F fill:#fdf2f8,stroke:#e20074
 ```
 
+**Diagram in text:**
+
+- A mobile or web app: **Application API** (users, locations, devices, spaces, commands).
+- An admin or command center: **Admin API** (organizations, people, places, things).
+- A device or a gateway: **Device API** (MQTT via AWS IoT Core).
+- A partner cloud receiving data: **Event Streaming** (cloud to cloud).
+- A bot microservice: **Bots API** (private, inside botengine).
+- The Application API and the Admin API both link to **WebSockets**, for an app that needs data now, not on a poll.
+
 | API | Reference | Use it for |
 | --- | --- | --- |
 | **Authentication** | [authentication.md](authentication.md) | Getting an API key, and the traps in it. Start here |
@@ -94,6 +103,8 @@ flowchart LR
     A["device type<br/>defined on the<br/>server"] --> B["device<br/>registered<br/>to a location"] --> C["device can<br/>communicate"]
     style C fill:#f0fdf4,stroke:#1b873f
 ```
+
+**Diagram in text:** A device type defined on the server, then the device registered to a location, and then the device can communicate.
 
 ## WebSockets API
 

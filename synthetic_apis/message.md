@@ -15,6 +15,8 @@ flowchart LR
     MS --> EM["📧 email<br/>email_subject +<br/>content<br/>or a template"]
 ```
 
+**Diagram in text:** A `message` can go out as a push (`push_content`), as SMS (`sms_content`), and as email (`email_subject` and content, or a template). When the push cannot be delivered, `push_sms_fallback_content` goes as SMS.
+
 This essentially implements the `notify()` method available to bots.
 
 #### Properties

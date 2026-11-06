@@ -15,6 +15,8 @@ flowchart LR
     R -.-> W["weeklyreport<br/>monthlyreport"]
 ```
 
+**Diagram in text:** Bots add events to the `dailyreport` time-series state with `report_add_event` (`event_type` and comment), and can also send `report_generate`. The report has `sections[]`, taken from the `event_type` prefix, and each section has `items[]`. A dotted arrow links `dailyreport` to `weeklyreport` and `monthlyreport`.
+
 The original `daily_report_entry` address and section-ID based `com.ppc.Microservices/intelligence/dailyreport` package are deprecated. That package no longer registers any microservice, so `daily_report_entry` messages are not processed. `com.ppc.Bot/signals/dailyreport.py` is kept as a backwards-compatibility shim that maps legacy section IDs onto the event types below.
 
 #### Daily Report Section ID's

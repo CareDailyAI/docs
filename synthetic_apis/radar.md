@@ -19,6 +19,13 @@ flowchart TB
     D --> FB["submit_radar_fall_feedback"]
 ```
 
+**Diagram in text:**
+
+- The radar device's behavior is the room it is in.
+- `set_radar_room` sets the room boundaries and feeds `radar_room`.
+- `set_radar_subregion` adds a subregion, such as a bed or an area to ignore, and feeds `radar_subregions`. `radar_subregion_behaviors` lists what a subregion can be.
+- The device also takes `set_radar_config` and `submit_radar_fall_feedback`.
+
 To use the device, we need to specify (a) the boundaries of the room, and (b) subregions within that room to ignore or detect special occupancy status (like a bed).
 
 The device itself receives a behavior, using the standard `behaviors` state variable method. This gives context to the room the device is in.

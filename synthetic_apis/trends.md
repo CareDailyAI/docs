@@ -18,6 +18,8 @@ flowchart LR
     TR --> H["trends_highlights"]
 ```
 
+**Diagram in text:** `capture_trend_data` feeds Trends, which produce `trends_metadata` (static configuration), `trends` (a daily time-series), `trends_recently`, `trends_weekly`, `trends_category`, and `trends_highlights`.
+
 Trends are implemented by `com.ppc.BotProprietary/signals/trends.py` (signal helpers and constants) and `com.ppc.Microservices/intelligence/trends/location_trends_microservice.py`. Trend IDs are truncated to 50 characters (`TREND_ID_CHARACTER_LIMIT`).
 
 ## Properties

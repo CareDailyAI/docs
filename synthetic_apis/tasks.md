@@ -17,6 +17,8 @@ flowchart LR
     T --> H["📜 history +<br/>notifications"]
 ```
 
+**Diagram in text:** The app sends `update_task` (with an app-generated id) and `delete_task` to the `tasks` state. `tasks_system` writes system tasks (`__people__`, `__ecc__`, `__oobe__`, `__init__`) to `tasks`. The app sends `update_device_bundles` to `device_bundles`. Tasks feed history and notifications.
+
 Tasks are provided by the `tasks` microservice package. The companion `tasks_system` package automatically creates and removes system tasks (for example "Add People to your Trusted Circle.") as the location is set up.
 
 ## **Input** : Data Stream Messages

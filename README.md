@@ -43,6 +43,13 @@ flowchart TB
     class EXT ext
 ```
 
+**Diagram in text:**
+
+- Devices send data to the Care Daily Ambient Operating System (users, locations, devices, spaces) over MQTT, the device API.
+- Apps and consoles (mobile, web, voice) talk to the platform both ways over the Application API (REST and WebSocket). AI agents talk to it both ways over the same open APIs.
+- The platform sends data stream messages to the bot microservices, and the bots write location state variables back to the platform.
+- The platform sends events to a partner cloud through event streaming (dotted arrow).
+
 There are two layers, and knowing which one you are talking to answers most first-week questions.
 
 **The platform** stores and moves the real things: users, locations, devices, spaces,
@@ -62,6 +69,8 @@ flowchart LR
     Q["⏱️ <b>Quick Start</b><br/>first call in<br/>ten minutes"] --> C["🧩 <b>Concepts</b><br/>the five nouns"] --> R["📚 <b>References</b><br/>Platform and<br/>Synthetic APIs"] --> G["🗺️ <b>Guides</b><br/>whole stories"]
     style Q fill:#eef2ff,stroke:#3f3bf2,stroke-width:2px
 ```
+
+**Diagram in text:** Quick Start (first call in ten minutes), then Concepts (the five nouns), then References (Platform and Synthetic APIs), then Guides (whole stories).
 
 | Step | Page | You will know |
 | :---: | --- | --- |

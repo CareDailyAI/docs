@@ -30,6 +30,14 @@ sequenceDiagram
     end
 ```
 
+**Diagram in text:**
+
+1. Once, at start-up, the device sends `GET /cloud/json/settingsServer/mqtt` to the Care Daily REST API, with `Authorization: Basic deviceId:authToken`.
+2. The REST API returns the endpoint, the Amazon root CA, the device certificate and private key, the client ID, the topic prefix, and QoS. The device stores the key securely.
+3. The device connects to AWS IoT Core over TLS with the X.509 certificate.
+4. While running, the device publishes measurements to `{topicPrefix}/...`.
+5. AWS IoT Core sends commands and configuration back. Retained messages survive a disconnect.
+
 ---
 
 ## Device authentication and authorization

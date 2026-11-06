@@ -15,6 +15,8 @@ flowchart LR
     EC -->|"dispatch_delay_ms"| D["🚑 Dispatch<br/>if<br/>allow_dispatch"]
 ```
 
+**Diagram in text:** An alert goes to `group_1`, if `contact_group_1`. After `group_2_delay_ms`, it goes to `group_2`, if `contact_group_2`. After `ecc_delay_ms`, the Emergency Call Center, if `allow_ecc`. After `dispatch_delay_ms`, dispatch, if `allow_dispatch`.
+
 | Property    | Type | Description |
 | ----------- | ---- | ----------- |
 | `action_plans` | Dictionary | Dictionary of action plans. The key in each entry is the name of the unique identifier for service related to this action plan. |

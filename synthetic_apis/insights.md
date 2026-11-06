@@ -12,6 +12,8 @@ flowchart LR
     I["🧾 insights"] --> O["occupancy.*"] & S["sleep.*"] & T["ambient_temperature*"] & D["device.*.{device_id}"] & MO["security_mode"]
 ```
 
+**Diagram in text:** The `insights` state has entries under `occupancy.*`, `sleep.*`, `ambient_temperature*`, `device.*.{device_id}`, and `security_mode`.
+
 Insights are captured in a JSON dictionary structure where the key is a unique (predictable) **Insight ID**, and the JSON object underneath includes the value, a developer-readable description, an optional device ID, and the timestamp of the last update in milliseconds.
 
 Insights are captured internally by bot microservices through `com.ppc.Bot/signals/insights.py` (`capture_insight()` / `delete_insight()`) and stored by `com.ppc.Microservices/intelligence/insights/location_insights_microservice.py`. An insight is deleted from the `insights` state variable when it is captured again with a `null` value.

@@ -19,6 +19,12 @@ flowchart TD
     style RB fill:#f0fdf4,stroke:#1b873f
 ```
 
+**Diagram in text:**
+
+- **Sandbox:** go, then read it back.
+- **Production:** stop and ask, unless a person named this exact change in this conversation, the change is inside your own organizations, and it is not a delete.
+- When all three hold, say the cloud org and location out loud, write, then read it back and report what the read-back showed.
+
 ---
 
 ## The rules

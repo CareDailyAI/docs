@@ -18,6 +18,14 @@ flowchart LR
     style O fill:#eef2ff,stroke:#3f3bf2,stroke-width:2px
 ```
 
+**Diagram in text:**
+
+- Resident: role 1, residency 1, category 1.
+- Daughter who lives nearby: role 2, residency 3, category 1.
+- Son who lives remotely: role 3, residency 4, category 2.
+- Home care aide: role 4.
+- Each of these people is linked to the location. Facility staff (organization admins) are linked to the organization instead, and reach every location in it.
+
 The people attached to a location are its **Trusted Circle**. Every person's link to a home has
 its own settings, read and written on the location:
 

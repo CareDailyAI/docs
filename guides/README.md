@@ -20,6 +20,8 @@ flowchart LR
     style B fill:#f0fdf4,stroke:#1b873f
 ```
 
+**Diagram in text:** Sensors send data to the platform. The platform passes it to bots, and bots write back to the platform. The platform serves apps and partner clouds, and apps send data stream messages back to the platform.
+
 For the exact request order behind each app screen, see the
 [Message Sequence Charts](../message_sequence_charts/README.md).
 

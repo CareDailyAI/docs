@@ -24,6 +24,8 @@ flowchart LR
     style P fill:#eef2ff,stroke:#3f3bf2,stroke-width:2px
 ```
 
+**Diagram in text:** `AGENT_INSTRUCTIONS.md`, copied into your project, leads your agent to the kit's pages: 01 Authentication, 02 Discovery, 03 Reading data, 04 Safe writes, 05 Errors and retries, 06 Live events, and 07 Bots and state. Every page leads to the Care Daily open APIs.
+
 ---
 
 ## Install

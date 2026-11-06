@@ -49,6 +49,24 @@ sequenceDiagram
     C->>W: {"goal": 4, "subscription": {"id": 2}}
 ```
 
+**Diagram in text:**
+
+1. The client sends `GET /cloud/json/settingsServer/wsapi` to the REST API.
+2. The REST API returns host, port, path, and ssl.
+3. The client opens `wss://host:port/path` on the WebSocket server.
+4. The client sends `{"goal": 1, "key": API_KEY, "id": "1"}`.
+5. The server answers `{"goal": 1, "resultCode": 0}`.
+6. The client sends `{"goal": 2}`, presence: what may I subscribe to?
+7. The server answers `{"types": [1, 2, ...]}`.
+8. The client sends `{"goal": 3, "subscription": {...}}`.
+9. The server answers `{"goal": 3, "subscriptionId": 2}`.
+10. While the session lives, the server sends `{"goal": 6, "data": {...}}` for each change.
+11. The client sends `?` every 15 to 30 s.
+12. The server answers `!`.
+13. The server sends `?`.
+14. The client answers `!`.
+15. The client sends `{"goal": 4, "subscription": {"id": 2}}`.
+
 ## Get the WebSocket URL
 
 Each time the client starts a new WebSocket session, it must obtain its WebSocket API server connection settings and URL by calling the [Get Server Instance API](https://app.caredaily.ai/cloud/apidocs/cloud.html#tag/Cloud-Connectivity/operation/Get%20Server) with `type=wsapi`.

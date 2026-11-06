@@ -24,6 +24,8 @@ flowchart LR
     style B fill:#f0fdf4,stroke:#1b873f
 ```
 
+**Diagram in text:** The agent POSTs a stream message (address and feed) to the platform, which delivers it to the bot. The bot writes state to the platform. The agent reads that state with GET state, or over WebSocket type 3.
+
 ---
 
 ## Before sending anything

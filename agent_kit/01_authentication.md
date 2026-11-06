@@ -117,6 +117,15 @@ sequenceDiagram
     P-->>A: resultCode 0, key saved
 ```
 
+**Diagram in text:**
+
+1. The agent runs `login.py admin` with PASSWORD and keyType 11.
+2. The platform answers `resultCode 17`.
+3. The platform emails a passcode to the person.
+4. The person sets `CAREDAILY_PASSCODE` for the agent.
+5. The agent runs `login.py admin` again, with only the passcode header.
+6. The platform answers `resultCode 0`, and the key is saved.
+
 - A person reads the passcode and hands it to the agent. **The agent must not repeat the passcode
   in its output.**
 - **Trigger once.** Each step-one call replaces the previous passcode.

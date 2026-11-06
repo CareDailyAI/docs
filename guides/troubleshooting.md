@@ -23,6 +23,14 @@ flowchart TD
     style F fill:#f0fdf4,stroke:#1b873f
 ```
 
+**Diagram in text:**
+
+1. Is the device on this location? If not, it is paired to another home or another account.
+2. Is it reporting (`lastDataReceivedDateMs`)? If stale: power, or the home's network. Check the gateway first.
+3. Does it take commands? `resultCode 21` means the platform cannot reach it right now. `0` with a matching read-back means go on.
+4. Is a bot running on the home? If not, the home has no dashboard insights or history, which is expected.
+5. Are alerts reaching the family? If not, check role and category, then notification history. If they are, it is working: look at the specific screen's state.
+
 ---
 
 ## 1. Is the device on this location?

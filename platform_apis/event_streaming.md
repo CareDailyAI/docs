@@ -1,7 +1,7 @@
 # Event Streaming
 
 Care Daily's platform is capable of streaming events, subscription information, and insights into a partner's platform.
-There are several mechanisms available to stream data into a partner's platform including tools like AWS SQS, AWS EventBridge, Kafka, and others.
+There are several mechanisms available to stream data into a partner's platform including data streaming platforms like AWS SQS, AWS EventBridge, Azure Service Bus, Azure Event Hubs, and REST Webhooks.
 This document will capture information about some of the data formats of information available to stream from the Care Daily platform.
 
 | Data Type | Description |
